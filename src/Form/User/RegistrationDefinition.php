@@ -11,7 +11,7 @@ namespace Windwalker\Sentry\Form\User;
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
-use Windwalker\Sentry\Controller\Validator\UserExistsValidator;
+use Windwalker\Sentry\Validator\UserExistsValidator;
 
 /**
  * The RegistrationDefinition class.

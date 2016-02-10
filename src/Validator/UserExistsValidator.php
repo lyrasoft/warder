@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Sentry\Controller\Validator;
+namespace Windwalker\Sentry\Validator;
 
 use Windwalker\Core\Authentication\User;
 use Windwalker\Core\Model\Exception\ValidFailException;
