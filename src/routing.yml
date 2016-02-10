@@ -1,0 +1,69 @@
+# Login
+login:
+    pattern: /login
+    controller: User
+    action:
+        get: LoginGetController
+        post: LoginSaveController
+    extra:
+        layout: login
+
+# Logout
+logout:
+    pattern: /logout
+    controller: User
+    action:
+        '*': LogoutSaveController
+
+# Registration
+registration:
+    pattern: /registration
+    controller: User\Registration
+    action:
+        get: RegistrationGetController
+        post: RegistrationSaveController
+    extra:
+        layout: registration
+
+registration_activate:
+    pattern: /registration/activate
+    controller: User\Registration
+    action:
+        '*': ActivateSaveController
+
+# Forget
+forget_request:
+    pattern: /forget/request
+    controller: User\Forget
+    action:
+        get: RequestGetController
+        post: RequestSaveController
+    extra:
+        layout: forget.request
+
+forget_confirm:
+    pattern: /forget/confirm
+    controller: User\Forget
+    action:
+        get: ConfirmGetController
+        post: ConfirmSaveController
+    extra:
+        layout: forget.confirm
+
+forget_reset:
+    pattern: /forget/reset
+    controller: User\Forget
+    action:
+        get: ResetGetController
+        post: ResetSaveController
+    extra:
+        layout: forget.reset
+
+forget_complete:
+    pattern: /forget/complete
+    controller: User\Forget
+    action:
+        get: CompleteGetController
+        post: ComleteSaveController
+    extra:
+        layout: forget.complete
