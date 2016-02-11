@@ -16,6 +16,7 @@ use Windwalker\Warder\Form\User\LoginDefinition;
 use Windwalker\Warder\Form\User\RegistrationDefinition;
 use Windwalker\Warder\Form\User\ResetDefinition;
 use Windwalker\String\StringNormalise;
+use Windwalker\Warder\Helper\WarderHelper;
 
 /**
  * The UserHtmlView class.
@@ -52,7 +53,7 @@ class UserHtmlView extends AbstractPhoenixHtmView
 	 */
 	protected function login(Data $data)
 	{
-		$data->form = $this->model->getForm(new LoginDefinition, 'user');
+		$data->form = $this->model->getForm(new LoginDefinition(WarderHelper::getPackage()), 'user');
 	}
 
 	/**
@@ -64,7 +65,7 @@ class UserHtmlView extends AbstractPhoenixHtmView
 	 */
 	protected function registration(Data $data)
 	{
-		$data->form = $this->model->getForm(new RegistrationDefinition, 'user', true);
+		$data->form = $this->model->getForm(new RegistrationDefinition(WarderHelper::getPackage()), 'user', true);
 		$data->fieldsets = $data->form->getFieldsets();
 	}
 

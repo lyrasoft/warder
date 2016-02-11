@@ -170,11 +170,6 @@ class RegistrationSaveController extends AbstractSaveController
 		}
 
 		unset($data->password2);
-
-//		if (!$data->tos)
-//		{
-//			throw new ValidFailException(Translator::translate($this->langPrefix . 'message.please.accept.tos'));
-//		}
 	}
 
 	/**

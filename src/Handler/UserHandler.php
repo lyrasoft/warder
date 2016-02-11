@@ -14,6 +14,7 @@ use Windwalker\Core\Authentication\UserHandlerInterface;
 use Windwalker\Core\Ioc;
 use Windwalker\Data\Data;
 use Windwalker\DataMapper\DataMapper;
+use Windwalker\Warder\WarderPackage;
 
 /**
  * The UserHandler class.
@@ -28,6 +29,23 @@ class UserHandler implements UserHandlerInterface
 	 * @var DataMapper
 	 */
 	protected $mapper;
+
+	/**
+	 * Property package.
+	 *
+	 * @var  WarderPackage
+	 */
+	protected $package;
+
+	/**
+	 * UserHandler constructor.
+	 *
+	 * @param WarderPackage $package
+	 */
+	public function __construct(WarderPackage $package)
+	{
+		$this->package = $package;
+	}
 
 	/**
 	 * load
@@ -45,9 +63,9 @@ class UserHandler implements UserHandlerInterface
 
 		if (!$conditions)
 		{
-			$session = Ioc::getSession();
+			$session = $this->package->getContainer()->get('system.session');
 
-			$user = $session->get('user');
+			$user = $session->get($this->package->get('user.session_name', 'user'));
 		}
 		else
 		{
@@ -113,7 +131,7 @@ class UserHandler implements UserHandlerInterface
 	{
 		$session = Ioc::getSession();
 
-		$session->set('user', (array) $user);
+		$session->set($this->package->get('user.session_name', 'user'), (array) $user);
 
 		return true;
 	}
@@ -129,7 +147,7 @@ class UserHandler implements UserHandlerInterface
 	{
 		$session = Ioc::getSession();
 
-		$session->remove('user');
+		$session->remove($this->package->get('user.session_name', 'user'));
 
 		return true;
 	}
@@ -143,7 +161,7 @@ class UserHandler implements UserHandlerInterface
 	{
 		if (!$this->mapper)
 		{
-			$this->mapper = new DataMapper('users');
+			$this->mapper = new DataMapper($this->package->get('table.users', 'users'));
 		}
 
 		return $this->mapper;
@@ -160,16 +178,18 @@ class UserHandler implements UserHandlerInterface
 	{
 		$mapper = $this->getDataMapper();
 
-		if (!$user->username)
+		$loginName = $this->package->get('user.login_name', 'username');
+
+		if (!$user->$loginName)
 		{
 			throw new \InvalidArgumentException('No username.');
 		}
 
-		$exists = $mapper->findOne(['username' => $user->username]);
+		$exists = $mapper->findOne([$loginName => $user->$loginName]);
 
 		if (!$user->id && $exists->notNull())
 		{
-			throw new \InvalidArgumentException('User with: ' . $user->username . ' exists');
+			throw new \InvalidArgumentException('User with: ' . $user->$loginName . ' exists');
 		}
 	}
 }

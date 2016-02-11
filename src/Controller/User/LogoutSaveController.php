@@ -27,7 +27,7 @@ class LogoutSaveController extends AbstractPhoenixController
 	{
 		User::logout();
 
-		$this->setRedirect($this->router->http('home'));
+		$this->setRedirect($this->router->http($this->package->get('frontend.redirect.logout', 'home')));
 
 		return true;
 	}

@@ -26,13 +26,6 @@ class LoginGetController extends DisplayController
 	protected $name = 'user';
 
 	/**
-	 * Property homeRoute.
-	 *
-	 * @var  string
-	 */
-	protected $homeRoute = 'home';
-
-	/**
 	 * prepareExecute
 	 *
 	 * @return  void
@@ -46,9 +39,14 @@ class LoginGetController extends DisplayController
 			return;
 		}
 
-		$return = $this->input->getBase64('return');
+		$return = $this->input->getBase64(
+			$this->package->get('frontend.login.return_key', 'return')
+		);
 
-		$this->setUserState($this->getContext('return'), $return);
+		if ($return)
+		{
+			$this->setUserState($this->getContext('return'), $return);
+		}
 
 		parent::prepareExecute();
 	}
@@ -60,6 +58,6 @@ class LoginGetController extends DisplayController
 	 */
 	protected function getHomeRedirect()
 	{
-		return $this->router->http($this->homeRoute);
+		return $this->router->http($this->package->get('frontend.redirect.login', 'home'));
 	}
 }

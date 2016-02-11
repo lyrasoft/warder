@@ -9,14 +9,15 @@
 namespace Windwalker\Warder;
 
 use Windwalker\Core\Package\PackageHelper;
-use Windwalker\Warder\Listener\SentryListener;
+use Windwalker\Warder\Helper\WarderHelper;
+use Windwalker\Warder\Listener\WarderListener;
 use Windwalker\Warder\Listener\UserListener;
 use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Event\Dispatcher;
 
-define('SENTRY_ROOT', dirname(__DIR__));
-define('SENTRY_SOURCE', SENTRY_ROOT . '/src');
-define('SENTRY_TEMPLATES', SENTRY_ROOT . '/templates');
+define('WARDER_ROOT', dirname(__DIR__));
+define('WARDER_SOURCE', WARDER_ROOT . '/src');
+define('WARDER_TEMPLATES', WARDER_ROOT . '/templates');
 
 /**
  * The UserPackage class.
@@ -26,6 +27,14 @@ define('SENTRY_TEMPLATES', SENTRY_ROOT . '/templates');
 class WarderPackage extends AbstractPackage
 {
 	/**
+	 * WarderPackage constructor.
+	 */
+	public function __construct()
+	{
+		WarderHelper::setPackage($this);
+	}
+
+	/**
 	 * initialise
 	 *
 	 * @throws  \LogicException
@@ -34,8 +43,6 @@ class WarderPackage extends AbstractPackage
 	public function initialise()
 	{
 		parent::initialise();
-
-
 	}
 
 	/**
@@ -49,49 +56,7 @@ class WarderPackage extends AbstractPackage
 	{
 		parent::registerListeners($dispatcher);
 
-		$dispatcher->addListener(new UserListener)
-			->addListener(new SentryListener);
-	}
-
-	/**
-	 * prepareExecute
-	 *
-	 * @return  void
-	 */
-	protected function prepareExecute()
-	{
-		$package = PackageHelper::getPackage('animal');
-
-		$controller = $this->currentController;
-
-		$controller->setPackage($package);
-
-//		$view = $controller->getView();
-//
-//		if ($view instanceof PhpHtmlView)
-//		{
-//			$this->container->share('view.user.html', function () use ($controller)
-//			{
-//				$view = new UserHtmlView;
-//
-//				$view->setConfig($controller->getConfig());
-//
-//				return $view;
-//			})->alias('view.user.html', 'view.user.html');
-//		}
-//
-//		$model = $controller->getModel();
-//
-//		if ($model instanceof Model)
-//		{
-//			$this->container->share('model.user', function () use ($controller)
-//			{
-//				$model = new UserModel;
-//
-//				$model->setConfig($controller->getConfig());
-//
-//				return $model;
-//			})->alias('model.user', 'model.user');
-//		}
+		$dispatcher->addListener(new UserListener($this))
+			->addListener(new WarderListener);
 	}
 }

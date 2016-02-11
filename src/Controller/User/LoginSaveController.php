@@ -34,11 +34,11 @@ class LoginSaveController extends AbstractSaveController
 	protected $formControl = 'user';
 
 	/**
-	 * Property homeRoute.
+	 * Property langPrefix.
 	 *
 	 * @var  string
 	 */
-	protected $homeRoute = 'home';
+	protected $langPrefix = 'warder.login.';
 
 	/**
 	 * prepareExecute
@@ -81,7 +81,7 @@ class LoginSaveController extends AbstractSaveController
 		}
 		else
 		{
-			return $this->router->http($this->homeRoute);
+			return $this->router->http($this->package->get('frontend.redirect.login', 'home'));
 		}
 	}
 

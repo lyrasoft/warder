@@ -17,7 +17,7 @@ use Windwalker\Utilities\Queue\Priority;
  *
  * @since  {DEPLOY_VERSION}
  */
-class SentryListener
+class WarderListener
 {
 	/**
 	 * onViewBeforeRender
@@ -34,6 +34,6 @@ class SentryListener
 		$name = $view->getName();
 		$renderer = $view->getRenderer();
 
-		$renderer->addPath(SENTRY_SOURCE . '/Templates/' . $name, Priority::LOW - 25);
+		$renderer->addPath(WARDER_SOURCE . '/Templates/' . $name, Priority::LOW - 25);
 	}
 }

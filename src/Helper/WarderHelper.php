@@ -10,6 +10,7 @@ namespace Windwalker\Warder\Helper;
 
 use Symfony\Component\Yaml\Yaml;
 use Windwalker\Core\Package\PackageHelper;
+use Windwalker\Warder\WarderPackage;
 
 /**
  * The SentryHelper class.
@@ -19,16 +20,11 @@ use Windwalker\Core\Package\PackageHelper;
 class WarderHelper
 {
 	/**
-	 * getPackage
+	 * Property package.
 	 *
-	 * @return  \Windwalker\Core\Package\AbstractPackage
+	 * @var  WarderPackage
 	 */
-	public static function getPackage()
-	{
-		return PackageHelper::getPackage(
-			PackageHelper::getAlias('Windwalker\Warder\WarderPackage')
-		);
-	}
+	protected static $package;
 
 	/**
 	 * getFrontendRouting
@@ -38,5 +34,27 @@ class WarderHelper
 	public static function getFrontendRouting()
 	{
 		return Yaml::parse(static::getPackage()->getDir() . '/routing.yml');
+	}
+
+	/**
+	 * getPackage
+	 *
+	 * @return  \Windwalker\Core\Package\AbstractPackage
+	 */
+	public static function getPackage()
+	{
+		return static::$package;
+	}
+
+	/**
+	 * Method to set property package
+	 *
+	 * @param   WarderPackage $package
+	 *
+	 * @return  void
+	 */
+	public static function setPackage($package)
+	{
+		static::$package = $package;
 	}
 }

@@ -8,6 +8,8 @@
 
 namespace Windwalker\Warder\Form\User;
 
+use Windwalker\Core\Language\Translator;
+use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
@@ -20,6 +22,23 @@ use Windwalker\Form\Form;
 class LoginDefinition implements FieldDefinitionInterface
 {
 	/**
+	 * Property package.
+	 *
+	 * @var  AbstractPackage
+	 */
+	protected $package;
+
+	/**
+	 * WarderMethod constructor.
+	 *
+	 * @param AbstractPackage $package
+	 */
+	public function __construct(AbstractPackage $package)
+	{
+		$this->package = $package;
+	}
+
+	/**
 	 * Define the form fields.
 	 *
 	 * @param Form $form The Windwalker form object.
@@ -28,13 +47,15 @@ class LoginDefinition implements FieldDefinitionInterface
 	 */
 	public function define(Form $form)
 	{
-		$form->add('username', new Field\TextField)
-			->label('Username');
+		$loginName = $this->package->get('user.login_name', 'username');
+
+		$form->add($loginName, new Field\TextField)
+			->label(Translator::translate('warder.field.' . $loginName));
 
 		$form->add('password', new Field\PasswordField)
-			->label('Password');
+			->label(Translator::translate('warder.field.password'));
 
 		$form->add('remember', new Field\CheckboxField)
-			->label('Remember me');
+			->label(Translator::translate('warder.field.remember'));
 	}
 }

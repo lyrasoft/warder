@@ -8,12 +8,13 @@
 
 namespace Windwalker\Warder\Listener;
 
-use Windwalker\Warder\Authentication\Method\SentryMethod;
+use Windwalker\Warder\Authentication\Method\WarderMethod;
 use Windwalker\Warder\Handler\UserHandler;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Core\Authentication\User;
 use Windwalker\Event\Event;
 use Windwalker\Ioc;
+use Windwalker\Warder\WarderPackage;
 
 /**
  * The UserListener class.
@@ -22,6 +23,23 @@ use Windwalker\Ioc;
  */
 class UserListener
 {
+	/**
+	 * Property package.
+	 *
+	 * @var  WarderPackage
+	 */
+	protected $package;
+
+	/**
+	 * UserListener constructor.
+	 *
+	 * @param WarderPackage $package
+	 */
+	public function __construct(WarderPackage $package)
+	{
+		$this->package = $package;
+	}
+
 	/**
 	 * onUserAfterLogin
 	 *
@@ -37,9 +55,11 @@ class UserListener
 
 		if ($remember)
 		{
-			$session = Ioc::getSession();
+			$container = $this->package->getContainer();
 
-			$uri = Ioc::get('uri');
+			$session = $container->get('system.session');
+
+			$uri = $container->get('uri');
 
 			setcookie(session_name(), $_COOKIE[session_name()], time() + 60 * 60 * 24 * 100, $session->getOption('cookie_path', $uri['base.path']), $session->getOption('cookie_domain'));
 		}
@@ -58,7 +78,7 @@ class UserListener
 		$auth = $event['authentication'];
 
 		$auth->removeMethod('database');
-		$auth->addMethod('sentry', new SentryMethod);
+		$auth->addMethod('sentry', new WarderMethod($this->package));
 	}
 
 	/**
@@ -70,7 +90,7 @@ class UserListener
 	 */
 	public function onAfterInitialise(Event $event)
 	{
-		User::setHandler(new UserHandler);
+		User::setHandler(new UserHandler($this->package));
 	}
 
 	/**

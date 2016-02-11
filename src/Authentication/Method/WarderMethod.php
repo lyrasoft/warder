@@ -16,14 +16,32 @@ use Windwalker\Authentication\Credential;
 use Windwalker\Authentication\Method\AbstractMethod;
 use Windwalker\Core\Authentication\User;
 use Windwalker\Ioc;
+use Windwalker\Warder\WarderPackage;
 
 /**
  * The Eng4TwMethod class.
  *
  * @since  {DEPLOY_VERSION}
  */
-class SentryMethod extends AbstractMethod
+class WarderMethod extends AbstractMethod
 {
+	/**
+	 * Property package.
+	 *
+	 * @var  WarderPackage
+	 */
+	protected $package;
+
+	/**
+	 * WarderMethod constructor.
+	 *
+	 * @param WarderPackage $package
+	 */
+	public function __construct(WarderPackage $package)
+	{
+		$this->package = $package;
+	}
+
 	/**
 	 * authenticate
 	 *
@@ -33,7 +51,9 @@ class SentryMethod extends AbstractMethod
 	 */
 	public function authenticate(Credential $credential)
 	{
-		if (!$credential->username || !$credential->password)
+		$loginName = $this->package->get('user.login_name', 'username');
+
+		if (!$credential->$loginName || !$credential->password)
 		{
 			$this->status = Authentication::EMPTY_CREDENTIAL;
 
@@ -41,7 +61,7 @@ class SentryMethod extends AbstractMethod
 		}
 
 		/** @var UserData $user */
-		$user = User::get(array('username' => $credential->username));
+		$user = User::get(array($loginName => $credential->$loginName));
 
 		if ($user->isNull())
 		{
@@ -49,14 +69,6 @@ class SentryMethod extends AbstractMethod
 
 			return false;
 		}
-
-		// Check is admin in admin-area
-//		if (Ioc::get('current.package') instanceof AdminPackage && $user->notAdmin())
-//		{
-//			$this->status = Authentication::USER_NOT_FOUND;
-//
-//			return false;
-//		}
 
 		if (!UserHelper::verifyPassword($credential->password, $user->password))
 		{
