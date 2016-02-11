@@ -6,10 +6,10 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Sentry\Controller\User;
+namespace Windwalker\Warder\Controller\User;
 
 use Phoenix\Controller\Display\DisplayController;
-use Windwalker\Sentry\Helper\UserHelper;
+use Windwalker\Warder\Helper\UserHelper;
 
 /**
  * The GetController class.

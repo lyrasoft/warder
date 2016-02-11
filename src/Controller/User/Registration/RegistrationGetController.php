@@ -6,11 +6,11 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Sentry\Controller\User\Registration;
+namespace Windwalker\Warder\Controller\User\Registration;
 
 use Phoenix\Controller\Display\EditDisplayController;
-use Windwalker\Sentry\Model\UserModel;
-use Windwalker\Sentry\View\User\UserHtmlView;
+use Windwalker\Warder\Model\UserModel;
+use Windwalker\Warder\View\User\UserHtmlView;
 
 /**
  * The GetController class.

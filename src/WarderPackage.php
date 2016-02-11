@@ -6,17 +6,13 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Sentry;
+namespace Windwalker\Warder;
 
-use Windwalker\Core\Model\Model;
 use Windwalker\Core\Package\PackageHelper;
-use Windwalker\Core\View\PhpHtmlView;
-use Windwalker\Sentry\Listener\SentryListener;
-use Windwalker\Sentry\Listener\UserListener;
+use Windwalker\Warder\Listener\SentryListener;
+use Windwalker\Warder\Listener\UserListener;
 use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Event\Dispatcher;
-use Windwalker\Sentry\Model\UserModel;
-use Windwalker\Sentry\View\User\UserHtmlView;
 
 define('SENTRY_ROOT', dirname(__DIR__));
 define('SENTRY_SOURCE', SENTRY_ROOT . '/src');
@@ -27,7 +23,7 @@ define('SENTRY_TEMPLATES', SENTRY_ROOT . '/templates');
  *
  * @since  {DEPLOY_VERSION}
  */
-class SentryPackage extends AbstractPackage
+class WarderPackage extends AbstractPackage
 {
 	/**
 	 * initialise

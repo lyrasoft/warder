@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Sentry\Helper;
+namespace Windwalker\Warder\Helper;
 
 use Admin\AdminPackage;
 use Phoenix\Uri\Uri;

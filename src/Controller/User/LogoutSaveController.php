@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Sentry\Controller\User;
+namespace Windwalker\Warder\Controller\User;
 
 use Phoenix\Controller\AbstractPhoenixController;
 use Windwalker\Core\Authentication\User;

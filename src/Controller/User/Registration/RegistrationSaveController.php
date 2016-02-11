@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Sentry\Controller\User\Registration;
+namespace Windwalker\Warder\Controller\User\Registration;
 
 use Phoenix\Controller\AbstractSaveController;
 use Phoenix\Mail\SwiftMailer;
@@ -14,9 +14,9 @@ use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Core\Router\Router;
 use Windwalker\Data\Data;
-use Windwalker\Sentry\Form\User\RegistrationDefinition;
-use Windwalker\Sentry\Helper\UserHelper;
-use Windwalker\Sentry\Model\UserModel;
+use Windwalker\Warder\Form\User\RegistrationDefinition;
+use Windwalker\Warder\Helper\UserHelper;
+use Windwalker\Warder\Model\UserModel;
 
 /**
  * The SaveController class.

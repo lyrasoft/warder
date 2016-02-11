@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Sentry\Model;
+namespace Windwalker\Warder\Model;
 
 use Phoenix\Model\CrudModel;
 use Windwalker\Authentication\Credential;
@@ -15,7 +15,7 @@ use Windwalker\Core\DateTime\DateTime;
 use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Data\Data;
 use Windwalker\Record\Record;
-use Windwalker\Sentry\Helper\UserHelper;
+use Windwalker\Warder\Helper\UserHelper;
 
 /**
  * The LoginModel class.

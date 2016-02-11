@@ -6,10 +6,10 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Sentry\Listener;
+namespace Windwalker\Warder\Listener;
 
-use Windwalker\Sentry\Authentication\Method\SentryMethod;
-use Windwalker\Sentry\Handler\UserHandler;
+use Windwalker\Warder\Authentication\Method\SentryMethod;
+use Windwalker\Warder\Handler\UserHandler;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Core\Authentication\User;
 use Windwalker\Event\Event;

@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Sentry\Form\User;
+namespace Windwalker\Warder\Form\User;
 
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;

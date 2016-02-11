@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Sentry\Listener;
+namespace Windwalker\Warder\Listener;
 
 use Windwalker\Event\Event;
 use Windwalker\Renderer\BladeRenderer;

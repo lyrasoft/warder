@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Sentry\Seed;
+namespace Windwalker\Warder\Seed;
 
 use Windwalker\Core\Seeder\AbstractSeeder;
 

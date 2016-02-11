@@ -6,11 +6,11 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Sentry\Authentication\Method;
+namespace Windwalker\Warder\Authentication\Method;
 
 use Admin\AdminPackage;
-use Windwalker\Sentry\Data\UserData;
-use Windwalker\Sentry\Helper\UserHelper;
+use Windwalker\Warder\Data\UserData;
+use Windwalker\Warder\Helper\UserHelper;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Authentication\Credential;
 use Windwalker\Authentication\Method\AbstractMethod;

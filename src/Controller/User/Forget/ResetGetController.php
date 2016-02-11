@@ -6,15 +6,15 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Sentry\Controller\User\Forget;
+namespace Windwalker\Warder\Controller\User\Forget;
 
 use Phoenix\Controller\Display\ItemDisplayController;
 use Windwalker\Core\Authentication\User;
 use Windwalker\Core\Frontend\Bootstrap;
 use Windwalker\Core\Language\Translator;
-use Windwalker\Sentry\Helper\UserHelper;
-use Windwalker\Sentry\Model\UserModel;
-use Windwalker\Sentry\View\User\UserHtmlView;
+use Windwalker\Warder\Helper\UserHelper;
+use Windwalker\Warder\Model\UserModel;
+use Windwalker\Warder\View\User\UserHtmlView;
 
 /**
  * The GetController class.

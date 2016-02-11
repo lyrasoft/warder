@@ -6,9 +6,9 @@
  * @license    GNU Lesser General Public License version 3 or later.
  */
 
-namespace Windwalker\Sentry\Handler;
+namespace Windwalker\Warder\Handler;
 
-use Windwalker\Sentry\Data\UserData;
+use Windwalker\Warder\Data\UserData;
 use Windwalker\Core\Authentication\UserDataInterface;
 use Windwalker\Core\Authentication\UserHandlerInterface;
 use Windwalker\Core\Ioc;

@@ -6,15 +6,15 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Sentry\View\User;
+namespace Windwalker\Warder\View\User;
 
 use Phoenix\View\AbstractPhoenixHtmView;
 use Windwalker\Data\Data;
-use Windwalker\Sentry\Form\User\ForgetConfirmDefinition;
-use Windwalker\Sentry\Form\User\ForgetRequestDefinition;
-use Windwalker\Sentry\Form\User\LoginDefinition;
-use Windwalker\Sentry\Form\User\RegistrationDefinition;
-use Windwalker\Sentry\Form\User\ResetDefinition;
+use Windwalker\Warder\Form\User\ForgetConfirmDefinition;
+use Windwalker\Warder\Form\User\ForgetRequestDefinition;
+use Windwalker\Warder\Form\User\LoginDefinition;
+use Windwalker\Warder\Form\User\RegistrationDefinition;
+use Windwalker\Warder\Form\User\ResetDefinition;
 use Windwalker\String\StringNormalise;
 
 /**

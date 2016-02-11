@@ -6,9 +6,9 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Sentry\Data;
+namespace Windwalker\Warder\Data;
 
-use Windwalker\Sentry\Helper\UserGroup;
+use Windwalker\Warder\Helper\UserGroup;
 
 /**
  * The UserData class.

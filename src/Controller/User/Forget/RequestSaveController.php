@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Sentry\Controller\User\Forget;
+namespace Windwalker\Warder\Controller\User\Forget;
 
 use Phoenix\Controller\AbstractSaveController;
 use Phoenix\Mail\SwiftMailer;
@@ -17,8 +17,8 @@ use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Core\Router\Router;
 use Windwalker\Crypt\Password;
 use Windwalker\Data\Data;
-use Windwalker\Sentry\Helper\UserHelper;
-use Windwalker\Sentry\Model\UserModel;
+use Windwalker\Warder\Helper\UserHelper;
+use Windwalker\Warder\Model\UserModel;
 
 /**
  * The SaveController class.

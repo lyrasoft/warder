@@ -6,14 +6,14 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Sentry\Seed;
+namespace Windwalker\Warder\Seed;
 
 use Faker\Factory;
 use Windwalker\Core\Seeder\AbstractSeeder;
 use Windwalker\Crypt\Password;
 use Windwalker\Data\Data;
 use Windwalker\DataMapper\DataMapper;
-use Windwalker\Sentry\Helper\UserHelper;
+use Windwalker\Warder\Helper\UserHelper;
 
 /**
  * The UserSeeder class.
