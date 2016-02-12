@@ -1,0 +1,23 @@
+{
+    "name": "windwalker/warder",
+    "description": "A use package for Windwalker.",
+    "homepage": "https://github.com/ventoviro/windwlaker-warder",
+    "license": "LGPL-2.0+",
+    "minimum-stability": "beta",
+    "require": {
+        "windwalker/phoenix": "1.*"
+    },
+    "require-dev": {
+
+    },
+    "autoload": {
+        "psr-4": {
+            "Windwalker\\Warder\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    }
+}
