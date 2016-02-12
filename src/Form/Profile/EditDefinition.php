@@ -49,7 +49,7 @@ class EditDefinition implements FieldDefinitionInterface
 	 */
 	public function define(Form $form)
 	{
-		$loginName = $this->package->get('user.login_name', 'username');
+		$loginName = $this->package->getLoginName();
 
 		$form->wrap('basic', null, function(Form $form) use ($loginName)
 		{

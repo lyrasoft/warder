@@ -33,10 +33,10 @@
                         {!! $grid->sortTitle($langPrefix . 'field.name', 'user.name') !!}
                     </th>
 
-                    @if ($warder->get('user.login_name') != 'email')
+                    @if ($warder->getLoginName() != 'email')
                         {{-- USERNAME --}}
                         <th>
-                            {!! $grid->sortTitle($langPrefix . 'field.' . $warder->get('user.login_name'), 'user.' . $warder->get('user.login_name')) !!}
+                            {!! $grid->sortTitle($langPrefix . 'field.' . $warder->getLoginName(), 'user.' . $warder->getLoginName()) !!}
                         </th>
                     @endif
 
@@ -75,7 +75,7 @@
                             </a>
                         </td>
 
-                        @if ($warder->get('user.login_name') != 'email')
+                        @if ($warder->getLoginName() != 'email')
                             {{-- USERNAME --}}
                             <td class="searchable" class="searchable">
                                 {{ $item->username }}

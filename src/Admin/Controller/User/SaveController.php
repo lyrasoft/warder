@@ -78,8 +78,7 @@ class SaveController extends AbstractSaveController
 	{
 		parent::validate($data);
 
-		$warder = WarderHelper::getPackage();
-		$loginName = $warder->get('user.login_name', 'username');
+		$loginName = WarderHelper::getLoginName();
 
 		if ($loginName != 'email')
 		{

@@ -48,7 +48,7 @@ class LoginDefinition implements FieldDefinitionInterface
 	 */
 	public function define(Form $form)
 	{
-		$loginName = $this->warder->get('user.login_name', 'username');
+		$loginName = WarderHelper::getLoginName();
 		$langPrefix = $this->warder->get('admin.language.prefix', 'warder.');
 
 		$form->add($loginName, new Field\TextField)

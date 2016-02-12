@@ -79,8 +79,7 @@ class UserModel extends AdminModel
 	 */
 	public function login($account, $password, $remember = false, $options = array())
 	{
-		$warder = WarderHelper::getPackage();
-		$loginName = $warder->get('user.login_name', 'username');
+		$loginName = WarderHelper::getLoginName();
 
 		$credential = new Credential;
 		$credential->$loginName = $account;

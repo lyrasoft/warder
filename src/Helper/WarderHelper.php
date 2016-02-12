@@ -29,11 +29,13 @@ class WarderHelper
 	/**
 	 * getLoginName
 	 *
-	 * @return  string
+	 * @param string $default
+	 *
+	 * @return string
 	 */
-	public static function getLoginName()
+	public static function getLoginName($default = 'username')
 	{
-		return static::getPackage()->get('user.login_name', 'username');
+		return static::getPackage()->getLoginName($default);
 	}
 
 	/**

@@ -179,7 +179,7 @@ class UserHandler implements UserHandlerInterface
 	{
 		$mapper = $this->getDataMapper();
 
-		$loginName = $this->package->get('user.login_name', 'username');
+		$loginName = $this->package->getLoginName();
 
 //		if (!$user->$loginName)
 //		{
