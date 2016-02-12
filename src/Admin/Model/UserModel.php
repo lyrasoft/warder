@@ -9,6 +9,11 @@
 namespace Windwalker\Warder\Admin\Model;
 
 use Phoenix\Model\AdminModel;
+use Windwalker\Authentication\Credential;
+use Windwalker\Core\Authentication\User;
+use Windwalker\Core\DateTime\DateTime;
+use Windwalker\Core\Language\Translator;
+use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Crypt\Password;
 use Windwalker\Data\Data;
 use Windwalker\Record\Record;
@@ -36,68 +41,93 @@ class UserModel extends AdminModel
 	protected $reorderConditions = array();
 
 	/**
-	 * save
+	 * getItem
 	 *
-	 * @param Data $data
+	 * @param   mixed $pk
 	 *
-	 * @return  bool
+	 * @return  Data
 	 */
-	public function save(Data $data)
+	public function getItem($pk = null)
 	{
-		if ('' !== (string) $data->password)
+		$state = $this->state;
+
+		$pk = $pk ? : $state['item.pk'];
+
+		return $this->fetch('item.' . json_encode($pk), function() use ($pk, $state)
 		{
-			$data->password = UserHelper::hashPassword($data->password);
+			$item = User::get($pk);
+
+			$item = new Data($item->dump());
+
+			$this->postGetItem($item);
+
+			return $item;
+		});
+	}
+
+	/**
+	 * login
+	 *
+	 * @param string $username
+	 * @param string $password
+	 * @param bool   $remember
+	 * @param array  $options
+	 *
+	 * @return bool
+	 * @throws ValidFailException
+	 */
+	public function login($username, $password, $remember = false, $options = array())
+	{
+		$credential = new Credential;
+		$credential->username = $username;
+		$credential->password = $password;
+
+		$result = User::login($credential, (bool) $remember, $options);
+
+		if (!$result)
+		{
+			throw new ValidFailException(Translator::translate('warder.login.message.fail'));
 		}
 
-		return parent::save($data);
+		return $result;
 	}
 
 	/**
-	 * postGetItem
+	 * save
 	 *
-	 * @param Data $item
+	 * @param Data $user
 	 *
-	 * @return  void
+	 * @return bool
+	 * @throws ValidFailException
 	 */
-	protected function postGetItem(Data $item)
+	public function save(Data $user)
 	{
-		$item->password = null;
+		if ('' !== (string) $user->password)
+		{
+			$user->password = UserHelper::hashPassword($user->password);
+		}
+
+		unset($user->password2);
+
+		$user = User::save($user);
+
+		User::getHandler()->login($user);
+
+		return true;
 	}
 
 	/**
-	 * prepareRecord
+	 * getDefaultData
 	 *
-	 * @param Record $record
-	 *
-	 * @return  void
+	 * @return array
 	 */
-	protected function prepareRecord(Record $record)
+	public function getDefaultData()
 	{
-		parent::prepareRecord($record);
-	}
+		$item = parent::getDefaultData();
 
-	/**
-	 * getReorderConditions
-	 *
-	 * @param Record $record
-	 *
-	 * @return  array  An array of conditions to add to ordering queries.
-	 */
-	public function getReorderConditions(Record $record)
-	{
-		return parent::getReorderConditions($record);
-	}
+		unset($item['password']);
+		unset($item['password2']);
 
-	/**
-	 * Method to set new item ordering as first or last.
-	 *
-	 * @param   Record $record   Item table to save.
-	 * @param   string $position `first` or other are `last`.
-	 *
-	 * @return  void
-	 */
-	public function setOrderPosition(Record $record, $position = self::ORDER_POSITION_LAST)
-	{
-		parent::setOrderPosition($record, $position);
+		return $item;
 	}
 }

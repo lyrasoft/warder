@@ -11,6 +11,8 @@ namespace Windwalker\Warder\Admin\View\User;
 use Phoenix\Script\BootstrapScript;
 use Phoenix\Script\PhoenixScript;
 use Phoenix\View\EditView;
+use Windwalker\Warder\Admin\Form\User\LoginDefinition;
+use Windwalker\Warder\Helper\WarderHelper;
 
 /**
  * The UserHtmlView class.
@@ -32,6 +34,24 @@ class UserHtmlView extends EditView
 	 * @var  string
 	 */
 	protected $langPrefix = 'warder.';
+
+	/**
+	 * prepareRender
+	 *
+	 * @param \Windwalker\Data\Data $data
+	 *
+	 * @return  void
+	 */
+	protected function prepareRender($data)
+	{
+		if ($this->getLayout() == 'login')
+		{
+			$this->formDefinition = new LoginDefinition(WarderHelper::getPackage());
+			$this->formControl = 'user';
+		}
+
+		parent::prepareRender($data);
+	}
 
 	/**
 	 * prepareData

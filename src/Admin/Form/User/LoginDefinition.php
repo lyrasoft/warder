@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Form\User;
+namespace Windwalker\Warder\Admin\Form\User;
 
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Package\AbstractPackage;
@@ -49,7 +49,7 @@ class LoginDefinition implements FieldDefinitionInterface
 	public function define(Form $form)
 	{
 		$loginName = $this->warder->get('user.login_name', 'username');
-		$langPrefix = $this->warder->get('frontend.language.prefix', 'warder.');
+		$langPrefix = $this->warder->get('admin.language.prefix', 'warder.');
 
 		$form->add($loginName, new Field\TextField)
 			->label(Translator::translate($langPrefix . 'field.' . $loginName));

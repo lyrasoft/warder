@@ -11,6 +11,7 @@ namespace Windwalker\Warder\Helper;
 use Admin\AdminPackage;
 use Phoenix\Uri\Uri;
 use Windwalker\Core\Authentication\User;
+use Windwalker\Core\Package\PackageHelper;
 use Windwalker\Core\Router\Router;
 use Windwalker\Crypt\CryptHelper;
 use Windwalker\Crypt\Password;
@@ -44,7 +45,7 @@ class UserHelper
 	 */
 	public static function hashPassword($password)
 	{
-		return (new Password)->create($password);
+		return with(new Password)->create($password);
 	}
 
 	/**
@@ -57,7 +58,7 @@ class UserHelper
 	 */
 	public static function verifyPassword($password, $hash)
 	{
-		return (new Password)->verify($password, $hash);
+		return with(new Password)->verify($password, $hash);
 	}
 
 	/**
@@ -69,25 +70,16 @@ class UserHelper
 	 */
 	public static function goToLogin($return = null)
 	{
-		$query = [];
+		$query = array();
 
 		if ($return)
 		{
 			$query['return'] = base64_encode($return);
 		}
 
-		$package = Ioc::get('current.package');
+		$package = PackageHelper::getPackage();
 
-		if ($package instanceof AdminPackage)
-		{
-			$route = 'admin:login';
-		}
-		else
-		{
-			$route = 'frontend:login';
-		}
-
-		$url = Router::http($route, $query);
+		$url = $package->router->http('login', $query);
 
 		Ioc::getApplication()->redirect($url);
 	}

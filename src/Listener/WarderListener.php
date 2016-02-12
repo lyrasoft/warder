@@ -72,7 +72,7 @@ class WarderListener
 		elseif ($this->warder->isAdmin())
 		{
 			$package->getMvcResolver()
-				->addNamespace(ReflectionHelper::getNamespaceName($this->warder) . '/Admin');
+				->addNamespace(ReflectionHelper::getNamespaceName($this->warder) . '\Admin');
 		}
 	}
 

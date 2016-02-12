@@ -33,7 +33,7 @@ class UsersModel extends ListModel
 	 *
 	 * @var  array
 	 */
-	protected $allowFields = array();
+	protected $allowFields = array('activation');
 
 	/**
 	 * Property fieldMapping.
@@ -98,7 +98,17 @@ class UsersModel extends ListModel
 	 */
 	protected function configureFilters(FilterHelperInterface $filterHelper)
 	{
-		// Configure filters
+		$filterHelper->setHandler('activation', function(Query $query, $field, $value)
+		{
+			if ( (string) $value == '0')
+			{
+				$query->where('CHAR_LENGTH(user.activation) > 0');
+			}
+			elseif ($value == 1)
+			{
+				$query->where('CHAR_LENGTH(user.activation) = 0');
+			}
+		});
 	}
 
 	/**

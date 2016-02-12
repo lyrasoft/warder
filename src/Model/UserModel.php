@@ -15,7 +15,6 @@ use Windwalker\Core\DateTime\DateTime;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Data\Data;
-use Windwalker\Record\Record;
 use Windwalker\Warder\Helper\UserHelper;
 
 /**
@@ -23,35 +22,8 @@ use Windwalker\Warder\Helper\UserHelper;
  *
  * @since  {DEPLOY_VERSION}
  */
-class UserModel extends CrudModel
+class UserModel extends \Windwalker\Warder\Admin\Model\UserModel
 {
-	/**
-	 * login
-	 *
-	 * @param string $username
-	 * @param string $password
-	 * @param bool   $remember
-	 * @param array  $options
-	 *
-	 * @return bool
-	 * @throws ValidFailException
-	 */
-	public function login($username, $password, $remember = false, $options = array())
-	{
-		$credential = new Credential;
-		$credential->username = $username;
-		$credential->password = $password;
-
-		$result = User::login($credential, (bool) $remember, $options);
-
-		if (!$result)
-		{
-			throw new ValidFailException(Translator::translate('warder.login.message.fail'));
-		}
-
-		return $result;
-	}
-
 	/**
 	 * register
 	 *
@@ -82,20 +54,6 @@ class UserModel extends CrudModel
 	protected function prepareDefaultData(Data $user)
 	{
 		$user->registered = DateTime::create()->format(DateTime::FORMAT_SQL);
-	}
-
-	/**
-	 * getDefaultData
-	 *
-	 * @return array
-	 */
-	public function getDefaultData()
-	{
-		$item = parent::getDefaultData();
-
-		unset($item['password']);
-		unset($item['password2']);
-
-		return $item;
+		$user->blocked = 1;
 	}
 }

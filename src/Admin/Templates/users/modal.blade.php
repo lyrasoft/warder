@@ -116,7 +116,7 @@
                         </td>
 
                         {{-- ID --}}
-                        <td>
+                        <td class="searchable">
                             {{ $item->id }}
                         </td>
                     </tr>

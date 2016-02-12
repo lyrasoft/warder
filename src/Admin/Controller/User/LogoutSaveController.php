@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Controller\User;
+namespace Windwalker\Warder\Admin\Controller\User;
 
 use Phoenix\Controller\AbstractPhoenixController;
 use Windwalker\Core\Authentication\User;
@@ -28,7 +28,7 @@ class LogoutSaveController extends AbstractPhoenixController
 	{
 		User::logout();
 
-		$this->setRedirect($this->router->http(WarderHelper::getPackage()->get('frontend.redirect.logout', 'home')));
+		$this->setRedirect($this->router->http(WarderHelper::getPackage()->get('admin.redirect.logout', 'home')));
 
 		return true;
 	}

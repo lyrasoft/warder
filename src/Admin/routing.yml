@@ -21,9 +21,16 @@ users:
 # Login
 login:
     pattern: /login
-    controller: Login
+    controller: User
+    action:
+        get: LoginGetController
+        post: LoginSaveController
+    extra:
+        layout: login
 
 # Logout
 logout:
     pattern: /logout
-    controller: Logout
+    controller: User
+    action:
+        '*': LogoutSaveController

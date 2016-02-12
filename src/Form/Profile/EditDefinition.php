@@ -6,38 +6,38 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Form\User;
+namespace Windwalker\Warder\Form\Profile;
 
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
+use Windwalker\Warder\Helper\WarderHelper;
 use Windwalker\Warder\Validator\UserExistsValidator;
-use Windwalker\Warder\WarderPackage;
 
 /**
- * The RegistrationDefinition class.
+ * The EditDefinition class.
  *
  * @since  {DEPLOY_VERSION}
  */
-class RegistrationDefinition implements FieldDefinitionInterface
+class EditDefinition implements FieldDefinitionInterface
 {
 	/**
 	 * Property package.
 	 *
 	 * @var  AbstractPackage
 	 */
-	protected $warder;
+	protected $package;
 
 	/**
 	 * WarderMethod constructor.
 	 *
-	 * @param WarderPackage $warder
+	 * @param AbstractPackage $package
 	 */
-	public function __construct(WarderPackage $warder)
+	public function __construct(AbstractPackage $package = null)
 	{
-		$this->warder = $warder;
+		$this->package = $package ? : WarderHelper::getPackage();
 	}
 
 	/**
@@ -49,34 +49,31 @@ class RegistrationDefinition implements FieldDefinitionInterface
 	 */
 	public function define(Form $form)
 	{
-		$loginName = $this->warder->get('user.login_name', 'username');
-		$langPrefix = $this->warder->get('frontend.language.prefix', 'warder.');
+		$loginName = $this->package->get('user.login_name', 'username');
 
-		$form->wrap('basic', null, function(Form $form) use ($loginName, $langPrefix)
+		$form->wrap('basic', null, function(Form $form) use ($loginName)
 		{
 			$form->add('name', new Field\TextField)
-				->label(Translator::translate($langPrefix . 'field.name'))
+				->label(Translator::translate('warder.field.name'))
 				->required();
 
 			if (strtolower($loginName) != 'email')
 			{
 				$form->add($loginName, new Field\TextField)
-					->label(Translator::translate($langPrefix . 'field.' . $loginName))
-					->setValidator(new UserExistsValidator($loginName))
+					->label(Translator::translate('warder.field.' . $loginName))
 					->required();
 			}
 
 			$form->add('email', new Field\EmailField)
-				->label(Translator::translate($langPrefix . 'field.email'))
-				->setValidator(new UserExistsValidator('email'))
+				->label(Translator::translate('warder.field.email'))
 				->required();
 
 			$form->add('password', new Field\PasswordField)
-				->label(Translator::translate($langPrefix . 'field.password'))
+				->label(Translator::translate('warder.field.password'))
 				->set('autocomplete', 'off');
 
 			$form->add('password2', new Field\PasswordField)
-				->label(Translator::translate($langPrefix . 'field.password.confirm'))
+				->label(Translator::translate('warder.field.password.confirm'))
 				->set('autocomplete', 'off');
 		});
 	}

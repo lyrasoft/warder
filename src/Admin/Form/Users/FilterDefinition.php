@@ -80,14 +80,24 @@ class FilterDefinition implements FieldDefinitionInterface
 		 */
 		$form->wrap(null, 'filter', function(Form $form) use ($loginName, $langPrefix)
 		{
+			// Activated
+			$form->add('activation', new ListField)
+				->label('Actived')
+				// Add empty option to support single deselect button
+				->addOption(new Option('', ''))
+				->addOption(new Option(Translator::translate('admin.user.filter.actived.select'), ''))
+				->addOption(new Option(Translator::translate('phoenix.filter.actived.actived'), '1'))
+				->addOption(new Option(Translator::translate('phoenix.filter.actived.unactived'), '0'))
+				->set('onchange', 'this.form.submit()');
+
 			// State
-			$form->add('user.state', new ListField)
+			$form->add('user.blocked', new ListField)
 				->label('State')
 				// Add empty option to support single deselect button
 				->addOption(new Option('', ''))
 				->addOption(new Option(Translator::translate('admin.user.filter.state.select'), ''))
-				->addOption(new Option(Translator::translate('phoenix.grid.state.published'), '1'))
-				->addOption(new Option(Translator::translate('phoenix.grid.state.unpublished'), '0'))
+				->addOption(new Option(Translator::translate('phoenix.filter.state.blocked'), '1'))
+				->addOption(new Option(Translator::translate('phoenix.filter.state.unblocked'), '0'))
 				->set('onchange', 'this.form.submit()');
 		});
 	}

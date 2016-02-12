@@ -10,6 +10,10 @@
             <form id="user-form" class="form-horizontal" action="{{ $router->html('login') }}" method="POST" enctype="multipart/form-data">
                 <div class="col-md-6 col-md-offset-3" style="margin-top: 50px">
 
+                    @section('message')
+                        {!! \Windwalker\Core\Widget\WidgetHelper::render('windwalker.message.default', array('flashes' => $flashes)) !!}
+                    @show
+
                     @yield('login-desc')
 
                     {!! $form->renderFields() !!}
@@ -21,15 +25,6 @@
                                 <button class="login-button btn btn-primary">
                                     @translate($langPrefix . 'login.submit.button')
                                 </button>
-                                <a class="go-register-button btn btn-success" href="{{ $router->html('registration') }}">
-                                    @translate($langPrefix . 'login.register.button')
-                                </a>
-                            </p>
-
-                            <p class="login-action-group">
-                                <a class="forget-link" href="{{ $router->html('forget_request') }}">
-                                    @translate($langPrefix . 'login.forget.link')
-                                </a>
                             </p>
                         </div>
                     </div>

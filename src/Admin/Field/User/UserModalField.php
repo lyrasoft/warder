@@ -41,8 +41,6 @@ class UserModalField extends ModalField
 	 */
 	protected $keyField = 'id';
 
-
-
 	/**
 	 * buildInput
 	 *

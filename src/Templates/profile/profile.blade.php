@@ -7,14 +7,14 @@
 @extends($parentTemplate)
 
 @section('content')
-    <div class="container warder-page registration-page">
+    <div class="container warder-page profile-page">
         <div class="row">
 
-            @section('registration-content')
-                <form id="user-form" class="form-horizontal" action="{{ $router->html('registration') }}" method="POST" enctype="multipart/form-data">
+            @section('profile-content')
+                <form id="user-form" class="form-horizontal" action="{{ $router->html('profile') }}" method="POST" enctype="multipart/form-data">
                     <div class="col-md-6 col-md-offset-3" style="margin-top: 50px">
 
-                        @yield('registration-desc')
+                        @yield('profile-desc')
 
                         @foreach ($fieldsets as $fieldset)
                             <fieldset>
@@ -24,16 +24,16 @@
                             </fieldset>
                         @endforeach
 
-                        @yield('registration-custom')
+                        @yield('profile-custom')
 
-                        @section('registration-buttons')
-                        <div class="row">
-                            <div class="col-md-offset-3 col-md-9">
-                                <button type="submit" class="login-button btn btn-primary">
-                                    @translate($langPrefix . 'registration.submit.button')
-                                </button>
+                        @section('profile-buttons')
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button type="submit" class="login-button btn btn-primary">
+                                        @translate($langPrefix . 'profile.submit.button')
+                                    </button>
+                                </div>
                             </div>
-                        </div>
                         @show
                     </div>
 

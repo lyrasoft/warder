@@ -17,6 +17,7 @@ use Windwalker\Core\View\AbstractView;
 use Windwalker\Core\View\BladeHtmlView;
 use Windwalker\Core\View\PhpHtmlView;
 use Windwalker\Data\Data;
+use Windwalker\Validator\Rule\EmailValidator;
 use Windwalker\Warder\Form\User\RegistrationDefinition;
 use Windwalker\Warder\Helper\UserHelper;
 use Windwalker\Warder\Helper\WarderHelper;
@@ -92,6 +93,15 @@ class RegistrationSaveController extends AbstractSaveController
 	 */
 	protected function prepareExecute()
 	{
+		if (UserHelper::isLogin())
+		{
+			$warder = WarderHelper::getPackage();
+
+			$this->redirect($this->router->http($warder->get('frontend.redirect.login', 'home')));
+
+			return;
+		}
+
 		parent::prepareExecute();
 
 		$this->token = UserHelper::getToken($this->data['email']);
@@ -189,9 +199,21 @@ class RegistrationSaveController extends AbstractSaveController
 	 */
 	protected function validate(Data $data)
 	{
+		$validator = new EmailValidator;
+
+		if (!$validator->validate($data->email))
+		{
+			throw new ValidFailException(Translator::translate($this->langPrefix . 'message.email.invalid'));
+		}
+
 		$form = $this->model->getForm(new RegistrationDefinition(WarderHelper::getPackage()), 'user');
 
 		$this->model->validate($data->dump(), $form);
+
+		if (!$data->password)
+		{
+			throw new ValidFailException(Translator::translate($this->langPrefix . 'message.password.not.entered'));
+		}
 
 		if ($data->password != $data->password2)
 		{

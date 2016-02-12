@@ -10,6 +10,7 @@ use Windwalker\Core\Migration\AbstractMigration;
 use Windwalker\Core\Migration\Schema;
 use Windwalker\Database\Schema\Column;
 use Windwalker\Database\Schema\DataType;
+use Windwalker\Database\Schema\Key;
 
 /**
  * Migration class, version: 20160210041557
@@ -37,6 +38,10 @@ class UserInit extends AbstractMigration
 			$sc->addColumn('registered', new Column\Datetime)->comment('Register Time');
 			$sc->addColumn('modified',   new Column\Datetime)->comment('Modified Time');
 			$sc->addColumn('params',     new Column\Varchar)->comment('Params');
+
+			$sc->addIndex(Key::TYPE_INDEX, 'idx_users_name', 'id');
+			$sc->addIndex(Key::TYPE_INDEX, 'idx_users_username', 'username');
+			$sc->addIndex(Key::TYPE_INDEX, 'idx_users_email', 'email');
 		})->create(true);
 	}
 

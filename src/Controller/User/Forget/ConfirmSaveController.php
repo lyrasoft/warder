@@ -122,7 +122,7 @@ class ConfirmSaveController extends AbstractSaveController
 	 */
 	protected function getFailRedirect(Data $data = null)
 	{
-		return $this->router->http('forget_confirm');
+		return $this->router->http('forget_confirm', array('email' => $this->data['email']));
 	}
 
 	/**

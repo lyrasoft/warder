@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Controller\User;
+namespace Windwalker\Warder\Admin\Controller\User;
 
 use Phoenix\Controller\Display\DisplayController;
 use Windwalker\Warder\Helper\UserHelper;
@@ -41,7 +41,7 @@ class LoginGetController extends DisplayController
 		}
 
 		$return = $this->input->getBase64(
-			$this->package->get('frontend.login.return_key', 'return')
+			WarderHelper::getPackage()->get('admin.login.return_key', 'return')
 		);
 
 		if ($return)
@@ -59,6 +59,6 @@ class LoginGetController extends DisplayController
 	 */
 	protected function getHomeRedirect()
 	{
-		return $this->router->http(WarderHelper::getPackage()->get('frontend.redirect.login', 'home'));
+		return $this->router->http(WarderHelper::getPackage()->get('admin.redirect.login', 'home'));
 	}
 }

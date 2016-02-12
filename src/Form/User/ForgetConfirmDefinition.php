@@ -12,6 +12,7 @@ use Windwalker\Core\Language\Translator;
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
+use Windwalker\Warder\Helper\WarderHelper;
 
 /**
  * The ForgetDefinition class.
@@ -29,12 +30,14 @@ class ForgetConfirmDefinition implements FieldDefinitionInterface
 	 */
 	public function define(Form $form)
 	{
+		$langPrefix = WarderHelper::getPackage()->get('frontend.language.prefix', 'warder.');
+
 		$form->add('email', new Field\EmailField)
-			->label(Translator::translate('warder.field.email'))
+			->label(Translator::translate($langPrefix . '.field.email'))
 			->required();
 
 		$form->add('token', new Field\TextField)
-			->label(Translator::translate('warder.field.token'))
+			->label(Translator::translate($langPrefix . 'field.token'))
 			->required();
 	}
 }

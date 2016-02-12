@@ -8,6 +8,7 @@
 
 namespace Windwalker\Warder;
 
+use Phoenix\Language\TranslatorHelper;
 use Windwalker\Core\Application\WebApplication;
 use Windwalker\Core\Package\PackageHelper;
 use Windwalker\Event\Event;
@@ -47,25 +48,8 @@ class WarderPackage extends AbstractPackage
 	public function initialise()
 	{
 		parent::initialise();
-		
-		$this->getDispatcher()->addListener(function (Event $event) 
-		{
-			/** @var WebApplication $app */
-			$app     = $event['app'];
-			$package = $app->getPackage();
-			$warder  = WarderHelper::getPackage();
-			$name    = $package->getName();
 
-			// Frontend
-			if (in_array($name, (array) $warder->get('frontend.package')))
-			{
-				$package->getMvcResolver()->addNamespace(ReflectionHelper::getNamespaceName($warder));
-			}
-			elseif (in_array($name, (array) $warder->get('admin.package')))
-			{
-				$package->getMvcResolver()->addNamespace(ReflectionHelper::getNamespaceName($warder) . '/Admin');
-			}
-		}, 'onAfterRouting');
+		TranslatorHelper::loadAll($this);
 	}
 
 	/**
@@ -134,6 +118,7 @@ class WarderPackage extends AbstractPackage
 		{
 			throw new \LogicException('Please call this method after routing.');
 		}
+
 		return $this->container->get('current.package');
 	}
 }

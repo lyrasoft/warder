@@ -14,6 +14,7 @@ use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Data\Data;
 use Windwalker\Warder\Helper\UserHelper;
+use Windwalker\Warder\Helper\WarderHelper;
 use Windwalker\Warder\Model\UserModel;
 
 /**
@@ -72,6 +73,15 @@ class ActivateSaveController extends AbstractSaveController
 	 */
 	protected function prepareExecute()
 	{
+		if (UserHelper::isLogin())
+		{
+			$warder = WarderHelper::getPackage();
+
+			$this->redirect($this->router->http($warder->get('frontend.redirect.login', 'home')));
+
+			return;
+		}
+
 		parent::prepareExecute();
 
 		$this->data['email'] = $this->input->getEmail('email');
@@ -97,6 +107,7 @@ class ActivateSaveController extends AbstractSaveController
 		}
 
 		$user->activation = '';
+		$user->blocked = 0;
 
 		User::save($user);
 

@@ -6,12 +6,12 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Controller\User\Registration;
+namespace Windwalker\Warder\Controller\User\Profile;
 
 use Phoenix\Controller\Display\EditDisplayController;
+use Phoenix\Uri\Uri;
 use Windwalker\Core\Model\Model;
 use Windwalker\Warder\Helper\UserHelper;
-use Windwalker\Warder\Helper\WarderHelper;
 use Windwalker\Warder\Model\UserModel;
 use Windwalker\Warder\View\User\UserHtmlView;
 
@@ -20,28 +20,28 @@ use Windwalker\Warder\View\User\UserHtmlView;
  * 
  * @since  1.0
  */
-class RegistrationGetController extends EditDisplayController
+class GetController extends EditDisplayController
 {
 	/**
 	 * Property name.
 	 *
 	 * @var  string
 	 */
-	protected $name = 'user';
+	protected $name = 'profile';
 
 	/**
 	 * Property itemName.
 	 *
 	 * @var  string
 	 */
-	protected $itemName = 'user';
+	protected $itemName = 'profile';
 
 	/**
 	 * Property listName.
 	 *
 	 * @var  string
 	 */
-	protected $listName = 'user';
+	protected $listName = 'profile';
 
 	/**
 	 * Property model.
@@ -64,13 +64,9 @@ class RegistrationGetController extends EditDisplayController
 	 */
 	protected function prepareExecute()
 	{
-		if (UserHelper::isLogin())
+		if (!UserHelper::isLogin())
 		{
-			$warder = WarderHelper::getPackage();
-
-			$this->redirect($this->router->http($warder->get('frontend.redirect.login', 'home')));
-
-			return;
+			UserHelper::goToLogin(Uri::full());
 		}
 
 		parent::prepareExecute();
@@ -87,7 +83,7 @@ class RegistrationGetController extends EditDisplayController
 	{
 		parent::prepareUserState($model);
 
-		// Force registration do not get any item
-		$model['item.pk'] = -1;
+		// Only use once
+		$this->removeUserState($this->getContext('edit.data'));
 	}
 }

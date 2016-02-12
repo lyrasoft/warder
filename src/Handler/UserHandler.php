@@ -148,7 +148,7 @@ class UserHandler implements UserHandlerInterface
 	{
 		$session = Ioc::getSession();
 
-		$session->remove($this->package->get('user.session_name', 'user'));
+		$session->restart();
 
 		return true;
 	}
@@ -181,16 +181,19 @@ class UserHandler implements UserHandlerInterface
 
 		$loginName = $this->package->get('user.login_name', 'username');
 
-		if (!$user->$loginName)
-		{
-			throw new \InvalidArgumentException('No login information.');
-		}
+//		if (!$user->$loginName)
+//		{
+//			throw new \InvalidArgumentException('No login information.');
+//		}
 
-		$exists = $mapper->findOne([$loginName => $user->$loginName]);
-
-		if (!$user->id && $exists->notNull())
+		if ($user->$loginName)
 		{
-			throw new \InvalidArgumentException(Translator::sprintf('warder.user.save.message.exists', $user->$loginName));
+			$exists = $mapper->findOne([$loginName => $user->$loginName]);
+
+			if (!$user->id && $exists->notNull())
+			{
+				throw new \InvalidArgumentException(Translator::sprintf('warder.user.save.message.exists', $loginName, $user->$loginName));
+			}
 		}
 	}
 }

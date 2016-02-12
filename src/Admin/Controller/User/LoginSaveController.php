@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Controller\User;
+namespace Windwalker\Warder\Admin\Controller\User;
 
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Data\Data;
@@ -21,6 +21,13 @@ use Windwalker\Warder\Model\UserModel;
  */
 class LoginSaveController extends AbstractSaveController
 {
+	/**
+	 * Property name.
+	 *
+	 * @var  string
+	 */
+	protected $name = 'user';
+
 	/**
 	 * Property model.
 	 *
@@ -53,7 +60,7 @@ class LoginSaveController extends AbstractSaveController
 		{
 			$warder = WarderHelper::getPackage();
 
-			$this->redirect($this->router->http($warder->get('frontend.redirect.login', 'home')));
+			$this->redirect($this->router->http($warder->get('admin.redirect.login', 'home')));
 
 			return;
 		}
@@ -92,7 +99,7 @@ class LoginSaveController extends AbstractSaveController
 		}
 		else
 		{
-			return $this->router->http(WarderHelper::getPackage()->get('frontend.redirect.login', 'home'));
+			return $this->router->http(WarderHelper::getPackage()->get('admin.redirect.login', 'home'));
 		}
 	}
 

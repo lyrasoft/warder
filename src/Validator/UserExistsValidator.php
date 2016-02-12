@@ -9,6 +9,7 @@
 namespace Windwalker\Warder\Validator;
 
 use Windwalker\Core\Authentication\User;
+use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Validator\AbstractValidator;
 
@@ -59,7 +60,7 @@ class UserExistsValidator extends AbstractValidator
 
 		if ($user->notNull())
 		{
-			throw new ValidFailException(sprintf('User %s: %s exists.', $this->field, $value));
+			throw new ValidFailException(Translator::sprintf('warder.user.save.message.exists', $this->field, $value));
 		}
 
 		return true;
