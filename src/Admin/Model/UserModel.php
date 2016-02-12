@@ -18,6 +18,7 @@ use Windwalker\Crypt\Password;
 use Windwalker\Data\Data;
 use Windwalker\Record\Record;
 use Windwalker\Warder\Helper\UserHelper;
+use Windwalker\Warder\Helper\WarderHelper;
 
 /**
  * The UserModel class.
@@ -68,7 +69,7 @@ class UserModel extends AdminModel
 	/**
 	 * login
 	 *
-	 * @param string $username
+	 * @param string $account
 	 * @param string $password
 	 * @param bool   $remember
 	 * @param array  $options
@@ -76,10 +77,13 @@ class UserModel extends AdminModel
 	 * @return bool
 	 * @throws ValidFailException
 	 */
-	public function login($username, $password, $remember = false, $options = array())
+	public function login($account, $password, $remember = false, $options = array())
 	{
+		$warder = WarderHelper::getPackage();
+		$loginName = $warder->get('user.login_name', 'username');
+
 		$credential = new Credential;
-		$credential->username = $username;
+		$credential->$loginName = $account;
 		$credential->password = $password;
 
 		$result = User::login($credential, (bool) $remember, $options);

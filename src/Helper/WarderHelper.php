@@ -27,6 +27,16 @@ class WarderHelper
 	protected static $package;
 
 	/**
+	 * getLoginName
+	 *
+	 * @return  string
+	 */
+	public static function getLoginName()
+	{
+		return static::getPackage()->get('user.login_name', 'username');
+	}
+
+	/**
 	 * isFrontend
 	 *
 	 * @param   string $name
