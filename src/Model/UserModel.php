@@ -12,6 +12,7 @@ use Phoenix\Model\CrudModel;
 use Windwalker\Authentication\Credential;
 use Windwalker\Core\Authentication\User;
 use Windwalker\Core\DateTime\DateTime;
+use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Data\Data;
 use Windwalker\Record\Record;
@@ -24,18 +25,6 @@ use Windwalker\Warder\Helper\UserHelper;
  */
 class UserModel extends CrudModel
 {
-	/**
-	 * getRecord
-	 *
-	 * @param   string $name
-	 *
-	 * @return  Record
-	 */
-	public function getRecord($name = null)
-	{
-		return new Record('users');
-	}
-
 	/**
 	 * login
 	 *
@@ -57,7 +46,7 @@ class UserModel extends CrudModel
 
 		if (!$result)
 		{
-			throw new ValidFailException('Login fail');
+			throw new ValidFailException(Translator::translate('warder.login.message.fail'));
 		}
 
 		return $result;

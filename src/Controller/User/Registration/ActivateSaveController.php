@@ -56,7 +56,7 @@ class ActivateSaveController extends AbstractSaveController
 	 *
 	 * @var  string
 	 */
-	protected $langPrefix = 'user.activate.';
+	protected $langPrefix = 'warder.activate.';
 
 	/**
 	 * Property useTransaction.

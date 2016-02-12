@@ -71,7 +71,7 @@ class ResetSaveController extends AbstractSaveController
 	 *
 	 * @var  string
 	 */
-	protected $langPrefix = 'user.forget.reset.';
+	protected $langPrefix = 'warder.forget.reset.';
 
 	/**
 	 * prepareExecute

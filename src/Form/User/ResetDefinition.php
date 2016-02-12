@@ -8,6 +8,7 @@
 
 namespace Windwalker\Warder\Form\User;
 
+use Windwalker\Core\Language\Translator;
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
@@ -29,10 +30,10 @@ class ResetDefinition implements FieldDefinitionInterface
 	public function define(Form $form)
 	{
 		$form->add('password', new Field\PasswordField)
-			->label('Password');
+			->label(Translator::translate('warder.field.password'));
 
 		$form->add('password2', new Field\PasswordField)
-			->label('Confirm Password');
+			->label(Translator::translate('warder.field.password.confirm'));
 
 		$form->add('email', new Field\HiddenField);
 		$form->add('token', new Field\HiddenField);

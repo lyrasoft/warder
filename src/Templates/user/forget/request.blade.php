@@ -14,12 +14,17 @@ $extends = '_global.html';
                 @section('login-content')
                     <form id="user-form" class="form-horizontal" action="{{ $router->html('forget_request') }}" method="POST" enctype="multipart/form-data">
                         <div class="col-md-6 col-md-offset-3" style="margin-top: 50px">
+
+                            @yield('forget-request-desc')
+
                             {!! $form->renderFields() !!}
 
                             <div class="row">
                                 <div class="col-md-offset-3 col-md-9">
                                     <p class="login-button-group">
-                                        <button class="login-button btn btn-primary">Send</button>
+                                        <button class="login-button btn btn-primary">
+                                            @translate('warder.forget.request.submit.button')
+                                        </button>
                                     </p>
                                 </div>
                             </div>

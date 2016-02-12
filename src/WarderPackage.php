@@ -8,7 +8,10 @@
 
 namespace Windwalker\Warder;
 
+use Windwalker\Core\Application\WebApplication;
 use Windwalker\Core\Package\PackageHelper;
+use Windwalker\Event\Event;
+use Windwalker\Utilities\Reflection\ReflectionHelper;
 use Windwalker\Warder\Helper\WarderHelper;
 use Windwalker\Warder\Listener\WarderListener;
 use Windwalker\Warder\Listener\UserListener;
@@ -17,6 +20,7 @@ use Windwalker\Event\Dispatcher;
 
 define('WARDER_ROOT', dirname(__DIR__));
 define('WARDER_SOURCE', WARDER_ROOT . '/src');
+define('WARDER_SOURCE_ADMIN', WARDER_SOURCE . '/Admin');
 define('WARDER_TEMPLATES', WARDER_ROOT . '/templates');
 
 /**
@@ -43,6 +47,25 @@ class WarderPackage extends AbstractPackage
 	public function initialise()
 	{
 		parent::initialise();
+		
+		$this->getDispatcher()->addListener(function (Event $event) 
+		{
+			/** @var WebApplication $app */
+			$app     = $event['app'];
+			$package = $app->getPackage();
+			$warder  = WarderHelper::getPackage();
+			$name    = $package->getName();
+
+			// Frontend
+			if (in_array($name, (array) $warder->get('frontend.package')))
+			{
+				$package->getMvcResolver()->addNamespace(ReflectionHelper::getNamespaceName($warder));
+			}
+			elseif (in_array($name, (array) $warder->get('admin.package')))
+			{
+				$package->getMvcResolver()->addNamespace(ReflectionHelper::getNamespaceName($warder) . '/Admin');
+			}
+		}, 'onAfterRouting');
 	}
 
 	/**
@@ -58,5 +81,59 @@ class WarderPackage extends AbstractPackage
 
 		$dispatcher->addListener(new UserListener($this))
 			->addListener(new WarderListener);
+	}
+
+	/**
+	 * isFrontend
+	 *
+	 * @param   string $name
+	 *
+	 * @return  boolean
+	 */
+	public function isFrontend($name = null)
+	{
+		$name = $name ? : $this->getCurrentPackage()->getName();
+
+		return in_array($name, (array) $this->get('frontend.package'));
+	}
+
+	/**
+	 * isFrontend
+	 *
+	 * @param   string $name
+	 *
+	 * @return  boolean
+	 */
+	public function isAdmin($name = null)
+	{
+		$name = $name ? : $this->getCurrentPackage()->getName();
+
+		return in_array($name, (array) $this->get('admin.package'));
+	}
+
+	/**
+	 * isEnabled
+	 *
+	 * @param   string $name
+	 *
+	 * @return  boolean
+	 */
+	public function isEnabled($name = null)
+	{
+		return $this->isFrontend($name) || $this->isAdmin($name);
+	}
+
+	/**
+	 * getCurrentPackage
+	 *
+	 * @return  AbstractPackage
+	 */
+	public function getCurrentPackage()
+	{
+		if (!$this->container->exists('current.package'))
+		{
+			throw new \LogicException('Please call this method after routing.');
+		}
+		return $this->container->get('current.package');
 	}
 }

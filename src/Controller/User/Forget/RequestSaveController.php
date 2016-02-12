@@ -15,8 +15,10 @@ use Windwalker\Core\DateTime\DateTime;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Core\Router\Router;
+use Windwalker\Core\View\PhpHtmlView;
 use Windwalker\Crypt\Password;
 use Windwalker\Data\Data;
+use Windwalker\Warder\Data\UserData;
 use Windwalker\Warder\Helper\UserHelper;
 use Windwalker\Warder\Model\UserModel;
 
@@ -74,7 +76,7 @@ class RequestSaveController extends AbstractSaveController
 	 *
 	 * @var  string
 	 */
-	protected $langPrefix = 'user.forget.request.';
+	protected $langPrefix = 'warder.forget.request.';
 
 	/**
 	 * doSave
@@ -118,19 +120,41 @@ class RequestSaveController extends AbstractSaveController
 		$view['token'] = $token;
 		$view['link']  = $link;
 
-		$body = $view->setLayout('mail.forget')->render();
+		$body = $this->getMailBody($view);
 
-		// Please send email here.
-		// ----------------------------------------------------
+		$this->sendEmail($user->email, $body);
+
+		return true;
+	}
+
+	/**
+	 * getMailBody
+	 *
+	 * @param PhpHtmlView $view
+	 *
+	 * @return  string
+	 */
+	protected function getMailBody(PhpHtmlView $view)
+	{
+		return $view->setLayout('mail.forget')->render();
+	}
+
+	/**
+	 * sendEmail
+	 *
+	 * @param string  $email
+	 * @param string  $body
+	 *
+	 * @return  void
+	 */
+	protected function sendEmail($email, $body)
+	{
 		$message = SwiftMailer::newMessage(Translator::translate($this->langPrefix . 'mail.subject'))
 			->addFrom($this->app->get('mail.from', 'noreply@english4tw.com'))
-			->addTo($user->email)
+			->addTo($email)
 			->setBody($body);
 
 		SwiftMailer::send($message);
-		// ----------------------------------------------------
-
-		return true;
 	}
 
 	/**

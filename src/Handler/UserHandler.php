@@ -8,6 +8,7 @@
 
 namespace Windwalker\Warder\Handler;
 
+use Windwalker\Core\Language\Translator;
 use Windwalker\Warder\Data\UserData;
 use Windwalker\Core\Authentication\UserDataInterface;
 use Windwalker\Core\Authentication\UserHandlerInterface;
@@ -182,14 +183,14 @@ class UserHandler implements UserHandlerInterface
 
 		if (!$user->$loginName)
 		{
-			throw new \InvalidArgumentException('No username.');
+			throw new \InvalidArgumentException('No login information.');
 		}
 
 		$exists = $mapper->findOne([$loginName => $user->$loginName]);
 
 		if (!$user->id && $exists->notNull())
 		{
-			throw new \InvalidArgumentException('User with: ' . $user->$loginName . ' exists');
+			throw new \InvalidArgumentException(Translator::sprintf('warder.user.save.message.exists', $user->$loginName));
 		}
 	}
 }

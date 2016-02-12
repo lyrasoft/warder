@@ -1,0 +1,29 @@
+# User
+user:
+    pattern: /user(/id)
+    controller: User
+    extra:
+        layout: user
+        active:
+            mainmenu: users
+
+# Users
+users:
+    pattern: /users(/page)
+    controller: Users
+    action:
+        post: CopyController
+        patch: BatchController
+        put: FilterController
+    extra:
+        layout: users
+
+# Login
+login:
+    pattern: /login
+    controller: Login
+
+# Logout
+logout:
+    pattern: /logout
+    controller: Logout

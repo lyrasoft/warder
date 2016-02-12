@@ -14,6 +14,7 @@ use Windwalker\Authentication\Authentication;
 use Windwalker\Core\Authentication\User;
 use Windwalker\Event\Event;
 use Windwalker\Ioc;
+use Windwalker\Warder\Helper\WarderHelper;
 use Windwalker\Warder\WarderPackage;
 
 /**
@@ -28,16 +29,16 @@ class UserListener
 	 *
 	 * @var  WarderPackage
 	 */
-	protected $package;
+	protected $warder;
 
 	/**
 	 * UserListener constructor.
 	 *
-	 * @param WarderPackage $package
+	 * @param WarderPackage $warder
 	 */
-	public function __construct(WarderPackage $package)
+	public function __construct(WarderPackage $warder = null)
 	{
-		$this->package = $package;
+		$this->warder = $warder ? : WarderHelper::getPackage();
 	}
 
 	/**
@@ -55,7 +56,7 @@ class UserListener
 
 		if ($remember)
 		{
-			$container = $this->package->getContainer();
+			$container = $this->warder->getContainer();
 
 			$session = $container->get('system.session');
 
@@ -78,7 +79,7 @@ class UserListener
 		$auth = $event['authentication'];
 
 		$auth->removeMethod('database');
-		$auth->addMethod('sentry', new WarderMethod($this->package));
+		$auth->addMethod('sentry', new WarderMethod($this->warder));
 	}
 
 	/**
@@ -90,7 +91,7 @@ class UserListener
 	 */
 	public function onAfterInitialise(Event $event)
 	{
-		User::setHandler(new UserHandler($this->package));
+		User::setHandler(new UserHandler($this->warder));
 	}
 
 	/**

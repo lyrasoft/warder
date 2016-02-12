@@ -27,19 +27,53 @@ class WarderHelper
 	protected static $package;
 
 	/**
+	 * isFrontend
+	 *
+	 * @param   string $name
+	 *
+	 * @return  boolean
+	 */
+	public static function isFrontend($name = null)
+	{
+		return static::getPackage()->isFrontend($name);
+	}
+
+	/**
+	 * isAdmin
+	 *
+	 * @param   string $name
+	 *
+	 * @return  boolean
+	 */
+	public static function isAdmin($name = null)
+	{
+		return static::getPackage()->isAdmin($name);
+	}
+
+	/**
 	 * getFrontendRouting
 	 *
 	 * @return  array
 	 */
 	public static function getFrontendRouting()
 	{
-		return Yaml::parse(static::getPackage()->getDir() . '/routing.yml');
+		return Yaml::parse(WARDER_SOURCE . '/routing.yml');
+	}
+
+	/**
+	 * getFrontendRouting
+	 *
+	 * @return  array
+	 */
+	public static function getAdminRouting()
+	{
+		return Yaml::parse(WARDER_SOURCE_ADMIN . '/routing.yml');
 	}
 
 	/**
 	 * getPackage
 	 *
-	 * @return  \Windwalker\Core\Package\AbstractPackage
+	 * @return  WarderPackage
 	 */
 	public static function getPackage()
 	{
@@ -53,7 +87,7 @@ class WarderHelper
 	 *
 	 * @return  void
 	 */
-	public static function setPackage($package)
+	public static function setPackage(WarderPackage $package)
 	{
 		static::$package = $package;
 	}

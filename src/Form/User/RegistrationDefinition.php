@@ -53,7 +53,7 @@ class RegistrationDefinition implements FieldDefinitionInterface
 		$form->wrap('basic', null, function(Form $form) use ($loginName)
 		{
 			$form->add('name', new Field\TextField)
-				->label('Full Name')
+				->label(Translator::translate('warder.field.name'))
 				->required();
 
 			if (strtolower($loginName) != 'email')
@@ -65,16 +65,16 @@ class RegistrationDefinition implements FieldDefinitionInterface
 			}
 
 			$form->add('email', new Field\EmailField)
-				->label('Email')
+				->label(Translator::translate('warder.field.email'))
 				->setValidator(new UserExistsValidator('email'))
 				->required();
 
 			$form->add('password', new Field\PasswordField)
-				->label('Password')
+				->label(Translator::translate('warder.field.password'))
 				->set('autocomplete', 'off');
 
 			$form->add('password2', new Field\PasswordField)
-				->label('Confirm Password')
+				->label(Translator::translate('warder.field.password.confirm'))
 				->set('autocomplete', 'off');
 		});
 	}

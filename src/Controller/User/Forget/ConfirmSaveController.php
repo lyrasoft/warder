@@ -71,7 +71,7 @@ class ConfirmSaveController extends AbstractSaveController
 	 *
 	 * @var  string
 	 */
-	protected $langPrefix = 'user.forget.confirm.';
+	protected $langPrefix = 'warder.forget.confirm.';
 
 	/**
 	 * prepareExecute

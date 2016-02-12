@@ -8,6 +8,7 @@
 
 namespace Windwalker\Warder\Form\User;
 
+use Windwalker\Core\Language\Translator;
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
@@ -29,7 +30,7 @@ class ForgetRequestDefinition implements FieldDefinitionInterface
 	public function define(Form $form)
 	{
 		$form->add('email', new Field\EmailField)
-			->label('Email')
+			->label(Translator::translate('warder.field.email'))
 			->required();
 	}
 }

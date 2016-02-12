@@ -15,13 +15,17 @@ $extends = '_global.html';
                     <form id="user-form" class="form-horizontal" action="{{ $router->html('forget_confirm') }}" method="POST" enctype="multipart/form-data">
                         <div class="col-md-6 col-md-offset-3" style="margin-top: 50px">
                             <p class="text-center">
-                                Your password has been reset.
+                                @yield('forget-complete-desc', $translator->translate('warder.forget.complete.desc'))
                             </p>
+
+                            @yield('forget-complete-custom')
 
                             <div class="row">
                                 <div class="text-center">
                                     <p class="login-button-group">
-                                        <a class="login-button btn btn-primary" href="{{ $router->html('login') }}">Go to Login</a>
+                                        <a class="login-button btn btn-primary" href="{{ $router->html('login') }}">
+                                            @translate('warder.forget.complete.go.login.button')
+                                        </a>
                                     </p>
                                 </div>
                             </div>

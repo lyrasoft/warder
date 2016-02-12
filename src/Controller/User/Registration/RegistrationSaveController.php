@@ -13,9 +13,13 @@ use Phoenix\Mail\SwiftMailer;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Core\Router\Router;
+use Windwalker\Core\View\AbstractView;
+use Windwalker\Core\View\BladeHtmlView;
+use Windwalker\Core\View\PhpHtmlView;
 use Windwalker\Data\Data;
 use Windwalker\Warder\Form\User\RegistrationDefinition;
 use Windwalker\Warder\Helper\UserHelper;
+use Windwalker\Warder\Helper\WarderHelper;
 use Windwalker\Warder\Model\UserModel;
 
 /**
@@ -65,7 +69,7 @@ class RegistrationSaveController extends AbstractSaveController
 	 *
 	 * @var  string
 	 */
-	protected $langPrefix = 'user.registration.';
+	protected $langPrefix = 'warder.registration.';
 
 	/**
 	 * Property useTransaction.
@@ -139,11 +143,36 @@ class RegistrationSaveController extends AbstractSaveController
 		$view['link'] = $this->router->http('registration_activate', ['email' => $user->email, 'token' => $this->token], Router::TYPE_FULL);
 		$view['user'] = $user;
 
-		$body = $view->setLayout('mail.registration')->render();
+		$body = $this->getMailBody($view);
 
+		$this->sendEmail($user->email, $body);
+	}
+
+	/**
+	 * getMailBody
+	 *
+	 * @param PhpHtmlView $view
+	 *
+	 * @return  string
+	 */
+	protected function getMailBody(PhpHtmlView $view)
+	{
+		return $view->setLayout('mail.registration')->render();
+	}
+
+	/**
+	 * sendEmail
+	 *
+	 * @param string $email
+	 * @param string $body
+	 *
+	 * @return  void
+	 */
+	protected function sendEmail($email, $body)
+	{
 		$message = SwiftMailer::newMessage(Translator::translate($this->langPrefix . 'mail.subject'))
 			->addFrom($this->app->get('mail.from', $this->app->get('mail.from')))
-			->addTo($user->email)
+			->addTo($email)
 			->setBody($body);
 
 		SwiftMailer::send($message);
@@ -160,7 +189,7 @@ class RegistrationSaveController extends AbstractSaveController
 	 */
 	protected function validate(Data $data)
 	{
-		$form = $this->model->getForm(new RegistrationDefinition, 'user');
+		$form = $this->model->getForm(new RegistrationDefinition(WarderHelper::getPackage()), 'user');
 
 		$this->model->validate($data->dump(), $form);
 
