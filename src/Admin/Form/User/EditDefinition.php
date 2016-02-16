@@ -35,7 +35,7 @@ class EditDefinition implements FieldDefinitionInterface
 	{
 		$warder = WarderHelper::getPackage();
 
-		$loginName = $warder->get('user.login_name', 'username');
+		$loginName = WarderHelper::getLoginName();
 		$langPrefix = $warder->get('admin.language.prefix');
 
 		// Basic fieldset

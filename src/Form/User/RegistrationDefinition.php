@@ -49,7 +49,7 @@ class RegistrationDefinition implements FieldDefinitionInterface
 	 */
 	public function define(Form $form)
 	{
-		$loginName = $this->warder->get('user.login_name', 'username');
+		$loginName = $this->warder->getLoginName();
 		$langPrefix = $this->warder->get('frontend.language.prefix', 'warder.');
 
 		$form->wrap('basic', null, function(Form $form) use ($loginName, $langPrefix)

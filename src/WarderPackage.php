@@ -64,6 +64,18 @@ class WarderPackage extends AbstractPackage
 	}
 
 	/**
+	 * getLoginName
+	 *
+	 * @param  string $default
+	 *
+	 * @return string
+	 */
+	public function getLoginName($default = 'username')
+	{
+		return $this->get('user.login_name', $default);
+	}
+
+	/**
 	 * isFrontend
 	 *
 	 * @param   string $name

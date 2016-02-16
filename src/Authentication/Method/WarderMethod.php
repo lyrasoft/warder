@@ -51,7 +51,7 @@ class WarderMethod extends AbstractMethod
 	 */
 	public function authenticate(Credential $credential)
 	{
-		$loginName = $this->package->get('user.login_name', 'username');
+		$loginName = $this->package->getLoginName();
 
 		if (!$credential->$loginName || !$credential->password)
 		{

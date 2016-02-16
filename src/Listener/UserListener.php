@@ -103,21 +103,21 @@ class UserListener
 	 */
 	public function onUserAuthorisation(Event $event)
 	{
-//		$user = $event['user'];
-//
-//		if ($user->blocked)
-//		{
-//			$event['result'] = false;
-//
-//			return;
-//		}
-//
-//		if ($user->activation)
-//		{
-//			$event['result'] = false;
-//
-//			return;
-//		}
+		$user = $event['user'];
+
+		if ($user->blocked)
+		{
+			$event['result'] = false;
+
+			return;
+		}
+
+		if ($user->activation)
+		{
+			$event['result'] = false;
+
+			return;
+		}
 	}
 
 	/**
@@ -129,8 +129,8 @@ class UserListener
 	 */
 	public function onViewBeforeRender(Event $event)
 	{
-//		$data = $event['data'];
-//
-//		$data->user = User::get();
+		$data = $event['data'];
+
+		$data->user = User::get();
 	}
 }
