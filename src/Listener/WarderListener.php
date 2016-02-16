@@ -9,6 +9,7 @@
 namespace Windwalker\Warder\Listener;
 
 use Phoenix\DataMapper\DataMapperResolver;
+use Phoenix\Form\FieldDefinitionResolver;
 use Phoenix\Record\RecordResolver;
 use Windwalker\Core\Application\WebApplication;
 use Windwalker\Core\View\BladeHtmlView;
@@ -68,11 +69,15 @@ class WarderListener
 		{
 			$package->getMvcResolver()
 				->addNamespace(ReflectionHelper::getNamespaceName($this->warder));
+
+			FieldDefinitionResolver::addNamespace((ReflectionHelper::getNamespaceName($this->warder) . '\Form'));
 		}
 		elseif ($this->warder->isAdmin())
 		{
 			$package->getMvcResolver()
 				->addNamespace(ReflectionHelper::getNamespaceName($this->warder) . '\Admin');
+
+			FieldDefinitionResolver::addNamespace(ReflectionHelper::getNamespaceName($this->warder) . '\Admin\Form');
 		}
 	}
 

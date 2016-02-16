@@ -9,10 +9,6 @@
 namespace Windwalker\Warder;
 
 use Phoenix\Language\TranslatorHelper;
-use Windwalker\Core\Application\WebApplication;
-use Windwalker\Core\Package\PackageHelper;
-use Windwalker\Event\Event;
-use Windwalker\Utilities\Reflection\ReflectionHelper;
 use Windwalker\Warder\Helper\WarderHelper;
 use Windwalker\Warder\Listener\WarderListener;
 use Windwalker\Warder\Listener\UserListener;
