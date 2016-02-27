@@ -36,7 +36,7 @@ class UserHandler implements UserHandlerInterface
 	 *
 	 * @var  WarderPackage
 	 */
-	protected $package;
+	protected $warder;
 
 	/**
 	 * UserHandler constructor.
@@ -45,7 +45,7 @@ class UserHandler implements UserHandlerInterface
 	 */
 	public function __construct(WarderPackage $package)
 	{
-		$this->package = $package;
+		$this->warder = $package;
 	}
 
 	/**
@@ -64,16 +64,17 @@ class UserHandler implements UserHandlerInterface
 
 		if (!$conditions)
 		{
-			$session = $this->package->getContainer()->get('system.session');
+			$session = $this->warder->getContainer()->get('system.session');
 
-			$user = $session->get($this->package->get('user.session_name', 'user'));
+			$user = $session->get($this->warder->get('user.session_name', 'user'));
 		}
 		else
 		{
 			$user = $this->getDataMapper()->findOne($conditions);
 		}
 
-		$user = new UserData((array) $user);
+		$class = $this->warder->get('class.data', '\Windwalker\Warder\Data\UserData');
+		$user = new $class((array) $user);
 
 		return $user;
 	}
@@ -132,7 +133,7 @@ class UserHandler implements UserHandlerInterface
 	{
 		$session = Ioc::getSession();
 
-		$session->set($this->package->get('user.session_name', 'user'), (array) $user);
+		$session->set($this->warder->get('user.session_name', 'user'), (array) $user);
 
 		return true;
 	}
@@ -162,7 +163,7 @@ class UserHandler implements UserHandlerInterface
 	{
 		if (!$this->mapper)
 		{
-			$this->mapper = new DataMapper($this->package->get('table.users', 'users'));
+			$this->mapper = new DataMapper($this->warder->get('table.users', 'users'));
 		}
 
 		return $this->mapper;
@@ -179,7 +180,7 @@ class UserHandler implements UserHandlerInterface
 	{
 		$mapper = $this->getDataMapper();
 
-		$loginName = $this->package->getLoginName();
+		$loginName = $this->warder->getLoginName();
 
 //		if (!$user->$loginName)
 //		{

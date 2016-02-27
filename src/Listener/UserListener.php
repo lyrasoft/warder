@@ -78,8 +78,22 @@ class UserListener
 		/** @var Authentication $auth */
 		$auth = $event['authentication'];
 
-		$auth->removeMethod('database');
-		$auth->addMethod('sentry', new WarderMethod($this->warder));
+		$methods = $this->warder->get('methods', array());
+
+		foreach ($methods as $class)
+		{
+			if (!class_exists($class))
+			{
+				throw new \LogicException('Class: ' . $class . ' not exists.');
+			}
+
+			if (!is_subclass_of($class, 'Windwalker\Authentication\Method\MethodInterface'))
+			{
+				throw new \LogicException('Class: ' . $class . ' must be sub class of Windwalker\Authentication\Method\MethodInterface');
+			}
+
+			$auth->addMethod('warder', new $class($this->warder));
+		}
 	}
 
 	/**
@@ -91,7 +105,9 @@ class UserListener
 	 */
 	public function onAfterInitialise(Event $event)
 	{
-		User::setHandler(new UserHandler($this->warder));
+		$class = $this->warder->get('class.handler', 'Windwalker\Warder\Handler\UserHandler');
+
+		User::setHandler(new $class($this->warder));
 	}
 
 	/**
@@ -131,6 +147,9 @@ class UserListener
 	{
 		$data = $event['data'];
 
-		$data->user = User::get();
+		if (!$data->user)
+		{
+			$data->user = User::get();
+		}
 	}
 }

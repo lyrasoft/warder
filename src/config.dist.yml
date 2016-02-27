@@ -10,6 +10,9 @@ table:
     user_group_maps: user_group_maps
     actions: actions
 
+methods:
+    - \Windwalker\Warder\Authentication\Method\WarderMethod
+
 frontend:
     package: front
     view:
@@ -35,4 +38,6 @@ admin:
     language:
         prefix: warder.
 
-
+class:
+    handler: Windwalker\Warder\Handler\UserHandler
+    data: Windwalker\Warder\Data\UserData
