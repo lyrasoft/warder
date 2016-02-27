@@ -119,13 +119,13 @@
                                     1,
                                     'block',
                                     'ok fa fa-check text-success',
-                                    \Windwalker\Core\Language\Translator::translate($langPrefix . 'button.enabled.desc')
+                                    $langPrefix . 'button.enabled.desc'
                                 )
                                 ->addState(
                                     0,
                                     'unblock',
                                     'remove fa fa-remove text-danger',
-                                    \Windwalker\Core\Language\Translator::translate($langPrefix . 'button.disabled.desc')
+                                    $langPrefix . 'button.disabled.desc'
                                 )
                             !!}
                         </td>

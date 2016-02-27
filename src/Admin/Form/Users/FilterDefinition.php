@@ -82,22 +82,22 @@ class FilterDefinition implements FieldDefinitionInterface
 		{
 			// Activated
 			$form->add('activation', new ListField)
-				->label('Actived')
+				->label($langPrefix . 'filter.activation.label')
 				// Add empty option to support single deselect button
 				->addOption(new Option('', ''))
-				->addOption(new Option(Translator::translate('admin.user.filter.actived.select'), ''))
-				->addOption(new Option(Translator::translate('phoenix.filter.actived.actived'), '1'))
-				->addOption(new Option(Translator::translate('phoenix.filter.actived.unactived'), '0'))
+				->addOption(new Option(Translator::translate($langPrefix . 'filter.activation.select'), ''))
+				->addOption(new Option(Translator::translate($langPrefix . 'filter.activation.activated'), '1'))
+				->addOption(new Option(Translator::translate($langPrefix . 'filter.activation.unactivated'), '0'))
 				->set('onchange', 'this.form.submit()');
 
 			// State
 			$form->add('user.blocked', new ListField)
-				->label('State')
+				->label($langPrefix . 'filter.block.label')
 				// Add empty option to support single deselect button
 				->addOption(new Option('', ''))
-				->addOption(new Option(Translator::translate('admin.user.filter.state.select'), ''))
-				->addOption(new Option(Translator::translate('phoenix.filter.state.blocked'), '1'))
-				->addOption(new Option(Translator::translate('phoenix.filter.state.unblocked'), '0'))
+				->addOption(new Option(Translator::translate($langPrefix . 'filter.block.select'), ''))
+				->addOption(new Option(Translator::translate($langPrefix . 'filter.block.blocked'), '1'))
+				->addOption(new Option(Translator::translate($langPrefix . 'filter.block.unblocked'), '0'))
 				->set('onchange', 'this.form.submit()');
 		});
 	}

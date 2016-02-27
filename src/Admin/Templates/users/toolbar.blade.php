@@ -10,15 +10,15 @@
     {{--@translate('phoenix.toolbar.duplicate')--}}
 {{--</button>--}}
 
-{{--<button type="button" class="waves-effect btn btn-default" onclick="Phoenix.Grid.hasChecked();Phoenix.patch(null, {task: 'publish'});">--}}
-    {{--<span class="glyphicon glyphicon-ok fa fa-check text-success"></span>--}}
-    {{--@translate('phoenix.toolbar.publish')--}}
-{{--</button>--}}
+<button type="button" class="waves-effect btn btn-default" onclick="Phoenix.Grid.hasChecked();Phoenix.Grid.batch('unblock');">
+    <span class="glyphicon glyphicon-ok fa fa-check text-success"></span>
+    @translate($langPrefix . 'toolbar.enable')
+</button>
 
-{{--<button type="button" class="waves-effect btn btn-default" onclick="Phoenix.Grid.hasChecked();Phoenix.patch(null, {task: 'unpublish'});">--}}
-    {{--<span class="glyphicon glyphicon-remove fa fa-remove text-danger"></span>--}}
-    {{--@translate('phoenix.toolbar.unpublish')--}}
-{{--</button>--}}
+<button type="button" class="waves-effect btn btn-default" onclick="Phoenix.Grid.hasChecked();Phoenix.Grid.batch('block');">
+    <span class="glyphicon glyphicon-remove fa fa-remove text-danger"></span>
+    @translate($langPrefix . 'toolbar.disable')
+</button>
 
 {{--<button type="button" class="waves-effect btn btn-default" data-toggle="modal" data-target="#batch-modal" onclick="Phoenix.Grid.hasChecked(null, event);">--}}
     {{--<span class="glyphicon glyphicon-modal-window fa fa-sliders"></span>--}}
