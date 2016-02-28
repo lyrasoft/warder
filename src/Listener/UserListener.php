@@ -80,7 +80,7 @@ class UserListener
 
 		$methods = $this->warder->get('methods', array());
 
-		foreach ($methods as $class)
+		foreach ($methods as $name => $class)
 		{
 			if (!class_exists($class))
 			{
@@ -92,7 +92,7 @@ class UserListener
 				throw new \LogicException('Class: ' . $class . ' must be sub class of Windwalker\Authentication\Method\MethodInterface');
 			}
 
-			$auth->addMethod('warder', new $class($this->warder));
+			$auth->addMethod($name, new $class($this->warder));
 		}
 	}
 

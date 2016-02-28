@@ -70,19 +70,9 @@ class LoginSaveController extends AbstractSaveController
 	 */
 	protected function doSave(Data $data)
 	{
-		$options   = array();
-		$provider  = $this->input->get('provider');
 		$loginName = WarderHelper::getLoginName();
 
-		if ($provider)
-		{
-			$options['provider'] = strtolower($provider);
-
-			$data->$loginName = null;
-			$data->password = null;
-		}
-
-		$this->model->login($data->$loginName, $data->password, $data->remember, $options);
+		$this->model->login($data->$loginName, $data->password, $data->remember, []);
 	}
 
 	/**

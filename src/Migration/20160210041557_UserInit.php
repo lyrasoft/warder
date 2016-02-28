@@ -43,6 +43,15 @@ class UserInit extends AbstractMigration
 			$sc->addIndex(Key::TYPE_INDEX, 'idx_users_username', 'username');
 			$sc->addIndex(Key::TYPE_INDEX, 'idx_users_email', 'email');
 		})->create(true);
+
+		$this->getTable('user_socials', function (Schema $sc)
+		{
+			$sc->addColumn('user_id',    new Column\Integer)->comment('User ID');
+			$sc->addColumn('login_name', new Column\Varchar)->comment('User identifier name');
+			$sc->addColumn('provider',   new Column\Char)->length(15)->comment('Social provider');
+
+			$sc->addIndex(Key::TYPE_PRIMARY, 'user_socials_primary', array('user_id', 'login_name', 'provider'));
+		})->create(true);
 	}
 
 	/**
@@ -51,5 +60,6 @@ class UserInit extends AbstractMigration
 	public function down()
 	{
 		$this->drop('users');
+		$this->drop('user_socials');
 	}
 }

@@ -85,6 +85,11 @@ class UserModel extends AdminModel
 		$credential->$loginName = $account;
 		$credential->password = $password;
 
+		if (isset($options['provider']))
+		{
+			$credential->_provider = $options['provider'];
+		}
+
 		$result = User::login($credential, (bool) $remember, $options);
 
 		if (!$result)

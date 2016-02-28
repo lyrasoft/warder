@@ -10,6 +10,9 @@
     "require-dev": {
 
     },
+    "suggest": {
+        "hybridauth/hybridauth": "Install ^2.6 to support social login."
+    },
     "autoload": {
         "psr-4": {
             "Windwalker\\Warder\\": "src/"

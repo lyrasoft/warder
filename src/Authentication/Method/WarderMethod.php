@@ -8,14 +8,12 @@
 
 namespace Windwalker\Warder\Authentication\Method;
 
-use Admin\AdminPackage;
 use Windwalker\Warder\Data\UserData;
 use Windwalker\Warder\Helper\UserHelper;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Authentication\Credential;
 use Windwalker\Authentication\Method\AbstractMethod;
 use Windwalker\Core\Authentication\User;
-use Windwalker\Ioc;
 use Windwalker\Warder\WarderPackage;
 
 /**
@@ -30,7 +28,7 @@ class WarderMethod extends AbstractMethod
 	 *
 	 * @var  WarderPackage
 	 */
-	protected $package;
+	protected $warder;
 
 	/**
 	 * WarderMethod constructor.
@@ -39,7 +37,7 @@ class WarderMethod extends AbstractMethod
 	 */
 	public function __construct(WarderPackage $package)
 	{
-		$this->package = $package;
+		$this->warder = $package;
 	}
 
 	/**
@@ -51,7 +49,7 @@ class WarderMethod extends AbstractMethod
 	 */
 	public function authenticate(Credential $credential)
 	{
-		$loginName = $this->package->getLoginName();
+		$loginName = $this->warder->getLoginName();
 
 		if (!$credential->$loginName || !$credential->password)
 		{

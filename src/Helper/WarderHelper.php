@@ -10,6 +10,7 @@ namespace Windwalker\Warder\Helper;
 
 use Symfony\Component\Yaml\Yaml;
 use Windwalker\Core\Package\PackageHelper;
+use Windwalker\Warder\Data\UserData;
 use Windwalker\Warder\WarderPackage;
 
 /**
@@ -102,5 +103,17 @@ class WarderHelper
 	public static function setPackage(WarderPackage $package)
 	{
 		static::$package = $package;
+	}
+
+	/**
+	 * createUserData
+	 *
+	 * @param array $data
+	 *
+	 * @return  UserData
+	 */
+	public static function createUserData($data = array())
+	{
+		return static::getPackage()->createUserData($data);
 	}
 }

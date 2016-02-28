@@ -9,6 +9,7 @@
 namespace Windwalker\Warder;
 
 use Phoenix\Language\TranslatorHelper;
+use Windwalker\Warder\Data\UserData;
 use Windwalker\Warder\Helper\WarderHelper;
 use Windwalker\Warder\Listener\WarderListener;
 use Windwalker\Warder\Listener\UserListener;
@@ -113,6 +114,20 @@ class WarderPackage extends AbstractPackage
 	public function isEnabled($name = null)
 	{
 		return $this->isFrontend($name) || $this->isAdmin($name);
+	}
+
+	/**
+	 * createUserData
+	 *
+	 * @param array $data
+	 *
+	 * @return  UserData
+	 */
+	public function createUserData($data = array())
+	{
+		$class = $this->get('class.data', 'Windwalker\Warder\Data\UserData');
+
+		return new $class($data);
 	}
 
 	/**

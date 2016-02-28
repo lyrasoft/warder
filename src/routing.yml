@@ -41,6 +41,19 @@ registration_activate:
     action:
         '*': ActivateSaveController
 
+#Social
+social_login:
+    pattern: /social-login/(provider)
+    controller: User
+    action:
+        '*': LoginSaveController
+
+social_auth:
+    pattern: /social-auth
+    controller: User
+    action:
+        '*': AuthController
+
 # Forget
 forget_request:
     pattern: /forget/request

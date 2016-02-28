@@ -35,7 +35,10 @@ class UserModel extends \Windwalker\Warder\Admin\Model\UserModel
 	 */
 	public function register(Data $user)
 	{
-		$user->password = UserHelper::hashPassword($user->password);
+		if ($user->password)
+		{
+			$user->password = UserHelper::hashPassword($user->password);
+		}
 
 		$this->prepareDefaultData($user);
 
@@ -53,7 +56,7 @@ class UserModel extends \Windwalker\Warder\Admin\Model\UserModel
 	 */
 	protected function prepareDefaultData(Data $user)
 	{
-		$user->registered = DateTime::create()->format(DateTime::FORMAT_SQL);
-		$user->blocked = 1;
+		$user->registered = $user->registered ? : DateTime::create()->format(DateTime::FORMAT_SQL);
+		$user->blocked = $user->blocked === null ? 1 : $user->blocked;
 	}
 }

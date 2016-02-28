@@ -11,7 +11,8 @@ table:
     actions: actions
 
 methods:
-    - \Windwalker\Warder\Authentication\Method\WarderMethod
+    warder: \Windwalker\Warder\Authentication\Method\WarderMethod
+    social: \Windwalker\Warder\Authentication\Method\SocialMethod
 
 frontend:
     package: front
