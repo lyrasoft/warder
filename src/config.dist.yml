@@ -6,13 +6,14 @@ user:
 
 table:
     users: users
+    user_socials: user_socials
     groups: groups
     user_group_maps: user_group_maps
     actions: actions
 
 methods:
     warder: \Windwalker\Warder\Authentication\Method\WarderMethod
-    social: \Windwalker\Warder\Authentication\Method\SocialMethod
+    # social: \Windwalker\Warder\Authentication\Method\SocialMethod
 
 frontend:
     package: front

@@ -60,6 +60,11 @@ class SocialMethod extends AbstractMethod
 	 */
 	public function authenticate(Credential $credential)
 	{
+		if (!class_exists('Hybrid_Auth'))
+		{
+			throw new \LogicException('Please install hybridauth/hybridauth first.');
+		}
+
 		if (!$credential->_provider)
 		{
 			$this->status = Authentication::INVALID_CREDENTIAL;

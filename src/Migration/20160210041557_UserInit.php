@@ -50,7 +50,8 @@ class UserInit extends AbstractMigration
 			$sc->addColumn('login_name', new Column\Varchar)->comment('User identifier name');
 			$sc->addColumn('provider',   new Column\Char)->length(15)->comment('Social provider');
 
-			$sc->addIndex(Key::TYPE_PRIMARY, 'user_socials_primary', array('user_id', 'login_name', 'provider'));
+			$sc->addIndex(Key::TYPE_INDEX, 'user_socials_user_id', 'user_id');
+			$sc->addIndex(Key::TYPE_INDEX, 'user_socials_login_name', 'login_name');
 		})->create(true);
 	}
 
