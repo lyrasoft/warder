@@ -9,6 +9,8 @@
 namespace Windwalker\Warder\View\Profile;
 
 use Phoenix\View\EditView;
+use Windwalker\Core\Language\Translator;
+use Windwalker\Warder\Helper\WarderHelper;
 
 /**
  * The ProfileHtmlView class.
@@ -52,6 +54,14 @@ class ProfileHtmlView extends EditView
 	 */
 	public function setTitle($title = null)
 	{
+		$layout = $this->getLayout();
+
+		if ($layout != 'user' && !$title)
+		{
+			$langPrefix = WarderHelper::getPackage()->get('admin.language.prefix', 'warder.');
+			$title = Translator::translate($langPrefix . $layout . '.title');
+		}
+
 		return parent::setTitle($title);
 	}
 }

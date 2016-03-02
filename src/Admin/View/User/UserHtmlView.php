@@ -11,6 +11,7 @@ namespace Windwalker\Warder\Admin\View\User;
 use Phoenix\Script\BootstrapScript;
 use Phoenix\Script\PhoenixScript;
 use Phoenix\View\EditView;
+use Windwalker\Core\Language\Translator;
 use Windwalker\Warder\Admin\Form\User\LoginDefinition;
 use Windwalker\Warder\Helper\WarderHelper;
 
@@ -89,6 +90,14 @@ class UserHtmlView extends EditView
 	 */
 	public function setTitle($title = null)
 	{
+		$layout = $this->getLayout();
+
+		if ($layout != 'user' && !$title)
+		{
+			$langPrefix = WarderHelper::getPackage()->get('admin.language.prefix', 'warder.');
+			$title = Translator::translate($langPrefix . $layout . '.title');
+		}
+
 		return parent::setTitle($title);
 	}
 }

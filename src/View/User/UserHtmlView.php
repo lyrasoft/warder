@@ -9,6 +9,7 @@
 namespace Windwalker\Warder\View\User;
 
 use Phoenix\View\AbstractPhoenixHtmView;
+use Windwalker\Core\Language\Translator;
 use Windwalker\Data\Data;
 use Windwalker\Warder\Form\User\ForgetConfirmDefinition;
 use Windwalker\Warder\Form\User\ForgetRequestDefinition;
@@ -42,6 +43,28 @@ class UserHtmlView extends AbstractPhoenixHtmView
 		{
 			$this->$method($data);
 		}
+
+		$this->setTitle();
+	}
+
+	/**
+	 * setTitle
+	 *
+	 * @param string $title
+	 *
+	 * @return  static
+	 */
+	public function setTitle($title = null)
+	{
+		$layout = $this->getLayout();
+
+		if ($layout != 'user' && !$title)
+		{
+			$langPrefix = WarderHelper::getPackage()->get('admin.language.prefix', 'warder.');
+			$title = Translator::translate($langPrefix . $layout . '.title');
+		}
+
+		return parent::setTitle($title);
 	}
 
 	/**

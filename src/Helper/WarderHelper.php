@@ -70,6 +70,11 @@ class WarderHelper
 	 */
 	public static function getFrontendRouting()
 	{
+		if (!static::$package)
+		{
+			throw new \LogicException('Please register warder into Windwalker first.');
+		}
+
 		return Yaml::parse(WARDER_SOURCE . '/routing.yml');
 	}
 
@@ -80,6 +85,11 @@ class WarderHelper
 	 */
 	public static function getAdminRouting()
 	{
+		if (!static::$package)
+		{
+			throw new \LogicException('Please register warder into Windwalker first.');
+		}
+
 		return Yaml::parse(WARDER_SOURCE_ADMIN . '/routing.yml');
 	}
 
@@ -90,6 +100,11 @@ class WarderHelper
 	 */
 	public static function getPackage()
 	{
+		if (!static::$package)
+		{
+			throw new \LogicException('Please register warder into Windwalker first.');
+		}
+
 		return static::$package;
 	}
 
