@@ -1,6 +1,6 @@
 {{-- Part of Front project. --}}
 
-@extends($parentTemplate)
+@extends($warderExtends)
 
 @section('content')
 <div class="container warder-page login-page">
@@ -23,7 +23,7 @@
                         <div class="col-md-offset-3 col-md-9">
                             <p class="login-button-group">
                                 <button class="login-button btn btn-primary">
-                                    @translate($langPrefix . 'login.submit.button')
+                                    @translate($warderPrefix . 'login.submit.button')
                                 </button>
                             </p>
                         </div>

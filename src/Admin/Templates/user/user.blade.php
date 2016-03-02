@@ -1,6 +1,6 @@
 {{-- Part of phoenix project. --}}
 
-@extends($parentTemplate . '-edit')
+@extends($warderExtends . '-edit')
 
 @section('toolbar')
     @include('toolbar')
@@ -12,14 +12,14 @@
     <div class="row">
         <div class="col-md-7">
             <fieldset class="form-horizontal">
-                <legend>@translate($langPrefix . 'edit.fieldset.basic')</legend>
+                <legend>@translate($warderPrefix . 'edit.fieldset.basic')</legend>
 
                 {!! $form->renderFields('basic') !!}
             </fieldset>
         </div>
         <div class="col-md-5">
             <fieldset class="form-horizontal">
-                <legend>@translate($langPrefix . 'edit.fieldset.created')</legend>
+                <legend>@translate($warderPrefix . 'edit.fieldset.created')</legend>
 
                 {!! $form->renderFields('created') !!}
             </fieldset>

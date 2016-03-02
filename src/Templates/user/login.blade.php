@@ -1,6 +1,6 @@
 {{-- Part of Front project. --}}
 
-@extends($parentTemplate)
+@extends($warderExtends)
 
 @section('content')
     <style>
@@ -28,16 +28,16 @@
                         <div class="col-md-offset-3 col-md-9">
                             <p class="login-button-group">
                                 <button class="login-button btn btn-primary">
-                                    @translate($langPrefix . 'login.submit.button')
+                                    @translate($warderPrefix . 'login.submit.button')
                                 </button>
                                 <a class="go-register-button btn btn-success" href="{{ $router->html('registration') }}">
-                                    @translate($langPrefix . 'login.register.button')
+                                    @translate($warderPrefix . 'login.register.button')
                                 </a>
                             </p>
 
                             <p class="login-action-group">
                                 <a class="forget-link" href="{{ $router->html('forget_request') }}">
-                                    @translate($langPrefix . 'login.forget.link')
+                                    @translate($warderPrefix . 'login.forget.link')
                                 </a>
                             </p>
                         </div>

@@ -1,6 +1,6 @@
 {{-- Part of Front project. --}}
 
-@extends($parentTemplate)
+@extends($warderExtends)
 
 @section('content')
     <div class="container warder-page forget-confirm-page">
@@ -18,7 +18,7 @@
                             <div class="col-md-offset-3 col-md-9">
                                 <p class="login-button-group">
                                     <button class="login-button btn btn-primary">
-                                        @translate($langPrefix . 'forget.confirm.submit.button')
+                                        @translate($warderPrefix . 'forget.confirm.submit.button')
                                     </button>
                                 </p>
                             </div>

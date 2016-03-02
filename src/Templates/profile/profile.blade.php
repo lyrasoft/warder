@@ -4,7 +4,7 @@
 \Phoenix\Script\PhoenixScript::formValidation('#user-form');
 ?>
 
-@extends($parentTemplate)
+@extends($warderExtends)
 
 @section('content')
     <div class="container warder-page profile-page">
@@ -30,7 +30,7 @@
                             <div class="row">
                                 <div class="col-md-offset-3 col-md-9">
                                     <button type="submit" class="login-button btn btn-primary">
-                                        @translate($langPrefix . 'profile.submit.button')
+                                        @translate($warderPrefix . 'profile.submit.button')
                                     </button>
                                 </div>
                             </div>

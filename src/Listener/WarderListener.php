@@ -105,8 +105,8 @@ class WarderListener
 		if ($this->warder->isFrontend())
 		{
 			// Extends
-			$view['parentTemplate'] = $this->warder->get('frontend.view.extends', '_global.html');
-			$view['langPrefix'] = $this->warder->get('frontend.language.prefix', 'warder.');
+			$view['warderExtends'] = $this->warder->get('frontend.view.extends', '_global.html');
+			$view['warderPrefix'] = $this->warder->get('frontend.language.prefix', 'warder.');
 			$view['warder'] = WarderHelper::getPackage();
 
 			// Paths
@@ -117,8 +117,8 @@ class WarderListener
 		elseif ($this->warder->isAdmin())
 		{
 			// Extends
-			$view['parentTemplate'] = $this->warder->get('admin.view.extends', '_global.html');
-			$view['langPrefix'] = $this->warder->get('admin.language.prefix', 'warder.');
+			$view['warderExtends'] = $this->warder->get('admin.view.extends', '_global.html');
+			$view['warderPrefix'] = $this->warder->get('admin.language.prefix', 'warder.');
 			$view['warder'] = WarderHelper::getPackage();
 
 			// Paths

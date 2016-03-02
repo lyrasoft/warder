@@ -30,34 +30,34 @@
                 <tr>
                     {{-- NAME --}}
                     <th>
-                        {!! $grid->sortTitle($langPrefix . 'field.name', 'user.name') !!}
+                        {!! $grid->sortTitle($warderPrefix . 'field.name', 'user.name') !!}
                     </th>
 
                     @if ($warder->getLoginName() != 'email')
                         {{-- USERNAME --}}
                         <th>
-                            {!! $grid->sortTitle($langPrefix . 'field.' . $warder->getLoginName(), 'user.' . $warder->getLoginName()) !!}
+                            {!! $grid->sortTitle($warderPrefix . 'field.' . $warder->getLoginName(), 'user.' . $warder->getLoginName()) !!}
                         </th>
                     @endif
 
                     {{-- EMAIL --}}
                     <th>
-                    {!! $grid->sortTitle($langPrefix . 'field.email', 'user.email') !!}
+                    {!! $grid->sortTitle($warderPrefix . 'field.email', 'user.email') !!}
                     </th>
 
                     {{-- ENABLED --}}
                     <th>
-                        {!! $grid->sortTitle($langPrefix . 'field.enabled', 'user.blocked') !!}
+                        {!! $grid->sortTitle($warderPrefix . 'field.enabled', 'user.blocked') !!}
                     </th>
 
                     {{-- ACTIVATED --}}
                     <th>
-                        {!! $grid->sortTitle($langPrefix . 'field.activation', 'user.activation') !!}
+                        {!! $grid->sortTitle($warderPrefix . 'field.activation', 'user.activation') !!}
                     </th>
 
                     {{-- ID --}}
                     <th>
-                        {!! $grid->sortTitle($langPrefix . 'field.id', 'user.id') !!}
+                        {!! $grid->sortTitle($warderPrefix . 'field.id', 'user.id') !!}
                     </th>
                 </tr>
                 </thead>
@@ -95,13 +95,13 @@
                                     1,
                                     'block',
                                     'ok fa fa-check text-success',
-                                    \Windwalker\Core\Language\Translator::translate($langPrefix . 'button.enabled.desc')
+                                    \Windwalker\Core\Language\Translator::translate($warderPrefix . 'button.enabled.desc')
                                 )
                                 ->addState(
                                     0,
                                     'unblock',
                                     'remove fa fa-remove text-danger',
-                                    \Windwalker\Core\Language\Translator::translate($langPrefix . 'button.disabled.desc')
+                                    \Windwalker\Core\Language\Translator::translate($warderPrefix . 'button.disabled.desc')
                                 )
                             !!}
                         </td>
@@ -109,9 +109,9 @@
                         {{-- Activation --}}
                         <td>
                             @if ($item->activation)
-                                <span class="glyphicon glyphicon-remove fa fa-remove text-danger hasTooltip" title="@translate($langPrefix . 'button.unactivated.desc')"></span>
+                                <span class="glyphicon glyphicon-remove fa fa-remove text-danger hasTooltip" title="@translate($warderPrefix . 'button.unactivated.desc')"></span>
                             @else
-                                <span class="glyphicon glyphicon-ok fa fa-check text-success hasTooltip" title="@translate($langPrefix . 'button.activated.desc')"></span>
+                                <span class="glyphicon glyphicon-ok fa fa-check text-success hasTooltip" title="@translate($warderPrefix . 'button.activated.desc')"></span>
                             @endif
                         </td>
 

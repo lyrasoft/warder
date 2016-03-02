@@ -4,7 +4,7 @@
 \Phoenix\Script\JQueryScript::highlight('.searchable', $state['input.search.content']);
 ?>
 
-@extends($parentTemplate)
+@extends($warderExtends)
 
 @section('toolbar')
     @include('toolbar')
@@ -21,7 +21,7 @@
 
         {{-- RESPONSIVE TABLE DESC --}}
         <p class="visible-xs-block">
-            @translate($langPrefix . 'grid.responsive.table.desc')
+            @translate($warderPrefix . 'grid.responsive.table.desc')
         </p>
 
         <div class="grid-table table-responsive">
@@ -35,36 +35,36 @@
 
                     {{-- NAME --}}
                     <th>
-                        {!! $grid->sortTitle($langPrefix . 'field.name', 'user.name') !!}
+                        {!! $grid->sortTitle($warderPrefix . 'field.name', 'user.name') !!}
                     </th>
 
                     @if ($warder->getLoginName() != 'email')
                         {{-- USERNAME --}}
                         <th>
-                            {!! $grid->sortTitle($langPrefix . 'field.' . $warder->getLoginName(), 'user.' . $warder->getLoginName()) !!}
+                            {!! $grid->sortTitle($warderPrefix . 'field.' . $warder->getLoginName(), 'user.' . $warder->getLoginName()) !!}
                         </th>
                     @endif
 
                     {{-- Email --}}
                     <th width="5%" class="nowrap">
-                        {!! $grid->sortTitle($langPrefix . 'field.email', 'user.email') !!}
+                        {!! $grid->sortTitle($warderPrefix . 'field.email', 'user.email') !!}
                     </th>
 
                     {{-- ENABLED --}}
                     <th  width="3%">
-                        {!! $grid->sortTitle($langPrefix . 'field.enabled', 'user.blocked') !!}
+                        {!! $grid->sortTitle($warderPrefix . 'field.enabled', 'user.blocked') !!}
                     </th>
 
                     {{-- Activation --}}
                     <th width="3%">
-                        {!! $grid->sortTitle($langPrefix . 'field.activation', 'user.activation') !!}
+                        {!! $grid->sortTitle($warderPrefix . 'field.activation', 'user.activation') !!}
                     </th>
 
                     @section('users-custom-fields-head')
 
                     {{-- REGISTERED --}}
                     <th>
-                        {!! $grid->sortTitle($langPrefix . 'field.registered', 'user.registered') !!}
+                        {!! $grid->sortTitle($warderPrefix . 'field.registered', 'user.registered') !!}
                     </th>
 
                     @show
@@ -76,7 +76,7 @@
 
                     {{-- ID --}}
                     <th>
-                        {!! $grid->sortTitle($langPrefix . 'field.id', 'user.id') !!}
+                        {!! $grid->sortTitle($warderPrefix . 'field.id', 'user.id') !!}
                     </th>
                 </tr>
                 </thead>
@@ -119,13 +119,13 @@
                                     1,
                                     'block',
                                     'ok fa fa-check text-success',
-                                    $langPrefix . 'button.enabled.desc'
+                                    $warderPrefix . 'button.enabled.desc'
                                 )
                                 ->addState(
                                     0,
                                     'unblock',
                                     'remove fa fa-remove text-danger',
-                                    $langPrefix . 'button.disabled.desc'
+                                    $warderPrefix . 'button.disabled.desc'
                                 )
                             !!}
                         </td>
@@ -134,11 +134,11 @@
                         <td>
                             @if ($item->activation)
                                 <button type="button" class="waves-effect btn btn-default btn-xs hasTooltip" onclick="Phoenix.Grid.updateRow({{ $i }}, null, {task: 'activate'});"
-                                    title="@translate($langPrefix . 'button.unactivated.desc')">
+                                    title="@translate($warderPrefix . 'button.unactivated.desc')">
                                     <span class="glyphicon glyphicon-remove fa fa-remove text-danger"></span>
                                 </button>
                             @else
-                                <span class="glyphicon glyphicon-ok fa fa-check text-success hasTooltip" title="@translate($langPrefix . 'button.activated.desc')"></span>
+                                <span class="glyphicon glyphicon-ok fa fa-check text-success hasTooltip" title="@translate($warderPrefix . 'button.activated.desc')"></span>
                             @endif
                         </td>
 
