@@ -133,7 +133,7 @@ class UserHandler implements UserHandlerInterface
 	{
 		$session = Ioc::getSession();
 
-		$session->set($this->warder->get('user.session_name', 'user'), (array) $user);
+		$session->set($this->warder->get('user.session_name', 'user'),$user->dump());
 
 		return true;
 	}

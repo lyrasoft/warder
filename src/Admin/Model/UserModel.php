@@ -117,9 +117,12 @@ class UserModel extends AdminModel
 
 		unset($user->password2);
 
-		$user = User::save($user);
+		User::save($user);
 
-		User::getHandler()->login($user);
+		// Re load user
+		$user = User::get($user->id);
+
+		User::makeUserLogin($user);
 
 		return true;
 	}
