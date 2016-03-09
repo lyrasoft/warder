@@ -65,9 +65,6 @@ class EditDefinition implements FieldDefinitionInterface
 			// Password
 			$form->add('password2', new  Field\PasswordField)
 				->label(Translator::translate($langPrefix . 'field.password.confirm'));
-
-			$form->add('user_id', new UserModalField)
-				->label('User');
 		});
 
 		// Created fieldset
