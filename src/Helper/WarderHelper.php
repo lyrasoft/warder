@@ -75,7 +75,7 @@ class WarderHelper
 			throw new \LogicException('Please register warder into Windwalker first.');
 		}
 
-		return Yaml::parse(WARDER_SOURCE . '/routing.yml');
+		return Yaml::parse(file_get_contents(WARDER_SOURCE . '/routing.yml'));
 	}
 
 	/**
@@ -90,7 +90,7 @@ class WarderHelper
 			throw new \LogicException('Please register warder into Windwalker first.');
 		}
 
-		return Yaml::parse(WARDER_SOURCE_ADMIN . '/routing.yml');
+		return Yaml::parse(file_get_contents(WARDER_SOURCE_ADMIN . '/routing.yml'));
 	}
 
 	/**
