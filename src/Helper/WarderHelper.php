@@ -131,4 +131,66 @@ class WarderHelper
 	{
 		return static::getPackage()->createUserData($data);
 	}
+
+	/**
+	 * getTable
+	 *
+	 * @param string $alias
+	 * @param string $default
+	 *
+	 * @return  string
+	 */
+	public static function getTable($alias, $default = null)
+	{
+		$default = $default ? : $alias;
+
+		return static::getPackage()->get('table.' . $alias, $default);
+	}
+
+	/**
+	 * tableExists
+	 *
+	 * @param   string  $alias
+	 *
+	 * @return  boolean
+	 */
+	public static function tableExists($alias)
+	{
+		if (!static::$package)
+		{
+			return false;
+		}
+
+		$table = static::getTable($alias);
+
+		return static::getPackage()->getContainer()->get('db')->getTable($table)->exists();
+	}
+
+	/**
+	 * getFrontendPackage
+	 *
+	 * @param bool $main
+	 *
+	 * @return  array|string
+	 */
+	public static function getFrontendPackage($main = false)
+	{
+		$packages = (array) static::getPackage()->get('frontend.package');
+
+		return $main ? $packages[0] : $packages;
+	}
+
+	/**
+	 * getFrontendPackage
+	 *
+	 * @param bool $main
+	 *
+	 * @return  array|string
+	 */
+	public static function getAdminPackage($main = false)
+	{
+		$packages = (array) static::getPackage()->get('admin.package');
+
+		return $main ? $packages[0] : $packages;
+	}
 }
