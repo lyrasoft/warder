@@ -146,7 +146,7 @@
 
                         {{-- REGISTERED --}}
                         <td>
-                            {{ Windwalker\Core\DateTime\DateTime::toLocalTime($item->created) }}
+                            {{ Windwalker\Core\DateTime\DateTime::toLocalTime($item->registered) }}
                         </td>
 
                         @show
@@ -171,7 +171,7 @@
                 <tr>
                     {{-- PAGINATION --}}
                     <td colspan="25">
-                        {!! $pagination->render($package->getName() . ':users', 'windwalker.pagination.phoenix') !!}
+                        {!! $pagination->render($package->getName() . '@users', 'windwalker.pagination.phoenix') !!}
                     </td>
                 </tr>
                 </tfoot>
