@@ -30,34 +30,34 @@
                 <tr>
                     {{-- NAME --}}
                     <th>
-                        {!! $grid->sortTitle($warderPrefix . 'field.name', 'user.name') !!}
+                        {!! $grid->sortTitle($warderPrefix . 'user.field.name', 'user.name') !!}
                     </th>
 
                     @if ($warder->getLoginName() != 'email')
                         {{-- USERNAME --}}
                         <th>
-                            {!! $grid->sortTitle($warderPrefix . 'field.' . $warder->getLoginName(), 'user.' . $warder->getLoginName()) !!}
+                            {!! $grid->sortTitle($warderPrefix . 'user.field.' . $warder->getLoginName(), 'user.' . $warder->getLoginName()) !!}
                         </th>
                     @endif
 
                     {{-- EMAIL --}}
                     <th>
-                    {!! $grid->sortTitle($warderPrefix . 'field.email', 'user.email') !!}
+                    {!! $grid->sortTitle($warderPrefix . 'user.field.email', 'user.email') !!}
                     </th>
 
                     {{-- ENABLED --}}
                     <th>
-                        {!! $grid->sortTitle($warderPrefix . 'field.enabled', 'user.blocked') !!}
+                        {!! $grid->sortTitle($warderPrefix . 'user.field.enabled', 'user.blocked') !!}
                     </th>
 
                     {{-- ACTIVATED --}}
                     <th>
-                        {!! $grid->sortTitle($warderPrefix . 'field.activation', 'user.activation') !!}
+                        {!! $grid->sortTitle($warderPrefix . 'user.field.activation', 'user.activation') !!}
                     </th>
 
                     {{-- ID --}}
                     <th>
-                        {!! $grid->sortTitle($warderPrefix . 'field.id', 'user.id') !!}
+                        {!! $grid->sortTitle($warderPrefix . 'user.field.id', 'user.id') !!}
                     </th>
                 </tr>
                 </thead>

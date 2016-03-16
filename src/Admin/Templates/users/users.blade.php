@@ -11,6 +11,25 @@
 @stop
 
 @section('admin-body')
+    <style>
+        .user-avatar {
+            height: 48px;
+            width: 48px;
+            border-radius: 50%;
+            min-width: 48px;
+            margin-right: 10px;
+        }
+        .user-avatar-default {
+            background-image: url('{{ \Windwalker\Warder\Helper\AvatarUploadHelper::getDefaultImage() }}');
+            background-size: cover;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .grid-table table.table > tbody > tr > td {
+            vertical-align: middle;
+        }
+    </style>
 <div id="phoenix-admin" class="users-container grid-container">
     <form name="admin-form" id="admin-form" action="{{ $router->html('users') }}" method="POST" enctype="multipart/form-data">
 
@@ -35,36 +54,36 @@
 
                     {{-- NAME --}}
                     <th>
-                        {!! $grid->sortTitle($warderPrefix . 'field.name', 'user.name') !!}
+                        {!! $grid->sortTitle($warderPrefix . 'user.field.name', 'user.name') !!}
                     </th>
 
                     @if ($warder->getLoginName() != 'email')
                         {{-- USERNAME --}}
                         <th>
-                            {!! $grid->sortTitle($warderPrefix . 'field.' . $warder->getLoginName(), 'user.' . $warder->getLoginName()) !!}
+                            {!! $grid->sortTitle($warderPrefix . 'user.field.' . $warder->getLoginName(), 'user.' . $warder->getLoginName()) !!}
                         </th>
                     @endif
 
                     {{-- Email --}}
                     <th width="5%" class="nowrap">
-                        {!! $grid->sortTitle($warderPrefix . 'field.email', 'user.email') !!}
+                        {!! $grid->sortTitle($warderPrefix . 'user.field.email', 'user.email') !!}
                     </th>
 
                     {{-- ENABLED --}}
                     <th  width="3%">
-                        {!! $grid->sortTitle($warderPrefix . 'field.enabled', 'user.blocked') !!}
+                        {!! $grid->sortTitle($warderPrefix . 'user.field.enabled', 'user.blocked') !!}
                     </th>
 
                     {{-- Activation --}}
                     <th width="3%">
-                        {!! $grid->sortTitle($warderPrefix . 'field.activation', 'user.activation') !!}
+                        {!! $grid->sortTitle($warderPrefix . 'user.field.activation', 'user.activation') !!}
                     </th>
 
                     @section('users-custom-fields-head')
 
                     {{-- REGISTERED --}}
                     <th>
-                        {!! $grid->sortTitle($warderPrefix . 'field.registered', 'user.registered') !!}
+                        {!! $grid->sortTitle($warderPrefix . 'user.field.registered', 'user.registered') !!}
                     </th>
 
                     @show
@@ -76,7 +95,7 @@
 
                     {{-- ID --}}
                     <th>
-                        {!! $grid->sortTitle($warderPrefix . 'field.id', 'user.id') !!}
+                        {!! $grid->sortTitle($warderPrefix . 'user.field.id', 'user.id') !!}
                     </th>
                 </tr>
                 </thead>
@@ -94,6 +113,13 @@
 
                         {{-- NAME --}}
                         <td class="searchable">
+                            @if (property_exists($item, 'avatar'))
+                                @if ($item->avatar)
+                                    <img class="user-avatar" src="{{ $item->avatar }}" alt="Avatar">
+                                @else
+                                    <div class="user-avatar user-avatar-default"></div>
+                                @endif
+                            @endif
                             <a href="{{ $router->html('user', array('id' => $item->id)) }}">
                                 {{ $item->name }}
                             </a>

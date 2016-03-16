@@ -28,14 +28,14 @@ class UserModalField extends ModalField
 	protected $view = 'users';
 
 	/**
-	 * Property titleField.
+	 * Property titleuser.field.
 	 *
 	 * @var  string
 	 */
 	protected $titleField = 'name';
 
 	/**
-	 * Property keyField.
+	 * Property keyuser.field.
 	 *
 	 * @var  string
 	 */

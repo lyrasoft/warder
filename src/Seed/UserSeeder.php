@@ -43,6 +43,7 @@ class UserSeeder extends AbstractSeeder
 			$data->username    = $faker->userName;
 			$data->email       = $faker->email;
 			$data->password    = $pass;
+			$data->avatar      = $faker->imageUrl(600, 600, 'people');
 			$data->group       = 1;
 			$data->blocked     = 0;
 			$data->activation  = '';
@@ -57,6 +58,8 @@ class UserSeeder extends AbstractSeeder
 
 			$this->command->out('.', false);
 		}
+
+		$this->command->out();
 	}
 
 	/**

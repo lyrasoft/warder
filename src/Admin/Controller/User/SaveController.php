@@ -8,12 +8,14 @@
 
 namespace Windwalker\Warder\Admin\Controller\User;
 
+use Lyrasoft\Luna\Field\Image\SingleImageDragField;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\Authentication\User;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Crypt\Password;
 use Windwalker\Data\Data;
+use Windwalker\Warder\Helper\AvatarUploadHelper;
 use Windwalker\Warder\Helper\WarderHelper;
 
 /**
@@ -63,6 +65,22 @@ class SaveController extends AbstractSaveController
 		// Remove password from session
 		unset($this->data['password']);
 		unset($this->data['password2']);
+	}
+
+	/**
+	 * postSave
+	 *
+	 * @param Data $data
+	 *
+	 * @return  void
+	 */
+	protected function postSave(Data $data)
+	{
+		// Image
+		if (false !== SingleImageDragField::uploadFromController($this, 'avatar', $data, AvatarUploadHelper::getPath($data->id)))
+		{
+			$this->model->save($data);
+		}
 	}
 
 	/**

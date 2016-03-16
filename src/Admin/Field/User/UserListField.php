@@ -27,7 +27,7 @@ class UserListField extends ItemListField
 	protected $ordering = null;
 
 	/**
-	 * Property textField.
+	 * Property textuser.field.
 	 *
 	 * @var  string
 	 */

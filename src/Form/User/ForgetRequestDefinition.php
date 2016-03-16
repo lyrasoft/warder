@@ -33,7 +33,7 @@ class ForgetRequestDefinition implements FieldDefinitionInterface
 		$langPrefix = WarderHelper::getPackage()->get('frontend.language.prefix', 'warder.');
 
 		$form->add('email', new Field\EmailField)
-			->label(Translator::translate($langPrefix . 'field.email'))
+			->label(Translator::translate($langPrefix . 'user.field.email'))
 			->required();
 	}
 }

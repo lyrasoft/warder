@@ -8,6 +8,7 @@
 
 namespace Windwalker\Warder\Admin\Form\User;
 
+use Lyrasoft\Luna\Field\Image\SingleImageDragField;
 use Phoenix\Field\CalendarField;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Form\Field;
@@ -15,6 +16,7 @@ use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
 use Windwalker\Html\Option;
 use Windwalker\Warder\Admin\Field\User\UserModalField;
+use Windwalker\Warder\Helper\AvatarUploadHelper;
 use Windwalker\Warder\Helper\WarderHelper;
 
 /**
@@ -43,59 +45,66 @@ class EditDefinition implements FieldDefinitionInterface
 		{
 			// Name
 			$form->add('name', new  Field\TextField)
-				->label(Translator::translate($langPrefix . 'field.name'))
+				->label(Translator::translate($langPrefix . 'user.field.name'))
 				->required(true);
 
 			if ($loginName != 'email')
 			{
 				// Name
 				$form->add($loginName, new  Field\TextField)
-					->label(Translator::translate($langPrefix . 'field.' . $loginName))
+					->label(Translator::translate($langPrefix . 'user.field.' . $loginName))
 					->required(true);
 			}
 
 			// Email
 			$form->add('email', new  Field\EmailField)
-				->label(Translator::translate($langPrefix . 'field.email'));
+				->label(Translator::translate($langPrefix . 'user.field.email'))
+				->required();
 
 			// Password
 			$form->add('password', new  Field\PasswordField)
-				->label(Translator::translate($langPrefix . 'field.password'));
+				->label(Translator::translate($langPrefix . 'user.field.password'));
 
 			// Password
 			$form->add('password2', new  Field\PasswordField)
-				->label(Translator::translate($langPrefix . 'field.password.confirm'));
+				->label(Translator::translate($langPrefix . 'user.field.password.confirm'));
 		});
 
 		// Created fieldset
 		$form->wrap('created', null, function(Form $form) use ($langPrefix)
 		{
+			// Avatar
+			$form->add('avatar', new SingleImageDragField)
+				->label(Translator::translate($langPrefix . 'user.field.avatar'))
+				->set('default_image', AvatarUploadHelper::getDefaultImage());
+
 			// Blocked
 			$form->add('blocked', new  Field\RadioField)
-				->label(Translator::translate($langPrefix . 'field.name'))
+				->label(Translator::translate($langPrefix . 'user.field.name'))
 				->set('class', 'btn-group')
 				->set('default', 0)
-				->addOption(new Option(Translator::translate($langPrefix . 'field.blocked.block'), 1))
-				->addOption(new Option(Translator::translate($langPrefix . 'field.blocked.unblock'), 0));
+				->addOption(new Option(Translator::translate($langPrefix . 'user.field.blocked.block'), 1))
+				->addOption(new Option(Translator::translate($langPrefix . 'user.field.blocked.unblock'), 0));
 
 			// ID
 			$form->add('id', new Field\TextField)
-				->label(Translator::translate($langPrefix . 'field.id'))
+				->label(Translator::translate($langPrefix . 'user.field.id'))
 				->readonly();
 
 			// Registered
 			$form->add('registered', new CalendarField)
-				->label(Translator::translate($langPrefix . 'field.registered'));
+				->label(Translator::translate($langPrefix . 'user.field.registered'))
+				->disabled();
 
 			// Last Login
 			$form->add('last_login', new CalendarField)
-				->label(Translator::translate($langPrefix . 'field.last.login'))
-				->set('readonly', true);
+				->label(Translator::translate($langPrefix . 'user.field.last.login'))
+				->disabled();
 
 			// Last Reset
-			$form->add('last_reset', new CalendarField)
-				->label(Translator::translate($langPrefix . 'field.last.reset'))
-				->set('readonly', true);
+//			$form->add('last_reset', new CalendarField)
+//				->label(Translator::translate($langPrefix . 'user.field.last.reset'))
+//				->set('readonly', true);
 		});
 	}
 }

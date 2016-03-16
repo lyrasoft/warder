@@ -33,11 +33,11 @@ class ForgetConfirmDefinition implements FieldDefinitionInterface
 		$langPrefix = WarderHelper::getPackage()->get('frontend.language.prefix', 'warder.');
 
 		$form->add('email', new Field\EmailField)
-			->label(Translator::translate($langPrefix . '.field.email'))
+			->label(Translator::translate($langPrefix . '.user.field.email'))
 			->required();
 
 		$form->add('token', new Field\TextField)
-			->label(Translator::translate($langPrefix . 'field.token'))
+			->label(Translator::translate($langPrefix . 'user.field.token'))
 			->required();
 	}
 }

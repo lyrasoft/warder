@@ -29,6 +29,7 @@ class UserInit extends AbstractMigration
 			$sc->addColumn('username',   new Column\Varchar)->comment('Login name');
 			$sc->addColumn('email',      new Column\Varchar)->comment('Email');
 			$sc->addColumn('password',   new Column\Varchar)->comment('Password');
+			$sc->addColumn('avatar',     new Column\Varchar)->comment('Avatar');
 			$sc->addColumn('group',      new Column\Varchar)->comment('Group');
 			$sc->addColumn('blocked',    new Column\Tinyint)->comment('0: normal, 1: blocked');
 			$sc->addColumn('activation', new Column\Varchar)->comment('Activation code.');

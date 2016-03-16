@@ -48,19 +48,19 @@ class FilterDefinition implements FieldDefinitionInterface
 			// Search Field
 			$fieldField = new ListField;
 
-			$fieldField->label(Translator::translate('phoenix.grid.search.field.label'))
+			$fieldField->label(Translator::translate('phoenix.grid.search.user.field.label'))
 				->set('display', false)
 				->defaultValue('*')
 				->addOption(new Option(Translator::translate('phoenix.core.all'), '*'));
 
 			if ($loginName != 'email')
 			{
-				$fieldField->addOption(new Option(Translator::translate($langPrefix . 'field.' . $loginName), 'user.' . $loginName));
+				$fieldField->addOption(new Option(Translator::translate($langPrefix . 'user.field.' . $loginName), 'user.' . $loginName));
 			}
 
-			$fieldField->addOption(new Option(Translator::translate($langPrefix . 'field.name'), 'user.name'))
-				->addOption(new Option(Translator::translate($langPrefix . 'field.email'), 'user.email'))
-				->addOption(new Option(Translator::translate($langPrefix . 'field.id'), 'user.id'));
+			$fieldField->addOption(new Option(Translator::translate($langPrefix . 'user.field.name'), 'user.name'))
+				->addOption(new Option(Translator::translate($langPrefix . 'user.field.email'), 'user.email'))
+				->addOption(new Option(Translator::translate($langPrefix . 'user.field.id'), 'user.id'));
 
 			$form->add('field', $fieldField);
 

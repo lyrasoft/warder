@@ -54,26 +54,26 @@ class EditDefinition implements FieldDefinitionInterface
 		$form->wrap('basic', null, function(Form $form) use ($loginName)
 		{
 			$form->add('name', new Field\TextField)
-				->label(Translator::translate('warder.field.name'))
+				->label(Translator::translate('warder.user.field.name'))
 				->required();
 
 			if (strtolower($loginName) != 'email')
 			{
 				$form->add($loginName, new Field\TextField)
-					->label(Translator::translate('warder.field.' . $loginName))
+					->label(Translator::translate('warder.user.field.' . $loginName))
 					->required();
 			}
 
 			$form->add('email', new Field\EmailField)
-				->label(Translator::translate('warder.field.email'))
+				->label(Translator::translate('warder.user.field.email'))
 				->required();
 
 			$form->add('password', new Field\PasswordField)
-				->label(Translator::translate('warder.field.password'))
+				->label(Translator::translate('warder.user.field.password'))
 				->set('autocomplete', 'off');
 
 			$form->add('password2', new Field\PasswordField)
-				->label(Translator::translate('warder.field.password.confirm'))
+				->label(Translator::translate('warder.user.field.password.confirm'))
 				->set('autocomplete', 'off');
 		});
 	}

@@ -52,12 +52,12 @@ class LoginDefinition implements FieldDefinitionInterface
 		$langPrefix = $this->warder->get('admin.language.prefix', 'warder.');
 
 		$form->add($loginName, new Field\TextField)
-			->label(Translator::translate($langPrefix . 'field.' . $loginName));
+			->label(Translator::translate($langPrefix . 'user.field.' . $loginName));
 
 		$form->add('password', new Field\PasswordField)
-			->label(Translator::translate($langPrefix . 'field.password'));
+			->label(Translator::translate($langPrefix . 'user.field.password'));
 
 		$form->add('remember', new Field\CheckboxField)
-			->label(Translator::translate($langPrefix . 'field.remember'));
+			->label(Translator::translate($langPrefix . 'user.field.remember'));
 	}
 }

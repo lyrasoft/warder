@@ -55,28 +55,28 @@ class RegistrationDefinition implements FieldDefinitionInterface
 		$form->wrap('basic', null, function(Form $form) use ($loginName, $langPrefix)
 		{
 			$form->add('name', new Field\TextField)
-				->label(Translator::translate($langPrefix . 'field.name'))
+				->label(Translator::translate($langPrefix . 'user.field.name'))
 				->required();
 
 			if (strtolower($loginName) != 'email')
 			{
 				$form->add($loginName, new Field\TextField)
-					->label(Translator::translate($langPrefix . 'field.' . $loginName))
+					->label(Translator::translate($langPrefix . 'user.field.' . $loginName))
 					->setValidator(new UserExistsValidator($loginName))
 					->required();
 			}
 
 			$form->add('email', new Field\EmailField)
-				->label(Translator::translate($langPrefix . 'field.email'))
+				->label(Translator::translate($langPrefix . 'user.field.email'))
 				->setValidator(new UserExistsValidator('email'))
 				->required();
 
 			$form->add('password', new Field\PasswordField)
-				->label(Translator::translate($langPrefix . 'field.password'))
+				->label(Translator::translate($langPrefix . 'user.field.password'))
 				->set('autocomplete', 'off');
 
 			$form->add('password2', new Field\PasswordField)
-				->label(Translator::translate($langPrefix . 'field.password.confirm'))
+				->label(Translator::translate($langPrefix . 'user.field.password.confirm'))
 				->set('autocomplete', 'off');
 		});
 	}
