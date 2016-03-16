@@ -37,6 +37,39 @@ class UserHelper
 	}
 
 	/**
+	 * authorise
+	 *
+	 * @return  boolean
+	 */
+	public static function authorise()
+	{
+		$config = Ioc::getConfig();
+
+		if (WarderHelper::isFrontend())
+		{
+			$packages = WarderHelper::getFrontendPackage();
+		}
+		elseif (WarderHelper::isAdmin())
+		{
+			$packages = WarderHelper::getAdminPackage();
+		}
+		else
+		{
+			return false;
+		}
+
+		$routes = array();
+
+		foreach ($packages as $package)
+		{
+			$routes[] = $package . '@login';
+			$routes[] = $package . '@logout';
+		}
+		
+		return UserHelper::isLogin() || in_array($config->get('route.matched'), $routes);
+	}
+
+	/**
 	 * hashPassword
 	 *
 	 * @param   string  $password
@@ -77,7 +110,7 @@ class UserHelper
 			$query['return'] = base64_encode($return);
 		}
 
-		$package = PackageHelper::getPackage();
+		$package = WarderHelper::getPackage()->getCurrentPackage();
 
 		$url = $package->router->http('login', $query);
 
