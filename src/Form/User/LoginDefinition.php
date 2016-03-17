@@ -23,23 +23,6 @@ use Windwalker\Warder\Helper\WarderHelper;
 class LoginDefinition implements FieldDefinitionInterface
 {
 	/**
-	 * Property package.
-	 *
-	 * @var  AbstractPackage
-	 */
-	protected $warder;
-
-	/**
-	 * WarderMethod constructor.
-	 *
-	 * @param AbstractPackage $warder
-	 */
-	public function __construct(AbstractPackage $warder = null)
-	{
-		$this->warder = $warder ? : WarderHelper::getPackage();
-	}
-
-	/**
 	 * Define the form fields.
 	 *
 	 * @param Form $form The Windwalker form object.
@@ -48,8 +31,8 @@ class LoginDefinition implements FieldDefinitionInterface
 	 */
 	public function define(Form $form)
 	{
-		$loginName = $this->warder->getLoginName();
-		$langPrefix = $this->warder->get('frontend.language.prefix', 'warder.');
+		$loginName = WarderHelper::getLoginName();
+		$langPrefix = WarderHelper::getPackage()->get('frontend.language.prefix', 'warder.');
 
 		$form->add($loginName, new Field\TextField)
 			->label(Translator::translate($langPrefix . 'user.field.' . $loginName));

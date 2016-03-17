@@ -76,7 +76,7 @@ class UserHtmlView extends AbstractPhoenixHtmView
 	 */
 	protected function login(Data $data)
 	{
-		$data->form = $this->model->getForm(new LoginDefinition(WarderHelper::getPackage()), 'user');
+		$data->form = $this->model->getForm('login', 'user');
 	}
 
 	/**
@@ -88,7 +88,7 @@ class UserHtmlView extends AbstractPhoenixHtmView
 	 */
 	protected function registration(Data $data)
 	{
-		$data->form = $this->model->getForm(new RegistrationDefinition(WarderHelper::getPackage()), 'user', true);
+		$data->form = $this->model->getForm('registration', 'user', true);
 		$data->fieldsets = $data->form->getFieldsets();
 	}
 
@@ -101,7 +101,7 @@ class UserHtmlView extends AbstractPhoenixHtmView
 	 */
 	protected function forgetRequest(Data $data)
 	{
-		$data->form = $this->model->getForm(new ForgetRequestDefinition);
+		$data->form = $this->model->getForm('ForgetRequest');
 	}
 
 	/**
@@ -113,7 +113,7 @@ class UserHtmlView extends AbstractPhoenixHtmView
 	 */
 	protected function forgetConfirm(Data $data)
 	{
-		$data->form = $this->model->getForm(new ForgetConfirmDefinition);
+		$data->form = $this->model->getForm('ForgetConfirm');
 
 		$data->form->bind(array(
 			'email' => $data->email,
@@ -130,7 +130,7 @@ class UserHtmlView extends AbstractPhoenixHtmView
 	 */
 	protected function forgetReset(Data $data)
 	{
-		$data->form = $this->model->getForm(new ResetDefinition);
+		$data->form = $this->model->getForm('Reset');
 
 		$data->form->bind(array(
 			'email' => $data->email,

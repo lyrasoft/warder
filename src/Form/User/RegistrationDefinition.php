@@ -13,6 +13,7 @@ use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
+use Windwalker\Warder\Helper\WarderHelper;
 use Windwalker\Warder\Validator\UserExistsValidator;
 use Windwalker\Warder\WarderPackage;
 
@@ -24,23 +25,6 @@ use Windwalker\Warder\WarderPackage;
 class RegistrationDefinition implements FieldDefinitionInterface
 {
 	/**
-	 * Property package.
-	 *
-	 * @var  AbstractPackage
-	 */
-	protected $warder;
-
-	/**
-	 * WarderMethod constructor.
-	 *
-	 * @param WarderPackage $warder
-	 */
-	public function __construct(WarderPackage $warder)
-	{
-		$this->warder = $warder;
-	}
-
-	/**
 	 * Define the form fields.
 	 *
 	 * @param Form $form The Windwalker form object.
@@ -49,8 +33,8 @@ class RegistrationDefinition implements FieldDefinitionInterface
 	 */
 	public function define(Form $form)
 	{
-		$loginName = $this->warder->getLoginName();
-		$langPrefix = $this->warder->get('frontend.language.prefix', 'warder.');
+		$loginName = WarderHelper::getLoginName();
+		$langPrefix = WarderHelper::getPackage()->get('frontend.language.prefix', 'warder.');
 
 		$form->wrap('basic', null, function(Form $form) use ($loginName, $langPrefix)
 		{
