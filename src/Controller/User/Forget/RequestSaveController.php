@@ -150,7 +150,6 @@ class RequestSaveController extends AbstractSaveController
 	protected function sendEmail($email, $body)
 	{
 		$message = SwiftMailer::newMessage(Translator::translate($this->langPrefix . 'mail.subject'))
-			->addFrom($this->app->get('mail.from', 'noreply@english4tw.com'))
 			->addTo($email)
 			->setBody($body);
 
