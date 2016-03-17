@@ -6,7 +6,7 @@
 </p>
 
 <p>
-    You register a new user account at English4Tw.
+    You register a new user account at {{ \Phoenix\Html\HtmlHeader::getSiteName() }}.
 </p>
 
 <p>
