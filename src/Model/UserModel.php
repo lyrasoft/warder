@@ -42,7 +42,7 @@ class UserModel extends \Windwalker\Warder\Admin\Model\UserModel
 
 		$this->prepareDefaultData($user);
 
-		User::save($user);
+		$user->id = User::save($user)->id;
 
 		return true;
 	}
