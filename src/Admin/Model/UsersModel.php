@@ -1,6 +1,6 @@
 <?php
 /**
- * Part of phoenix project. 
+ * Part of phoenix project.
  *
  * @copyright  Copyright (C) 2015 {ORGANIZATION}. All rights reserved.
  * @license    GNU General Public License version 2 or later.
@@ -13,10 +13,11 @@ use Phoenix\Model\ListModel;
 use Phoenix\Model\Filter\FilterHelperInterface;
 use Windwalker\Query\Query;
 use Windwalker\Warder\Helper\WarderHelper;
+use Windwalker\Warder\Table\WarderTable;
 
 /**
  * The UsersModel class.
- * 
+ *
  * @since  {DEPLOY_VERSION}
  */
 class UsersModel extends ListModel
@@ -49,9 +50,11 @@ class UsersModel extends ListModel
 	 */
 	protected function configureTables()
 	{
-		$warder = WarderHelper::getPackage();
-
-		$this->addTable('user', $warder->get('table.users'));
+		$this->addTable('user',  WarderTable::USERS)
+			->addTable('social', WarderTable::USER_SOCIALS,    'social.user_id = user.id')
+//			->addTable('gmap',   WarderTable::USER_GROUP_MAPS, 'group.user_id = user.id')
+//			->addTable('group',  WarderTable::GROUPS,          'gmap.group_id = group.id');
+		;
 	}
 
 	/**
