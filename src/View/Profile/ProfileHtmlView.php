@@ -59,6 +59,12 @@ class ProfileHtmlView extends EditView
 		if ($layout != 'user' && !$title)
 		{
 			$langPrefix = WarderHelper::getPackage()->get('admin.language.prefix', 'warder.');
+
+			if ($layout == 'edit')
+			{
+				$layout = 'profile.edit';
+			}
+
 			$title = Translator::translate($langPrefix . $layout . '.title');
 		}
 

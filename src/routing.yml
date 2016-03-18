@@ -17,13 +17,21 @@ logout:
 
 # Profile
 profile:
-    pattern: /profile
+    pattern: /profile/(id)
     controller: User\Profile
     action:
         get: GetController
-        post|put|patch: SaveController
     extra:
         layout: profile
+
+profile_edit:
+    pattern: /profile
+    controller: User\Profile
+    action:
+        '*': GetController
+        post|put|patch: SaveController
+    extra:
+        layout: edit
 
 # Registration
 registration:
