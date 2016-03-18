@@ -102,9 +102,14 @@ class SocialMethod extends AbstractMethod
 			throw new \LogicException(__CLASS__ . '::' . $method . '() not exists.');
 		}
 
+		// Process for different providers
 		$this->$method($adapter, $credential);
 
 		$userProfile = $adapter->getUserProfile();
+
+		// Default data
+		$credential->avatar = $userProfile->photoURL;
+		$credential->params = json_encode(array('raw_profile' => $userProfile));
 
 		$this->prepareUserData($adapter, $credential);
 
@@ -211,7 +216,11 @@ class SocialMethod extends AbstractMethod
 						'id'     => $this->warder->app->get('social_login.github.id'),
 						'secret' => $this->warder->app->get('social_login.github.secret'),
 					),
-					'scope' => $this->warder->app->get('social_login.github.scope')
+					'scope' => $this->warder->app->get('social_login.github.scope'),
+					'wrapper' => array(
+						'path' => WINDWALKER_VENDOR . '/hybridauth/hybridauth/additional-providers/hybridauth-github/Providers/GitHub.php',
+						'class' => 'Hybrid_Providers_GitHub'
+					)
 				),
 				"OpenID" => array (
 					"enabled" => true
@@ -388,7 +397,7 @@ class SocialMethod extends AbstractMethod
 		$userProfile = $adapter->getUserProfile();
 
 		// Yahoo cannot get email
-		$credential->name  = $userProfile->displayName;
+		$credential->name = $userProfile->displayName;
 
 		return $credential;
 	}

@@ -94,9 +94,9 @@ class UserHandler implements UserHandlerInterface
 
 			$this->check($user);
 
-			$data->bind($user->dump(), true);
+			$data->bind($user->dump());
 
-			$this->getDataMapper()->updateOne($data, 'id', true);
+			$this->getDataMapper()->updateOne($data, 'id');
 		}
 		else
 		{
