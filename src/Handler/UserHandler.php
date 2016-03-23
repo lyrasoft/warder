@@ -189,11 +189,21 @@ class UserHandler implements UserHandlerInterface
 
 		if ($user->$loginName)
 		{
-			$exists = $mapper->findOne([$loginName => $user->$loginName]);
+			$exists = $mapper->findOne(array($loginName => $user->$loginName));
 
-			if (!$user->id && $exists->notNull())
+			if ($exists->notNull() && $user->id != $exists->id)
 			{
 				throw new \InvalidArgumentException(Translator::sprintf('warder.user.save.message.exists', $loginName, $user->$loginName));
+			}
+		}
+
+		if ($user->email)
+		{
+			$exists = $mapper->findOne(array('email' => $user->email));
+
+			if ($exists->notNull() && $user->id != $exists->id)
+			{
+				throw new \InvalidArgumentException(Translator::sprintf('warder.user.save.message.exists', $loginName, $user->email));
 			}
 		}
 	}

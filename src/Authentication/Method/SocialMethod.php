@@ -124,7 +124,7 @@ class SocialMethod extends AbstractMethod
 		$socialMapping = $userSocialMapper->findOne($mapping);
 
 		// Check Socials
-		if ($socialMapping->isNull())
+		if ($socialMapping->isNull() || User::get($socialMapping->user_id)->isNull())
 		{
 			$createUser = true;
 
