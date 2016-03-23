@@ -124,10 +124,10 @@ class UserModel extends AdminModel
 
 		User::save($user);
 
-		// Re load user
+		// Reload user
 		$user = User::get($user->id);
 
-		User::makeUserLogin($user);
+		$this['item.pk'] = $user->id;
 
 		return true;
 	}

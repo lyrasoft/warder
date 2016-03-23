@@ -81,6 +81,12 @@ class SaveController extends AbstractSaveController
 		{
 			$this->model->save($data);
 		}
+
+		// Set user data to session if is current user.
+		if (User::get()->id == $data->id)
+		{
+			User::makeUserLogin(User::get($data->id));
+		}
 	}
 
 	/**
