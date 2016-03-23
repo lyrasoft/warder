@@ -33,16 +33,23 @@ class LoginGetController extends DisplayController
 	 */
 	protected function prepareExecute()
 	{
+		$return = $this->input->getBase64(
+			$this->package->get('admin.login.return_key', 'return')
+		);
+
 		if (UserHelper::isLogin())
 		{
-			$this->app->redirect($this->getHomeRedirect());
+			if ($return)
+			{
+				$this->app->redirect(base64_decode($return));
+			}
+			else
+			{
+				$this->app->redirect($this->getHomeRedirect());
+			}
 
 			return;
 		}
-
-		$return = $this->input->getBase64(
-			WarderHelper::getPackage()->get('admin.login.return_key', 'return')
-		);
 
 		if ($return)
 		{

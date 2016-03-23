@@ -8,11 +8,8 @@
 
 namespace Windwalker\Warder\Helper;
 
-use Admin\AdminPackage;
 use Phoenix\Uri\Uri;
 use Windwalker\Core\Authentication\User;
-use Windwalker\Core\Package\PackageHelper;
-use Windwalker\Core\Router\Router;
 use Windwalker\Crypt\CryptHelper;
 use Windwalker\Crypt\Password;
 use Windwalker\Ioc;

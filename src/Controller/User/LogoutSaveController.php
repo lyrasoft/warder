@@ -28,6 +28,17 @@ class LogoutSaveController extends AbstractPhoenixController
 	{
 		User::logout();
 
+		$return = $this->input->getBase64(
+			$this->package->get('frontend.login.return_key', 'return')
+		);
+
+		if ($return)
+		{
+			$this->setRedirect(base64_decode($return));
+
+			return true;
+		}
+
 		$this->setRedirect($this->router->http(WarderHelper::getPackage()->get('frontend.redirect.logout', 'home')));
 
 		return true;

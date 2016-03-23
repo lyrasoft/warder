@@ -33,16 +33,23 @@ class LoginGetController extends DisplayController
 	 */
 	protected function prepareExecute()
 	{
-		if (UserHelper::isLogin())
-		{
-			$this->app->redirect($this->getHomeRedirect());
-
-			return;
-		}
-
 		$return = $this->input->getBase64(
 			$this->package->get('frontend.login.return_key', 'return')
 		);
+
+		if (UserHelper::isLogin())
+		{
+			if ($return)
+			{
+				$this->app->redirect(base64_decode($return));
+			}
+			else
+			{
+				$this->app->redirect($this->getHomeRedirect());
+			}
+
+			return;
+		}
 
 		if ($return)
 		{

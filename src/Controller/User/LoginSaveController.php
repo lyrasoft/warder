@@ -51,9 +51,7 @@ class LoginSaveController extends AbstractSaveController
 	{
 		if (UserHelper::isLogin())
 		{
-			$warder = WarderHelper::getPackage();
-
-			$this->redirect($this->router->http($warder->get('frontend.redirect.login', 'home')));
+			$this->redirect($this->getSuccessRedirect());
 
 			return;
 		}
