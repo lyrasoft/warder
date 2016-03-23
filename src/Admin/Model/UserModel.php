@@ -122,6 +122,8 @@ class UserModel extends AdminModel
 
 		unset($user->password2);
 
+		$this->prepareDefaultData($user);
+
 		$user = User::save($user);
 
 		$this['item.pk'] = $user->id;
@@ -142,5 +144,21 @@ class UserModel extends AdminModel
 		unset($item['password2']);
 
 		return $item;
+	}
+
+	/**
+	 * prepareDefaultData
+	 *
+	 * @param   Data $user
+	 *
+	 * @return  void
+	 */
+	protected function prepareDefaultData(Data $user)
+	{
+		if (!$user->registered)
+		{
+			$date = new DateTime;
+			$user->registered = $date->toSql();
+		}
 	}
 }
