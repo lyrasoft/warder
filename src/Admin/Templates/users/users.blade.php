@@ -79,14 +79,10 @@
                         {!! $grid->sortTitle($warderPrefix . 'user.field.activation', 'user.activation') !!}
                     </th>
 
-                    @section('users-custom-fields-head')
-
                     {{-- REGISTERED --}}
                     <th>
                         {!! $grid->sortTitle($warderPrefix . 'user.field.registered', 'user.registered') !!}
                     </th>
-
-                    @show
 
                     {{-- Delete --}}
                     <th>
@@ -168,14 +164,10 @@
                             @endif
                         </td>
 
-                        @section('users-custom-fields-body')
-
                         {{-- REGISTERED --}}
                         <td>
                             {{ Windwalker\Core\DateTime\DateTime::toLocalTime($item->registered) }}
                         </td>
-
-                        @show
 
                         {{-- Delete --}}
                         <td>
