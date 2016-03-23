@@ -9,6 +9,7 @@
 namespace Windwalker\Warder\Handler;
 
 use Windwalker\Core\Language\Translator;
+use Windwalker\Record\Exception\NoResultException;
 use Windwalker\Record\Record;
 use Windwalker\Warder\Admin\Record\UserRecord;
 use Windwalker\Warder\Data\UserData;
@@ -66,8 +67,17 @@ class UserHandler implements UserHandlerInterface
 		else
 		{
 			$user = $this->getRecord();
-			$user->load($conditions);
-			$user = $user->toArray();
+
+			try
+			{
+				$user->load($conditions);
+
+				$user = $user->toArray();
+			}
+			catch (NoResultException $e)
+			{
+				$user = array();
+			}
 		}
 
 		$class = $this->warder->get('class.data', '\Windwalker\Warder\Data\UserData');

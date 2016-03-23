@@ -122,10 +122,7 @@ class UserModel extends AdminModel
 
 		unset($user->password2);
 
-		User::save($user);
-
-		// Reload user
-		$user = User::get($user->id);
+		$user = User::save($user);
 
 		$this['item.pk'] = $user->id;
 
