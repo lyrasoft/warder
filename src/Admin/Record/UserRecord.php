@@ -8,8 +8,12 @@
 
 namespace Windwalker\Warder\Admin\Record;
 
+use Windwalker\Core\Language\Translator;
 use Windwalker\Database\Driver\AbstractDatabaseDriver;
+use Windwalker\Event\Event;
 use Windwalker\Record\Record;
+use Windwalker\Warder\Admin\DataMapper\UserMapper;
+use Windwalker\Warder\Admin\DataMapper\UserSocialMapper;
 use Windwalker\Warder\Helper\WarderHelper;
 
 /**
@@ -36,5 +40,75 @@ class UserRecord extends Record
 		$table = WarderHelper::getPackage()->get('table.users', 'users');
 
 		parent::__construct($table, $keys, $db);
+	}
+
+	/**
+	 * check
+	 *
+	 * @return  static
+	 */
+	public function check()
+	{
+		$loginName = WarderHelper::getLoginName();
+
+		if (!$this->$loginName)
+		{
+			throw new \InvalidArgumentException(Translator::translate('warder.user.account.empty'));
+		}
+
+		$exists = UserMapper::findOne(array($loginName => $this->$loginName));
+
+		if ($exists->notNull() && $this->id != $exists->id)
+		{
+			throw new \InvalidArgumentException(Translator::sprintf('warder.user.save.message.exists', $loginName, $this->$loginName));
+		}
+
+		if ($this->email)
+		{
+			$exists = UserMapper::findOne(array('email' => $this->email));
+
+			if ($exists->notNull() && $this->id != $exists->id)
+			{
+				throw new \InvalidArgumentException(Translator::sprintf('warder.user.save.message.exists', $loginName, $this->email));
+			}
+		}
+
+		return $this;
+	}
+
+	/**
+	 * onAfterLoad
+	 *
+	 * @param Event $event
+	 *
+	 * @return  void
+	 */
+	public function onAfterLoad(Event $event)
+	{
+		// Add your logic
+	}
+
+	/**
+	 * onAfterStore
+	 *
+	 * @param Event $event
+	 *
+	 * @return  void
+	 */
+	public function onAfterStore(Event $event)
+	{
+		// Add your logic
+	}
+
+	/**
+	 * onAfterDelete
+	 *
+	 * @param Event $event
+	 *
+	 * @return  void
+	 */
+	public function onAfterDelete(Event $event)
+	{
+		UserSocialMapper::delete(array('user_id' => $this->id));
 	}
 }

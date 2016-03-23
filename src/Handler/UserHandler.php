@@ -9,6 +9,8 @@
 namespace Windwalker\Warder\Handler;
 
 use Windwalker\Core\Language\Translator;
+use Windwalker\Record\Record;
+use Windwalker\Warder\Admin\Record\UserRecord;
 use Windwalker\Warder\Data\UserData;
 use Windwalker\Core\Authentication\UserDataInterface;
 use Windwalker\Core\Authentication\UserHandlerInterface;
@@ -24,13 +26,6 @@ use Windwalker\Warder\WarderPackage;
  */
 class UserHandler implements UserHandlerInterface
 {
-	/**
-	 * Property mapper.
-	 *
-	 * @var DataMapper
-	 */
-	protected $mapper;
-
 	/**
 	 * Property package.
 	 *
@@ -70,7 +65,9 @@ class UserHandler implements UserHandlerInterface
 		}
 		else
 		{
-			$user = $this->getDataMapper()->findOne($conditions);
+			$user = $this->getRecord();
+			$user->load($conditions);
+			$user = $user->toArray();
 		}
 
 		$class = $this->warder->get('class.data', '\Windwalker\Warder\Data\UserData');
@@ -88,24 +85,23 @@ class UserHandler implements UserHandlerInterface
 	 */
 	public function save(UserDataInterface $user)
 	{
+		$record = $this->getRecord();
+
 		if ($user->id)
 		{
-			$data = $this->getDataMapper()->findOne($user->id);
-
-			$this->check($user);
-
-			$data->bind($user->dump());
-
-			$this->getDataMapper()->updateOne($data, 'id');
+			$record->load($user->id)
+				->bind($user->dump())
+				->check()
+				->store();
 		}
 		else
 		{
-			$data = new Data($user->dump());
-
-			$this->getDataMapper()->createOne($data);
+			$record->bind($user->dump())
+				->check()
+				->store();
 		}
 
-		$user->id = $data->id;
+		$user->id = $record->id;
 
 		return $user;
 	}
@@ -119,7 +115,7 @@ class UserHandler implements UserHandlerInterface
 	 */
 	public function delete(UserDataInterface $user)
 	{
-		return $this->getDataMapper()->delete(array('id' => $user->id));
+		return $this->getRecord()->delete($user->id);
 	}
 
 	/**
@@ -157,54 +153,10 @@ class UserHandler implements UserHandlerInterface
 	/**
 	 * getDataMapper
 	 *
-	 * @return  DataMapper
+	 * @return  UserRecord
 	 */
-	protected function getDataMapper()
+	protected function getRecord()
 	{
-		if (!$this->mapper)
-		{
-			$this->mapper = new DataMapper($this->warder->get('table.users', 'users'));
-		}
-
-		return $this->mapper;
-	}
-
-	/**
-	 * check
-	 *
-	 * @param   UserDataInterface  $user
-	 *
-	 * @return  void
-	 */
-	protected function check(UserDataInterface $user)
-	{
-		$mapper = $this->getDataMapper();
-
-		$loginName = $this->warder->getLoginName();
-
-//		if (!$user->$loginName)
-//		{
-//			throw new \InvalidArgumentException('No login information.');
-//		}
-
-		if ($user->$loginName)
-		{
-			$exists = $mapper->findOne(array($loginName => $user->$loginName));
-
-			if ($exists->notNull() && $user->id != $exists->id)
-			{
-				throw new \InvalidArgumentException(Translator::sprintf('warder.user.save.message.exists', $loginName, $user->$loginName));
-			}
-		}
-
-		if ($user->email)
-		{
-			$exists = $mapper->findOne(array('email' => $user->email));
-
-			if ($exists->notNull() && $user->id != $exists->id)
-			{
-				throw new \InvalidArgumentException(Translator::sprintf('warder.user.save.message.exists', $loginName, $user->email));
-			}
-		}
+		return new UserRecord;
 	}
 }

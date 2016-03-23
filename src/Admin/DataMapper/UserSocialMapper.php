@@ -8,28 +8,20 @@
 
 namespace Windwalker\Warder\Admin\DataMapper;
 
-use Windwalker\DataMapper\Adapter\DatabaseAdapterInterface;
-use Windwalker\DataMapper\DataMapper;
-use Windwalker\Warder\Helper\WarderHelper;
+use Windwalker\Core\DataMapper\AbstractDataMapperProxy;
+use Windwalker\Warder\Table\WarderTable;
 
 /**
  * The UserMapper class.
  *
  * @since  {DEPLOY_VERSION}
  */
-class UserSocialMapper extends DataMapper
+class UserSocialMapper extends AbstractDataMapperProxy
 {
 	/**
-	 * Constructor.
+	 * Property table.
 	 *
-	 * @param   string                   $table Table name.
-	 * @param   string|array             $pk    Primary key.
-	 * @param   DatabaseAdapterInterface $db    Database adapter.
+	 * @var  string
 	 */
-	public function __construct($table = null, $pk = 'user_id', DatabaseAdapterInterface $db = null)
-	{
-		$table = WarderHelper::getPackage()->get('table.user_socials', 'user_socials');
-
-		parent::__construct($table, $pk, $db);
-	}
+	protected static $table = WarderTable::USER_SOCIALS;
 }

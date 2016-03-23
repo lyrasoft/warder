@@ -56,6 +56,11 @@ class UserModel extends AdminModel
 
 		return $this->fetch('item.' . json_encode($pk), function() use ($pk, $state)
 		{
+			if (!$pk)
+			{
+				return new Data;
+			}
+
 			$item = User::get($pk);
 
 			$item = new Data($item->dump());
