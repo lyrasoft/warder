@@ -6,8 +6,6 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Seed;
-
 use Faker\Factory;
 use Windwalker\Core\Seeder\AbstractSeeder;
 use Windwalker\Crypt\Password;
