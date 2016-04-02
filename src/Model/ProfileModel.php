@@ -46,7 +46,9 @@ class ProfileModel extends UserModel
 	{
 		$sessionData = (array) $this['form.data'];
 
-		$item = User::get();
+		$pk = $this['item.pk'];
+
+		$item = User::get($pk);
 
 		if (ArrayHelper::getValue($sessionData, 'id') == $item->id)
 		{
