@@ -21,4 +21,16 @@ class ProfileModel extends UserModel
 	 * @var  string
 	 */
 	protected $name = 'profile';
+
+	/**
+	 * getRecord
+	 *
+	 * @param string $name
+	 *
+	 * @return  \Windwalker\Record\Record
+	 */
+	public function getRecord($name = 'User')
+	{
+		return parent::getRecord($name);
+	}
 }
