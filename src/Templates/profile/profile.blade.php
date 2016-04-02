@@ -27,7 +27,7 @@ $form->removeField('password')->removeField('password2');
                                 </strong>
                             </div>
                             <div class="col-md-8">
-                                {{ $field->getValue() }}
+                                {!! $field->renderView() !!}
                             </div>
                         </div>
                         @endforeach
@@ -45,7 +45,7 @@ $form->removeField('password')->removeField('password2');
                                     </strong>
                                 </div>
                                 <div class="col-md-8">
-                                    {{ $field->getValue() }}
+                                    {!! $field->renderView() !!}
                                 </div>
                             </div>
                         @endforeach

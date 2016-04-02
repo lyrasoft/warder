@@ -27,9 +27,6 @@ profile:
 profile_edit:
     pattern: /profile
     controller: User\Profile
-    action:
-        '*': GetController
-        post|put|patch: SaveController
     extra:
         layout: edit
 

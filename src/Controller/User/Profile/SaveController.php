@@ -126,6 +126,12 @@ class SaveController extends AbstractSaveController
 	protected function postSave(Data $data)
 	{
 		parent::postSave($data);
+
+		// Set user data to session if is current user.
+		if (User::get()->id == $data->id)
+		{
+			User::makeUserLogin(User::get($data->id));
+		}
 	}
 
 	/**
