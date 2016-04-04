@@ -102,13 +102,13 @@ class UserHandler implements UserHandlerInterface
 			$record->load($user->id)
 				->bind($user->dump())
 				->check()
-				->store();
+				->store(true);
 		}
 		else
 		{
 			$record->bind($user->dump())
 				->check()
-				->store();
+				->store(true);
 		}
 
 		$user->id = $record->id;

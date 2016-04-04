@@ -9,6 +9,7 @@
 namespace Windwalker\Warder\Controller\User\Registration;
 
 use Phoenix\Controller\AbstractSaveController;
+use Phoenix\Form\FieldDefinitionResolver;
 use Phoenix\Mail\SwiftMailer;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidFailException;
@@ -205,7 +206,7 @@ class RegistrationSaveController extends AbstractSaveController
 			throw new ValidFailException(Translator::translate($this->langPrefix . 'message.email.invalid'));
 		}
 
-		$form = $this->model->getForm(new RegistrationDefinition(WarderHelper::getPackage()), 'user');
+		$form = $this->model->getForm('registration', 'user');
 
 		$this->model->validate($data->dump(), $form);
 
