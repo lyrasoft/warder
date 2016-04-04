@@ -138,15 +138,7 @@ class SocialMethod extends AbstractMethod
 
 			if ($createUser)
 			{
-				// Create user
-				$user = $this->warder->createUserData();
-
-				$user->bind($credential);
-
-				$user->blocked = 0;
-
-				$model = new UserModel;
-				$model->register($user);
+				$user = $this->createUser($credential);
 			}
 
 			$socialMapping = new Data($mapping);
@@ -164,6 +156,28 @@ class SocialMethod extends AbstractMethod
 		$this->status = Authentication::SUCCESS;
 
 		return true;
+	}
+
+	/**
+	 * createUser
+	 *
+	 * @param Credential $credential
+	 *
+	 * @return  UserData
+	 */
+	protected function createUser(Credential $credential)
+	{
+		// Create user
+		$user = $this->warder->createUserData();
+
+		$user->bind($credential);
+
+		$user->blocked = 0;
+		
+		$model = new UserModel;
+		$model->register($user);
+
+		return $user;
 	}
 
 	/**
