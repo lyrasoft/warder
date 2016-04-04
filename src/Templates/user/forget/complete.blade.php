@@ -17,8 +17,8 @@
 
                         <div class="row">
                             <div class="text-center">
-                                <p class="login-button-group">
-                                    <a class="login-button btn btn-primary" href="{{ $router->html('login') }}">
+                                <p class="go-login-button-group">
+                                    <a class="go-login-button btn btn-primary" href="{{ $router->html('login') }}">
                                         @translate($warderPrefix . 'forget.complete.go.login.button')
                                     </a>
                                 </p>

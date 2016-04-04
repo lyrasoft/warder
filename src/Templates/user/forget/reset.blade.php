@@ -16,8 +16,8 @@
 
                         <div class="row">
                             <div class="col-md-offset-3 col-md-9">
-                                <p class="login-button-group">
-                                    <button class="login-button btn btn-primary">
+                                <p class="reset-button-group">
+                                    <button class="reset-button btn btn-primary">
                                         @translate($warderPrefix . 'forget.reset.submit.button')
                                     </button>
                                 </p>

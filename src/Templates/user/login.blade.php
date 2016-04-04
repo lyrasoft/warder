@@ -51,6 +51,7 @@
                                 <p>
                                     <button class="social-login-facebook-button btn btn-primary"
                                         onclick="jQuery('#user-form').attr('action', '{{ $router->html('social_login', array('provider' => 'facebook')) }}')">
+                                        <span class="fa fa-fw fa-facebook-square"></span>
                                         Facebook
                                     </button>
                                 </p>
@@ -60,6 +61,7 @@
                                 <p>
                                     <button class="social-login-twitter-button btn btn-info"
                                         onclick="jQuery('#user-form').attr('action', '{{ $router->html('social_login', array('provider' => 'twitter')) }}')">
+                                        <span class="fa fa-fw fa-twitter"></span>
                                         Twitter
                                     </button>
                                 </p>
@@ -69,6 +71,7 @@
                                 <p>
                                     <button class="social-login-google-button btn btn-danger"
                                         onclick="jQuery('#user-form').attr('action', '{{ $router->html('social_login', array('provider' => 'google')) }}')">
+                                        <span class="fa fa-fw fa-google"></span>
                                         Google
                                     </button>
                                 </p>
@@ -76,9 +79,10 @@
 
                             @if ($app->get('social_login.yahoo.enabled'))
                                 <p>
-                                    <button class="social-login-google-button btn btn-success"
+                                    <button class="social-login-yahoo-button btn btn-success"
                                         style="background-color: #514099; border-color: #514099"
                                         onclick="jQuery('#user-form').attr('action', '{{ $router->html('social_login', array('provider' => 'yahoo')) }}')">
+                                        <span class="fa fa-fw fa-yahoo"></span>
                                         Yahoo
                                     </button>
                                 </p>
@@ -86,9 +90,10 @@
 
                             @if ($app->get('social_login.github.enabled'))
                                 <p>
-                                    <button class="social-login-google-button btn btn-success"
+                                    <button class="social-login-github-button btn btn-success"
                                         style="background-color: #111; border-color: #111"
                                         onclick="jQuery('#user-form').attr('action', '{{ $router->html('social_login', array('provider' => 'github')) }}')">
+                                        <span class="fa fa-fw fa-github"></span>
                                         GitHub
                                     </button>
                                 </p>
