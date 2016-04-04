@@ -7,6 +7,9 @@ login:
         post: LoginSaveController
     extra:
         layout: login
+    extra:
+        warder:
+            request_login: false
 
 # Logout
 logout:
@@ -14,6 +17,9 @@ logout:
     controller: User
     action:
         '*': LogoutSaveController
+    extra:
+        warder:
+            request_login: false
 
 # Profile
 profile:
@@ -29,6 +35,8 @@ profile_edit:
     controller: User\Profile
     extra:
         layout: edit
+        warder:
+            request_login: true
 
 # Registration
 registration:
@@ -39,12 +47,17 @@ registration:
         post: RegistrationSaveController
     extra:
         layout: registration
+        warder:
+            request_login: false
 
 registration_activate:
     pattern: /registration/activate
     controller: User\Registration
     action:
         '*': ActivateSaveController
+    extra:
+        warder:
+            request_login: false
 
 #Social
 social_login:
@@ -52,12 +65,18 @@ social_login:
     controller: User
     action:
         '*': LoginSaveController
+    extra:
+        warder:
+            request_login: false
 
 social_auth:
     pattern: /social-auth
     controller: User
     action:
         '*': AuthController
+    extra:
+        warder:
+            request_login: false
 
 # Forget
 forget_request:
@@ -68,6 +87,8 @@ forget_request:
         post: RequestSaveController
     extra:
         layout: forget.request
+        warder:
+            request_login: false
 
 forget_confirm:
     pattern: /forget/confirm
@@ -77,6 +98,8 @@ forget_confirm:
         post: ConfirmSaveController
     extra:
         layout: forget.confirm
+        warder:
+            request_login: false
 
 forget_reset:
     pattern: /forget/reset
@@ -86,6 +109,8 @@ forget_reset:
         post: ResetSaveController
     extra:
         layout: forget.reset
+        warder:
+            request_login: false
 
 forget_complete:
     pattern: /forget/complete
@@ -95,3 +120,5 @@ forget_complete:
         post: ComleteSaveController
     extra:
         layout: forget.complete
+        warder:
+            request_login: false

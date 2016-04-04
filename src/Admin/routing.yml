@@ -27,6 +27,8 @@ login:
         post: LoginSaveController
     extra:
         layout: login
+        warder:
+            request_login: false
 
 # Logout
 logout:
@@ -34,3 +36,6 @@ logout:
     controller: User
     action:
         '*': LogoutSaveController
+    extra:
+        warder:
+            request_login: false

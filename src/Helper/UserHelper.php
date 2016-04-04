@@ -42,28 +42,9 @@ class UserHelper
 	{
 		$config = Ioc::getConfig();
 
-		if (WarderHelper::isFrontend())
-		{
-			$packages = WarderHelper::getFrontendPackage();
-		}
-		elseif (WarderHelper::isAdmin())
-		{
-			$packages = WarderHelper::getAdminPackage();
-		}
-		else
-		{
-			return false;
-		}
-
-		$routes = array();
-
-		foreach ($packages as $package)
-		{
-			$routes[] = $package . '@login';
-			$routes[] = $package . '@logout';
-		}
+		$requestLogin = $config->get('route.extra.warder.request_login');
 		
-		return UserHelper::isLogin() || in_array($config->get('route.matched'), $routes);
+		return UserHelper::isLogin() || !$requestLogin;
 	}
 
 	/**
