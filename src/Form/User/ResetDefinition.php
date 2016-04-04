@@ -33,10 +33,12 @@ class ResetDefinition implements FieldDefinitionInterface
 		$langPrefix = WarderHelper::getPackage()->get('frontend.language.prefix', 'warder.');
 
 		$form->add('password', new Field\PasswordField)
-			->label(Translator::translate($langPrefix . 'user.field.password'));
+			->label(Translator::translate($langPrefix . 'user.field.password'))
+			->set('placeholder', Translator::translate($langPrefix . 'user.field.password'));
 
 		$form->add('password2', new Field\PasswordField)
-			->label(Translator::translate($langPrefix . 'user.field.password.confirm'));
+			->label(Translator::translate($langPrefix . 'user.field.password.confirm'))
+			->set('placeholder', Translator::translate($langPrefix . 'user.field.password.confirm'));
 
 		$form->add('email', new Field\HiddenField);
 		$form->add('token', new Field\HiddenField);

@@ -34,6 +34,7 @@ class ForgetRequestDefinition implements FieldDefinitionInterface
 
 		$form->add('email', new Field\EmailField)
 			->label(Translator::translate($langPrefix . 'user.field.email'))
+			->set('placeholder', Translator::translate($langPrefix . 'user.field.email'))
 			->required();
 	}
 }

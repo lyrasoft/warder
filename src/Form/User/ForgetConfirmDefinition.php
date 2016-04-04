@@ -34,10 +34,12 @@ class ForgetConfirmDefinition implements FieldDefinitionInterface
 
 		$form->add('email', new Field\EmailField)
 			->label(Translator::translate($langPrefix . '.user.field.email'))
+			->set('placeholder', Translator::translate($langPrefix . '.user.field.email'))
 			->required();
 
 		$form->add('token', new Field\TextField)
 			->label(Translator::translate($langPrefix . 'user.field.token'))
+			->set('placeholder', Translator::translate($langPrefix . 'user.field.token'))
 			->required();
 	}
 }
