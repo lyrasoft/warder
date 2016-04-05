@@ -364,6 +364,15 @@ class SocialMethod extends AbstractMethod
 	{
 		$userProfile = $adapter->getUserProfile();
 
+		$loginName = $this->warder->getLoginName();
+
+		// Generate a temp username that usr can edit it later.
+		if ($loginName != 'email')
+		{
+			$username = strtolower(str_replace(' ', '', $userProfile->displayName)) . '-' . $userProfile->identifier;
+			$credential->$loginName = $username;
+		}
+
 		// Twitter cannot get email
 		$credential->name  = $userProfile->firstName;
 
@@ -412,6 +421,15 @@ class SocialMethod extends AbstractMethod
 
 		// Yahoo cannot get email
 		$credential->name = $userProfile->displayName;
+
+		$loginName = $this->warder->getLoginName();
+
+		// Generate a temp username that usr can edit it later.
+		if ($loginName != 'email')
+		{
+			$username = strtolower(str_replace(' ', '', $userProfile->displayName)) . '-' . $userProfile->identifier;
+			$credential->$loginName = $username;
+		}
 
 		return $credential;
 	}
