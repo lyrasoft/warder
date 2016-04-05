@@ -216,7 +216,7 @@ class SocialMethod extends AbstractMethod
 					),
 					'scope' => $this->warder->app->get('social_login.google.scope', "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email")
 				),
-				"yahoo" => array(
+				"Yahoo" => array(
 					'enabled' => $this->warder->app->get('social_login.yahoo.enabled'),
 					'keys' => array(
 						'key'    => $this->warder->app->get('social_login.yahoo.key'),
