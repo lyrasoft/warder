@@ -182,6 +182,7 @@ class RegistrationSaveController extends AbstractSaveController
 	protected function sendEmail($email, $body)
 	{
 		$message = SwiftMailer::newMessage(Translator::translate($this->langPrefix . 'mail.subject'))
+			->addFrom($this->app->get('mail.from.email', $this->app->get('mail.from.email')), $this->app->get('mail.from.name', $this->app->get('mail.from.name')))
 			->addTo($email)
 			->setBody($body);
 
