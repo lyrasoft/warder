@@ -20,7 +20,7 @@
     {{--@translate('phoenix.toolbar.save2new')--}}
 {{--</button>--}}
 
-<a type="button" class="waves-effect btn btn-default" href="{{ $router->html('users') }}">
+<a type="button" class="waves-effect btn btn-default" href="{{ $router->route('users') }}">
     <span class="glyphicon glyphicon-remove fa fa-remove text-danger"></span>
     @translate('phoenix.toolbar.cancel')
 </a>

@@ -68,7 +68,7 @@ class RegistrationGetController extends EditDisplayController
 		{
 			$warder = WarderHelper::getPackage();
 
-			$this->redirect($this->router->http($warder->get('frontend.redirect.login', 'home')));
+			$this->redirect($this->router->route($warder->get('frontend.redirect.login', 'home')));
 
 			return;
 		}

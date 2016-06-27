@@ -13,7 +13,7 @@ namespace Windwalker\Warder\Data;
  *
  * @since  {DEPLOY_VERSION}
  */
-class UserData extends \Windwalker\Core\Authentication\UserData
+class UserData extends \Windwalker\Core\User\UserData
 {
 
 }

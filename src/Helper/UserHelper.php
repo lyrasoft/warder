@@ -9,7 +9,7 @@
 namespace Windwalker\Warder\Helper;
 
 use Phoenix\Uri\Uri;
-use Windwalker\Core\Authentication\User;
+use Windwalker\Core\User\User;
 use Windwalker\Crypt\CryptHelper;
 use Windwalker\Crypt\Password;
 use Windwalker\Ioc;
@@ -90,7 +90,7 @@ class UserHelper
 
 		$package = WarderHelper::getPackage()->getCurrentPackage();
 
-		$url = $package->router->http('login', $query);
+		$url = $package->router->route('login', $query);
 
 		Ioc::getApplication()->redirect($url);
 	}

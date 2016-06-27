@@ -98,7 +98,7 @@ class RegistrationSaveController extends AbstractSaveController
 		{
 			$warder = WarderHelper::getPackage();
 
-			$this->redirect($this->router->http($warder->get('frontend.redirect.login', 'home')));
+			$this->redirect($this->router->route($warder->get('frontend.redirect.login', 'home')));
 
 			return;
 		}
@@ -151,7 +151,7 @@ class RegistrationSaveController extends AbstractSaveController
 		// Mail
 		$view = $this->getView();
 
-		$view['link'] = $this->router->http('registration_activate', ['email' => $user->email, 'token' => $this->token], Router::TYPE_FULL);
+		$view['link'] = $this->router->route('registration_activate', ['email' => $user->email, 'token' => $this->token], Router::TYPE_FULL);
 		$view['user'] = $user;
 
 		$body = $this->getMailBody($view);
@@ -233,7 +233,7 @@ class RegistrationSaveController extends AbstractSaveController
 	 */
 	protected function getSuccessRedirect(Data $data = null)
 	{
-		return $this->router->http('login');
+		return $this->router->route('login');
 	}
 
 	/**
@@ -245,6 +245,6 @@ class RegistrationSaveController extends AbstractSaveController
 	 */
 	protected function getFailRedirect(Data $data = null)
 	{
-		return $this->router->http('registration');
+		return $this->router->route('registration');
 	}
 }

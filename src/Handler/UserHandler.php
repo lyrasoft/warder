@@ -13,8 +13,8 @@ use Windwalker\Record\Exception\NoResultException;
 use Windwalker\Record\Record;
 use Windwalker\Warder\Admin\Record\UserRecord;
 use Windwalker\Warder\Data\UserData;
-use Windwalker\Core\Authentication\UserDataInterface;
-use Windwalker\Core\Authentication\UserHandlerInterface;
+use Windwalker\Core\User\UserDataInterface;
+use Windwalker\Core\User\UserHandlerInterface;
 use Windwalker\Core\Ioc;
 use Windwalker\Data\Data;
 use Windwalker\DataMapper\DataMapper;
@@ -60,7 +60,7 @@ class UserHandler implements UserHandlerInterface
 
 		if (!$conditions)
 		{
-			$session = $this->warder->getContainer()->get('system.session');
+			$session = $this->warder->getContainer()->get('session');
 
 			$user = $session->get($this->warder->get('user.session_name', 'user'));
 		}
@@ -119,13 +119,13 @@ class UserHandler implements UserHandlerInterface
 	/**
 	 * delete
 	 *
-	 * @param UserDataInterface|UserData $user
+	 * @param array $conditions
 	 *
 	 * @return  boolean
 	 */
-	public function delete(UserDataInterface $user)
+	public function delete($conditions)
 	{
-		return $this->getRecord()->delete($user->id);
+		return $this->getRecord()->delete($conditions);
 	}
 
 	/**

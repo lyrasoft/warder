@@ -13,7 +13,7 @@ use Windwalker\Warder\Helper\UserHelper;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Authentication\Credential;
 use Windwalker\Authentication\Method\AbstractMethod;
-use Windwalker\Core\Authentication\User;
+use Windwalker\Core\User\User;
 use Windwalker\Warder\WarderPackage;
 
 /**

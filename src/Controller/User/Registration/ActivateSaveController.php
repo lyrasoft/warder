@@ -9,7 +9,7 @@
 namespace Windwalker\Warder\Controller\User\Registration;
 
 use Phoenix\Controller\AbstractSaveController;
-use Windwalker\Core\Authentication\User;
+use Windwalker\Core\User\User;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Data\Data;
@@ -77,7 +77,7 @@ class ActivateSaveController extends AbstractSaveController
 		{
 			$warder = WarderHelper::getPackage();
 
-			$this->redirect($this->router->http($warder->get('frontend.redirect.login', 'home')));
+			$this->redirect($this->router->route($warder->get('frontend.redirect.login', 'home')));
 
 			return;
 		}
@@ -123,7 +123,7 @@ class ActivateSaveController extends AbstractSaveController
 	 */
 	protected function getSuccessRedirect(Data $data = null)
 	{
-		return $this->router->http('login');
+		return $this->router->route('login');
 	}
 
 	/**
@@ -135,7 +135,7 @@ class ActivateSaveController extends AbstractSaveController
 	 */
 	protected function getFailRedirect(Data $data = null)
 	{
-		return $this->router->http('login');
+		return $this->router->route('login');
 	}
 
 	/**

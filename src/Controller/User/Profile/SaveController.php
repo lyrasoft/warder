@@ -9,8 +9,8 @@
 namespace Windwalker\Warder\Controller\User\Profile;
 
 use Phoenix\Controller\AbstractSaveController;
-use Windwalker\Core\Authentication\User;
-use Windwalker\Core\Authentication\UserData;
+use Windwalker\Core\User\User;
+use Windwalker\Core\User\UserData;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Data\Data;

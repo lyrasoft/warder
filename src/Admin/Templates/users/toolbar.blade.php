@@ -1,6 +1,6 @@
 {{-- Part of phoenix project. --}}
 
-<a type="button" class="waves-effect waves-light btn btn-success btn-sm" href="{{ $router->html('user', array('new' => true)) }}">
+<a type="button" class="waves-effect waves-light btn btn-success btn-sm" href="{{ $router->route('user', array('new' => true)) }}">
     <span class="glyphicon glyphicon-plus fa fa-plus"></span>
     @translate('phoenix.toolbar.new')
 </a>

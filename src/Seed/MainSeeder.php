@@ -13,7 +13,7 @@ use Windwalker\Core\Seeder\AbstractSeeder;
  *
  * @since  {DEPLOY_VERSION}
  */
-class DatabaseSeeder extends AbstractSeeder
+class MainSeeder extends AbstractSeeder
 {
 	/**
 	 * doExecute
@@ -22,16 +22,16 @@ class DatabaseSeeder extends AbstractSeeder
 	 */
 	public function doExecute()
 	{
-		$this->execute(new UserSeeder);
+		$this->execute(UserSeeder::class);
 	}
 
 	/**
-	 * doClean
+	 * doClear
 	 *
 	 * @return  void
 	 */
-	public function doClean()
+	public function doClear()
 	{
-		$this->clean(new UserSeeder);
+		$this->clear(UserSeeder::class);
 	}
 }

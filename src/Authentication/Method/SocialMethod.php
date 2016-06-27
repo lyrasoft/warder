@@ -11,7 +11,7 @@ namespace Windwalker\Warder\Authentication\Method;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Authentication\Credential;
 use Windwalker\Authentication\Method\AbstractMethod;
-use Windwalker\Core\Authentication\User;
+use Windwalker\Core\User\User;
 use Windwalker\Core\Router\Router;
 use Windwalker\Core\Security\CsrfProtection;
 use Windwalker\Data\Data;
@@ -190,7 +190,7 @@ class SocialMethod extends AbstractMethod
 		$package = $this->warder->app->getPackage();
 
 		$haConfig = array(
-			'base_url' => $package->router->http('social_auth', null, Router::TYPE_FULL),
+			'base_url' => $package->router->route('social_auth', null, Router::TYPE_FULL),
 			'providers' => array(
 				'Facebook' => array(
 					'enabled' => $this->warder->app->get('social_login.facebook.enabled'),
@@ -257,7 +257,7 @@ class SocialMethod extends AbstractMethod
 	{
 		$package = $this->warder->app->getPackage();
 
-		$callbackUrl = $package->router->http('social_login', array('provider' => $provider, CsrfProtection::getFormToken() => 1), Router::TYPE_FULL);
+		$callbackUrl = $package->router->route('social_login', array('provider' => $provider, CsrfProtection::getFormToken() => 1), Router::TYPE_FULL);
 
 		return $auth->authenticate($provider, array(
 			'hauth_return_to' => $callbackUrl

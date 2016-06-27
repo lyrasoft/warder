@@ -42,26 +42,11 @@ class WarderPackage extends AbstractPackage
 	 * @throws  \LogicException
 	 * @return  void
 	 */
-	public function initialise()
+	public function boot()
 	{
-		parent::initialise();
+		parent::boot();
 
 		TranslatorHelper::loadAll($this);
-	}
-
-	/**
-	 * registerListeners
-	 *
-	 * @param Dispatcher $dispatcher
-	 *
-	 * @return  void
-	 */
-	public function registerListeners(Dispatcher $dispatcher)
-	{
-		parent::registerListeners($dispatcher);
-
-		$dispatcher->addListener(new UserListener($this))
-			->addListener(new WarderListener);
 	}
 
 	/**

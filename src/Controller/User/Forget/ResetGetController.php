@@ -9,7 +9,7 @@
 namespace Windwalker\Warder\Controller\User\Forget;
 
 use Phoenix\Controller\Display\ItemDisplayController;
-use Windwalker\Core\Authentication\User;
+use Windwalker\Core\User\User;
 use Windwalker\Core\Frontend\Bootstrap;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Warder\Helper\UserHelper;
@@ -99,7 +99,7 @@ class ResetGetController extends ItemDisplayController
 	protected function backToConfirm($message = null, $type = Bootstrap::MSG_WARNING)
 	{
 		$this->redirect(
-			$this->router->http('forget_confirm', array('token' => $this->view['token'], 'email' => $this->view['email'])),
+			$this->router->route('forget_confirm', array('token' => $this->view['token'], 'email' => $this->view['email'])),
 			$message,
 			$type
 		);

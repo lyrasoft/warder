@@ -66,6 +66,6 @@ class LoginGetController extends DisplayController
 	 */
 	protected function getHomeRedirect()
 	{
-		return $this->router->http(WarderHelper::getPackage()->get('frontend.redirect.login', 'home'));
+		return $this->router->route(WarderHelper::getPackage()->get('frontend.redirect.login', 'home'));
 	}
 }

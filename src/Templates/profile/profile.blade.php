@@ -55,7 +55,7 @@ $form->removeField('password')->removeField('password2');
 
                 @if ($item->id == $user->id)
                 <div class="edit-button" style="margin-top: 30px">
-                    <a class="btn btn-default" href="{{ $router->html('profile_edit') }}">
+                    <a class="btn btn-default" href="{{ $router->route('profile_edit') }}">
                         <span class="glyphicon glyphicon-edit fa fa-edit"></span>
                         @translate($warderPrefix . 'profile.edit.button.title')
                     </a>

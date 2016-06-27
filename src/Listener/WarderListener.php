@@ -12,10 +12,10 @@ use Phoenix\DataMapper\DataMapperResolver;
 use Phoenix\Form\FieldDefinitionResolver;
 use Phoenix\Record\RecordResolver;
 use Windwalker\Core\Application\WebApplication;
-use Windwalker\Core\View\BladeHtmlView;
+use Windwalker\Core\View\HtmlView;
 use Windwalker\Event\Event;
 use Windwalker\Renderer\BladeRenderer;
-use Windwalker\Utilities\Queue\Priority;
+use Windwalker\Utilities\Queue\PriorityQueue;
 use Windwalker\Utilities\Reflection\ReflectionHelper;
 use Windwalker\Warder\Helper\WarderHelper;
 use Windwalker\Warder\WarderPackage;
@@ -60,8 +60,8 @@ class WarderListener
 		// In Warder
 		if ($this->warder->isEnabled())
 		{
-			RecordResolver::addNamespace(ReflectionHelper::getNamespaceName($this->warder) . '/Admin/Record', Priority::LOW);
-			DataMapperResolver::addNamespace(ReflectionHelper::getNamespaceName($this->warder) . '/Admin/DataMapper', Priority::LOW);
+			RecordResolver::addNamespace(ReflectionHelper::getNamespaceName($this->warder) . '/Admin/Record', PriorityQueue::LOW);
+			DataMapperResolver::addNamespace(ReflectionHelper::getNamespaceName($this->warder) . '/Admin/DataMapper', PriorityQueue::LOW);
 			FieldDefinitionResolver::addNamespace(ReflectionHelper::getNamespaceName($package) . '/Form');
 		}
 
@@ -94,7 +94,7 @@ class WarderListener
 		$view = $event['view'];
 
 		/**
-		 * @var BladeHtmlView $view
+		 * @var HtmlView $view
 		 * @var BladeRenderer $renderer
 		 */
 		$name = $view->getName();
@@ -111,9 +111,9 @@ class WarderListener
 			$view['warder'] = WarderHelper::getPackage();
 
 			// Paths
-			$renderer->addPath(WARDER_SOURCE . '/Templates/' . $name . '/' . $app->get('language.locale'), Priority::LOW - 25);
-			$renderer->addPath(WARDER_SOURCE . '/Templates/' . $name . '/' . $app->get('language.default'), Priority::LOW - 25);
-			$renderer->addPath(WARDER_SOURCE . '/Templates/' . $name, Priority::LOW - 25);
+			$renderer->addPath(WARDER_SOURCE . '/Templates/' . $name . '/' . $app->get('language.locale'), PriorityQueue::LOW - 25);
+			$renderer->addPath(WARDER_SOURCE . '/Templates/' . $name . '/' . $app->get('language.default'), PriorityQueue::LOW - 25);
+			$renderer->addPath(WARDER_SOURCE . '/Templates/' . $name, PriorityQueue::LOW - 25);
 		}
 		elseif ($this->warder->isAdmin())
 		{
@@ -123,9 +123,9 @@ class WarderListener
 			$view['warder'] = WarderHelper::getPackage();
 
 			// Paths
-			$renderer->addPath(WARDER_SOURCE_ADMIN . '/Templates/' . $name . '/' . $app->get('language.locale'), Priority::LOW - 25);
-			$renderer->addPath(WARDER_SOURCE_ADMIN . '/Templates/' . $name . '/' . $app->get('language.default'), Priority::LOW - 25);
-			$renderer->addPath(WARDER_SOURCE_ADMIN . '/Templates/' . $name, Priority::LOW - 25);
+			$renderer->addPath(WARDER_SOURCE_ADMIN . '/Templates/' . $name . '/' . $app->get('language.locale'), PriorityQueue::LOW - 25);
+			$renderer->addPath(WARDER_SOURCE_ADMIN . '/Templates/' . $name . '/' . $app->get('language.default'), PriorityQueue::LOW - 25);
+			$renderer->addPath(WARDER_SOURCE_ADMIN . '/Templates/' . $name, PriorityQueue::LOW - 25);
 		}
 	}
 }

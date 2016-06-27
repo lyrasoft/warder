@@ -10,7 +10,7 @@ namespace Windwalker\Warder\Controller\User\Forget;
 
 use Phoenix\Controller\AbstractSaveController;
 use Phoenix\Mail\SwiftMailer;
-use Windwalker\Core\Authentication\User;
+use Windwalker\Core\User\User;
 use Windwalker\Core\DateTime\DateTime;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidFailException;
@@ -107,7 +107,7 @@ class RequestSaveController extends AbstractSaveController
 		}
 
 		$token = UserHelper::getToken($user->email);
-		$link  = $this->router->http('forget_confirm', array('token' => $token, 'email' => $email), Router::TYPE_FULL);
+		$link  = $this->router->route('forget_confirm', array('token' => $token, 'email' => $email), Router::TYPE_FULL);
 
 		$password = new Password;
 
@@ -166,7 +166,7 @@ class RequestSaveController extends AbstractSaveController
 	 */
 	protected function getFailRedirect(Data $data = null)
 	{
-		return $this->router->http('forget_request');
+		return $this->router->route('forget_request');
 	}
 
 	/**
@@ -178,7 +178,7 @@ class RequestSaveController extends AbstractSaveController
 	 */
 	protected function getSuccessRedirect(Data $data = null)
 	{
-		return $this->router->http('forget_confirm');
+		return $this->router->route('forget_confirm');
 	}
 
 	/**

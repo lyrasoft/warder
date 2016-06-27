@@ -11,7 +11,7 @@ namespace Windwalker\Warder\Listener;
 use Windwalker\Warder\Authentication\Method\WarderMethod;
 use Windwalker\Warder\Handler\UserHandler;
 use Windwalker\Authentication\Authentication;
-use Windwalker\Core\Authentication\User;
+use Windwalker\Core\User\User;
 use Windwalker\Event\Event;
 use Windwalker\Ioc;
 use Windwalker\Warder\Helper\WarderHelper;
@@ -58,11 +58,11 @@ class UserListener
 		{
 			$container = $this->warder->getContainer();
 
-			$session = $container->get('system.session');
+			$session = $container->get('session');
 
 			$uri = $container->get('uri');
 
-			setcookie(session_name(), $_COOKIE[session_name()], time() + 60 * 60 * 24 * 100, $session->getOption('cookie_path', $uri['base.path']), $session->getOption('cookie_domain'));
+			setcookie(session_name(), $_COOKIE[session_name()], time() + 60 * 60 * 24 * 100, $session->getOption('cookie_path', $uri->path), $session->getOption('cookie_domain'));
 		}
 	}
 
@@ -76,7 +76,7 @@ class UserListener
 	public function onLoadAuthenticationMethods(Event $event)
 	{
 		/** @var Authentication $auth */
-		$auth = $event['authentication'];
+		$auth = $event['auth'];
 
 		$methods = $this->warder->get('methods', array());
 
@@ -105,6 +105,11 @@ class UserListener
 	 */
 	public function onAfterInitialise(Event $event)
 	{
+		if ($this->warder->app->isConsole())
+		{
+			return;
+		}
+
 		$class = $this->warder->get('class.handler', 'Windwalker\Warder\Handler\UserHandler');
 
 		User::setHandler(new $class($this->warder));

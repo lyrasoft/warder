@@ -12,6 +12,7 @@ use Windwalker\Core\Language\Translator;
 use Windwalker\Warder\Admin\Table\Table;
 use Phoenix\Field\ModalField;
 use Windwalker\Warder\Helper\WarderHelper;
+use Windwalker\Warder\Table\WarderTable;
 
 /**
  * The UserModalField class.
@@ -51,9 +52,9 @@ class UserModalField extends ModalField
 	public function buildInput($attrs)
 	{
 		$warder = WarderHelper::getPackage();
-		$this->package = $warder->get('admin.package');
-		$this->table = $warder->get('table.users', 'username');
-		$langPrefix = $warder->get('admin.language.prefix');
+		$this->package = $this->get('package') ? : WarderHelper::getAdminPackage(true);
+		$this->table = $this->get('table') ? : WarderTable::USERS;
+		$langPrefix = $this->get('lang_prefix') ? : $warder->get('admin.language.prefix');
 
 		$this->def('buttonText', '<i class="glyphicon glyphicon-user fa fa-user"></i> ' . Translator::translate($langPrefix . 'user.modal.field.button.select'));
 

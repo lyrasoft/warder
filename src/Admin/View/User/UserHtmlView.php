@@ -30,6 +30,13 @@ class UserHtmlView extends EditView
 	protected $name = 'user';
 
 	/**
+	 * Property renderer.
+	 *
+	 * @var  string
+	 */
+	protected $renderer = RendererHelper::EDGE;
+
+	/**
 	 * Property langPrefix.
 	 *
 	 * @var  string

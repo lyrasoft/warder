@@ -9,7 +9,7 @@
 namespace Windwalker\Warder\Admin\Controller\User;
 
 use Phoenix\Controller\AbstractPhoenixController;
-use Windwalker\Core\Authentication\User;
+use Windwalker\Core\User\User;
 use Windwalker\Warder\Helper\WarderHelper;
 
 /**
@@ -39,7 +39,7 @@ class LogoutSaveController extends AbstractPhoenixController
 			return true;
 		}
 
-		$this->setRedirect($this->router->http(WarderHelper::getPackage()->get('admin.redirect.logout', 'home')));
+		$this->setRedirect($this->router->route(WarderHelper::getPackage()->get('admin.redirect.logout', 'home')));
 
 		return true;
 	}

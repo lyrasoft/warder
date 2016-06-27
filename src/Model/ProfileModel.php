@@ -8,7 +8,7 @@
 
 namespace Windwalker\Warder\Model;
 
-use Windwalker\Core\Authentication\User;
+use Windwalker\Core\User\User;
 use Windwalker\Utilities\ArrayHelper;
 
 /**

@@ -11,6 +11,7 @@ namespace Windwalker\Warder\Admin\View\Users;
 use Phoenix\Script\BootstrapScript;
 use Phoenix\Script\PhoenixScript;
 use Phoenix\View\GridView;
+use Windwalker\Core\Renderer\RendererHelper;
 
 /**
  * The UsersHtmlView class.
@@ -25,6 +26,13 @@ class UsersHtmlView extends GridView
 	 * @var  string
 	 */
 	protected $name = 'users';
+
+	/**
+	 * Property renderer.
+	 *
+	 * @var  string
+	 */
+	protected $renderer = RendererHelper::EDGE;
 
 	/**
 	 * The fields mapper.

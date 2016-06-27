@@ -99,7 +99,7 @@ class LoginSaveController extends AbstractSaveController
 		}
 		else
 		{
-			return $this->router->http(WarderHelper::getPackage()->get('admin.redirect.login', 'home'), $this->getRedirectQuery());
+			return $this->router->route(WarderHelper::getPackage()->get('admin.redirect.login', 'home'), $this->getRedirectQuery());
 		}
 	}
 
@@ -112,6 +112,6 @@ class LoginSaveController extends AbstractSaveController
 	 */
 	protected function getFailRedirect(Data $data = null)
 	{
-		return $this->router->http('login', $this->getRedirectQuery());
+		return $this->router->route('login', $this->getRedirectQuery());
 	}
 }

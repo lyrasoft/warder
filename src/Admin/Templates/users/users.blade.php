@@ -1,6 +1,11 @@
 {{-- Part of phoenix project. --}}
 
 <?php
+/**
+ * @var  $items  \Windwalker\Warder\Admin\Record\Traits\UserDataTrait[]
+ * @var  $item   \Windwalker\Warder\Admin\Record\Traits\UserDataTrait
+ */
+
 \Phoenix\Script\JQueryScript::highlight('.searchable', $state['input.search.content']);
 ?>
 
@@ -31,7 +36,7 @@
         }
     </style>
 <div id="phoenix-admin" class="users-container grid-container">
-    <form name="admin-form" id="admin-form" action="{{ $router->html('users') }}" method="POST" enctype="multipart/form-data">
+    <form name="admin-form" id="admin-form" action="{{ $router->route('users') }}" method="POST" enctype="multipart/form-data">
 
         {{-- FILTER BAR --}}
         <div class="filter-bar">
@@ -116,7 +121,7 @@
                                     <div class="user-avatar user-avatar-default"></div>
                                 @endif
                             @endif
-                            <a href="{{ $router->html('user', array('id' => $item->id)) }}">
+                            <a href="{{ $router->route('user', array('id' => $item->id)) }}">
                                 {{ $item->name }}
                             </a>
                         </td>
@@ -136,7 +141,7 @@
                         {{-- ENABLED --}}
                         <td>
                             {!!
-                            $grid->createIconButton(!$item->blocked)
+                            $grid->createIconButton()
                                 ->addState(
                                     1,
                                     'block',
@@ -149,6 +154,7 @@
                                     'remove fa fa-remove text-danger',
                                     $warderPrefix . 'button.disabled.desc'
                                 )
+                                ->render(!$item->blocked)
                             !!}
                         </td>
 

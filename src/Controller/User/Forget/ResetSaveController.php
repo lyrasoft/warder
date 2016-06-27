@@ -10,7 +10,7 @@ namespace Windwalker\Warder\Controller\User\Forget;
 
 
 use Phoenix\Controller\AbstractSaveController;
-use Windwalker\Core\Authentication\User;
+use Windwalker\Core\User\User;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Crypt\Password;
@@ -137,7 +137,7 @@ class ResetSaveController extends AbstractSaveController
 	 */
 	protected function getFailRedirect(Data $data = null)
 	{
-		return $this->router->http('forget_reset', array('token' => $this->data['token'], 'email' => $this->data['email']));
+		return $this->router->route('forget_reset', array('token' => $this->data['token'], 'email' => $this->data['email']));
 	}
 
 	/**
@@ -149,7 +149,7 @@ class ResetSaveController extends AbstractSaveController
 	 */
 	protected function getSuccessRedirect(Data $data = null)
 	{
-		return $this->router->http('forget_complete');
+		return $this->router->route('forget_complete');
 	}
 
 	/**

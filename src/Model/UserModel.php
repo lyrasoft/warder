@@ -10,7 +10,7 @@ namespace Windwalker\Warder\Model;
 
 use Phoenix\Model\CrudModel;
 use Windwalker\Authentication\Credential;
-use Windwalker\Core\Authentication\User;
+use Windwalker\Core\User\User;
 use Windwalker\Core\DateTime\DateTime;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidFailException;

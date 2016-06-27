@@ -14,6 +14,7 @@ use Windwalker\Event\Event;
 use Windwalker\Record\Record;
 use Windwalker\Warder\Admin\DataMapper\UserMapper;
 use Windwalker\Warder\Admin\DataMapper\UserSocialMapper;
+use Windwalker\Warder\Admin\Record\Traits\Record\Traits\UserDataTrait;
 use Windwalker\Warder\Helper\WarderHelper;
 
 /**
@@ -23,6 +24,8 @@ use Windwalker\Warder\Helper\WarderHelper;
  */
 class UserRecord extends Record
 {
+	use UserDataTrait;
+
 	/**
 	 * Object constructor to set table and key fields.  In most cases this will
 	 * be overridden by child classes to explicitly set the table and key fields
