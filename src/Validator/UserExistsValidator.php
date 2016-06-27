@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Validator;
+namespace Lyrasoft\Warder\Validator;
 
 use Windwalker\Core\User\User;
 use Windwalker\Core\Language\Translator;

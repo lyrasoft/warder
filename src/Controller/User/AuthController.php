@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Controller\User;
+namespace Lyrasoft\Warder\Controller\User;
 
 use Phoenix\Controller\AbstractPhoenixController;
 use Windwalker\Core\Security\CsrfProtection;

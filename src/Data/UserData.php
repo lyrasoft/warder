@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Data;
+namespace Lyrasoft\Warder\Data;
 
 /**
  * The UserData class.

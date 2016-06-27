@@ -36,7 +36,7 @@ return [
 	 * ------------------------------------------------
 	 */
 	'methods' => [
-		'warder' => \Windwalker\Warder\Authentication\Method\WarderMethod::class
+		'warder' => \Lyrasoft\Warder\Authentication\Method\WarderMethod::class
 	],
 	
 	/*
@@ -95,7 +95,7 @@ return [
 	 * ------------------------------------------------
 	 */
 	'class' => [
-		'handler' => \Windwalker\Warder\Handler\UserHandler::class,
-		'data'    => \Windwalker\Warder\Data\UserData::class
+		'handler' => \Lyrasoft\Warder\Handler\UserHandler::class,
+		'data'    => \Lyrasoft\Warder\Data\UserData::class
 	],
 ];

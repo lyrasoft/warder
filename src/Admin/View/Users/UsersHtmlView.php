@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Admin\View\Users;
+namespace Lyrasoft\Warder\Admin\View\Users;
 
 use Phoenix\Script\BootstrapScript;
 use Phoenix\Script\PhoenixScript;

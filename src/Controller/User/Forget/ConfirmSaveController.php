@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Controller\User\Forget;
+namespace Lyrasoft\Warder\Controller\User\Forget;
 
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\User\User;
@@ -15,7 +15,7 @@ use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Crypt\Password;
 use Windwalker\Data\Data;
 use Windwalker\Filter\InputFilter;
-use Windwalker\Warder\Model\UserModel;
+use Lyrasoft\Warder\Model\UserModel;
 
 /**
  * The SaveController class.

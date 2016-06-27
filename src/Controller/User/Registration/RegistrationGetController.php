@@ -6,14 +6,14 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Controller\User\Registration;
+namespace Lyrasoft\Warder\Controller\User\Registration;
 
 use Phoenix\Controller\Display\EditDisplayController;
 use Windwalker\Core\Model\Model;
-use Windwalker\Warder\Helper\UserHelper;
-use Windwalker\Warder\Helper\WarderHelper;
-use Windwalker\Warder\Model\UserModel;
-use Windwalker\Warder\View\User\UserHtmlView;
+use Lyrasoft\Warder\Helper\UserHelper;
+use Lyrasoft\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Model\UserModel;
+use Lyrasoft\Warder\View\User\UserHtmlView;
 
 /**
  * The GetController class.

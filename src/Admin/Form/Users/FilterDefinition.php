@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later;
  */
 
-namespace Windwalker\Warder\Admin\Form\Users;
+namespace Lyrasoft\Warder\Admin\Form\Users;
 
 use Windwalker\Core\Language\Translator;
 use Windwalker\Form\Field\ListField;
@@ -14,7 +14,7 @@ use Windwalker\Form\Field\TextField;
 use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
 use Windwalker\Html\Option;
-use Windwalker\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Helper\WarderHelper;
 
 /**
  * The UsersFilterDefinition class.

@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Controller\User\Registration;
+namespace Lyrasoft\Warder\Controller\User\Registration;
 
 use Phoenix\Controller\AbstractSaveController;
 use Phoenix\Form\FieldDefinitionResolver;
@@ -19,10 +19,10 @@ use Windwalker\Core\View\BladeHtmlView;
 use Windwalker\Core\View\PhpHtmlView;
 use Windwalker\Data\Data;
 use Windwalker\Validator\Rule\EmailValidator;
-use Windwalker\Warder\Form\User\RegistrationDefinition;
-use Windwalker\Warder\Helper\UserHelper;
-use Windwalker\Warder\Helper\WarderHelper;
-use Windwalker\Warder\Model\UserModel;
+use Lyrasoft\Warder\Form\User\RegistrationDefinition;
+use Lyrasoft\Warder\Helper\UserHelper;
+use Lyrasoft\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Model\UserModel;
 
 /**
  * The SaveController class.

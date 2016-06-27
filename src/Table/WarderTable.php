@@ -6,9 +6,9 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Table;
+namespace Lyrasoft\Warder\Table;
 
-use Windwalker\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Helper\WarderHelper;
 
 define('WARDER_TABLE_USERS',           WarderHelper::getTable('users'));
 define('WARDER_TABLE_USER_SOCIALS',    WarderHelper::getTable('user_socials'));

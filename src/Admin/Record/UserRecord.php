@@ -6,16 +6,16 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Admin\Record;
+namespace Lyrasoft\Warder\Admin\Record;
 
 use Windwalker\Core\Language\Translator;
 use Windwalker\Database\Driver\AbstractDatabaseDriver;
 use Windwalker\Event\Event;
 use Windwalker\Record\Record;
-use Windwalker\Warder\Admin\DataMapper\UserMapper;
-use Windwalker\Warder\Admin\DataMapper\UserSocialMapper;
-use Windwalker\Warder\Admin\Record\Traits\Record\Traits\UserDataTrait;
-use Windwalker\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Admin\DataMapper\UserMapper;
+use Lyrasoft\Warder\Admin\DataMapper\UserSocialMapper;
+use Lyrasoft\Warder\Admin\Record\Traits\Record\Traits\UserDataTrait;
+use Lyrasoft\Warder\Helper\WarderHelper;
 
 /**
  * The UserRecord class.

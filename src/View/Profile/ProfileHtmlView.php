@@ -6,11 +6,11 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\View\Profile;
+namespace Lyrasoft\Warder\View\Profile;
 
 use Phoenix\View\EditView;
 use Windwalker\Core\Language\Translator;
-use Windwalker\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Helper\WarderHelper;
 
 /**
  * The ProfileHtmlView class.

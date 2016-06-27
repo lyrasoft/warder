@@ -6,11 +6,11 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Admin\Controller\User;
+namespace Lyrasoft\Warder\Admin\Controller\User;
 
 use Phoenix\Controller\AbstractPhoenixController;
 use Windwalker\Core\User\User;
-use Windwalker\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Helper\WarderHelper;
 
 /**
  * The GetController class.

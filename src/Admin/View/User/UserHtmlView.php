@@ -6,14 +6,14 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Admin\View\User;
+namespace Lyrasoft\Warder\Admin\View\User;
 
 use Phoenix\Script\BootstrapScript;
 use Phoenix\Script\PhoenixScript;
 use Phoenix\View\EditView;
 use Windwalker\Core\Language\Translator;
-use Windwalker\Warder\Admin\Form\User\LoginDefinition;
-use Windwalker\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Admin\Form\User\LoginDefinition;
+use Lyrasoft\Warder\Helper\WarderHelper;
 
 /**
  * The UserHtmlView class.

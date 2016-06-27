@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later;
  */
 
-namespace Windwalker\Warder\Admin\Form\Users;
+namespace Lyrasoft\Warder\Admin\Form\Users;
 
 use Windwalker\Form\Field\ListField;
 use Windwalker\Form\Field\TextField;

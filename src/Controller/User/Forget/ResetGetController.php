@@ -6,15 +6,15 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Controller\User\Forget;
+namespace Lyrasoft\Warder\Controller\User\Forget;
 
 use Phoenix\Controller\Display\ItemDisplayController;
 use Windwalker\Core\User\User;
 use Windwalker\Core\Frontend\Bootstrap;
 use Windwalker\Core\Language\Translator;
-use Windwalker\Warder\Helper\UserHelper;
-use Windwalker\Warder\Model\UserModel;
-use Windwalker\Warder\View\User\UserHtmlView;
+use Lyrasoft\Warder\Helper\UserHelper;
+use Lyrasoft\Warder\Model\UserModel;
+use Lyrasoft\Warder\View\User\UserHtmlView;
 
 /**
  * The GetController class.

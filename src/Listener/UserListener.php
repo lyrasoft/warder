@@ -6,16 +6,16 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Listener;
+namespace Lyrasoft\Warder\Listener;
 
-use Windwalker\Warder\Authentication\Method\WarderMethod;
-use Windwalker\Warder\Handler\UserHandler;
+use Lyrasoft\Warder\Authentication\Method\WarderMethod;
+use Lyrasoft\Warder\Handler\UserHandler;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Core\User\User;
 use Windwalker\Event\Event;
 use Windwalker\Ioc;
-use Windwalker\Warder\Helper\WarderHelper;
-use Windwalker\Warder\WarderPackage;
+use Lyrasoft\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\WarderPackage;
 
 /**
  * The UserListener class.
@@ -110,7 +110,7 @@ class UserListener
 			return;
 		}
 
-		$class = $this->warder->get('class.handler', 'Windwalker\Warder\Handler\UserHandler');
+		$class = $this->warder->get('class.handler', 'Lyrasoft\Warder\Handler\UserHandler');
 
 		User::setHandler(new $class($this->warder));
 	}

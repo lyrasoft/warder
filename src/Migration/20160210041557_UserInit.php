@@ -11,7 +11,7 @@ use Windwalker\Database\Schema\Column;
 use Windwalker\Database\Schema\DataType;
 use Windwalker\Database\Schema\Key;
 use Windwalker\Database\Schema\Schema;
-use Windwalker\Warder\Table\WarderTable;
+use Lyrasoft\Warder\Table\WarderTable;
 
 /**
  * Migration class, version: 20160210041557

@@ -6,16 +6,16 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Controller\User\Registration;
+namespace Lyrasoft\Warder\Controller\User\Registration;
 
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\User\User;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Data\Data;
-use Windwalker\Warder\Helper\UserHelper;
-use Windwalker\Warder\Helper\WarderHelper;
-use Windwalker\Warder\Model\UserModel;
+use Lyrasoft\Warder\Helper\UserHelper;
+use Lyrasoft\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Model\UserModel;
 
 /**
  * The SaveController class.

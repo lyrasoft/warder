@@ -7,6 +7,6 @@
  */
 
 /**
- * @var $warder \Windwalker\Warder\WarderPackage
+ * @var $warder \Lyrasoft\Warder\WarderPackage
  */
 $warder = null;

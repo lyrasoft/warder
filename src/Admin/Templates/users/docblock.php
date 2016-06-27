@@ -7,8 +7,8 @@
  */
 
 /**
- * @var  $items  \Windwalker\Warder\Admin\Record\Traits\UserDataTrait[]
- * @var  $item   \Windwalker\Warder\Admin\Record\Traits\UserDataTrait
+ * @var  $items  \Lyrasoft\Warder\Admin\Record\Traits\UserDataTrait[]
+ * @var  $item   \Lyrasoft\Warder\Admin\Record\Traits\UserDataTrait
  */
 
 $items = null;

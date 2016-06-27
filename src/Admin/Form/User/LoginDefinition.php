@@ -6,14 +6,14 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Admin\Form\User;
+namespace Lyrasoft\Warder\Admin\Form\User;
 
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
-use Windwalker\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Helper\WarderHelper;
 
 /**
  * The LoginDefinition class.

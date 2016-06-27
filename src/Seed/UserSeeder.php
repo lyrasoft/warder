@@ -12,9 +12,9 @@ use Windwalker\Core\Seeder\AbstractSeeder;
 use Windwalker\Crypt\Password;
 use Windwalker\Data\Data;
 use Windwalker\DataMapper\DataMapper;
-use Windwalker\Warder\Admin\DataMapper\UserMapper;
-use Windwalker\Warder\Helper\UserHelper;
-use Windwalker\Warder\Table\WarderTable;
+use Lyrasoft\Warder\Admin\DataMapper\UserMapper;
+use Lyrasoft\Warder\Helper\UserHelper;
+use Lyrasoft\Warder\Table\WarderTable;
 
 /**
  * The UserSeeder class.

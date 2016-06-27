@@ -1,7 +1,7 @@
 {
-    "name": "windwalker/warder",
+    "name": "lyrasoft/warder",
     "description": "A use package for Windwalker.",
-    "homepage": "https://github.com/ventoviro/windwlaker-warder",
+    "homepage": "https://github.com/lyrasoft/warder",
     "license": "LGPL-2.0+",
     "minimum-stability": "beta",
     "require": {
@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Windwalker\\Warder\\": "src/"
+            "Lyrasoft\\Warder\\": "src/"
         }
     },
     "extra": {

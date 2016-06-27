@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Admin\Controller\Users;
+namespace Lyrasoft\Warder\Admin\Controller\Users;
 
 use Phoenix\Controller\Batch\AbstractDeleteController;
 

@@ -6,13 +6,13 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Admin\Field\User;
+namespace Lyrasoft\Warder\Admin\Field\User;
 
 use Windwalker\Core\Language\Translator;
-use Windwalker\Warder\Admin\Table\Table;
+use Lyrasoft\Warder\Admin\Table\Table;
 use Phoenix\Field\ModalField;
-use Windwalker\Warder\Helper\WarderHelper;
-use Windwalker\Warder\Table\WarderTable;
+use Lyrasoft\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Table\WarderTable;
 
 /**
  * The UserModalField class.

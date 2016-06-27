@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later;
  */
 
-namespace Windwalker\Warder\Admin\Controller\Users\Batch;
+namespace Lyrasoft\Warder\Admin\Controller\Users\Batch;
 
 use Phoenix\Controller\Batch\AbstractBatchController;
 use Windwalker\Data\Data;

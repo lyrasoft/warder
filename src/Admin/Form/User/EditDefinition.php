@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Admin\Form\User;
+namespace Lyrasoft\Warder\Admin\Form\User;
 
 use Lyrasoft\Luna\Field\Image\SingleImageDragField;
 use Phoenix\Field\CalendarField;
@@ -15,9 +15,9 @@ use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
 use Windwalker\Html\Option;
-use Windwalker\Warder\Admin\Field\User\UserModalField;
-use Windwalker\Warder\Helper\AvatarUploadHelper;
-use Windwalker\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Admin\Field\User\UserModalField;
+use Lyrasoft\Warder\Helper\AvatarUploadHelper;
+use Lyrasoft\Warder\Helper\WarderHelper;
 
 /**
  * The UserEditDefinition class.

@@ -6,15 +6,15 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Form\Profile;
+namespace Lyrasoft\Warder\Form\Profile;
 
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
-use Windwalker\Warder\Helper\WarderHelper;
-use Windwalker\Warder\Validator\UserExistsValidator;
+use Lyrasoft\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Validator\UserExistsValidator;
 
 /**
  * The EditDefinition class.

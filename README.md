@@ -18,7 +18,7 @@ Register warder to Windwalker, you can prepare an `admin` and `front` package to
 // src/Windwalker/Windwalker.php
 
 use Phoenix\PhoenixPackage;
-use Windwalker\Warder\WarderPackage;
+use Lyrasoft\Warder\WarderPackage;
 
 // ...
 
@@ -68,8 +68,8 @@ table:
     actions: actions
 
 methods:
-    warder: \Windwalker\Warder\Authentication\Method\WarderMethod
-    # social: \Windwalker\Warder\Authentication\Method\SocialMethod
+    warder: \Lyrasoft\Warder\Authentication\Method\WarderMethod
+    # social: \Lyrasoft\Warder\Authentication\Method\SocialMethod
 
 frontend:
     package: front
@@ -97,8 +97,8 @@ admin:
         prefix: warder.
 
 class:
-    handler: Windwalker\Warder\Handler\UserHandler
-    data: Windwalker\Warder\Data\UserData
+    handler: Lyrasoft\Warder\Handler\UserHandler
+    data: Lyrasoft\Warder\Data\UserData
 ```
 
 If your package not named `admin` and `front`, set the package alias in this config.
@@ -110,7 +110,7 @@ Add Warder's routing config and namespace aliases to your package that your pack
 ``` php
 // src/Front/FrontPackage.php
 
-use Windwalker\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Helper\WarderHelper;
 
 // ...
 
@@ -165,7 +165,7 @@ will load priority than `Windwalker/Warder/Controller/User/LoginGetController.ph
 
 namespace Front\Controller\User;
 
-class LoginGetController extends \Windwalker\Warder\Controller\User\LoginGetController
+class LoginGetController extends \Lyrasoft\Warder\Controller\User\LoginGetController
 {
 	protected function prepareUserState(Model $model)
 	{
@@ -280,12 +280,12 @@ Change `class.data` in config file that you can add some new methods:
 # ...
 
 class:
-    handler: Windwalker\Warder\Handler\UserHandler
+    handler: Lyrasoft\Warder\Handler\UserHandler
     data: MyUserData
 ```
 
 ``` php
-class MyUserData extends \Windwalker\Warder\Data\UserData
+class MyUserData extends \Lyrasoft\Warder\Data\UserData
 {
     const CUSTOMER = 0;
     const FREELANCER = 1;

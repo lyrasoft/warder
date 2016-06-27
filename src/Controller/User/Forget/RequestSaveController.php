@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Controller\User\Forget;
+namespace Lyrasoft\Warder\Controller\User\Forget;
 
 use Phoenix\Controller\AbstractSaveController;
 use Phoenix\Mail\SwiftMailer;
@@ -18,9 +18,9 @@ use Windwalker\Core\Router\Router;
 use Windwalker\Core\View\PhpHtmlView;
 use Windwalker\Crypt\Password;
 use Windwalker\Data\Data;
-use Windwalker\Warder\Data\UserData;
-use Windwalker\Warder\Helper\UserHelper;
-use Windwalker\Warder\Model\UserModel;
+use Lyrasoft\Warder\Data\UserData;
+use Lyrasoft\Warder\Helper\UserHelper;
+use Lyrasoft\Warder\Model\UserModel;
 
 /**
  * The SaveController class.

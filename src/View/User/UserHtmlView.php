@@ -6,18 +6,18 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\View\User;
+namespace Lyrasoft\Warder\View\User;
 
 use Phoenix\View\AbstractPhoenixHtmView;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Data\Data;
-use Windwalker\Warder\Form\User\ForgetConfirmDefinition;
-use Windwalker\Warder\Form\User\ForgetRequestDefinition;
-use Windwalker\Warder\Form\User\LoginDefinition;
-use Windwalker\Warder\Form\User\RegistrationDefinition;
-use Windwalker\Warder\Form\User\ResetDefinition;
+use Lyrasoft\Warder\Form\User\ForgetConfirmDefinition;
+use Lyrasoft\Warder\Form\User\ForgetRequestDefinition;
+use Lyrasoft\Warder\Form\User\LoginDefinition;
+use Lyrasoft\Warder\Form\User\RegistrationDefinition;
+use Lyrasoft\Warder\Form\User\ResetDefinition;
 use Windwalker\String\StringNormalise;
-use Windwalker\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Helper\WarderHelper;
 
 /**
  * The UserHtmlView class.

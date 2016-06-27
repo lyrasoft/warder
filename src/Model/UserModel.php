@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Model;
+namespace Lyrasoft\Warder\Model;
 
 use Phoenix\Model\CrudModel;
 use Windwalker\Authentication\Credential;
@@ -15,14 +15,14 @@ use Windwalker\Core\DateTime\DateTime;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Data\Data;
-use Windwalker\Warder\Helper\UserHelper;
+use Lyrasoft\Warder\Helper\UserHelper;
 
 /**
  * The LoginModel class.
  *
  * @since  {DEPLOY_VERSION}
  */
-class UserModel extends \Windwalker\Warder\Admin\Model\UserModel
+class UserModel extends \Lyrasoft\Warder\Admin\Model\UserModel
 {
 	/**
 	 * register

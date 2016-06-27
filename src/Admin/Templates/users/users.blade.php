@@ -2,8 +2,8 @@
 
 <?php
 /**
- * @var  $items  \Windwalker\Warder\Admin\Record\Traits\UserDataTrait[]
- * @var  $item   \Windwalker\Warder\Admin\Record\Traits\UserDataTrait
+ * @var  $items  \Lyrasoft\Warder\Admin\Record\Traits\UserDataTrait[]
+ * @var  $item   \Lyrasoft\Warder\Admin\Record\Traits\UserDataTrait
  */
 
 \Phoenix\Script\JQueryScript::highlight('.searchable', $state['input.search.content']);
@@ -25,7 +25,7 @@
             margin-right: 10px;
         }
         .user-avatar-default {
-            background-image: url('{{ \Windwalker\Warder\Helper\AvatarUploadHelper::getDefaultImage() }}');
+            background-image: url('{{ \Lyrasoft\Warder\Helper\AvatarUploadHelper::getDefaultImage() }}');
             background-size: cover;
             display: inline-block;
             vertical-align: middle;

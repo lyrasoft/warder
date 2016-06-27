@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Helper;
+namespace Lyrasoft\Warder\Helper;
 
 use Phoenix\Uri\Uri;
 use Windwalker\Core\User\User;

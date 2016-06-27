@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Authentication\Method;
+namespace Lyrasoft\Warder\Authentication\Method;
 
 use Windwalker\Authentication\Authentication;
 use Windwalker\Authentication\Credential;
@@ -15,10 +15,10 @@ use Windwalker\Core\User\User;
 use Windwalker\Core\Router\Router;
 use Windwalker\Core\Security\CsrfProtection;
 use Windwalker\Data\Data;
-use Windwalker\Warder\Admin\DataMapper\UserSocialMapper;
-use Windwalker\Warder\Data\UserData;
-use Windwalker\Warder\Model\UserModel;
-use Windwalker\Warder\WarderPackage;
+use Lyrasoft\Warder\Admin\DataMapper\UserSocialMapper;
+use Lyrasoft\Warder\Data\UserData;
+use Lyrasoft\Warder\Model\UserModel;
+use Lyrasoft\Warder\WarderPackage;
 
 /**
  * The SocialMethod class.

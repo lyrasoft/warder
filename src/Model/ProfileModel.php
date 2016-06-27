@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Model;
+namespace Lyrasoft\Warder\Model;
 
 use Windwalker\Core\User\User;
 use Windwalker\Utilities\ArrayHelper;

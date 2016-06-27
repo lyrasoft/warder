@@ -6,12 +6,12 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Helper;
+namespace Lyrasoft\Warder\Helper;
 
 use Symfony\Component\Yaml\Yaml;
 use Windwalker\Core\Package\PackageHelper;
-use Windwalker\Warder\Data\UserData;
-use Windwalker\Warder\WarderPackage;
+use Lyrasoft\Warder\Data\UserData;
+use Lyrasoft\Warder\WarderPackage;
 
 /**
  * The SentryHelper class.

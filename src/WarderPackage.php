@@ -6,13 +6,13 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder;
+namespace Lyrasoft\Warder;
 
 use Phoenix\Language\TranslatorHelper;
-use Windwalker\Warder\Data\UserData;
-use Windwalker\Warder\Helper\WarderHelper;
-use Windwalker\Warder\Listener\WarderListener;
-use Windwalker\Warder\Listener\UserListener;
+use Lyrasoft\Warder\Data\UserData;
+use Lyrasoft\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Listener\WarderListener;
+use Lyrasoft\Warder\Listener\UserListener;
 use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Event\Dispatcher;
 
@@ -110,7 +110,7 @@ class WarderPackage extends AbstractPackage
 	 */
 	public function createUserData($data = array())
 	{
-		$class = $this->get('class.data', 'Windwalker\Warder\Data\UserData');
+		$class = $this->get('class.data', 'Lyrasoft\Warder\Data\UserData');
 
 		return new $class($data);
 	}

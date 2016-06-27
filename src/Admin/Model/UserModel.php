@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Admin\Model;
+namespace Lyrasoft\Warder\Admin\Model;
 
 use Phoenix\Model\AdminModel;
 use Windwalker\Authentication\Credential;
@@ -17,8 +17,8 @@ use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Crypt\Password;
 use Windwalker\Data\Data;
 use Windwalker\Record\Record;
-use Windwalker\Warder\Helper\UserHelper;
-use Windwalker\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Helper\UserHelper;
+use Lyrasoft\Warder\Helper\WarderHelper;
 
 /**
  * The UserModel class.

@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Admin\Controller\User;
+namespace Lyrasoft\Warder\Admin\Controller\User;
 
 use Lyrasoft\Luna\Field\Image\SingleImageDragField;
 use Phoenix\Controller\AbstractSaveController;
@@ -15,8 +15,8 @@ use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Crypt\Password;
 use Windwalker\Data\Data;
-use Windwalker\Warder\Helper\AvatarUploadHelper;
-use Windwalker\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Helper\AvatarUploadHelper;
+use Lyrasoft\Warder\Helper\WarderHelper;
 
 /**
  * The SaveController class.

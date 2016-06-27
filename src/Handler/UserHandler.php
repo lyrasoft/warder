@@ -6,19 +6,19 @@
  * @license    GNU Lesser General Public License version 3 or later.
  */
 
-namespace Windwalker\Warder\Handler;
+namespace Lyrasoft\Warder\Handler;
 
 use Windwalker\Core\Language\Translator;
 use Windwalker\Record\Exception\NoResultException;
 use Windwalker\Record\Record;
-use Windwalker\Warder\Admin\Record\UserRecord;
-use Windwalker\Warder\Data\UserData;
+use Lyrasoft\Warder\Admin\Record\UserRecord;
+use Lyrasoft\Warder\Data\UserData;
 use Windwalker\Core\User\UserDataInterface;
 use Windwalker\Core\User\UserHandlerInterface;
 use Windwalker\Core\Ioc;
 use Windwalker\Data\Data;
 use Windwalker\DataMapper\DataMapper;
-use Windwalker\Warder\WarderPackage;
+use Lyrasoft\Warder\WarderPackage;
 
 /**
  * The UserHandler class.
@@ -80,7 +80,7 @@ class UserHandler implements UserHandlerInterface
 			}
 		}
 
-		$class = $this->warder->get('class.data', '\Windwalker\Warder\Data\UserData');
+		$class = $this->warder->get('class.data', '\Lyrasoft\Warder\Data\UserData');
 		$user = new $class((array) $user);
 
 		return $user;

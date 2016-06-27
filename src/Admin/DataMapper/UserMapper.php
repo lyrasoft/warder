@@ -6,10 +6,10 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Admin\DataMapper;
+namespace Lyrasoft\Warder\Admin\DataMapper;
 
 use Windwalker\Core\DataMapper\AbstractDataMapperProxy;
-use Windwalker\Warder\Table\WarderTable;
+use Lyrasoft\Warder\Table\WarderTable;
 
 /**
  * The UserMapper class.

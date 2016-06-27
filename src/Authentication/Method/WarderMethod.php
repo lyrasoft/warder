@@ -6,15 +6,15 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Windwalker\Warder\Authentication\Method;
+namespace Lyrasoft\Warder\Authentication\Method;
 
-use Windwalker\Warder\Data\UserData;
-use Windwalker\Warder\Helper\UserHelper;
+use Lyrasoft\Warder\Data\UserData;
+use Lyrasoft\Warder\Helper\UserHelper;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Authentication\Credential;
 use Windwalker\Authentication\Method\AbstractMethod;
 use Windwalker\Core\User\User;
-use Windwalker\Warder\WarderPackage;
+use Lyrasoft\Warder\WarderPackage;
 
 /**
  * The Eng4TwMethod class.
