@@ -8,13 +8,14 @@
 
 namespace Lyrasoft\Warder\Admin\Record;
 
+use Lyrasoft\Warder\Admin\Record\Traits\UserDataTrait;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Database\Driver\AbstractDatabaseDriver;
+use Windwalker\DataMapper\AbstractDataMapper;
 use Windwalker\Event\Event;
 use Windwalker\Record\Record;
 use Lyrasoft\Warder\Admin\DataMapper\UserMapper;
 use Lyrasoft\Warder\Admin\DataMapper\UserSocialMapper;
-use Lyrasoft\Warder\Admin\Record\Traits\Record\Traits\UserDataTrait;
 use Lyrasoft\Warder\Helper\WarderHelper;
 
 /**
@@ -31,18 +32,18 @@ class UserRecord extends Record
 	 * be overridden by child classes to explicitly set the table and key fields
 	 * for a particular database table.
 	 *
-	 * @param   string                 $table Name of the table to model.
-	 * @param   mixed                  $keys  Name of the primary key field in the table or array of field names that
-	 *                                        compose the primary key.
-	 * @param   AbstractDatabaseDriver $db    DatabaseDriver object.
+	 * @param   string             $table   Name of the table to model.
+	 * @param   mixed              $keys    Name of the primary key field in the table or array of field names that
+	 *                                      compose the primary key.
+	 * @param   AbstractDataMapper $mapper  The DataMapper Adapter to access database.
 	 *
 	 * @since   2.0
 	 */
-	public function __construct($table = null, $keys = 'id', AbstractDatabaseDriver $db = null)
+	public function __construct($table = null, $keys = 'id', AbstractDataMapper $mapper = null)
 	{
 		$table = WarderHelper::getPackage()->get('table.users', 'users');
 
-		parent::__construct($table, $keys, $db);
+		parent::__construct($table, $keys, $mapper);
 	}
 
 	/**

@@ -14,6 +14,7 @@ use Phoenix\View\EditView;
 use Windwalker\Core\Language\Translator;
 use Lyrasoft\Warder\Admin\Form\User\LoginDefinition;
 use Lyrasoft\Warder\Helper\WarderHelper;
+use Windwalker\Core\Renderer\RendererHelper;
 
 /**
  * The UserHtmlView class.

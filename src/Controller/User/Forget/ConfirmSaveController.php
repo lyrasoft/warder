@@ -11,7 +11,7 @@ namespace Lyrasoft\Warder\Controller\User\Forget;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\User\User;
 use Windwalker\Core\Language\Translator;
-use Windwalker\Core\Model\Exception\ValidFailException;
+use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Crypt\Password;
 use Windwalker\Data\Data;
 use Windwalker\Filter\InputFilter;
@@ -91,7 +91,7 @@ class ConfirmSaveController extends AbstractSaveController
 	 *
 	 * @return  bool
 	 *
-	 * @throws ValidFailException
+	 * @throws ValidateFailException
 	 */
 	protected function doSave(Data $data)
 	{
@@ -99,7 +99,7 @@ class ConfirmSaveController extends AbstractSaveController
 
 		if ($user->isNull())
 		{
-			throw new ValidFailException(Translator::translate($this->langPrefix . 'user.not.found'));
+			throw new ValidateFailException(Translator::translate($this->langPrefix . 'user.not.found'));
 		}
 
 		// Check token
@@ -107,7 +107,7 @@ class ConfirmSaveController extends AbstractSaveController
 
 		if (!$password->verify($this->data['token'], $user->reset_token))
 		{
-			throw new ValidFailException('Invalid Token');
+			throw new ValidateFailException('Invalid Token');
 		}
 
 		return true;

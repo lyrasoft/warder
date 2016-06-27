@@ -13,7 +13,7 @@ use Phoenix\Mail\SwiftMailer;
 use Windwalker\Core\User\User;
 use Windwalker\Core\DateTime\DateTime;
 use Windwalker\Core\Language\Translator;
-use Windwalker\Core\Model\Exception\ValidFailException;
+use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Core\Router\Router;
 use Windwalker\Core\View\PhpHtmlView;
 use Windwalker\Crypt\Password;
@@ -85,7 +85,7 @@ class RequestSaveController extends AbstractSaveController
 	 *
 	 * @return  bool
 	 *
-	 * @throws ValidFailException
+	 * @throws ValidateFailException
 	 * @throws \Exception
 	 */
 	protected function doSave(Data $data)
@@ -94,7 +94,7 @@ class RequestSaveController extends AbstractSaveController
 
 		if (!$email)
 		{
-			throw new ValidFailException(Translator::translate($this->langPrefix . 'message.user.not.found'));
+			throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.user.not.found'));
 		}
 
 		$view = $this->getView();
@@ -103,7 +103,7 @@ class RequestSaveController extends AbstractSaveController
 
 		if ($user->isNull())
 		{
-			throw new ValidFailException(Translator::translate($this->langPrefix . 'message.user.not.found'));
+			throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.user.not.found'));
 		}
 
 		$token = UserHelper::getToken($user->email);

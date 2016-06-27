@@ -13,7 +13,7 @@ use Windwalker\Authentication\Credential;
 use Windwalker\Core\User\User;
 use Windwalker\Core\DateTime\DateTime;
 use Windwalker\Core\Language\Translator;
-use Windwalker\Core\Model\Exception\ValidFailException;
+use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Data\Data;
 use Lyrasoft\Warder\Helper\UserHelper;
 

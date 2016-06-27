@@ -12,7 +12,7 @@ namespace Lyrasoft\Warder\Controller\User\Forget;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\User\User;
 use Windwalker\Core\Language\Translator;
-use Windwalker\Core\Model\Exception\ValidFailException;
+use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Crypt\Password;
 use Windwalker\Data\Data;
 use Lyrasoft\Warder\Model\UserModel;
@@ -93,32 +93,32 @@ class ResetSaveController extends AbstractSaveController
 	 *
 	 * @return  bool
 	 *
-	 * @throws ValidFailException
+	 * @throws ValidateFailException
 	 */
 	protected function doSave(Data $data)
 	{
 		if (!trim($this->data['password']))
 		{
-			throw new ValidFailException(Translator::translate($this->langPrefix . 'message.password.not.entered'));
+			throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.password.not.entered'));
 		}
 
 		if ($this->data['password'] != $this->data['password2'])
 		{
-			throw new ValidFailException(Translator::translate($this->langPrefix . 'message.password.not.match'));
+			throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.password.not.match'));
 		}
 
 		$user = User::get(array('email' => $this->data['email']));
 
 		if ($user->isNull())
 		{
-			throw new ValidFailException(Translator::translate($this->langPrefix . 'message.user.not.found'));
+			throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.user.not.found'));
 		}
 
 		$passwordObject = new Password;
 
 		if (!$passwordObject->verify($this->data['token'], $user->reset_token))
 		{
-			throw new ValidFailException(Translator::translate($this->langPrefix . 'message.invalid.token'));
+			throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.invalid.token'));
 		}
 
 		$user->password    = $passwordObject->create($this->data['password']);

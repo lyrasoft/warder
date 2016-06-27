@@ -70,7 +70,7 @@ class WarderMethod extends AbstractMethod
 
 		if (!UserHelper::verifyPassword($credential->password, $user->password))
 		{
-			$this->status = Authentication::INVALID_CREDENTIAL;
+			$this->status = Authentication::INVALID_PASSWORD;
 
 			return false;
 		}

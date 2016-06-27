@@ -12,7 +12,7 @@ use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\User\User;
 use Windwalker\Core\User\UserData;
 use Windwalker\Core\Language\Translator;
-use Windwalker\Core\Model\Exception\ValidFailException;
+use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Data\Data;
 use Windwalker\Record\Record;
 use Windwalker\Validator\Rule\EmailValidator;
@@ -141,7 +141,7 @@ class SaveController extends AbstractSaveController
 	 *
 	 * @return  void
 	 *
-	 * @throws ValidFailException
+	 * @throws ValidateFailException
 	 */
 	protected function validate(Data $data)
 	{
@@ -149,7 +149,7 @@ class SaveController extends AbstractSaveController
 
 		if (!$validator->validate($data->email))
 		{
-			throw new ValidFailException(Translator::translate($this->langPrefix . 'message.email.invalid'));
+			throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.email.invalid'));
 		}
 
 		parent::validate($data);
@@ -162,7 +162,7 @@ class SaveController extends AbstractSaveController
 
 			if ($user->notNull() && $user->id != $data->id)
 			{
-				throw new ValidFailException(Translator::translate($this->langPrefix . 'message.user.account.exists'));
+				throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.user.account.exists'));
 			}
 		}
 
@@ -170,14 +170,14 @@ class SaveController extends AbstractSaveController
 
 		if ($user->notNull() && $user->id != $data->id)
 		{
-			throw new ValidFailException(Translator::translate($this->langPrefix . 'message.user.email.exists'));
+			throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.user.email.exists'));
 		}
 
 		if ('' !== (string) $data->password)
 		{
 			if ($data->password != $data->password2)
 			{
-				throw new ValidFailException(Translator::translate($this->langPrefix . 'message.password.not.match'));
+				throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.password.not.match'));
 			}
 
 			unset($data->password2);

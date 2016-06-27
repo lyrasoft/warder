@@ -72,7 +72,7 @@ class UserHandler implements UserHandlerInterface
 			{
 				$user->load($conditions);
 
-				$user = $user->toArray();
+				$user = $user->dump(true);
 			}
 			catch (NoResultException $e)
 			{
@@ -139,7 +139,9 @@ class UserHandler implements UserHandlerInterface
 	{
 		$session = Ioc::getSession();
 
-		$session->set($this->warder->get('user.session_name', 'user'),$user->dump());
+		unset($user->password);
+
+		$session->set($this->warder->get('user.session_name', 'user'), $user->dump(true));
 
 		return true;
 	}
@@ -151,7 +153,7 @@ class UserHandler implements UserHandlerInterface
 	 *
 	 * @return bool
 	 */
-	public function logout(UserDataInterface $user)
+	public function logout(UserDataInterface $user = null)
 	{
 		$session = Ioc::getSession();
 

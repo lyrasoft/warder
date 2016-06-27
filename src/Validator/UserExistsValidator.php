@@ -10,7 +10,7 @@ namespace Lyrasoft\Warder\Validator;
 
 use Windwalker\Core\User\User;
 use Windwalker\Core\Language\Translator;
-use Windwalker\Core\Model\Exception\ValidFailException;
+use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Validator\AbstractValidator;
 
 /**
@@ -52,7 +52,7 @@ class UserExistsValidator extends AbstractValidator
 	 * @param mixed $value
 	 *
 	 * @return bool
-	 * @throws ValidFailException
+	 * @throws ValidateFailException
 	 */
 	protected function test($value)
 	{
@@ -60,7 +60,7 @@ class UserExistsValidator extends AbstractValidator
 
 		if ($user->notNull())
 		{
-			throw new ValidFailException(Translator::sprintf('warder.user.save.message.exists', $this->field, $value));
+			throw new ValidateFailException(Translator::sprintf('warder.user.save.message.exists', $this->field, $value));
 		}
 
 		return true;

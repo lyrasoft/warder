@@ -9,11 +9,12 @@
 namespace Lyrasoft\Warder\Admin\Model;
 
 use Phoenix\Model\AdminModel;
+use Windwalker\Authentication\Authentication;
 use Windwalker\Authentication\Credential;
 use Windwalker\Core\User\User;
 use Windwalker\Core\DateTime\DateTime;
 use Windwalker\Core\Language\Translator;
-use Windwalker\Core\Model\Exception\ValidFailException;
+use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Crypt\Password;
 use Windwalker\Data\Data;
 use Windwalker\Record\Record;
@@ -80,7 +81,7 @@ class UserModel extends AdminModel
 	 * @param array  $options
 	 *
 	 * @return bool
-	 * @throws ValidFailException
+	 * @throws ValidateFailException
 	 */
 	public function login($account, $password, $remember = false, $options = array())
 	{
@@ -99,7 +100,37 @@ class UserModel extends AdminModel
 
 		if (!$result)
 		{
-			throw new ValidFailException(Translator::translate('warder.login.message.fail'));
+			$status = array_values(User::getAuthResults())[0];
+
+			$langPrefix = WarderHelper::getPackage()->get('admin.language.prefix', 'warder.');
+
+			switch ($status)
+			{
+				case Authentication::USER_NOT_FOUND:
+					$message = Translator::translate($langPrefix . 'login.message.user.not.found');
+					break;
+
+				case Authentication::EMPTY_CREDENTIAL:
+					$message = Translator::translate($langPrefix . 'login.message.empty.credential');
+					break;
+
+				case Authentication::INVALID_CREDENTIAL:
+					$message = Translator::translate($langPrefix . 'login.message.invalid.credential');
+					break;
+
+				case Authentication::INVALID_PASSWORD:
+					$message = Translator::translate($langPrefix . 'login.message.invalid.password');
+					break;
+
+				case Authentication::INVALID_USERNAME:
+					$message = Translator::translate($langPrefix . 'login.message.invalid.username');
+					break;
+
+				default:
+					$message = Translator::translate($langPrefix . 'login.message.fail');
+			}
+			
+			throw new ValidateFailException($message);
 		}
 
 		return $result;
@@ -111,7 +142,7 @@ class UserModel extends AdminModel
 	 * @param Data $user
 	 *
 	 * @return bool
-	 * @throws ValidFailException
+	 * @throws ValidateFailException
 	 */
 	public function save(Data $user)
 	{
@@ -136,9 +167,9 @@ class UserModel extends AdminModel
 	 *
 	 * @return array
 	 */
-	public function getDefaultData()
+	public function getFormDefaultData()
 	{
-		$item = parent::getDefaultData();
+		$item = parent::getFormDefaultData();
 
 		unset($item['password']);
 		unset($item['password2']);

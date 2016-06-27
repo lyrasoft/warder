@@ -12,7 +12,7 @@ use Phoenix\Controller\AbstractSaveController;
 use Phoenix\Form\FieldDefinitionResolver;
 use Phoenix\Mail\SwiftMailer;
 use Windwalker\Core\Language\Translator;
-use Windwalker\Core\Model\Exception\ValidFailException;
+use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Core\Router\Router;
 use Windwalker\Core\View\AbstractView;
 use Windwalker\Core\View\BladeHtmlView;
@@ -196,7 +196,7 @@ class RegistrationSaveController extends AbstractSaveController
 	 *
 	 * @return  void
 	 *
-	 * @throws ValidFailException
+	 * @throws ValidateFailException
 	 */
 	protected function validate(Data $data)
 	{
@@ -204,7 +204,7 @@ class RegistrationSaveController extends AbstractSaveController
 
 		if (!$validator->validate($data->email))
 		{
-			throw new ValidFailException(Translator::translate($this->langPrefix . 'message.email.invalid'));
+			throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.email.invalid'));
 		}
 
 		$form = $this->model->getForm('registration', 'user');
@@ -213,12 +213,12 @@ class RegistrationSaveController extends AbstractSaveController
 
 		if (!$data->password)
 		{
-			throw new ValidFailException(Translator::translate($this->langPrefix . 'message.password.not.entered'));
+			throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.password.not.entered'));
 		}
 
 		if ($data->password != $data->password2)
 		{
-			throw new ValidFailException(Translator::translate($this->langPrefix . 'message.password.not.match'));
+			throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.password.not.match'));
 		}
 
 		unset($data->password2);

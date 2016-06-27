@@ -11,11 +11,6 @@ namespace Lyrasoft\Warder\View\User;
 use Phoenix\View\AbstractPhoenixHtmView;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Data\Data;
-use Lyrasoft\Warder\Form\User\ForgetConfirmDefinition;
-use Lyrasoft\Warder\Form\User\ForgetRequestDefinition;
-use Lyrasoft\Warder\Form\User\LoginDefinition;
-use Lyrasoft\Warder\Form\User\RegistrationDefinition;
-use Lyrasoft\Warder\Form\User\ResetDefinition;
 use Windwalker\String\StringNormalise;
 use Lyrasoft\Warder\Helper\WarderHelper;
 

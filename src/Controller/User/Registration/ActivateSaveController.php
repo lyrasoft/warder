@@ -11,7 +11,7 @@ namespace Lyrasoft\Warder\Controller\User\Registration;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\User\User;
 use Windwalker\Core\Language\Translator;
-use Windwalker\Core\Model\Exception\ValidFailException;
+use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Data\Data;
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
@@ -95,7 +95,7 @@ class ActivateSaveController extends AbstractSaveController
 	 *
 	 * @return bool
 	 *
-	 * @throws ValidFailException
+	 * @throws ValidateFailException
 	 */
 	protected function doSave(Data $data)
 	{
@@ -103,7 +103,7 @@ class ActivateSaveController extends AbstractSaveController
 
 		if (!UserHelper::verifyPassword($this->data['token'], $user->activation))
 		{
-			throw new ValidFailException(Translator::translate($this->langPrefix . 'message.activate.fail'));
+			throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.activate.fail'));
 		}
 
 		$user->activation = '';

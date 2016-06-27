@@ -42,7 +42,7 @@ class ProfileModel extends UserModel
 	 *
 	 * @return array
 	 */
-	public function getDefaultData()
+	public function getFormDefaultData()
 	{
 		$sessionData = (array) $this['form.data'];
 
