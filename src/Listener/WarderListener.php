@@ -8,9 +8,9 @@
 
 namespace Lyrasoft\Warder\Listener;
 
-use Phoenix\DataMapper\DataMapperResolver;
-use Phoenix\Form\FieldDefinitionResolver;
-use Phoenix\Record\RecordResolver;
+use Windwalker\Core\Package\Resolver\DataMapperResolver;
+use Windwalker\Core\Package\Resolver\FieldDefinitionResolver;
+use Windwalker\Core\Package\Resolver\RecordResolver;
 use Windwalker\Core\Application\WebApplication;
 use Windwalker\Core\View\HtmlView;
 use Windwalker\Event\Event;

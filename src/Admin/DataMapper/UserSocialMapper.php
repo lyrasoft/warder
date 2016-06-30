@@ -8,7 +8,7 @@
 
 namespace Lyrasoft\Warder\Admin\DataMapper;
 
-use Windwalker\Core\DataMapper\AbstractDataMapperProxy;
+use Windwalker\Core\DataMapper\CoreDataMapper;
 use Lyrasoft\Warder\Table\WarderTable;
 
 /**
@@ -16,7 +16,7 @@ use Lyrasoft\Warder\Table\WarderTable;
  *
  * @since  {DEPLOY_VERSION}
  */
-class UserSocialMapper extends AbstractDataMapperProxy
+class UserSocialMapper extends CoreDataMapper
 {
 	/**
 	 * Property table.

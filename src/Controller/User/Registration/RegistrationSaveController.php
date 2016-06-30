@@ -9,7 +9,7 @@
 namespace Lyrasoft\Warder\Controller\User\Registration;
 
 use Phoenix\Controller\AbstractSaveController;
-use Phoenix\Form\FieldDefinitionResolver;
+use Windwalker\Core\Package\Resolver\FieldDefinitionResolver;
 use Phoenix\Mail\SwiftMailer;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidateFailException;
