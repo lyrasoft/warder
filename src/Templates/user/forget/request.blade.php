@@ -1,6 +1,6 @@
 {{-- Part of Front project. --}}
 
-@extends($warderExtends)
+@extends($warder->extends)
 
 @section('content')
     <div class="container warder-page forget-request-page">
@@ -18,7 +18,7 @@
                             <div class="col-md-offset-3 col-md-9">
                                 <p class="reset-button-group">
                                     <button class="request-button btn btn-primary">
-                                        @translate($warderPrefix . 'forget.request.submit.button')
+                                        @translate($warder->langPrefix . 'forget.request.submit.button')
                                     </button>
                                 </p>
                             </div>
@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="hidden-inputs">
-                        {!! \Windwalker\Core\Security\CsrfProtection::input() !!}
+                        @formToken()
                     </div>
                 </form>
             @show

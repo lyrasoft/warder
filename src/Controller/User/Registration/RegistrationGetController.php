@@ -9,7 +9,7 @@
 namespace Lyrasoft\Warder\Controller\User\Registration;
 
 use Phoenix\Controller\Display\EditDisplayController;
-use Windwalker\Core\Model\Model;
+use Windwalker\Core\Model\ModelRepository;
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Model\UserModel;
@@ -79,11 +79,11 @@ class RegistrationGetController extends EditDisplayController
 	/**
 	 * prepareExecute
 	 *
-	 * @param Model $model
+	 * @param ModelRepository $model
 	 *
 	 * @return void
 	 */
-	protected function prepareUserState(Model $model)
+	protected function prepareUserState(ModelRepository $model)
 	{
 		parent::prepareUserState($model);
 

@@ -1,6 +1,6 @@
 {{-- Part of phoenix project. --}}
 
-@extends('_global.' . $warder->get('admin.package') . '.pure')
+@extends('_global.' . \Lyrasoft\Warder\Helper\WarderHelper::getAdminPackage(true) . '.pure')
 
 @section('toolbar')
     @include('toolbar')
@@ -30,34 +30,34 @@
                 <tr>
                     {{-- NAME --}}
                     <th>
-                        {!! $grid->sortTitle($warderPrefix . 'user.field.name', 'user.name') !!}
+                        {!! $grid->sortTitle($warder->langPrefix . 'user.field.name', 'user.name') !!}
                     </th>
 
-                    @if ($warder->getLoginName() != 'email')
+                    @if ($warder->package->getLoginName() != 'email')
                         {{-- USERNAME --}}
                         <th>
-                            {!! $grid->sortTitle($warderPrefix . 'user.field.' . $warder->getLoginName(), 'user.' . $warder->getLoginName()) !!}
+                            {!! $grid->sortTitle($warder->langPrefix . 'user.field.' . $warder->package->getLoginName(), 'user.' . $warder->package->getLoginName()) !!}
                         </th>
                     @endif
 
                     {{-- EMAIL --}}
                     <th>
-                    {!! $grid->sortTitle($warderPrefix . 'user.field.email', 'user.email') !!}
+                    {!! $grid->sortTitle($warder->langPrefix . 'user.field.email', 'user.email') !!}
                     </th>
 
                     {{-- ENABLED --}}
                     <th>
-                        {!! $grid->sortTitle($warderPrefix . 'user.field.enabled', 'user.blocked') !!}
+                        {!! $grid->sortTitle($warder->langPrefix . 'user.field.enabled', 'user.blocked') !!}
                     </th>
 
                     {{-- ACTIVATED --}}
                     <th>
-                        {!! $grid->sortTitle($warderPrefix . 'user.field.activation', 'user.activation') !!}
+                        {!! $grid->sortTitle($warder->langPrefix . 'user.field.activation', 'user.activation') !!}
                     </th>
 
                     {{-- ID --}}
                     <th>
-                        {!! $grid->sortTitle($warderPrefix . 'user.field.id', 'user.id') !!}
+                        {!! $grid->sortTitle($warder->langPrefix . 'user.field.id', 'user.id') !!}
                     </th>
                 </tr>
                 </thead>
@@ -75,7 +75,7 @@
                             </a>
                         </td>
 
-                        @if ($warder->getLoginName() != 'email')
+                        @if ($warder->package->getLoginName() != 'email')
                             {{-- USERNAME --}}
                             <td class="searchable" class="searchable">
                                 {{ $item->username }}
@@ -90,28 +90,28 @@
                         {{-- ENABLED --}}
                         <td>
                             {!!
-                            $grid->createIconButton(!$item->blocked, array('only_icon' => true))
+                            $grid->createIconButton(array('only_icon' => true))
                                 ->addState(
                                     1,
                                     'block',
                                     'ok fa fa-check text-success',
-                                    \Windwalker\Core\Language\Translator::translate($warderPrefix . 'button.enabled.desc')
+                                    \Windwalker\Core\Language\Translator::translate($warder->langPrefix . 'button.enabled.desc')
                                 )
                                 ->addState(
                                     0,
                                     'unblock',
                                     'remove fa fa-remove text-danger',
-                                    \Windwalker\Core\Language\Translator::translate($warderPrefix . 'button.disabled.desc')
-                                )
+                                    \Windwalker\Core\Language\Translator::translate($warder->langPrefix . 'button.disabled.desc')
+                                )->render(!$item->blocked)
                             !!}
                         </td>
 
                         {{-- Activation --}}
                         <td>
                             @if ($item->activation)
-                                <span class="glyphicon glyphicon-remove fa fa-remove text-danger hasTooltip" title="@translate($warderPrefix . 'button.unactivated.desc')"></span>
+                                <span class="glyphicon glyphicon-remove fa fa-remove text-danger hasTooltip" title="@translate($warder->langPrefix . 'button.unactivated.desc')"></span>
                             @else
-                                <span class="glyphicon glyphicon-ok fa fa-check text-success hasTooltip" title="@translate($warderPrefix . 'button.activated.desc')"></span>
+                                <span class="glyphicon glyphicon-ok fa fa-check text-success hasTooltip" title="@translate($warder->langPrefix . 'button.activated.desc')"></span>
                             @endif
                         </td>
 
@@ -127,7 +127,7 @@
                 <tr>
                     {{-- PAGINATION --}}
                     <td colspan="25">
-                        {!! $pagination->render($package->getName() . ':users', 'windwalker.pagination.phoenix') !!}
+                        {!! $pagination->route($view->name, [])->render() !!}
                     </td>
                 </tr>
                 </tfoot>
@@ -139,7 +139,7 @@
             <input type="hidden" name="_method" value="PUT" />
 
             {{-- TOKEN --}}
-            {!! \Windwalker\Core\Security\CsrfProtection::input() !!}
+            @formToken()
         </div>
 
         @include('batch')

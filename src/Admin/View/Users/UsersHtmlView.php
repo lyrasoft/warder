@@ -77,6 +77,8 @@ class UsersHtmlView extends GridView
 	 */
 	protected function prepareData($data)
 	{
+		parent::prepareData($data);
+
 		$this->prepareScripts();
 	}
 

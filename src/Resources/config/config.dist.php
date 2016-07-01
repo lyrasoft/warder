@@ -13,12 +13,12 @@ return [
 	 */
 	'user' => [
 		'login_name'    => 'username',
-		
+
 		// The below is ACL settings, we haven't implement it. 
 		'default_group' => 'registered',
 		'session_name'  => 'user'
 	],
-	
+
 	/*
 	 * Database table name.
 	 * ------------------------------------------------
@@ -30,7 +30,7 @@ return [
 		'user_group_maps' => 'user_group_maps',
 		'actions'      => 'actions'
 	],
-	
+
 	/*
 	 * The Authentication methods
 	 * ------------------------------------------------
@@ -38,7 +38,7 @@ return [
 	'methods' => [
 		'warder' => \Lyrasoft\Warder\Authentication\Method\WarderMethod::class
 	],
-	
+
 	/*
 	 * Frontend package settings
 	 * ------------------------------------------------
@@ -48,7 +48,7 @@ return [
 		 * The frontend packages
 		 * @var  string|array
 		 */
-		'package' => ['front'],
+		'package' => ['front', 'main'],
 		'view' => [
 			'extends' => '_global.html'
 		],
@@ -64,7 +64,7 @@ return [
 			'prefix' => 'warder.'
 		]
 	],
-	
+
 	/*
 	 * Backend package settings.
 	 * ------------------------------------------------
@@ -89,7 +89,7 @@ return [
 			'prefix' => 'warder.'
 		]
 	],
-	
+
 	/*
 	 * User Handler Classes.
 	 * ------------------------------------------------
@@ -98,4 +98,9 @@ return [
 		'handler' => \Lyrasoft\Warder\Handler\UserHandler::class,
 		'data'    => \Lyrasoft\Warder\Data\UserData::class
 	],
+
+	'listeners' => [
+		\Lyrasoft\Warder\Listener\UserListener::class,
+		\Lyrasoft\Warder\Listener\WarderListener::class
+	]
 ];

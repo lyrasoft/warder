@@ -1,6 +1,6 @@
 {{-- Part of Front project. --}}
 
-@extends($warderExtends)
+@extends($warder->extends)
 
 @section('content')
     <style>
@@ -28,16 +28,16 @@
                         <div class="col-md-offset-3 col-md-9">
                             <p class="login-button-group">
                                 <button class="login-button btn btn-primary">
-                                    @translate($warderPrefix . 'login.submit.button')
+                                    @translate($warder->langPrefix . 'login.submit.button')
                                 </button>
                                 <a class="go-register-button btn btn-success" href="{{ $router->route('registration') }}">
-                                    @translate($warderPrefix . 'login.register.button')
+                                    @translate($warder->langPrefix . 'login.register.button')
                                 </a>
                             </p>
 
                             <p class="login-action-group">
                                 <a class="forget-link" href="{{ $router->route('forget_request') }}">
-                                    @translate($warderPrefix . 'login.forget.link')
+                                    @translate($warder->langPrefix . 'login.forget.link')
                                 </a>
                             </p>
                         </div>
@@ -104,7 +104,7 @@
                 </div>
 
                 <div class="hidden-inputs">
-                    {!! \Windwalker\Core\Security\CsrfProtection::input() !!}
+                    @formToken()
                 </div>
             </form>
         @show

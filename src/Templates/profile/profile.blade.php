@@ -10,7 +10,7 @@ $form->removeField('password')->removeField('password2');
 \Phoenix\Html\HtmlHeader::setTitle($item->name);
 ?>
 
-@extends($warderExtends)
+@extends($warder->extends)
 
 @section('content')
     <div class="container warder-page profile-page">
@@ -57,7 +57,7 @@ $form->removeField('password')->removeField('password2');
                 <div class="edit-button" style="margin-top: 30px">
                     <a class="btn btn-default" href="{{ $router->route('profile_edit') }}">
                         <span class="glyphicon glyphicon-edit fa fa-edit"></span>
-                        @translate($warderPrefix . 'profile.edit.button.title')
+                        @translate($warder->langPrefix . 'profile.edit.button.title')
                     </a>
                 </div>
                 @endif

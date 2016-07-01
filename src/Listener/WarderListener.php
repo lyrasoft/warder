@@ -13,6 +13,7 @@ use Windwalker\Core\Package\Resolver\FieldDefinitionResolver;
 use Windwalker\Core\Package\Resolver\RecordResolver;
 use Windwalker\Core\Application\WebApplication;
 use Windwalker\Core\View\HtmlView;
+use Windwalker\Data\Data;
 use Windwalker\Event\Event;
 use Windwalker\Renderer\BladeRenderer;
 use Windwalker\Utilities\Queue\PriorityQueue;
@@ -106,9 +107,11 @@ class WarderListener
 		if ($this->warder->isFrontend())
 		{
 			// Extends
-			$view['warderExtends'] = $this->warder->get('frontend.view.extends', '_global.html');
-			$view['warderPrefix'] = $this->warder->get('frontend.language.prefix', 'warder.');
-			$view['warder'] = WarderHelper::getPackage();
+			$view['warder'] = new Data([
+				'extends' => $this->warder->get('frontend.view.extends', '_global.html'),
+				'langPrefix' => $this->warder->get('frontend.language.prefix', 'warder.'),
+				'package' => WarderHelper::getPackage()
+			]);
 
 			// Paths
 			$renderer->addPath(WARDER_SOURCE . '/Templates/' . $name . '/' . $app->get('language.locale'), PriorityQueue::LOW - 25);
@@ -118,9 +121,11 @@ class WarderListener
 		elseif ($this->warder->isAdmin())
 		{
 			// Extends
-			$view['warderExtends'] = $this->warder->get('admin.view.extends', '_global.html');
-			$view['warderPrefix'] = $this->warder->get('admin.language.prefix', 'warder.');
-			$view['warder'] = WarderHelper::getPackage();
+			$view['warder'] = new Data([
+				'extends' => $this->warder->get('admin.view.extends', '_global.html'),
+				'langPrefix' => $this->warder->get('admin.language.prefix', 'warder.'),
+				'package' => WarderHelper::getPackage()
+			]);
 
 			// Paths
 			$renderer->addPath(WARDER_SOURCE_ADMIN . '/Templates/' . $name . '/' . $app->get('language.locale'), PriorityQueue::LOW - 25);

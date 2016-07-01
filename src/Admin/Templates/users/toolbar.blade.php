@@ -12,12 +12,12 @@
 
 <button type="button" class="waves-effect btn btn-default btn-sm" onclick="Phoenix.Grid.hasChecked();Phoenix.Grid.batch('unblock');">
     <span class="glyphicon glyphicon-ok fa fa-check text-success"></span>
-    @translate($warderPrefix . 'toolbar.enable')
+    @translate($warder->langPrefix . 'toolbar.enable')
 </button>
 
 <button type="button" class="waves-effect btn btn-default btn-sm" onclick="Phoenix.Grid.hasChecked();Phoenix.Grid.batch('block');">
     <span class="glyphicon glyphicon-remove fa fa-remove text-danger"></span>
-    @translate($warderPrefix . 'toolbar.disable')
+    @translate($warder->langPrefix . 'toolbar.disable')
 </button>
 
 {{--<button type="button" class="waves-effect btn btn-default" data-toggle="modal" data-target="#batch-modal" onclick="Phoenix.Grid.hasChecked(null, event);">--}}

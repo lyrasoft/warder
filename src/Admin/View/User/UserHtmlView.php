@@ -71,6 +71,8 @@ class UserHtmlView extends EditView
 	 */
 	protected function prepareData($data)
 	{
+		parent::prepareData($data);
+		
 		$this->prepareScripts();
 	}
 

@@ -6,7 +6,7 @@
 $basicFieldset = array_shift($fieldsets);
 ?>
 
-@extends($warderExtends)
+@extends($warder->extends)
 
 @section('content')
     <div class="container warder-page profile-page">
@@ -36,7 +36,7 @@ $basicFieldset = array_shift($fieldsets);
                             <div class="row">
                                 <div class="col-md-offset-4 col-md-8">
                                     <button type="submit" class="login-button btn btn-primary">
-                                        @translate($warderPrefix . 'profile.submit.button')
+                                        @translate($warder->langPrefix . 'profile.submit.button')
                                     </button>
                                 </div>
                             </div>
@@ -44,7 +44,7 @@ $basicFieldset = array_shift($fieldsets);
                     </div>
 
                     <div class="hidden-inputs">
-                        {!! \Windwalker\Core\Security\CsrfProtection::input() !!}
+                        @formToken()
                     </div>
                 </form>
             @show

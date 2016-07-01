@@ -1,6 +1,6 @@
 {{-- Part of Front project. --}}
 
-@extends($warderExtends)
+@extends($warder->extends)
 
 @section('content')
 <div class="container warder-page login-page">
@@ -23,7 +23,7 @@
                         <div class="col-md-offset-3 col-md-9">
                             <p class="login-button-group">
                                 <button class="login-button btn btn-primary">
-                                    @translate($warderPrefix . 'login.submit.button')
+                                    @translate($warder->langPrefix . 'login.submit.button')
                                 </button>
                             </p>
                         </div>
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="hidden-inputs">
-                    {!! \Windwalker\Core\Security\CsrfProtection::input() !!}
+                    @formToken()
                 </div>
             </form>
         @show

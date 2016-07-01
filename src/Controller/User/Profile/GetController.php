@@ -10,7 +10,7 @@ namespace Lyrasoft\Warder\Controller\User\Profile;
 
 use Phoenix\Controller\Display\EditDisplayController;
 use Phoenix\Uri\Uri;
-use Windwalker\Core\Model\Model;
+use Windwalker\Core\Model\ModelRepository;
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Model\UserModel;
 use Lyrasoft\Warder\View\User\UserHtmlView;
@@ -75,11 +75,11 @@ class GetController extends EditDisplayController
 	/**
 	 * prepareExecute
 	 *
-	 * @param Model $model
+	 * @param ModelRepository $model
 	 *
 	 * @return void
 	 */
-	protected function prepareUserState(Model $model)
+	protected function prepareUserState(ModelRepository $model)
 	{
 		parent::prepareUserState($model);
 

@@ -1,6 +1,6 @@
 {{-- Part of phoenix project. --}}
 
-@extends($warderExtends . '-edit')
+@extends($warder->extends)
 
 @section('toolbar')
     @include('toolbar')
@@ -12,14 +12,14 @@
     <div class="row">
         <div class="col-md-7">
             <fieldset class="form-horizontal">
-                <legend>@translate($warderPrefix . 'edit.fieldset.basic')</legend>
+                <legend>@translate($warder->langPrefix . 'edit.fieldset.basic')</legend>
 
                 {!! $form->renderFields('basic') !!}
             </fieldset>
         </div>
         <div class="col-md-5">
             <fieldset class="form-horizontal">
-                <legend>@translate($warderPrefix . 'edit.fieldset.created')</legend>
+                <legend>@translate($warder->langPrefix . 'edit.fieldset.created')</legend>
 
                 {!! $form->renderFields('created') !!}
             </fieldset>
@@ -29,7 +29,7 @@
     @yield('user-edit-custom-fields')
 
     <div class="hidden-inputs">
-        {!! \Windwalker\Core\Security\CsrfProtection::input() !!}
+        @formToken()
     </div>
 
 </form>
