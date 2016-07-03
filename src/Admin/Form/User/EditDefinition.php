@@ -73,10 +73,13 @@ class EditDefinition implements FieldDefinitionInterface
 		// Created fieldset
 		$form->wrap('created', null, function(Form $form) use ($langPrefix)
 		{
-			// Avatar
-			$form->add('avatar', new SingleImageDragField)
-				->label(Translator::translate($langPrefix . 'user.field.avatar'))
-				->set('default_image', AvatarUploadHelper::getDefaultImage());
+			if (class_exists(SingleImageDragField::class))
+			{
+				// Avatar
+				$form->add('avatar', new SingleImageDragField)
+					->label(Translator::translate($langPrefix . 'user.field.avatar'))
+					->set('default_image', AvatarUploadHelper::getDefaultImage());
+			}
 
 			// Blocked
 			$form->add('blocked', new  Field\RadioField)
