@@ -15,7 +15,7 @@
                 </p>
                 <hr />
                 <div class="form-horizontal">
-                    {!! $batchForm->renderFields() !!}
+                    {!! $form->renderFields(null, 'batch') !!}
                 </div>
             </div>
             <div class="modal-footer">

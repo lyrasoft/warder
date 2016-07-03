@@ -14,8 +14,6 @@ use Windwalker\Core\Language\Translator;
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
-use Windwalker\Html\Option;
-use Lyrasoft\Warder\Admin\Field\User\UserModalField;
 use Lyrasoft\Warder\Helper\AvatarUploadHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 

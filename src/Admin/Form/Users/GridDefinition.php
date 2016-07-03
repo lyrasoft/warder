@@ -2,26 +2,23 @@
 /**
  * Part of phoenix project.
  *
- * @copyright  Copyright (C) 2015 {ORGANIZATION}. All rights reserved.
- * @license    GNU General Public License version 2 or later;
+ * @copyright  Copyright (C) 2016 {ORGANIZATION}. All rights reserved.
+ * @license    GNU General Public License version 2 or later.
  */
 
 namespace Lyrasoft\Warder\Admin\Form\Users;
 
-use Windwalker\Core\Language\Translator;
-use Windwalker\Form\Field\ListField;
-use Windwalker\Form\Field\TextField;
-use Windwalker\Form\FieldDefinitionInterface;
-use Windwalker\Form\Form;
-use Windwalker\Html\Option;
 use Lyrasoft\Warder\Helper\WarderHelper;
+use Windwalker\Core\Form\AbstractFieldDefinition;
+use Windwalker\Core\Language\Translator;
+use Windwalker\Form\Form;
 
 /**
- * The UsersFilterDefinition class.
+ * The GridDefinition class.
  *
  * @since  {DEPLOY_VERSION}
  */
-class FilterDefinition implements FieldDefinitionInterface
+class GridDefinition extends AbstractFieldDefinition
 {
 	/**
 	 * Define the form fields.
@@ -30,7 +27,7 @@ class FilterDefinition implements FieldDefinitionInterface
 	 *
 	 * @return  void
 	 */
-	public function define(Form $form)
+	protected function doDefine(Form $form)
 	{
 		$warder = WarderHelper::getPackage();
 
@@ -43,12 +40,11 @@ class FilterDefinition implements FieldDefinitionInterface
 		 * Add search fields as options, by default, model will search all columns.
 		 * If you hop that user can choose a field to search, change "display" to true.
 		 */
-		$form->wrap(null, 'search', function (Form $form) use ($loginName, $langPrefix)
+		$this->wrap(null, 'search', function (Form $form) use ($loginName, $langPrefix)
 		{
 			// Search Field
-			$fieldField = new ListField;
-
-			$fieldField->label(Translator::translate('phoenix.grid.search.user.field.label'))
+			$fieldField = $this->list('field')
+				->label(Translator::translate('phoenix.grid.search.user.field.label'))
 				->set('display', false)
 				->defaultValue('*')
 				->option(Translator::translate('phoenix.core.all'), '*');
@@ -62,10 +58,8 @@ class FilterDefinition implements FieldDefinitionInterface
 				->option(Translator::translate($langPrefix . 'user.field.email'), 'user.email')
 				->option(Translator::translate($langPrefix . 'user.field.id'), 'user.id');
 
-			$form->add('field', $fieldField);
-
 			// Search Content
-			$form->text('content')
+			$this->text('content')
 				->label(Translator::translate('phoenix.grid.search.label'))
 				->set('placeholder', Translator::translate('phoenix.grid.search.label'));
 		});
@@ -78,10 +72,10 @@ class FilterDefinition implements FieldDefinitionInterface
 		 *
 		 * You can override filter actions in UsersModel::configureFilters()
 		 */
-		$form->wrap(null, 'filter', function(Form $form) use ($loginName, $langPrefix)
+		$this->wrap(null, 'filter', function(Form $form) use ($loginName, $langPrefix)
 		{
 			// Activated
-			$form->list('activation')
+			$this->list('activation')
 				->label($langPrefix . 'filter.activation.label')
 				// Add empty option to support single deselect button
 				->option('', '')
@@ -91,7 +85,7 @@ class FilterDefinition implements FieldDefinitionInterface
 				->set('onchange', 'this.form.submit()');
 
 			// State
-			$form->list('user.blocked')
+			$this->list('user.blocked')
 				->label($langPrefix . 'filter.block.label')
 				// Add empty option to support single deselect button
 				->option('', '')
@@ -99,6 +93,17 @@ class FilterDefinition implements FieldDefinitionInterface
 				->option(Translator::translate($langPrefix . 'filter.block.blocked'), '1')
 				->option(Translator::translate($langPrefix . 'filter.block.unblocked'), '0')
 				->set('onchange', 'this.form.submit()');
+		});
+
+		/*
+		 * This is batch form definition.
+		 * -----------------------------------------------
+		 * Every field is a table column.
+		 * For example, you can add a 'category_id' field to update item category.
+		 */
+		$this->wrap(null, 'batch', function (Form $form)
+		{
+			
 		});
 	}
 }
