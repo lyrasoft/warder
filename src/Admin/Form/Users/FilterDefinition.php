@@ -51,21 +51,21 @@ class FilterDefinition implements FieldDefinitionInterface
 			$fieldField->label(Translator::translate('phoenix.grid.search.user.field.label'))
 				->set('display', false)
 				->defaultValue('*')
-				->addOption(new Option(Translator::translate('phoenix.core.all'), '*'));
+				->option(Translator::translate('phoenix.core.all'), '*');
 
 			if ($loginName != 'email')
 			{
-				$fieldField->addOption(new Option(Translator::translate($langPrefix . 'user.field.' . $loginName), 'user.' . $loginName));
+				$fieldField->option(Translator::translate($langPrefix . 'user.field.' . $loginName), 'user.' . $loginName);
 			}
 
-			$fieldField->addOption(new Option(Translator::translate($langPrefix . 'user.field.name'), 'user.name'))
-				->addOption(new Option(Translator::translate($langPrefix . 'user.field.email'), 'user.email'))
-				->addOption(new Option(Translator::translate($langPrefix . 'user.field.id'), 'user.id'));
+			$fieldField->option(Translator::translate($langPrefix . 'user.field.name'), 'user.name')
+				->option(Translator::translate($langPrefix . 'user.field.email'), 'user.email')
+				->option(Translator::translate($langPrefix . 'user.field.id'), 'user.id');
 
 			$form->add('field', $fieldField);
 
 			// Search Content
-			$form->add('content', new TextField)
+			$form->text('content')
 				->label(Translator::translate('phoenix.grid.search.label'))
 				->set('placeholder', Translator::translate('phoenix.grid.search.label'));
 		});
@@ -81,23 +81,23 @@ class FilterDefinition implements FieldDefinitionInterface
 		$form->wrap(null, 'filter', function(Form $form) use ($loginName, $langPrefix)
 		{
 			// Activated
-			$form->add('activation', new ListField)
+			$form->list('activation')
 				->label($langPrefix . 'filter.activation.label')
 				// Add empty option to support single deselect button
-				->addOption(new Option('', ''))
-				->addOption(new Option(Translator::translate($langPrefix . 'filter.activation.select'), ''))
-				->addOption(new Option(Translator::translate($langPrefix . 'filter.activation.activated'), '1'))
-				->addOption(new Option(Translator::translate($langPrefix . 'filter.activation.unactivated'), '0'))
+				->option('', '')
+				->option(Translator::translate($langPrefix . 'filter.activation.select'), '')
+				->option(Translator::translate($langPrefix . 'filter.activation.activated'), '1')
+				->option(Translator::translate($langPrefix . 'filter.activation.unactivated'), '0')
 				->set('onchange', 'this.form.submit()');
 
 			// State
-			$form->add('user.blocked', new ListField)
+			$form->list('user.blocked')
 				->label($langPrefix . 'filter.block.label')
 				// Add empty option to support single deselect button
-				->addOption(new Option('', ''))
-				->addOption(new Option(Translator::translate($langPrefix . 'filter.block.select'), ''))
-				->addOption(new Option(Translator::translate($langPrefix . 'filter.block.blocked'), '1'))
-				->addOption(new Option(Translator::translate($langPrefix . 'filter.block.unblocked'), '0'))
+				->option('', '')
+				->option(Translator::translate($langPrefix . 'filter.block.select'), '')
+				->option(Translator::translate($langPrefix . 'filter.block.blocked'), '1')
+				->option(Translator::translate($langPrefix . 'filter.block.unblocked'), '0')
 				->set('onchange', 'this.form.submit()');
 		});
 	}

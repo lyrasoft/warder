@@ -39,15 +39,15 @@ class BatchDefinition implements FieldDefinitionInterface
 		$form->wrap(null, 'batch', function (Form $form)
 		{
 			// Language
-			$form->add('language', new ListField)
+			$form->list('language')
 				->label('Language')
 				->set('class', 'col-md-12')
-				->addOption(new Option('-- Select Language --', ''))
-				->addOption(new Option('English', 'en-GB'))
-				->addOption(new Option('Chinese Traditional', 'zh-TW'));
+				->option('-- Select Language --', '')
+				->option('English', 'en-GB')
+				->option('Chinese Traditional', 'zh-TW');
 
 			// Author
-			$form->add('created_by', new TextField)
+			$form->text('created_by')
 				->label('Author');
 		});
 	}

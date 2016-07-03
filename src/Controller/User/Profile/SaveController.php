@@ -53,7 +53,14 @@ class SaveController extends AbstractSaveController
 	 *
 	 * @var  UserModel
 	 */
-	protected $model;
+	protected $model = 'user';
+
+	/**
+	 * Property record.
+	 *
+	 * @var  string
+	 */
+	protected $record = 'user';
 
 	/**
 	 * Property useTransaction.
@@ -200,30 +207,5 @@ class SaveController extends AbstractSaveController
 		unset($data->id);
 
 		return parent::getFailRedirect($data);
-	}
-
-	/**
-	 * getModel
-	 *
-	 * @param string $name
-	 * @param bool   $forceNew
-	 *
-	 * @return  mixed
-	 */
-	public function getModel($name = 'User', $forceNew = false)
-	{
-		return parent::getModel($name, $forceNew);
-	}
-
-	/**
-	 * getRecord
-	 *
-	 * @param string $name
-	 *
-	 * @return  Record
-	 */
-	public function getRecord($name = 'User')
-	{
-		return parent::getRecord($name);
 	}
 }

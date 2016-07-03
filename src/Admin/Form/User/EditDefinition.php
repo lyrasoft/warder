@@ -83,8 +83,8 @@ class EditDefinition implements FieldDefinitionInterface
 				->label(Translator::translate($langPrefix . 'user.field.name'))
 				->set('class', 'btn-group')
 				->set('default', 0)
-				->addOption(new Option(Translator::translate($langPrefix . 'user.field.blocked.block'), 1))
-				->addOption(new Option(Translator::translate($langPrefix . 'user.field.blocked.unblock'), 0));
+				->option(Translator::translate($langPrefix . 'user.field.blocked.block'), 1)
+				->option(Translator::translate($langPrefix . 'user.field.blocked.unblock'), 0);
 
 			// ID
 			$form->add('id', new Field\TextField)
