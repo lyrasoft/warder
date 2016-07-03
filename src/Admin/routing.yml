@@ -28,7 +28,7 @@ login:
     extra:
         layout: login
         warder:
-            request_login: false
+            require_login: false
 
 # Logout
 logout:
@@ -38,4 +38,4 @@ logout:
         '*': LogoutSaveController
     extra:
         warder:
-            request_login: false
+            require_login: false

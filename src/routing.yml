@@ -9,7 +9,7 @@ login:
         layout: login
     extra:
         warder:
-            request_login: false
+            require_login: false
 
 # Logout
 logout:
@@ -19,7 +19,7 @@ logout:
         '*': LogoutSaveController
     extra:
         warder:
-            request_login: false
+            require_login: false
 
 # Profile
 profile:
@@ -36,7 +36,7 @@ profile_edit:
     extra:
         layout: edit
         warder:
-            request_login: true
+            require_login: true
 
 # Registration
 registration:
@@ -48,7 +48,7 @@ registration:
     extra:
         layout: registration
         warder:
-            request_login: false
+            require_login: false
 
 registration_activate:
     pattern: /registration/activate
@@ -57,7 +57,7 @@ registration_activate:
         '*': ActivateSaveController
     extra:
         warder:
-            request_login: false
+            require_login: false
 
 #Social
 social_login:
@@ -67,7 +67,7 @@ social_login:
         '*': LoginSaveController
     extra:
         warder:
-            request_login: false
+            require_login: false
 
 social_auth:
     pattern: /social-auth
@@ -76,7 +76,7 @@ social_auth:
         '*': AuthController
     extra:
         warder:
-            request_login: false
+            require_login: false
 
 # Forget
 forget_request:
@@ -88,7 +88,7 @@ forget_request:
     extra:
         layout: forget.request
         warder:
-            request_login: false
+            require_login: false
 
 forget_confirm:
     pattern: /forget/confirm
@@ -99,7 +99,7 @@ forget_confirm:
     extra:
         layout: forget.confirm
         warder:
-            request_login: false
+            require_login: false
 
 forget_reset:
     pattern: /forget/reset
@@ -110,7 +110,7 @@ forget_reset:
     extra:
         layout: forget.reset
         warder:
-            request_login: false
+            require_login: false
 
 forget_complete:
     pattern: /forget/complete

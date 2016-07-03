@@ -28,7 +28,7 @@ class UserHelper
 	 */
 	public static function isLogin()
 	{
-		$user = User::get();
+		$user = User::getUser();
 
 		return $user->isMember();
 	}
@@ -42,8 +42,8 @@ class UserHelper
 	{
 		$config = Ioc::getConfig();
 
-		$requestLogin = $config->get('route.extra.warder.request_login');
-		
+		$requestLogin = $config->get('route.extra.warder.require_login', true);
+
 		return UserHelper::isLogin() || !$requestLogin;
 	}
 
