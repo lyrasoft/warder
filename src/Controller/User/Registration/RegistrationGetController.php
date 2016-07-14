@@ -83,9 +83,9 @@ class RegistrationGetController extends EditDisplayController
 	 *
 	 * @return void
 	 */
-	protected function prepareUserState(ModelRepository $model)
+	protected function prepareModelState(ModelRepository $model)
 	{
-		parent::prepareUserState($model);
+		parent::prepareModelState($model);
 
 		// Force registration do not get any item
 		$model['item.pk'] = -1;

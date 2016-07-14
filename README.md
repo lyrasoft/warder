@@ -167,11 +167,11 @@ namespace Front\Controller\User;
 
 class LoginGetController extends \Lyrasoft\Warder\Controller\User\LoginGetController
 {
-	protected function prepareUserState(Model $model)
+	protected function prepareModelState(Model $model)
 	{
 		// Do something
 		
-		parent::prepareUserState($model);
+		parent::prepareModelState($model);
 	}
 }
 ```

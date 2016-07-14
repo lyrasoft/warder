@@ -8,6 +8,8 @@
 
 namespace Lyrasoft\Warder\Admin\Model;
 
+use Lyrasoft\Warder\Admin\Record\UserRecord;
+use Lyrasoft\Warder\Data\UserData;
 use Phoenix\Model\AdminModel;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Authentication\Credential;
@@ -15,9 +17,8 @@ use Windwalker\Core\User\User;
 use Windwalker\Core\DateTime\DateTime;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidateFailException;
-use Windwalker\Crypt\Password;
 use Windwalker\Data\Data;
-use Windwalker\Record\Record;
+use Windwalker\Data\DataInterface;
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 
@@ -53,18 +54,16 @@ class UserModel extends AdminModel
 	{
 		$state = $this->state;
 
-		$pk = $pk ? : $state['item.pk'];
+		$pk = $pk ? : $state['load.conditions'];
 
 		return $this->fetch('item.' . json_encode($pk), function() use ($pk, $state)
 		{
 			if (!$pk)
 			{
-				return new Data;
+				return new UserData;
 			}
 
 			$item = User::get($pk);
-
-			$item = new Data($item->dump());
 
 			$this->postGetItem($item);
 
@@ -139,12 +138,12 @@ class UserModel extends AdminModel
 	/**
 	 * save
 	 *
-	 * @param Data $user
+	 * @param DataInterface|UserRecord $user
 	 *
 	 * @return bool
 	 * @throws ValidateFailException
 	 */
-	public function save(Data $user)
+	public function save(DataInterface $user)
 	{
 		if ('' !== (string) $user->password)
 		{
@@ -155,9 +154,7 @@ class UserModel extends AdminModel
 
 		$this->prepareDefaultData($user);
 
-		$user = User::save($user);
-
-		$this['item.pk'] = $user->id;
+		User::save($user);
 
 		return true;
 	}
@@ -180,11 +177,11 @@ class UserModel extends AdminModel
 	/**
 	 * prepareDefaultData
 	 *
-	 * @param   Data $user
+	 * @param   DataInterface|UserRecord $user
 	 *
 	 * @return  void
 	 */
-	protected function prepareDefaultData(Data $user)
+	protected function prepareDefaultData(DataInterface $user)
 	{
 		if (!$user->registered)
 		{

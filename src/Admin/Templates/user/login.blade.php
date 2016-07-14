@@ -11,7 +11,7 @@
                 <div class="col-md-6 col-md-offset-3" style="margin-top: 50px">
 
                     @section('message')
-                        {!! \Windwalker\Core\Widget\WidgetHelper::render('windwalker.message.default', array('flashes' => $flashes)) !!}
+                        @messages()
                     @show
 
                     @yield('login-desc')

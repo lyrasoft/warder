@@ -2,7 +2,7 @@
 
 @extends('_global.' . \Lyrasoft\Warder\Helper\WarderHelper::getAdminPackage(true) . '.pure')
 
-@section('toolbar')
+@section('toolbar-buttons')
     @include('toolbar')
 @stop
 

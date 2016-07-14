@@ -2,7 +2,7 @@
 
 @extends($warder->extends)
 
-@section('toolbar')
+@section('toolbar-buttons')
     @include('toolbar')
 @stop
 

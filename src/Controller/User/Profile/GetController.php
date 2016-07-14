@@ -79,9 +79,9 @@ class GetController extends EditDisplayController
 	 *
 	 * @return void
 	 */
-	protected function prepareUserState(ModelRepository $model)
+	protected function prepareModelState(ModelRepository $model)
 	{
-		parent::prepareUserState($model);
+		parent::prepareModelState($model);
 
 		// Only use once
 		$this->removeUserState($this->getContext('edit.data'));
