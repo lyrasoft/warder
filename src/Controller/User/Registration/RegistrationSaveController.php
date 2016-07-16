@@ -13,7 +13,7 @@ use Windwalker\Core\Package\Resolver\FieldDefinitionResolver;
 use Phoenix\Mail\SwiftMailer;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidateFailException;
-use Windwalker\Core\Router\Router;
+use Windwalker\Core\Router\CoreRouter;
 use Windwalker\Core\View\AbstractView;
 use Windwalker\Core\View\BladeHtmlView;
 use Windwalker\Core\View\PhpHtmlView;
@@ -151,7 +151,7 @@ class RegistrationSaveController extends AbstractSaveController
 		// Mail
 		$view = $this->getView();
 
-		$view['link'] = $this->router->route('registration_activate', ['email' => $user->email, 'token' => $this->token], Router::TYPE_FULL);
+		$view['link'] = $this->router->route('registration_activate', ['email' => $user->email, 'token' => $this->token], CoreRouter::TYPE_FULL);
 		$view['user'] = $user;
 
 		$body = $this->getMailBody($view);

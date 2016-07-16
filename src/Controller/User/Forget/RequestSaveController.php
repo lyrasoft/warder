@@ -14,7 +14,7 @@ use Windwalker\Core\User\User;
 use Windwalker\Core\DateTime\DateTime;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidateFailException;
-use Windwalker\Core\Router\Router;
+use Windwalker\Core\Router\CoreRouter;
 use Windwalker\Core\View\PhpHtmlView;
 use Windwalker\Crypt\Password;
 use Windwalker\Data\Data;
@@ -107,7 +107,7 @@ class RequestSaveController extends AbstractSaveController
 		}
 
 		$token = UserHelper::getToken($user->email);
-		$link  = $this->router->route('forget_confirm', array('token' => $token, 'email' => $email), Router::TYPE_FULL);
+		$link  = $this->router->route('forget_confirm', array('token' => $token, 'email' => $email), CoreRouter::TYPE_FULL);
 
 		$password = new Password;
 
