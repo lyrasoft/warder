@@ -16,6 +16,7 @@ use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Data\Data;
 use Lyrasoft\Warder\Helper\UserHelper;
+use Windwalker\Data\DataInterface;
 
 /**
  * The LoginModel class.
@@ -27,13 +28,13 @@ class UserModel extends \Lyrasoft\Warder\Admin\Model\UserModel
 	/**
 	 * register
 	 *
-	 * @param Data $user
+	 * @param DataInterface $user
 	 *
 	 * @return  bool
 	 *
 	 * @throws \Exception
 	 */
-	public function register(Data $user)
+	public function register(DataInterface $user)
 	{
 		if ($user->password)
 		{
@@ -50,11 +51,11 @@ class UserModel extends \Lyrasoft\Warder\Admin\Model\UserModel
 	/**
 	 * prepareDefaultData
 	 *
-	 * @param Data $user
+	 * @param DataInterface $user
 	 *
 	 * @return  void
 	 */
-	protected function prepareDefaultData(Data $user)
+	protected function prepareDefaultData(DataInterface $user)
 	{
 		$user->registered = $user->registered ? : DateTime::create()->format(DateTime::FORMAT_SQL);
 		$user->blocked = $user->blocked === null ? 1 : $user->blocked;
