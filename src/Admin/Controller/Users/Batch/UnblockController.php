@@ -13,7 +13,7 @@ use Phoenix\Controller\Batch\AbstractBatchController;
 /**
  * The UnpublishController class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class UnblockController extends AbstractBatchController
 {

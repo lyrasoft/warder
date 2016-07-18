@@ -15,7 +15,7 @@ use Lyrasoft\Warder\Helper\WarderHelper;
 /**
  * The GetController class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class LogoutSaveController extends AbstractPhoenixController
 {

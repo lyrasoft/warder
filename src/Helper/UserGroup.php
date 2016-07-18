@@ -11,7 +11,7 @@ namespace Lyrasoft\Warder\Helper;
 /**
  * The UserGroup class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 abstract class UserGroup
 {

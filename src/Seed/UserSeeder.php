@@ -20,7 +20,7 @@ use Lyrasoft\Warder\Table\WarderTable;
 /**
  * The UserSeeder class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class UserSeeder extends AbstractSeeder
 {

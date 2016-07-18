@@ -23,7 +23,7 @@ use Lyrasoft\Warder\WarderPackage;
 /**
  * The SocialMethod class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class SocialMethod extends AbstractMethod
 {

@@ -16,7 +16,7 @@ use Windwalker\Core\Renderer\RendererHelper;
 /**
  * The UsersHtmlView class.
  * 
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class UsersHtmlView extends GridView
 {

@@ -19,7 +19,7 @@ use Lyrasoft\Warder\WarderPackage;
 /**
  * The Eng4TwMethod class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class WarderMethod extends AbstractMethod
 {

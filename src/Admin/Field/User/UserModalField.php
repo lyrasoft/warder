@@ -17,7 +17,7 @@ use Lyrasoft\Warder\Table\WarderTable;
 /**
  * The UserModalField class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class UserModalField extends ModalField
 {

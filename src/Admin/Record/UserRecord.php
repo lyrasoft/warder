@@ -20,7 +20,7 @@ use Lyrasoft\Warder\Helper\WarderHelper;
 /**
  * The UserRecord class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class UserRecord extends Record
 {

@@ -14,7 +14,7 @@ use Windwalker\Core\Security\CsrfProtection;
 /**
  * The AuthController class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class AuthController extends AbstractPhoenixController
 {

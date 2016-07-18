@@ -18,7 +18,7 @@ use Lyrasoft\Warder\Helper\WarderHelper;
 /**
  * The UserHtmlView class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class UserHtmlView extends AbstractPhoenixHtmView
 {

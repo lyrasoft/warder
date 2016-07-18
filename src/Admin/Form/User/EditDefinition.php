@@ -20,7 +20,7 @@ use Lyrasoft\Warder\Helper\WarderHelper;
 /**
  * The UserEditDefinition class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class EditDefinition implements FieldDefinitionInterface
 {

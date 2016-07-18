@@ -17,7 +17,7 @@ use Windwalker\Ioc;
 /**
  * The UserHelper class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class UserHelper
 {

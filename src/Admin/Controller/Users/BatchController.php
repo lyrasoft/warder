@@ -13,7 +13,7 @@ use Phoenix\Controller\Batch\BatchDelegationController;
 /**
  * The UpdateController class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class BatchController extends BatchDelegationController
 {

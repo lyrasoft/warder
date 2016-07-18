@@ -14,7 +14,7 @@ use Windwalker\Core\Model\ModelRepository;
 /**
  * The GetController class.
  * 
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class GetController extends ListDisplayController
 {

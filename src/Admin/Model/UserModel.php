@@ -26,7 +26,7 @@ use Lyrasoft\Warder\Helper\WarderHelper;
 /**
  * The UserModel class.
  * 
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class UserModel extends AdminModel
 {

@@ -27,7 +27,7 @@ namespace Lyrasoft\Warder\Admin\Record\Traits;
  * @property    string  modified
  * @property    string  params
  *
- * @since    {DEPLOY_VERSION}
+ * @since    1.0
  */
 trait UserDataTrait
 {

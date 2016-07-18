@@ -13,7 +13,7 @@ use Phoenix\Controller\Batch\AbstractUpdateController;
 /**
  * The MoveController class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class UpdateController extends AbstractUpdateController
 {

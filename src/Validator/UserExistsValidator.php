@@ -16,7 +16,7 @@ use Windwalker\Validator\AbstractValidator;
 /**
  * The UseeExistsValidator class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class UserExistsValidator extends AbstractValidator
 {

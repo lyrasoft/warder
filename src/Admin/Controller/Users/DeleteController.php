@@ -13,7 +13,7 @@ use Phoenix\Controller\Batch\AbstractDeleteController;
 /**
  * The DeleteController class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class DeleteController extends AbstractDeleteController
 {

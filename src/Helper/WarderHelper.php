@@ -16,7 +16,7 @@ use Lyrasoft\Warder\WarderPackage;
 /**
  * The SentryHelper class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class WarderHelper
 {

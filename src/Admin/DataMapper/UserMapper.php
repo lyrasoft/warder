@@ -14,7 +14,7 @@ use Lyrasoft\Warder\Table\WarderTable;
 /**
  * The UserMapper class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class UserMapper extends CoreDataMapper
 {

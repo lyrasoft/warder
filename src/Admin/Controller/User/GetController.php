@@ -13,7 +13,7 @@ use Phoenix\Controller\Display\EditDisplayController;
 /**
  * The GetController class.
  * 
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class GetController extends EditDisplayController
 {

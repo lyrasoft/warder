@@ -11,7 +11,7 @@ namespace Lyrasoft\Warder\Data;
 /**
  * The UserData class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class UserData extends \Windwalker\Core\User\UserData
 {

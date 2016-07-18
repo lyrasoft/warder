@@ -14,7 +14,7 @@ use Windwalker\Data\Data;
 /**
  * The UnpublishController class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class ActivateController extends AbstractBatchController
 {

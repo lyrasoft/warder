@@ -20,7 +20,7 @@ use Lyrasoft\Warder\WarderPackage;
 /**
  * The RegistrationDefinition class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class RegistrationDefinition implements FieldDefinitionInterface
 {

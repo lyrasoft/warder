@@ -14,7 +14,7 @@ use Windwalker\Utilities\ArrayHelper;
 /**
  * The ProfileModel class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class ProfileModel extends UserModel
 {

@@ -18,7 +18,7 @@ use Lyrasoft\Warder\Table\WarderTable;
 /**
  * The UsersModel class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class UsersModel extends ListModel
 {

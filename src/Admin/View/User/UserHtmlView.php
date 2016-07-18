@@ -19,7 +19,7 @@ use Windwalker\Core\Renderer\RendererHelper;
 /**
  * The UserHtmlView class.
  * 
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class UserHtmlView extends EditView
 {

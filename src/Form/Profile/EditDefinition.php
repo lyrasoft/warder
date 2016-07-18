@@ -19,7 +19,7 @@ use Lyrasoft\Warder\Validator\UserExistsValidator;
 /**
  * The EditDefinition class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class EditDefinition implements FieldDefinitionInterface
 {

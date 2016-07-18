@@ -19,7 +19,7 @@ define('WARDER_TABLE_ACTIONS',         WarderHelper::getTable('actions'));
 /**
  * The WarderTable class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class WarderTable
 {

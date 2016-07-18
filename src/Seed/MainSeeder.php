@@ -11,7 +11,7 @@ use Windwalker\Core\Seeder\AbstractSeeder;
 /**
  * The DatabaseSeeder class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class MainSeeder extends AbstractSeeder
 {

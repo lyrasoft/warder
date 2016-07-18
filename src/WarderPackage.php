@@ -24,7 +24,7 @@ define('WARDER_TEMPLATES', WARDER_ROOT . '/templates');
 /**
  * The UserPackage class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class WarderPackage extends AbstractPackage
 {

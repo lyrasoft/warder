@@ -22,7 +22,7 @@ use Windwalker\Data\DataInterface;
 /**
  * The LoginModel class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class UserModel extends \Lyrasoft\Warder\Admin\Model\UserModel
 {

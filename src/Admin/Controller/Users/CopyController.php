@@ -13,7 +13,7 @@ use Phoenix\Controller\Batch\AbstractCopyController;
 /**
  * The CopyController class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class CopyController extends AbstractCopyController
 {

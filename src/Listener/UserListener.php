@@ -22,7 +22,7 @@ use Lyrasoft\Warder\WarderPackage;
 /**
  * The UserListener class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class UserListener
 {

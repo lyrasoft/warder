@@ -15,7 +15,7 @@ use Lyrasoft\Warder\Helper\WarderHelper;
 /**
  * The ProfileHtmlView class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class ProfileHtmlView extends EditView
 {

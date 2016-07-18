@@ -13,7 +13,7 @@ use Lyrasoft\Unidev\Storage\AbstractStorageHelper;
 /**
  * The AvatarHelper class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class AvatarUploadHelper extends AbstractStorageHelper
 {
