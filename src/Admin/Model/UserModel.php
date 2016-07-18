@@ -104,7 +104,7 @@ class UserModel extends AdminModel
 		{
 			$langPrefix = WarderHelper::getPackage()->get('admin.language.prefix', 'warder.');
 
-			switch ($e->getMessage())
+			switch ($e->getMessages()[0])
 			{
 				case Authentication::USER_NOT_FOUND:
 					$message = Translator::translate($langPrefix . 'login.message.user.not.found');
