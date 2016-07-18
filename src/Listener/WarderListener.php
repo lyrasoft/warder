@@ -70,14 +70,14 @@ class WarderListener
 		if ($this->warder->isFrontend())
 		{
 			$package->getMvcResolver()
-				->addNamespace(ReflectionHelper::getNamespaceName($this->warder));
+				->addNamespace(ReflectionHelper::getNamespaceName($this->warder), PriorityQueue::BELOW_NORMAL);
 
 			FieldDefinitionResolver::addNamespace((ReflectionHelper::getNamespaceName($this->warder) . '\Form'));
 		}
 		elseif ($this->warder->isAdmin())
 		{
 			$package->getMvcResolver()
-				->addNamespace(ReflectionHelper::getNamespaceName($this->warder) . '\Admin');
+				->addNamespace(ReflectionHelper::getNamespaceName($this->warder) . '\Admin', PriorityQueue::BELOW_NORMAL);
 
 			FieldDefinitionResolver::addNamespace(ReflectionHelper::getNamespaceName($this->warder) . '\Admin\Form');
 		}
