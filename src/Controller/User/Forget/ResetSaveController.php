@@ -16,6 +16,7 @@ use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Crypt\Password;
 use Windwalker\Data\Data;
 use Lyrasoft\Warder\Model\UserModel;
+use Windwalker\Data\DataInterface;
 
 /**
  * The SaveController class.
@@ -143,11 +144,11 @@ class ResetSaveController extends AbstractSaveController
 	/**
 	 * getSuccessRedirect
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  string
 	 */
-	protected function getSuccessRedirect(Data $data = null)
+	protected function getSuccessRedirect(DataInterface $data = null)
 	{
 		return $this->router->route('forget_complete');
 	}

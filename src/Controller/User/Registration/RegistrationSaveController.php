@@ -18,6 +18,7 @@ use Windwalker\Core\View\AbstractView;
 use Windwalker\Core\View\BladeHtmlView;
 use Windwalker\Core\View\PhpHtmlView;
 use Windwalker\Data\Data;
+use Windwalker\Data\DataInterface;
 use Windwalker\Validator\Rule\EmailValidator;
 use Lyrasoft\Warder\Form\User\RegistrationDefinition;
 use Lyrasoft\Warder\Helper\UserHelper;
@@ -227,11 +228,11 @@ class RegistrationSaveController extends AbstractSaveController
 	/**
 	 * getSuccessRedirect
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  string
 	 */
-	protected function getSuccessRedirect(Data $data = null)
+	protected function getSuccessRedirect(DataInterface $data = null)
 	{
 		return $this->router->route('login');
 	}

@@ -14,6 +14,7 @@ use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Crypt\Password;
 use Windwalker\Data\Data;
+use Windwalker\Data\DataInterface;
 use Windwalker\Filter\InputFilter;
 use Lyrasoft\Warder\Model\UserModel;
 
@@ -128,11 +129,11 @@ class ConfirmSaveController extends AbstractSaveController
 	/**
 	 * getSuccessRedirect
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  string
 	 */
-	protected function getSuccessRedirect(Data $data = null)
+	protected function getSuccessRedirect(DataInterface $data = null)
 	{
 		return $this->router->route('forget_reset', array('token' => $this->data['token'], 'email' => $this->data['email']));
 	}
