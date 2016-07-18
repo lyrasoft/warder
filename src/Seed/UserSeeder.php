@@ -7,6 +7,7 @@
  */
 
 use Faker\Factory;
+use Lyrasoft\Unidev\Helper\PravatarHelper;
 use Windwalker\Core\DateTime\DateTime;
 use Windwalker\Core\Seeder\AbstractSeeder;
 use Windwalker\Crypt\Password;
@@ -42,7 +43,7 @@ class UserSeeder extends AbstractSeeder
 			$data->username    = $faker->userName;
 			$data->email       = $faker->email;
 			$data->password    = $pass;
-			$data->avatar      = $faker->imageUrl(600, 600, 'people');
+			$data->avatar      = PravatarHelper::unique(600, uniqid($i));
 			$data->group       = 1;
 			$data->blocked     = 0;
 			$data->activation  = '';
