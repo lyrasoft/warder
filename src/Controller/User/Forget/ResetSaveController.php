@@ -9,6 +9,7 @@
 namespace Lyrasoft\Warder\Controller\User\Forget;
 
 
+use Lyrasoft\Warder\Admin\Record\UserRecord;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\User\User;
 use Windwalker\Core\Language\Translator;
@@ -61,11 +62,11 @@ class ResetSaveController extends AbstractSaveController
 	protected $formControl = 'user';
 
 	/**
-	 * Property useTransaction.
+	 * Property record.
 	 *
-	 * @var  bool
+	 * @var  string
 	 */
-	protected $useTransaction = false;
+	protected $record = 'user';
 
 	/**
 	 * Property langPrefix.
@@ -108,6 +109,7 @@ class ResetSaveController extends AbstractSaveController
 			throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.password.not.match'));
 		}
 
+		/** @var UserRecord $user */
 		$user = User::get(array('email' => $this->data['email']));
 
 		if ($user->isNull())
@@ -132,11 +134,11 @@ class ResetSaveController extends AbstractSaveController
 	/**
 	 * getFailRedirect
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  string
 	 */
-	protected function getFailRedirect(Data $data = null)
+	protected function getFailRedirect(DataInterface $data = null)
 	{
 		return $this->router->route('forget_reset', array('token' => $this->data['token'], 'email' => $this->data['email']));
 	}
@@ -163,17 +165,5 @@ class ResetSaveController extends AbstractSaveController
 	protected function postSave(Data $data)
 	{
 		parent::postSave($data);
-	}
-
-	/**
-	 * getRecord
-	 *
-	 * @param string $name
-	 *
-	 * @return  \Windwalker\Record\Record
-	 */
-	public function getRecord($name = 'User')
-	{
-		return parent::getRecord($name);
 	}
 }

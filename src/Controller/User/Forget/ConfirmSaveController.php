@@ -117,11 +117,11 @@ class ConfirmSaveController extends AbstractSaveController
 	/**
 	 * getFailRedirect
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  string
 	 */
-	protected function getFailRedirect(Data $data = null)
+	protected function getFailRedirect(DataInterface $data = null)
 	{
 		return $this->router->route('forget_confirm', array('email' => $this->data['email']));
 	}
