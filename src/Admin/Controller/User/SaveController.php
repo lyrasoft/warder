@@ -17,6 +17,7 @@ use Windwalker\Crypt\Password;
 use Windwalker\Data\Data;
 use Lyrasoft\Warder\Helper\AvatarUploadHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
+use Windwalker\Data\DataInterface;
 
 /**
  * The SaveController class.
@@ -56,11 +57,11 @@ class SaveController extends AbstractSaveController
 	/**
 	 * preSave
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  void
 	 */
-	protected function preSave(Data $data)
+	protected function preSave(DataInterface $data)
 	{
 		// Remove password from session
 		unset($this->data['password']);
@@ -70,11 +71,11 @@ class SaveController extends AbstractSaveController
 	/**
 	 * postSave
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  void
 	 */
-	protected function postSave(Data $data)
+	protected function postSave(DataInterface $data)
 	{
 		// Image
 		if (false !== SingleImageDragField::uploadFromController($this, 'avatar', $data, AvatarUploadHelper::getPath($data->id)))
@@ -92,13 +93,13 @@ class SaveController extends AbstractSaveController
 	/**
 	 * validate
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  void
 	 *
 	 * @throws ValidateFailException
 	 */
-	protected function validate(Data $data)
+	protected function validate(DataInterface $data)
 	{
 		parent::validate($data);
 

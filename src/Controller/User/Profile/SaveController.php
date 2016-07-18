@@ -14,6 +14,7 @@ use Windwalker\Core\User\UserData;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Data\Data;
+use Windwalker\Data\DataInterface;
 use Windwalker\Record\Record;
 use Windwalker\Validator\Rule\EmailValidator;
 use Lyrasoft\Warder\Helper\UserHelper;
@@ -108,11 +109,11 @@ class SaveController extends AbstractSaveController
 	/**
 	 * preSave
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  void
 	 */
-	protected function preSave(Data $data)
+	protected function preSave(DataInterface $data)
 	{
 		$this->user = User::get();
 
@@ -126,11 +127,11 @@ class SaveController extends AbstractSaveController
 	/**
 	 * postSave
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  void
 	 */
-	protected function postSave(Data $data)
+	protected function postSave(DataInterface $data)
 	{
 		parent::postSave($data);
 
@@ -144,13 +145,13 @@ class SaveController extends AbstractSaveController
 	/**
 	 * validate
 	 *
-	 * @param  Data $data
+	 * @param  DataInterface $data
 	 *
 	 * @return  void
 	 *
 	 * @throws ValidateFailException
 	 */
-	protected function validate(Data $data)
+	protected function validate(DataInterface $data)
 	{
 		$validator = new EmailValidator;
 

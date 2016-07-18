@@ -9,16 +9,16 @@
 namespace Lyrasoft\Warder\Controller\User\Forget;
 
 use Phoenix\Controller\AbstractSaveController;
-use Phoenix\Mail\SwiftMailer;
+use Windwalker\Core\Mailer\Mailer;
+use Windwalker\Core\Mailer\MailMessage;
 use Windwalker\Core\User\User;
 use Windwalker\Core\DateTime\DateTime;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Core\Router\CoreRouter;
-use Windwalker\Core\View\PhpHtmlView;
+use Windwalker\Core\View\HtmlView;
 use Windwalker\Crypt\Password;
 use Windwalker\Data\Data;
-use Lyrasoft\Warder\Data\UserData;
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Model\UserModel;
 use Windwalker\Data\DataInterface;
@@ -82,14 +82,14 @@ class RequestSaveController extends AbstractSaveController
 	/**
 	 * doSave
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  bool
 	 *
 	 * @throws ValidateFailException
 	 * @throws \Exception
 	 */
-	protected function doSave(Data $data)
+	protected function doSave(DataInterface $data)
 	{
 		$email = $this->input->getEmail('email');
 
@@ -131,11 +131,11 @@ class RequestSaveController extends AbstractSaveController
 	/**
 	 * getMailBody
 	 *
-	 * @param PhpHtmlView $view
+	 * @param HtmlView $view
 	 *
 	 * @return  string
 	 */
-	protected function getMailBody(PhpHtmlView $view)
+	protected function getMailBody(HtmlView $view)
 	{
 		return $view->setLayout('mail.forget')->render();
 	}
@@ -150,12 +150,13 @@ class RequestSaveController extends AbstractSaveController
 	 */
 	protected function sendEmail($email, $body)
 	{
-		$message = SwiftMailer::newMessage(Translator::translate($this->langPrefix . 'mail.subject'))
-			->addFrom($this->app->get('mail.from.email', $this->app->get('mail.from.email')), $this->app->get('mail.from.name', $this->app->get('mail.from.name')))
-			->addTo($email)
-			->setBody($body);
-
-		SwiftMailer::send($message);
+		Mailer::send(function (MailMessage $message) use ($email, $body)
+		{
+			$message->subject(Translator::translate($this->langPrefix . 'mail.subject'))
+				->from($this->app->get('mail.from.email', $this->app->get('mail.from.email')), $this->app->get('mail.from.name', $this->app->get('mail.from.name')))
+				->to($email)
+				->body($body);
+		});
 	}
 
 	/**
@@ -185,11 +186,11 @@ class RequestSaveController extends AbstractSaveController
 	/**
 	 * postSave
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  void
 	 */
-	protected function postSave(Data $data)
+	protected function postSave(DataInterface $data)
 	{
 		parent::postSave($data);
 	}

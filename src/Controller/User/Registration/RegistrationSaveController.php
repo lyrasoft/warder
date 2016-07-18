@@ -9,18 +9,15 @@
 namespace Lyrasoft\Warder\Controller\User\Registration;
 
 use Phoenix\Controller\AbstractSaveController;
-use Windwalker\Core\Package\Resolver\FieldDefinitionResolver;
-use Phoenix\Mail\SwiftMailer;
+use Windwalker\Core\Mailer\Mailer;
+use Windwalker\Core\Mailer\MailMessage;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Core\Router\CoreRouter;
-use Windwalker\Core\View\AbstractView;
-use Windwalker\Core\View\BladeHtmlView;
-use Windwalker\Core\View\PhpHtmlView;
+use Windwalker\Core\View\HtmlView;
 use Windwalker\Data\Data;
 use Windwalker\Data\DataInterface;
 use Windwalker\Validator\Rule\EmailValidator;
-use Lyrasoft\Warder\Form\User\RegistrationDefinition;
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Model\UserModel;
@@ -114,11 +111,11 @@ class RegistrationSaveController extends AbstractSaveController
 	/**
 	 * preSave
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return void
 	 */
-	protected function preSave(Data $data)
+	protected function preSave(DataInterface $data)
 	{
 		unset($this->data['password']);
 		unset($this->data['password2']);
@@ -127,13 +124,13 @@ class RegistrationSaveController extends AbstractSaveController
 	/**
 	 * doSave
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  void
 	 */
-	protected function doSave(Data $data)
+	protected function doSave(DataInterface $data)
 	{
-		$this->filter($data);
+		$this->prepareStore($data);
 
 		$this->validate($data);
 
@@ -143,11 +140,11 @@ class RegistrationSaveController extends AbstractSaveController
 	/**
 	 * postSave
 	 *
-	 * @param Data $user
+	 * @param DataInterface $user
 	 *
 	 * @return  void
 	 */
-	protected function postSave(Data $user)
+	protected function postSave(DataInterface $user)
 	{
 		// Mail
 		$view = $this->getView();
@@ -163,11 +160,11 @@ class RegistrationSaveController extends AbstractSaveController
 	/**
 	 * getMailBody
 	 *
-	 * @param PhpHtmlView $view
+	 * @param HtmlView $view
 	 *
 	 * @return  string
 	 */
-	protected function getMailBody(PhpHtmlView $view)
+	protected function getMailBody(HtmlView $view)
 	{
 		return $view->setLayout('mail.registration')->render();
 	}
@@ -182,24 +179,25 @@ class RegistrationSaveController extends AbstractSaveController
 	 */
 	protected function sendEmail($email, $body)
 	{
-		$message = SwiftMailer::newMessage(Translator::translate($this->langPrefix . 'mail.subject'))
-			->addFrom($this->app->get('mail.from.email', $this->app->get('mail.from.email')), $this->app->get('mail.from.name', $this->app->get('mail.from.name')))
-			->addTo($email)
-			->setBody($body);
-
-		SwiftMailer::send($message);
+		Mailer::send(function (MailMessage $message) use ($email, $body)
+		{
+		    $message->subject(Translator::translate($this->langPrefix . 'mail.subject'))
+				->from($this->app->get('mail.from.email', $this->app->get('mail.from.email')), $this->app->get('mail.from.name', $this->app->get('mail.from.name')))
+				->to($email)
+				->body($body);
+		});
 	}
 
 	/**
 	 * validate
 	 *
-	 * @param  Data $data
+	 * @param  DataInterface $data
 	 *
 	 * @return  void
 	 *
 	 * @throws ValidateFailException
 	 */
-	protected function validate(Data $data)
+	protected function validate(DataInterface $data)
 	{
 		$validator = new EmailValidator;
 

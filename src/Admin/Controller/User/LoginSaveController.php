@@ -70,11 +70,11 @@ class LoginSaveController extends AbstractSaveController
 	/**
 	 * doSave
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return void
 	 */
-	protected function doSave(Data $data)
+	protected function doSave(DataInterface $data)
 	{
 		$loginName = WarderHelper::getLoginName();
 

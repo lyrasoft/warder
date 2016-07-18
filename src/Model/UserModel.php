@@ -8,6 +8,7 @@
 
 namespace Lyrasoft\Warder\Model;
 
+use Lyrasoft\Warder\Admin\Record\Traits\UserDataTrait;
 use Phoenix\Model\CrudModel;
 use Windwalker\Authentication\Credential;
 use Windwalker\Core\User\User;
@@ -28,7 +29,7 @@ class UserModel extends \Lyrasoft\Warder\Admin\Model\UserModel
 	/**
 	 * register
 	 *
-	 * @param DataInterface $user
+	 * @param DataInterface|UserDataTrait $user
 	 *
 	 * @return  bool
 	 *
@@ -51,13 +52,13 @@ class UserModel extends \Lyrasoft\Warder\Admin\Model\UserModel
 	/**
 	 * prepareDefaultData
 	 *
-	 * @param DataInterface $user
+	 * @param DataInterface|UserDataTrait $user
 	 *
 	 * @return  void
 	 */
 	protected function prepareDefaultData(DataInterface $user)
 	{
-		$user->registered = $user->registered ? : DateTime::create()->format(DateTime::FORMAT_SQL);
+		$user->registered = $user->registered ? : DateTime::create()->format(DateTime::getSqlFormat());
 		$user->blocked = $user->blocked === null ? 1 : $user->blocked;
 	}
 }

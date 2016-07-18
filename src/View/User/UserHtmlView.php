@@ -11,6 +11,7 @@ namespace Lyrasoft\Warder\View\User;
 use Phoenix\View\AbstractPhoenixHtmView;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Data\Data;
+use Windwalker\Data\DataInterface;
 use Windwalker\String\StringNormalise;
 use Lyrasoft\Warder\Helper\WarderHelper;
 
@@ -65,11 +66,11 @@ class UserHtmlView extends AbstractPhoenixHtmView
 	/**
 	 * login
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  void
 	 */
-	protected function login(Data $data)
+	protected function login(DataInterface $data)
 	{
 		$data->form = $this->model->getForm('login', 'user');
 	}
@@ -77,11 +78,11 @@ class UserHtmlView extends AbstractPhoenixHtmView
 	/**
 	 * registration
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  void
 	 */
-	protected function registration(Data $data)
+	protected function registration(DataInterface $data)
 	{
 		$data->form = $this->model->getForm('registration', 'user', true);
 		$data->fieldsets = $data->form->getFieldsets();
@@ -90,11 +91,11 @@ class UserHtmlView extends AbstractPhoenixHtmView
 	/**
 	 * forgetRequest
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  void
 	 */
-	protected function forgetRequest(Data $data)
+	protected function forgetRequest(DataInterface $data)
 	{
 		$data->form = $this->model->getForm('ForgetRequest');
 	}
@@ -102,11 +103,11 @@ class UserHtmlView extends AbstractPhoenixHtmView
 	/**
 	 * forgetConfirm
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  void
 	 */
-	protected function forgetConfirm(Data $data)
+	protected function forgetConfirm(DataInterface $data)
 	{
 		$data->form = $this->model->getForm('ForgetConfirm');
 
@@ -119,11 +120,11 @@ class UserHtmlView extends AbstractPhoenixHtmView
 	/**
 	 * forgetReset
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  void
 	 */
-	protected function forgetReset(Data $data)
+	protected function forgetReset(DataInterface $data)
 	{
 		$data->form = $this->model->getForm('Reset');
 

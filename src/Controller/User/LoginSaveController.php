@@ -13,6 +13,7 @@ use Windwalker\Data\Data;
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Model\UserModel;
+use Windwalker\Data\DataInterface;
 
 /**
  * The SaveController class.
@@ -62,11 +63,11 @@ class LoginSaveController extends AbstractSaveController
 	/**
 	 * doSave
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return void
 	 */
-	protected function doSave(Data $data)
+	protected function doSave(DataInterface $data)
 	{
 		$options   = array();
 		$provider  = $this->input->get('provider');
@@ -86,11 +87,11 @@ class LoginSaveController extends AbstractSaveController
 	/**
 	 * getSuccessRedirect
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  string
 	 */
-	protected function getSuccessRedirect(Data $data = null)
+	protected function getSuccessRedirect(DataInterface $data = null)
 	{
 		$return = $this->getUserState($this->getContext('return'));
 
@@ -109,11 +110,11 @@ class LoginSaveController extends AbstractSaveController
 	/**
 	 * getFailRedirect
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  string
 	 */
-	protected function getFailRedirect(Data $data = null)
+	protected function getFailRedirect(DataInterface $data = null)
 	{
 		return $this->router->route('login');
 	}

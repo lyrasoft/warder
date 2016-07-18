@@ -91,13 +91,13 @@ class ResetSaveController extends AbstractSaveController
 	/**
 	 * doSave
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  bool
 	 *
 	 * @throws ValidateFailException
 	 */
-	protected function doSave(Data $data)
+	protected function doSave(DataInterface $data)
 	{
 		if (!trim($this->data['password']))
 		{
@@ -158,11 +158,11 @@ class ResetSaveController extends AbstractSaveController
 	/**
 	 * postSave
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return  void
 	 */
-	protected function postSave(Data $data)
+	protected function postSave(DataInterface $data)
 	{
 		parent::postSave($data);
 	}

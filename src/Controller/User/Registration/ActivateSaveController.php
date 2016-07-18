@@ -92,13 +92,13 @@ class ActivateSaveController extends AbstractSaveController
 	/**
 	 * doSave
 	 *
-	 * @param Data $data
+	 * @param DataInterface $data
 	 *
 	 * @return bool
 	 *
 	 * @throws ValidateFailException
 	 */
-	protected function doSave(Data $data)
+	protected function doSave(DataInterface $data)
 	{
 		$user = User::get(['email' => $this->data['email']]);
 
