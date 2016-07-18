@@ -13,6 +13,7 @@ use Lyrasoft\Warder\Data\UserData;
 use Phoenix\Model\AdminModel;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Authentication\Credential;
+use Windwalker\Core\User\Exception\AuthenticateFailException;
 use Windwalker\Core\User\User;
 use Windwalker\Core\DateTime\DateTime;
 use Windwalker\Core\Language\Translator;
@@ -95,15 +96,15 @@ class UserModel extends AdminModel
 			$credential->_provider = $options['provider'];
 		}
 
-		$result = User::login($credential, (bool) $remember, $options);
-
-		if (!$result)
+		try
 		{
-			$status = array_values(User::getAuthResults())[0];
-
+			$result = User::login($credential, (bool) $remember, $options);
+		}
+		catch (AuthenticateFailException $e)
+		{
 			$langPrefix = WarderHelper::getPackage()->get('admin.language.prefix', 'warder.');
 
-			switch ($status)
+			switch ($e->getMessage())
 			{
 				case Authentication::USER_NOT_FOUND:
 					$message = Translator::translate($langPrefix . 'login.message.user.not.found');
@@ -126,9 +127,9 @@ class UserModel extends AdminModel
 					break;
 
 				default:
-					$message = Translator::translate($langPrefix . 'login.message.fail');
+					$message = $e->getMessage();
 			}
-			
+
 			throw new ValidateFailException($message);
 		}
 

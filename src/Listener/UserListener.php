@@ -11,6 +11,8 @@ namespace Lyrasoft\Warder\Listener;
 use Lyrasoft\Warder\Authentication\Method\WarderMethod;
 use Lyrasoft\Warder\Handler\UserHandler;
 use Windwalker\Authentication\Authentication;
+use Windwalker\Core\Language\Translator;
+use Windwalker\Core\User\Exception\AuthenticateFailException;
 use Windwalker\Core\User\User;
 use Windwalker\Event\Event;
 use Windwalker\Ioc;
@@ -126,18 +128,16 @@ class UserListener
 	{
 		$user = $event['user'];
 
-		if ($user->blocked)
-		{
-			$event['result'] = false;
-
-			return;
-		}
+		$langPrefix = WarderHelper::getPackage()->get('admin.language.prefix', 'warder.');
 
 		if ($user->activation)
 		{
-			$event['result'] = false;
+			throw new AuthenticateFailException(Translator::translate($langPrefix . 'login.message.inactivated'));
+		}
 
-			return;
+		if ($user->blocked)
+		{
+			throw new AuthenticateFailException(Translator::translate($langPrefix . 'login.message.blocked'));
 		}
 	}
 
