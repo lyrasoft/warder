@@ -62,13 +62,6 @@ class ResetSaveController extends AbstractSaveController
 	protected $formControl = 'user';
 
 	/**
-	 * Property record.
-	 *
-	 * @var  string
-	 */
-	protected $record = 'user';
-
-	/**
 	 * Property langPrefix.
 	 *
 	 * @var  string

@@ -57,13 +57,6 @@ class SaveController extends AbstractSaveController
 	protected $model = 'user';
 
 	/**
-	 * Property record.
-	 *
-	 * @var  string
-	 */
-	protected $record = 'user';
-
-	/**
 	 * Property useTransaction.
 	 *
 	 * @var  bool
