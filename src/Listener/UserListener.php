@@ -14,6 +14,7 @@ use Windwalker\Authentication\Authentication;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\User\Exception\AuthenticateFailException;
 use Windwalker\Core\User\User;
+use Windwalker\Core\View\HtmlView;
 use Windwalker\Event\Event;
 use Windwalker\Ioc;
 use Lyrasoft\Warder\Helper\WarderHelper;
@@ -150,6 +151,11 @@ class UserListener
 	 */
 	public function onViewBeforeRender(Event $event)
 	{
+		if (!$event['view'] instanceof HtmlView)
+		{
+			return;
+		}
+
 		$data = $event['data'];
 
 		if (!$data->user)

@@ -94,6 +94,11 @@ class WarderListener
 	{
 		$view = $event['view'];
 
+		if (!$view instanceof HtmlView)
+		{
+			return;
+		}
+
 		/**
 		 * @var HtmlView $view
 		 * @var BladeRenderer $renderer
