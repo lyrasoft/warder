@@ -9,7 +9,6 @@
 namespace Lyrasoft\Warder\Controller\User\Profile;
 
 use Phoenix\Controller\Display\EditDisplayController;
-use Phoenix\Uri\Uri;
 use Windwalker\Core\Model\ModelRepository;
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Model\UserModel;
@@ -66,7 +65,7 @@ class GetController extends EditDisplayController
 	{
 		if (!UserHelper::isLogin())
 		{
-			UserHelper::goToLogin(Uri::full());
+			UserHelper::goToLogin($this->app->uri->full);
 		}
 
 		parent::prepareExecute();
