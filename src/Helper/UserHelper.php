@@ -102,11 +102,11 @@ class UserHelper
 	 */
 	public static function fakeAvatar()
 	{
-		$gender = rand(0, 1) ? 'men' : 'women';
+		$gender = mt_rand(0, 1) ? 'men' : 'women';
 
 		$max = $gender == 'men' ? 100 : 95;
 
-		return sprintf('https://randomuser.me/api/portraits/%s/%s.jpg', $gender, rand(0, $max));
+		return sprintf('https://randomuser.me/api/portraits/%s/%s.jpg', $gender, mt_rand(0, $max));
 	}
 
 	/**
