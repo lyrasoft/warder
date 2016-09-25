@@ -39,7 +39,7 @@ class UserInit extends AbstractMigration
 			$sc->datetime('last_login')->comment('Last Login Time');
 			$sc->datetime('registered')->comment('Register Time');
 			$sc->datetime('modified')->comment('Modified Time');
-			$sc->varchar('params')->comment('Params');
+			$sc->text('params')->comment('Params');
 
 			$sc->addIndex('id');
 			$sc->addIndex('username');
