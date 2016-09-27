@@ -42,6 +42,8 @@ class ProfileHtmlView extends EditView
 	 */
 	protected function prepareData($data)
 	{
+		parent::prepareData($data);
+
 		$data->fieldsets = $data->form->getFieldsets();
 	}
 
