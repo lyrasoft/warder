@@ -70,7 +70,14 @@ class WarderPackage extends AbstractPackage
 	 */
 	public function isFrontend($name = null)
 	{
-		$name = $name ? : $this->getCurrentPackage()->getName();
+		$package = $this->getCurrentPackage();
+
+		if (!$package)
+		{
+			return false;
+		}
+
+		$name = $name ? : $package->getName();
 
 		return in_array($name, (array) $this->get('frontend.package'));
 	}
@@ -84,7 +91,14 @@ class WarderPackage extends AbstractPackage
 	 */
 	public function isAdmin($name = null)
 	{
-		$name = $name ? : $this->getCurrentPackage()->getName();
+		$package = $this->getCurrentPackage();
+
+		if (!$package)
+		{
+			return false;
+		}
+
+		$name = $name ? : $package->getName();
 
 		return in_array($name, (array) $this->get('admin.package'));
 	}
@@ -124,7 +138,7 @@ class WarderPackage extends AbstractPackage
 	{
 		if (!$this->container->exists('current.package'))
 		{
-			throw new \LogicException('Please call this method after routing.');
+			return null;
 		}
 
 		return $this->container->get('current.package');
