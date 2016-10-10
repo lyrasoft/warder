@@ -57,6 +57,7 @@ class SocialMethod extends AbstractMethod
 	 * @param Credential $credential
 	 *
 	 * @return  integer
+	 * @throws \Exception
 	 */
 	public function authenticate(Credential $credential)
 	{
@@ -164,6 +165,9 @@ class SocialMethod extends AbstractMethod
 	 * @param Credential $credential
 	 *
 	 * @return  UserData
+	 *
+	 * @throws \Exception
+	 * @throws \InvalidArgumentException
 	 */
 	protected function createUser(Credential $credential)
 	{
@@ -184,6 +188,7 @@ class SocialMethod extends AbstractMethod
 	 * createHAuth
 	 *
 	 * @return  array
+	 * @throws \OutOfRangeException
 	 */
 	protected function getHAConfig()
 	{
@@ -252,6 +257,7 @@ class SocialMethod extends AbstractMethod
 	 * @param \Hybrid_Auth $auth
 	 *
 	 * @return \Hybrid_Provider_Adapter
+	 * @throws \OutOfRangeException
 	 */
 	protected function doAuthenticate($provider, \Hybrid_Auth $auth)
 	{
