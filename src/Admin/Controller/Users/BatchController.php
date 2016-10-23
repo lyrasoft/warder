@@ -8,14 +8,14 @@
 
 namespace Lyrasoft\Warder\Admin\Controller\Users;
 
-use Phoenix\Controller\Batch\BatchDelegationController;
+use Phoenix\Controller\Batch\BatchDelegatingController;
 
 /**
  * The UpdateController class.
  *
  * @since  1.0
  */
-class BatchController extends BatchDelegationController
+class BatchController extends BatchDelegatingController
 {
 	/**
 	 * Property name.
