@@ -150,6 +150,10 @@ class UserModel extends AdminModel
 		{
 			$user->password = UserHelper::hashPassword($user->password);
 		}
+		else
+		{
+			unset($user->password);
+		}
 
 		unset($user->password2);
 
