@@ -159,7 +159,7 @@ class UserModel extends AdminModel
 
 		$this->prepareDefaultData($user);
 
-		User::save($user);
+		$user->bind(User::save($user));
 
 		return true;
 	}
