@@ -158,7 +158,7 @@ class UserHandler implements UserHandlerInterface
 		$session = Ioc::getSession();
 
 		$session->destroy();
-		$session->start();
+		$session->restart();
 
 		return true;
 	}
