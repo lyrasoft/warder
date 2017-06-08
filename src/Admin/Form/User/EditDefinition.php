@@ -81,7 +81,7 @@ class EditDefinition implements FieldDefinitionInterface
 
 			// Blocked
 			$form->add('blocked', new  Field\RadioField)
-				->label(Translator::translate($langPrefix . 'user.field.name'))
+				->label(Translator::translate($langPrefix . 'user.field.enabled'))
 				->set('class', 'btn-group')
 				->set('default', 0)
 				->option(Translator::translate($langPrefix . 'user.field.blocked.block'), 1)
