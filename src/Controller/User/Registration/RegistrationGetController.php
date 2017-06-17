@@ -24,6 +24,13 @@ use Windwalker\Core\View\AbstractView;
 class RegistrationGetController extends EditDisplayController
 {
 	/**
+	 * Property name.
+	 *
+	 * @var  string
+	 */
+	protected $name = 'User';
+
+	/**
 	 * Property model.
 	 *
 	 * @var  UserModel

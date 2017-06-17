@@ -9,6 +9,7 @@
 namespace Lyrasoft\Warder\Model;
 
 use Windwalker\Core\User\User;
+use Windwalker\Utilities\Arr;
 use Windwalker\Utilities\ArrayHelper;
 
 /**
@@ -46,11 +47,11 @@ class ProfileModel extends UserModel
 	{
 		$sessionData = (array) $this['form.data'];
 
-		$pk = $this['item.pk'];
+		$pk = $this['load.conditions'];
 
 		$item = User::get($pk);
 
-		if (ArrayHelper::getValue($sessionData, 'id') == $item->id)
+		if ($sessionData)
 		{
 			unset($sessionData['password']);
 			unset($sessionData['password2']);

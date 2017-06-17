@@ -193,11 +193,10 @@ class SaveController extends AbstractSaveController
 	 * @param  DataInterface $data
 	 *
 	 * @return  string
+	 * @throws \OutOfRangeException
 	 */
 	protected function getFailRedirect(DataInterface $data = null)
 	{
-		unset($data->id);
-
-		return parent::getFailRedirect($data);
+		return $this->router->route('profile_edit', $this->getRedirectQuery());
 	}
 }

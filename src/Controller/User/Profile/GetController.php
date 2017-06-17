@@ -9,8 +9,8 @@
 namespace Lyrasoft\Warder\Controller\User\Profile;
 
 use Lyrasoft\Warder\Helper\UserHelper;
-use Lyrasoft\Warder\Model\UserModel;
-use Lyrasoft\Warder\View\User\UserHtmlView;
+use Lyrasoft\Warder\Model\ProfileModel;
+use Lyrasoft\Warder\View\Profile\ProfileHtmlView;
 use Phoenix\Controller\Display\EditDisplayController;
 use Windwalker\Core\Model\ModelRepository;
 use Windwalker\Core\View\AbstractView;
@@ -25,16 +25,16 @@ class GetController extends EditDisplayController
 	/**
 	 * Property model.
 	 *
-	 * @var  UserModel
+	 * @var  ProfileModel
 	 */
-	protected $model;
+	protected $model = 'Profile';
 
 	/**
 	 * Property view.
 	 *
-	 * @var  UserHtmlView
+	 * @var  ProfileHtmlView
 	 */
-	protected $view;
+	protected $view = 'Profile';
 
 	/**
 	 * prepareExecute
@@ -65,8 +65,5 @@ class GetController extends EditDisplayController
 	protected function prepareViewModel(AbstractView $view, ModelRepository $model)
 	{
 		parent::prepareViewModel($view, $model);
-
-		// Only use once
-		$this->removeUserState($this->getContext('edit.data'));
 	}
 }
