@@ -31,6 +31,13 @@ class UserHandler implements UserHandlerInterface
 	protected $warder;
 
 	/**
+	 * Property recordClass.
+	 *
+	 * @var  string
+	 */
+	public static $recordClass = UserRecord::class;
+
+	/**
 	 * UserHandler constructor.
 	 *
 	 * @param WarderPackage $package
@@ -46,6 +53,8 @@ class UserHandler implements UserHandlerInterface
 	 * @param array $conditions
 	 *
 	 * @return  UserDataInterface
+	 * @throws \RuntimeException
+	 * @throws \UnexpectedValueException
 	 */
 	public function load($conditions)
 	{
@@ -76,7 +85,7 @@ class UserHandler implements UserHandlerInterface
 			}
 		}
 
-		$class = $this->warder->get('class.data', '\Lyrasoft\Warder\Data\UserData');
+		$class = $this->warder->get('class.data', UserData::class);
 		$user = new $class((array) $user);
 
 		return $user;
@@ -88,6 +97,10 @@ class UserHandler implements UserHandlerInterface
 	 * @param UserDataInterface|UserData $user
 	 *
 	 * @return  UserData
+	 * @throws \Windwalker\Record\Exception\NoResultException
+	 * @throws \UnexpectedValueException
+	 * @throws \RuntimeException
+	 * @throws \InvalidArgumentException
 	 */
 	public function save(UserDataInterface $user)
 	{
@@ -118,10 +131,15 @@ class UserHandler implements UserHandlerInterface
 	 * @param array $conditions
 	 *
 	 * @return  boolean
+	 * @throws \UnexpectedValueException
+	 * @throws \RuntimeException
+	 * @throws \InvalidArgumentException
 	 */
 	public function delete($conditions)
 	{
-		return $this->getRecord()->delete($conditions);
+		$this->getRecord()->delete($conditions);
+
+		return true;
 	}
 
 	/**
@@ -130,6 +148,7 @@ class UserHandler implements UserHandlerInterface
 	 * @param UserDataInterface|UserData $user
 	 *
 	 * @return  boolean
+	 * @throws \RuntimeException
 	 */
 	public function login(UserDataInterface $user)
 	{
@@ -166,6 +185,13 @@ class UserHandler implements UserHandlerInterface
 	 */
 	protected function getRecord()
 	{
-		return new UserRecord;
+		$class = static::$recordClass;
+
+		if (!class_exists($class))
+		{
+			throw new \LogicException('Class: ' . $class . ' not found.');
+		}
+
+		return new $class;
 	}
 }
