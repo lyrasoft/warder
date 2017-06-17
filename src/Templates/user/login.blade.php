@@ -1,6 +1,6 @@
 {{-- Part of Front project. --}}
 
-@extends($warder->extends)
+@extends($warder->noauthExtends)
 
 @section('content')
     <style>

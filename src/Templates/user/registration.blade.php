@@ -4,7 +4,7 @@
 \Phoenix\Script\PhoenixScript::formValidation('#user-form');
 ?>
 
-@extends($warder->extends)
+@extends($warder->noauthExtends)
 
 @section('content')
     <div class="container warder-page registration-page">

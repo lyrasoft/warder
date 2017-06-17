@@ -114,6 +114,7 @@ class WarderListener
 			// Extends
 			$view['warder'] = new Data([
 				'extends' => $this->warder->get('frontend.view.extends', '_global.html'),
+				'noauthExtends' => $this->warder->get('frontend.view.noauth_extends', $this->warder->get('frontend.view.extends', '_global.html')),
 				'langPrefix' => $this->warder->get('frontend.language.prefix', 'warder.'),
 				'package' => WarderHelper::getPackage()
 			]);
@@ -127,7 +128,8 @@ class WarderListener
 		{
 			// Extends
 			$view['warder'] = new Data([
-				'extends' => $this->warder->get('admin.view.extends', '_global.html'),
+				'extends' => $this->warder->get('admin.view.extends', '_global.admin.admin'),
+				'noauthExtends' => $this->warder->get('admin.view.noauth_extends', $this->warder->get('admin.view.extends', '_global.admin.admin')),
 				'langPrefix' => $this->warder->get('admin.language.prefix', 'warder.'),
 				'package' => WarderHelper::getPackage()
 			]);

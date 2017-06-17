@@ -50,7 +50,8 @@ return [
 		 */
 		'package' => ['front', 'main'],
 		'view' => [
-			'extends' => '_global.html'
+			'extends' => '_global.html',
+			'noauth_extends' => '_global.html'
 		],
 		'redirect' => [
 			'login' => 'home',
@@ -76,7 +77,8 @@ return [
 		 */
 		'package' => ['admin'],
 		'view' => [
-			'extends' => '_global.admin.admin'
+			'extends' => '_global.admin.admin',
+			'noauth_extends' => '_global.admin.admin'
 		],
 		'redirect' => [
 			'login' => 'home',

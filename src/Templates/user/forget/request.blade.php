@@ -1,6 +1,6 @@
 {{-- Part of Front project. --}}
 
-@extends($warder->extends)
+@extends($warder->noauthExtends)
 
 @section('content')
     <div class="container warder-page forget-request-page">
