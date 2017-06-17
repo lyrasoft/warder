@@ -9,6 +9,7 @@
 namespace Lyrasoft\Warder\Form\Profile;
 
 use Lyrasoft\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Validator\UserExistsValidator;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Form\Field;
@@ -45,26 +46,32 @@ class EditDefinition implements FieldDefinitionInterface
 	 * @param Form $form The Windwalker form object.
 	 *
 	 * @return  void
+	 * @throws \InvalidArgumentException
 	 */
 	public function define(Form $form)
 	{
 		$loginName = $this->package->getLoginName();
 
-		$form->wrap('basic', null, function(Form $form) use ($loginName)
+		$form->fieldset('basic', function(Form $form) use ($loginName)
 		{
 			$form->add('name', new Field\TextField)
 				->label(Translator::translate('warder.user.field.name'))
+				->addFilter('trim')
 				->required();
 
 			if (strtolower($loginName) !== 'email')
 			{
 				$form->add($loginName, new Field\TextField)
 					->label(Translator::translate('warder.user.field.' . $loginName))
+					->addFilter('trim')
+					->addValidator(new UserExistsValidator($loginName))
 					->required();
 			}
 
 			$form->add('email', new Field\EmailField)
 				->label(Translator::translate('warder.user.field.email'))
+				->addFilter('trim')
+				->addValidator(new UserExistsValidator('email'))
 				->required();
 
 			$form->add('password', new Field\PasswordField)

@@ -11,6 +11,7 @@ namespace Lyrasoft\Warder\Admin\Form\User;
 use Lyrasoft\Unidev\Field\SingleImageDragField;
 use Lyrasoft\Warder\Helper\AvatarUploadHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Validator\UserExistsValidator;
 use Phoenix\Field\CalendarField;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Form\Field;
@@ -30,6 +31,7 @@ class EditDefinition implements FieldDefinitionInterface
 	 * @param Form $form The Windwalker form object.
 	 *
 	 * @return  void
+	 * @throws \InvalidArgumentException
 	 */
 	public function define(Form $form)
 	{
@@ -44,6 +46,7 @@ class EditDefinition implements FieldDefinitionInterface
 			// Name
 			$form->add('name', new  Field\TextField)
 				->label(Translator::translate($langPrefix . 'user.field.name'))
+				->addFilter('trim')
 				->required(true);
 
 			if ($loginName !== 'email')
@@ -51,12 +54,16 @@ class EditDefinition implements FieldDefinitionInterface
 				// Name
 				$form->add($loginName, new  Field\TextField)
 					->label(Translator::translate($langPrefix . 'user.field.' . $loginName))
+					->addValidator(new UserExistsValidator($loginName))
+					->addFilter('trim')
 					->required(true);
 			}
 
 			// Email
 			$form->add('email', new  Field\EmailField)
 				->label(Translator::translate($langPrefix . 'user.field.email'))
+				->addValidator(new UserExistsValidator('email'))
+				->addFilter('trim')
 				->required();
 
 			// Password

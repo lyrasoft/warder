@@ -39,6 +39,7 @@ class RegistrationDefinition implements FieldDefinitionInterface
 		{
 			$form->add('name', new Field\TextField)
 				->label(Translator::translate($langPrefix . 'user.field.name'))
+				->addFilter('trim')
 				->required();
 
 			if (strtolower($loginName) !== 'email')
@@ -46,12 +47,14 @@ class RegistrationDefinition implements FieldDefinitionInterface
 				$form->add($loginName, new Field\TextField)
 					->label(Translator::translate($langPrefix . 'user.field.' . $loginName))
 					->addValidator(new UserExistsValidator($loginName))
+					->addFilter('trim')
 					->required();
 			}
 
 			$form->add('email', new Field\EmailField)
 				->label(Translator::translate($langPrefix . 'user.field.email'))
 				->addValidator(new UserExistsValidator('email'))
+				->addFilter('trim')
 				->required();
 
 			$form->add('password', new Field\PasswordField)
