@@ -69,7 +69,7 @@ class LoginSaveController extends AbstractSaveController
 	 */
 	protected function doSave(DataInterface $data)
 	{
-		$options   = array();
+		$options   = [];
 		$provider  = $this->input->get('provider');
 		$loginName = WarderHelper::getLoginName();
 

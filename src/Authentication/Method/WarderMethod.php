@@ -59,7 +59,7 @@ class WarderMethod extends AbstractMethod
 		}
 
 		/** @var UserData $user */
-		$user = User::get(array($loginName => $credential->$loginName));
+		$user = User::get([$loginName => $credential->$loginName]);
 
 		if ($user->isNull())
 		{

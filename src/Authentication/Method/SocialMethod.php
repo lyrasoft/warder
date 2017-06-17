@@ -75,7 +75,7 @@ class SocialMethod extends AbstractMethod
 
 		$provider = $credential->_provider;
 
-		$providers = $this->warder->app->get('social_login', array());
+		$providers = $this->warder->app->get('social_login', []);
 
 		// Check provider supported
 		if (!in_array($provider, array_keys($providers)))
@@ -98,7 +98,7 @@ class SocialMethod extends AbstractMethod
 		// Process different data
 		$method = 'process' . ucfirst($provider);
 
-		if (!is_callable(array($this, $method)))
+		if (!is_callable([$this, $method]))
 		{
 			throw new \LogicException(__CLASS__ . '::' . $method . '() not exists.');
 		}
@@ -110,17 +110,17 @@ class SocialMethod extends AbstractMethod
 
 		// Default data
 		$credential->avatar = $userProfile->photoURL;
-		$credential->params = json_encode(array('raw_profile' => $userProfile));
+		$credential->params = json_encode(['raw_profile' => $userProfile]);
 
 		$this->prepareUserData($adapter, $credential);
 
 		// Check User Socials
 		$userSocialMapper = new UserSocialMapper;
 
-		$mapping = array(
+		$mapping = [
 			'identifier' => $userProfile->identifier,
 			'provider'   => $provider
-		);
+		];
 
 		$socialMapping = $userSocialMapper->findOne($mapping);
 
@@ -132,7 +132,7 @@ class SocialMethod extends AbstractMethod
 			// Check user exists
 			if ($credential->_loginName)
 			{
-				$user = User::get(array($credential->_loginName => $credential->{$credential->_loginName}));
+				$user = User::get([$credential->_loginName => $credential->{$credential->_loginName}]);
 
 				$createUser = $user->isNull();
 			}
@@ -194,58 +194,58 @@ class SocialMethod extends AbstractMethod
 	{
 		$package = $this->warder->app->getPackage();
 
-		$haConfig = array(
+		$haConfig = [
 			'base_url' => $package->router->route('social_auth', null, CoreRouter::TYPE_FULL),
-			'providers' => array(
-				'Facebook' => array(
+			'providers' => [
+				'Facebook' => [
 					'enabled' => $this->warder->app->get('social_login.facebook.enabled'),
-					'keys' => array(
+					'keys' => [
 						'id'     => $this->warder->app->get('social_login.facebook.id'),
 						'secret' => $this->warder->app->get('social_login.facebook.secret'),
-					),
+					],
 					'scope' => $this->warder->app->get('social_login.facebook.scope', 'email')
-				),
-				'Twitter' => array(
+				],
+				'Twitter' => [
 					'enabled' => $this->warder->app->get('social_login.twitter.enabled'),
-					'keys' => array(
+					'keys' => [
 						'key'    => $this->warder->app->get('social_login.twitter.key'),
 						'secret' => $this->warder->app->get('social_login.twitter.secret'),
-					),
+					],
 					'scope' => $this->warder->app->get('social_login.twitter.scope')
-				),
-				"Google" => array(
+				],
+				"Google" => [
 					'enabled' => $this->warder->app->get('social_login.google.enabled'),
-					'keys' => array(
+					'keys' => [
 						'id'     => $this->warder->app->get('social_login.google.id'),
 						'secret' => $this->warder->app->get('social_login.google.secret'),
-					),
+					],
 					'scope' => $this->warder->app->get('social_login.google.scope', "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email")
-				),
-				"Yahoo" => array(
+				],
+				"Yahoo" => [
 					'enabled' => $this->warder->app->get('social_login.yahoo.enabled'),
-					'keys' => array(
+					'keys' => [
 						'key'    => $this->warder->app->get('social_login.yahoo.key'),
 						'secret' => $this->warder->app->get('social_login.yahoo.secret'),
-					),
+					],
 					'scope' => $this->warder->app->get('social_login.yahoo.scope')
-				),
-				"GitHub" => array(
+				],
+				"GitHub" => [
 					'enabled' => $this->warder->app->get('social_login.github.enabled'),
-					'keys' => array(
+					'keys' => [
 						'id'     => $this->warder->app->get('social_login.github.id'),
 						'secret' => $this->warder->app->get('social_login.github.secret'),
-					),
+					],
 					'scope' => $this->warder->app->get('social_login.github.scope'),
-					'wrapper' => array(
+					'wrapper' => [
 						'path' => WINDWALKER_VENDOR . '/hybridauth/hybridauth/additional-providers/hybridauth-github/Providers/GitHub.php',
 						'class' => 'Hybrid_Providers_GitHub'
-					)
-				),
-				"OpenID" => array (
+					]
+				],
+				"OpenID" => [
 					"enabled" => true
-				)
-			)
-		);
+				]
+			]
+		];
 
 		return $haConfig;
 	}
@@ -263,11 +263,12 @@ class SocialMethod extends AbstractMethod
 	{
 		$package = $this->warder->app->getPackage();
 
-		$callbackUrl = $package->router->route('social_login', array('provider' => $provider, CsrfProtection::getFormToken() => 1), CoreRouter::TYPE_FULL);
+		$callbackUrl = $package->router->route('social_login', ['provider' => $provider, CsrfProtection::getFormToken() => 1], CoreRouter::TYPE_FULL);
 
-		return $auth->authenticate($provider, array(
+		return $auth->authenticate($provider, [
 			'hauth_return_to' => $callbackUrl
-		));
+		]
+		);
 	}
 
 	/**
@@ -304,7 +305,7 @@ class SocialMethod extends AbstractMethod
 	 *
 	 * @return \Hybrid_Auth
 	 */
-	public function getHybridAuth($haConfig = array())
+	public function getHybridAuth($haConfig = [])
 	{
 		if (!$this->auth)
 		{

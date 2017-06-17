@@ -42,7 +42,7 @@ class UserModel extends AdminModel
 	 *
 	 * @var  array
 	 */
-	protected $reorderConditions = array();
+	protected $reorderConditions = [];
 
 	/**
 	 * getItem
@@ -83,7 +83,7 @@ class UserModel extends AdminModel
 	 * @return bool
 	 * @throws ValidateFailException
 	 */
-	public function login($account, $password, $remember = false, $options = array())
+	public function login($account, $password, $remember = false, $options = [])
 	{
 		$loginName = WarderHelper::getLoginName();
 

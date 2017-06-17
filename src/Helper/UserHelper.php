@@ -81,7 +81,7 @@ class UserHelper
 	 */
 	public static function goToLogin($return = null)
 	{
-		$query = array();
+		$query = [];
 
 		if ($return)
 		{

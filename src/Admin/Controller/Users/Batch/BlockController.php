@@ -29,9 +29,9 @@ class BlockController extends AbstractBatchController
 	 *
 	 * @var  array
 	 */
-	protected $data = array(
+	protected $data = [
 		'blocked' => 1
-	);
+	];
 
 	/**
 	 * Property langPrefix.

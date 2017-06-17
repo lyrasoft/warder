@@ -44,9 +44,9 @@ class ActivateController extends AbstractBatchController
 	 *
 	 * @var  array
 	 */
-	protected $data = array(
+	protected $data = [
 		'activation' => ''
-	);
+	];
 
 	/**
 	 * save

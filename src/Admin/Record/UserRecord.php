@@ -54,7 +54,7 @@ class UserRecord extends Record
 			throw new \InvalidArgumentException(Translator::translate('warder.user.account.empty'));
 		}
 
-		$exists = UserMapper::findOne(array($loginName => $this->$loginName));
+		$exists = UserMapper::findOne([$loginName => $this->$loginName]);
 
 		if ($exists->notNull() && $this->id != $exists->id)
 		{
@@ -63,7 +63,7 @@ class UserRecord extends Record
 
 		if ($this->email)
 		{
-			$exists = UserMapper::findOne(array('email' => $this->email));
+			$exists = UserMapper::findOne(['email' => $this->email]);
 
 			if ($exists->notNull() && $this->id != $exists->id)
 			{
@@ -107,6 +107,6 @@ class UserRecord extends Record
 	 */
 	public function onAfterDelete(Event $event)
 	{
-		UserSocialMapper::delete(array('user_id' => $this->id));
+		UserSocialMapper::delete(['user_id' => $this->id]);
 	}
 }

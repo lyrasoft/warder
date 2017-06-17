@@ -122,7 +122,7 @@ class WarderPackage extends AbstractPackage
 	 *
 	 * @return  UserData
 	 */
-	public function createUserData($data = array())
+	public function createUserData($data = [])
 	{
 		$class = $this->get('class.data', 'Lyrasoft\Warder\Data\UserData');
 

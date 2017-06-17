@@ -35,7 +35,7 @@ class UserHtmlView extends AbstractPhoenixHtmView
 
 		$method = StringNormalise::toCamelCase(str_replace('.', '_', $layout));
 
-		if (is_callable(array($this, $method)))
+		if (is_callable([$this, $method]))
 		{
 			$this->$method($data);
 		}
@@ -111,10 +111,12 @@ class UserHtmlView extends AbstractPhoenixHtmView
 	{
 		$data->form = $this->model->getForm('ForgetConfirm');
 
-		$data->form->bind(array(
+		$data->form->bind(
+			[
 			'email' => $data->email,
 			'token' => $data->token,
-		));
+			]
+		);
 	}
 
 	/**
@@ -128,9 +130,11 @@ class UserHtmlView extends AbstractPhoenixHtmView
 	{
 		$data->form = $this->model->getForm('Reset');
 
-		$data->form->bind(array(
+		$data->form->bind(
+			[
 			'email' => $data->email,
 			'token' => $data->token,
-		));
+			]
+		);
 	}
 }

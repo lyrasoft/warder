@@ -29,9 +29,9 @@ class UnblockController extends AbstractBatchController
 	 *
 	 * @var  array
 	 */
-	protected $data = array(
+	protected $data = [
 		'blocked' => 0
-	);
+	];
 
 	/**
 	 * Property langPrefix.

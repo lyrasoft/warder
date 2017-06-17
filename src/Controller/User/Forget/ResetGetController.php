@@ -71,7 +71,7 @@ class ResetGetController extends ItemDisplayController
 		$this->view['token'] = $this->input->get('token');
 
 		// Check email and token
-		$user = User::get(array('email' => $this->view['email']));
+		$user = User::get(['email' => $this->view['email']]);
 
 		if ($user->isNull())
 		{
@@ -99,7 +99,7 @@ class ResetGetController extends ItemDisplayController
 	protected function backToConfirm($message = null, $type = Bootstrap::MSG_WARNING)
 	{
 		$this->redirect(
-			$this->router->route('forget_confirm', array('token' => $this->view['token'], 'email' => $this->view['email'])),
+			$this->router->route('forget_confirm', ['token' => $this->view['token'], 'email' => $this->view['email']]),
 			$message,
 			$type
 		);

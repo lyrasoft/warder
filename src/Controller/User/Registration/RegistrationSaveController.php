@@ -117,6 +117,7 @@ class RegistrationSaveController extends AbstractSaveController
 	 */
 	protected function preSave(DataInterface $data)
 	{
+		// Remove password from original data to make sure password won't push to session.
 		unset($this->data['password']);
 		unset($this->data['password2']);
 	}
@@ -176,10 +177,11 @@ class RegistrationSaveController extends AbstractSaveController
 	 * @param string $body
 	 *
 	 * @return  void
+	 * @throws \InvalidArgumentException
 	 */
 	protected function sendEmail($email, $body)
 	{
-		Mailer::send(function (MailMessage $message) use ($email, $body)
+		$this->app->mailer->send(function (MailMessage $message) use ($email, $body)
 		{
 		    $message->subject(Translator::translate($this->langPrefix . 'mail.subject'))
 				->from($this->app->get('mail.from.email', $this->app->get('mail.from.email')), $this->app->get('mail.from.name', $this->app->get('mail.from.name')))
@@ -199,9 +201,7 @@ class RegistrationSaveController extends AbstractSaveController
 	 */
 	protected function validate(DataInterface $data)
 	{
-		$validator = new EmailValidator;
-
-		if (!$validator->validate($data->email))
+		if (!(new EmailValidator)->validate($data->email))
 		{
 			throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.email.invalid'));
 		}

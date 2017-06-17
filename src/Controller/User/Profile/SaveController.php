@@ -157,17 +157,17 @@ class SaveController extends AbstractSaveController
 
 		$loginName = WarderHelper::getLoginName();
 
-		if ($loginName != 'email')
+		if ($loginName !== 'email')
 		{
-			$user = User::get(array($loginName => $data->$loginName));
+			$originUser = User::get([$loginName => $data->$loginName]);
 
-			if ($user->notNull() && $user->id != $data->id)
+			if ($originUser->notNull() && $originUser->id !== $data->id)
 			{
 				throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.user.account.exists'));
 			}
 		}
 
-		$user = User::get(array('email' => $data->email));
+		$user = User::get(['email' => $data->email]);
 
 		if ($user->notNull() && $user->id != $data->id)
 		{

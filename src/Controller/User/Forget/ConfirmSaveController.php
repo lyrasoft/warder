@@ -96,7 +96,7 @@ class ConfirmSaveController extends AbstractSaveController
 	 */
 	protected function doSave(DataInterface $data)
 	{
-		$user = User::get(array('email' => $this->data['email']));
+		$user = User::get(['email' => $this->data['email']]);
 
 		if ($user->isNull())
 		{
@@ -123,7 +123,7 @@ class ConfirmSaveController extends AbstractSaveController
 	 */
 	protected function getFailRedirect(DataInterface $data = null)
 	{
-		return $this->router->route('forget_confirm', array('email' => $this->data['email']));
+		return $this->router->route('forget_confirm', ['email' => $this->data['email']]);
 	}
 
 	/**
@@ -135,6 +135,6 @@ class ConfirmSaveController extends AbstractSaveController
 	 */
 	protected function getSuccessRedirect(DataInterface $data = null)
 	{
-		return $this->router->route('forget_reset', array('token' => $this->data['token'], 'email' => $this->data['email']));
+		return $this->router->route('forget_reset', ['token' => $this->data['token'], 'email' => $this->data['email']]);
 	}
 }

@@ -81,7 +81,7 @@ class UserListener
 		/** @var Authentication $auth */
 		$auth = $event['auth'];
 
-		$methods = $this->warder->get('methods', array());
+		$methods = $this->warder->get('methods', []);
 
 		foreach ($methods as $name => $class)
 		{

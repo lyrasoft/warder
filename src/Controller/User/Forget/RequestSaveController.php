@@ -100,7 +100,7 @@ class RequestSaveController extends AbstractSaveController
 
 		$view = $this->getView();
 
-		$user = User::get(array('email' => $email));
+		$user = User::get(['email' => $email]);
 
 		if ($user->isNull())
 		{
@@ -108,7 +108,7 @@ class RequestSaveController extends AbstractSaveController
 		}
 
 		$token = UserHelper::getToken($user->email);
-		$link  = $this->router->route('forget_confirm', array('token' => $token, 'email' => $email), CoreRouter::TYPE_FULL);
+		$link  = $this->router->route('forget_confirm', ['token' => $token, 'email' => $email], CoreRouter::TYPE_FULL);
 
 		$password = new Password;
 

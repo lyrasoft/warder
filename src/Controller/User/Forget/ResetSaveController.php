@@ -103,7 +103,7 @@ class ResetSaveController extends AbstractSaveController
 		}
 
 		/** @var UserRecord $user */
-		$user = User::get(array('email' => $this->data['email']));
+		$user = User::get(['email' => $this->data['email']]);
 
 		if ($user->isNull())
 		{
@@ -133,7 +133,7 @@ class ResetSaveController extends AbstractSaveController
 	 */
 	protected function getFailRedirect(DataInterface $data = null)
 	{
-		return $this->router->route('forget_reset', array('token' => $this->data['token'], 'email' => $this->data['email']));
+		return $this->router->route('forget_reset', ['token' => $this->data['token'], 'email' => $this->data['email']]);
 	}
 
 	/**

@@ -34,14 +34,14 @@ class UsersModel extends ListModel
 	 *
 	 * @var  array
 	 */
-	protected $allowFields = array('activation');
+	protected $allowFields = ['activation'];
 
 	/**
 	 * Property fieldMapping.
 	 *
 	 * @var  array
 	 */
-	protected $fieldMapping = array();
+	protected $fieldMapping = [];
 
 	/**
 	 * configureTables

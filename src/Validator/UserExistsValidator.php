@@ -56,7 +56,7 @@ class UserExistsValidator extends AbstractValidator
 	 */
 	protected function test($value)
 	{
-		$user = User::get(array($this->field => $value));
+		$user = User::get([$this->field => $value]);
 
 		if ($user->notNull())
 		{

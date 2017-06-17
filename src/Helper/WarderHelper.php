@@ -127,7 +127,7 @@ class WarderHelper
 	 *
 	 * @return  UserData
 	 */
-	public static function createUserData($data = array())
+	public static function createUserData($data = [])
 	{
 		return static::getPackage()->createUserData($data);
 	}

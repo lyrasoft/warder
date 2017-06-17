@@ -107,7 +107,7 @@ class SaveController extends AbstractSaveController
 
 		if ($loginName != 'email')
 		{
-			$user = User::get(array($loginName => $data->$loginName));
+			$user = User::get([$loginName => $data->$loginName]);
 
 			if ($user->notNull() && $user->id != $data->id)
 			{
@@ -115,7 +115,7 @@ class SaveController extends AbstractSaveController
 			}
 		}
 
-		$user = User::get(array('email' => $data->email));
+		$user = User::get(['email' => $data->email]);
 
 		if ($user->notNull() && $user->id != $data->id)
 		{

@@ -76,7 +76,7 @@ class UserHandler implements UserHandlerInterface
 			}
 			catch (NoResultException $e)
 			{
-				$user = array();
+				$user = [];
 			}
 		}
 
