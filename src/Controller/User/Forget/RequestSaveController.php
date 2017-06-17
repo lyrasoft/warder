@@ -15,6 +15,7 @@ use Windwalker\Core\DateTime\Chronos;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Mailer\Mailer;
 use Windwalker\Core\Mailer\MailMessage;
+use Windwalker\Core\Mailer\Punycode;
 use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Core\Router\CoreRouter;
 use Windwalker\Core\Security\Hasher;
@@ -107,7 +108,7 @@ class RequestSaveController extends AbstractSaveController
 		}
 
 		$token = UserHelper::getToken($user->email);
-		$link  = $this->router->route('forget_confirm', ['token' => $token, 'email' => $email], CoreRouter::TYPE_FULL);
+		$link  = $this->router->to('forget_reset', ['token' => $token, 'email' => Punycode::toAscii($email)])->full();
 
 		$user->reset_token = Hasher::create($token);
 		$user->last_reset = Chronos::create()->toSql();

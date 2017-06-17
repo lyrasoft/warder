@@ -13,6 +13,7 @@ use Lyrasoft\Warder\Helper\AvatarUploadHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\Language\Translator;
+use Windwalker\Core\Mailer\Punycode;
 use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Core\User\User;
 use Windwalker\Data\DataInterface;
@@ -113,7 +114,7 @@ class SaveController extends AbstractSaveController
 			}
 		}
 
-		$user = User::get(['email' => $data->email]);
+		$user = User::get(['email' => Punycode::toAscii($data->email)]);
 
 		if ($user->notNull() && $user->id != $data->id)
 		{

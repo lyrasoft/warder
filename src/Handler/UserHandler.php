@@ -12,6 +12,7 @@ use Lyrasoft\Warder\Admin\Record\UserRecord;
 use Lyrasoft\Warder\Data\UserData;
 use Lyrasoft\Warder\Model\UserModel;
 use Lyrasoft\Warder\WarderPackage;
+use Windwalker\Core\Mailer\Punycode;
 use Windwalker\Core\User\UserDataInterface;
 use Windwalker\Core\User\UserHandlerInterface;
 use Windwalker\Record\Exception\NoResultException;
@@ -67,6 +68,11 @@ class UserHandler implements UserHandlerInterface
 		{
 			$user = $this->getRecord();
 
+			if (isset($conditions['email']))
+			{
+				$conditions['email'] = Punycode::toAscii($conditions['email']);
+			}
+
 			try
 			{
 				$user->load($conditions);
@@ -81,6 +87,11 @@ class UserHandler implements UserHandlerInterface
 
 		$class = $this->warder->get('class.data', UserData::class);
 		$user = new $class((array) $user);
+
+		if (isset($user->email))
+		{
+			$user->email = Punycode::toUtf8($user->email);
+		}
 
 		return $user;
 	}
@@ -99,6 +110,8 @@ class UserHandler implements UserHandlerInterface
 	public function save(UserDataInterface $user)
 	{
 		$record = $this->getRecord();
+
+		$user->email = Punycode::toAscii($user->email);
 
 		if ($user->id)
 		{

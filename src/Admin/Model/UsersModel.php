@@ -8,7 +8,6 @@
 
 namespace Lyrasoft\Warder\Admin\Model;
 
-use Lyrasoft\Warder\Admin\Table\Table;
 use Lyrasoft\Warder\Table\WarderTable;
 use Phoenix\Model\Filter\FilterHelperInterface;
 use Phoenix\Model\ListModel;

@@ -13,6 +13,7 @@ use Phoenix\Html\State\IconButton;
 use Phoenix\Script\BootstrapScript;
 use Phoenix\Script\PhoenixScript;
 use Phoenix\View\GridView;
+use Windwalker\Core\Mailer\Punycode;
 use Windwalker\Core\Renderer\RendererHelper;
 
 /**
@@ -80,6 +81,12 @@ class UsersHtmlView extends GridView
 	protected function prepareData($data)
 	{
 		parent::prepareData($data);
+
+		// Prepare Punycode
+		foreach ($data->items as $item)
+		{
+			$item->email = Punycode::toUtf8($item->email);
+		}
 
 		$langPrefix = WarderHelper::getPackage()->get('admin.language.prefix', 'warder.');
 

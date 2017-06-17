@@ -15,6 +15,7 @@ use Lyrasoft\Warder\WarderPackage;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Authentication\Credential;
 use Windwalker\Authentication\Method\AbstractMethod;
+use Windwalker\Core\Mailer\Punycode;
 use Windwalker\Core\Router\CoreRouter;
 use Windwalker\Core\Security\CsrfProtection;
 use Windwalker\Core\User\User;
@@ -79,7 +80,7 @@ class SocialMethod extends AbstractMethod
 		$providers = $this->warder->app->get('social_login', []);
 
 		// Check provider supported
-		if (!in_array($provider, array_keys($providers)))
+		if (!array_key_exists($provider, $providers))
 		{
 			if (WINDWALKER_DEBUG)
 			{
@@ -227,15 +228,15 @@ class SocialMethod extends AbstractMethod
 					],
 					'scope' => $this->warder->app->get('social_login.twitter.scope')
 				],
-				"Google" => [
+				'Google' => [
 					'enabled' => $this->warder->app->get('social_login.google.enabled'),
 					'keys' => [
 						'id'     => $this->warder->app->get('social_login.google.id'),
 						'secret' => $this->warder->app->get('social_login.google.secret'),
 					],
-					'scope' => $this->warder->app->get('social_login.google.scope', "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email")
+					'scope' => $this->warder->app->get('social_login.google.scope', 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email')
 				],
-				"Yahoo" => [
+				'Yahoo'  => [
 					'enabled' => $this->warder->app->get('social_login.yahoo.enabled'),
 					'keys' => [
 						'key'    => $this->warder->app->get('social_login.yahoo.key'),
@@ -243,7 +244,7 @@ class SocialMethod extends AbstractMethod
 					],
 					'scope' => $this->warder->app->get('social_login.yahoo.scope')
 				],
-				"GitHub" => [
+				'GitHub' => [
 					'enabled' => $this->warder->app->get('social_login.github.enabled'),
 					'keys' => [
 						'id'     => $this->warder->app->get('social_login.github.id'),
