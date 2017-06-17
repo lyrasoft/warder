@@ -147,7 +147,7 @@ class UserHandler implements UserHandlerInterface
 	 */
 	public function login(UserDataInterface $user)
 	{
-		$session = Ioc::getSession();
+		$session = $this->warder->getCurrentPackage()->app->session;
 
 		unset($user->password);
 
@@ -165,7 +165,7 @@ class UserHandler implements UserHandlerInterface
 	 */
 	public function logout(UserDataInterface $user = null)
 	{
-		$session = Ioc::getSession();
+		$session = $this->warder->getCurrentPackage()->app->session;
 
 		$session->destroy();
 		$session->restart();
