@@ -17,9 +17,9 @@ use Windwalker\Core\Mailer\Mailer;
 use Windwalker\Core\Mailer\MailMessage;
 use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Core\Router\CoreRouter;
+use Windwalker\Core\Security\Hasher;
 use Windwalker\Core\User\User;
 use Windwalker\Core\View\HtmlView;
-use Windwalker\Crypt\Password;
 use Windwalker\Data\DataInterface;
 
 /**
@@ -109,9 +109,7 @@ class RequestSaveController extends AbstractSaveController
 		$token = UserHelper::getToken($user->email);
 		$link  = $this->router->route('forget_confirm', ['token' => $token, 'email' => $email], CoreRouter::TYPE_FULL);
 
-		$password = new Password;
-
-		$user->reset_token = $password->create($token);
+		$user->reset_token = Hasher::create($token);
 		$user->last_reset = Chronos::create()->toSql();
 
 		User::save($user);

@@ -14,8 +14,8 @@ use Lyrasoft\Warder\Model\UserModel;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidateFailException;
+use Windwalker\Core\Security\Hasher;
 use Windwalker\Core\User\User;
-use Windwalker\Crypt\Password;
 use Windwalker\Data\DataInterface;
 
 /**
@@ -109,14 +109,12 @@ class ResetSaveController extends AbstractSaveController
 			throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.user.not.found'));
 		}
 
-		$passwordObject = new Password;
-
-		if (!$passwordObject->verify($this->data['token'], $user->reset_token))
+		if (!Hasher::verify($this->data['token'], $user->reset_token))
 		{
 			throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.invalid.token'));
 		}
 
-		$user->password    = $passwordObject->create($this->data['password']);
+		$user->password    = Hasher::create($this->data['password']);
 		$user->reset_token = '';
 		$user->last_reset  = '';
 

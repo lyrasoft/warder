@@ -9,9 +9,9 @@
 namespace Lyrasoft\Warder\Helper;
 
 use Windwalker\Core\Asset\Asset;
+use Windwalker\Core\Security\Hasher;
 use Windwalker\Core\User\User;
 use Windwalker\Crypt\CryptHelper;
-use Windwalker\Crypt\Password;
 use Windwalker\Ioc;
 
 /**
@@ -56,7 +56,7 @@ class UserHelper
 	 */
 	public static function hashPassword($password)
 	{
-		return with(new Password)->create($password);
+		return Hasher::create($password);
 	}
 
 	/**
@@ -69,7 +69,7 @@ class UserHelper
 	 */
 	public static function verifyPassword($password, $hash)
 	{
-		return with(new Password)->verify($password, $hash);
+		return Hasher::verify($password, $hash);
 	}
 
 	/**

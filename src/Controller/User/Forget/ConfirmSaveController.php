@@ -12,8 +12,8 @@ use Lyrasoft\Warder\Model\UserModel;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidateFailException;
+use Windwalker\Core\Security\Hasher;
 use Windwalker\Core\User\User;
-use Windwalker\Crypt\Password;
 use Windwalker\Data\DataInterface;
 
 /**
@@ -102,9 +102,7 @@ class ConfirmSaveController extends AbstractSaveController
 		}
 
 		// Check token
-		$password = new Password;
-
-		if (!$password->verify($this->data['token'], $user->reset_token))
+		if (!Hasher::verify($this->data['token'], $user->reset_token))
 		{
 			throw new ValidateFailException('Invalid Token');
 		}
