@@ -44,6 +44,7 @@ class UserRecord extends Record
 	 * check
 	 *
 	 * @return  static
+	 * @throws \InvalidArgumentException
 	 */
 	public function check()
 	{
@@ -51,7 +52,12 @@ class UserRecord extends Record
 
 		if (!$this->$loginName)
 		{
-			throw new \InvalidArgumentException(Translator::translate('warder.user.account.empty'));
+			throw new \InvalidArgumentException(
+				Translator::sprintf(
+					'warder.user.save.message.account.empty',
+					Translator::translate('warder.user.field.' . $loginName)
+				)
+			);
 		}
 
 		$exists = UserMapper::findOne([$loginName => $this->$loginName]);
