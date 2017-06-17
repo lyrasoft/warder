@@ -8,6 +8,8 @@
 
 namespace Lyrasoft\Warder\Admin\View\Users;
 
+use Lyrasoft\Warder\Helper\WarderHelper;
+use Phoenix\Html\State\IconButton;
 use Phoenix\Script\BootstrapScript;
 use Phoenix\Script\PhoenixScript;
 use Phoenix\View\GridView;
@@ -78,6 +80,22 @@ class UsersHtmlView extends GridView
 	protected function prepareData($data)
 	{
 		parent::prepareData($data);
+
+		$langPrefix = WarderHelper::getPackage()->get('admin.language.prefix', 'warder.');
+
+		$data->blockedButton = IconButton::create()
+			->addState(
+				1,
+				'block',
+				'ok fa fa-check text-success',
+				$langPrefix . 'button.enabled.desc'
+			)
+			->addState(
+				0,
+				'unblock',
+				'remove fa fa-remove text-danger',
+				$langPrefix . 'button.disabled.desc'
+			);
 
 		$this->prepareScripts();
 	}

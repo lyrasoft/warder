@@ -4,6 +4,7 @@
 /**
  * @var  $items  \Lyrasoft\Warder\Admin\Record\Traits\UserDataTrait[]
  * @var  $item   \Lyrasoft\Warder\Admin\Record\Traits\UserDataTrait
+ * @var  $blockedButton   \Phoenix\Html\State\IconButton
  */
 
 \Phoenix\Script\JQueryScript::highlight('.searchable', $state['input.search.content']);
@@ -40,7 +41,7 @@
 
         {{-- FILTER BAR --}}
         <div class="filter-bar">
-            {!! $filterBar->render(array('form' => $form, 'show' => $showFilterBar)) !!}
+            {!! $filterBar->render(['form' => $form, 'show' => $showFilterBar]) !!}
         </div>
 
         {{-- RESPONSIVE TABLE DESC --}}
@@ -121,7 +122,7 @@
                                     <div class="user-avatar user-avatar-default"></div>
                                 @endif
                             @endif
-                            <a href="{{ $router->route('user', array('id' => $item->id)) }}">
+                            <a href="{{ $router->route('user', ['id' => $item->id]) }}">
                                 {{ $item->name }}
                             </a>
                         </td>
@@ -140,22 +141,7 @@
 
                         {{-- ENABLED --}}
                         <td>
-                            {!!
-                            $grid->createIconButton()
-                                ->addState(
-                                    1,
-                                    'block',
-                                    'ok fa fa-check text-success',
-                                    $warder->langPrefix . 'button.enabled.desc'
-                                )
-                                ->addState(
-                                    0,
-                                    'unblock',
-                                    'remove fa fa-remove text-danger',
-                                    $warder->langPrefix . 'button.disabled.desc'
-                                )
-                                ->render(!$item->blocked)
-                            !!}
+                            {!! $blockedButton->render(!$item->blocked) !!}
                         </td>
 
                         {{-- Activation --}}
