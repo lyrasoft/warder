@@ -18,6 +18,7 @@ use Windwalker\Authentication\Method\AbstractMethod;
 use Windwalker\Core\Router\CoreRouter;
 use Windwalker\Core\Security\CsrfProtection;
 use Windwalker\Core\User\User;
+use Windwalker\Core\User\UserDataInterface;
 use Windwalker\Data\Data;
 
 /**
@@ -115,14 +116,12 @@ class SocialMethod extends AbstractMethod
 		$this->prepareUserData($adapter, $credential);
 
 		// Check User Socials
-		$userSocialMapper = new UserSocialMapper;
-
 		$mapping = [
 			'identifier' => $userProfile->identifier,
 			'provider'   => $provider
 		];
 
-		$socialMapping = $userSocialMapper->findOne($mapping);
+		$socialMapping = UserSocialMapper::findOne($mapping);
 
 		// Check Socials
 		if ($socialMapping->isNull() || User::get($socialMapping->user_id)->isNull())
@@ -142,10 +141,7 @@ class SocialMethod extends AbstractMethod
 				$user = $this->createUser($credential);
 			}
 
-			$socialMapping = new Data($mapping);
-			$socialMapping->user_id = $user->id;
-
-			$userSocialMapper->createOne($socialMapping);
+			$socialMapping = $this->createSocialMapping($user, $mapping);
 		}
 
 		$user = User::get($socialMapping->user_id);
@@ -182,6 +178,24 @@ class SocialMethod extends AbstractMethod
 		$model->register($user);
 
 		return $user;
+	}
+
+	/**
+	 * createSocialMapping
+	 *
+	 * @param UserDataInterface $user
+	 * @param array             $mapping
+	 *
+	 * @return  Data
+	 */
+	protected function createSocialMapping(UserDataInterface $user, array $mapping)
+	{
+		$socialMapping = new Data($mapping);
+		$socialMapping->user_id = $user->id;
+
+		UserSocialMapper::createOne($socialMapping);
+
+		return $socialMapping;
 	}
 
 	/**
