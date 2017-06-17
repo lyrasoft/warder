@@ -32,7 +32,7 @@ class UserInit extends AbstractMigration
 			$sc->varchar('password')->comment('Password');
 			$sc->varchar('avatar')->comment('Avatar');
 			$sc->varchar('group')->comment('Group');
-			$sc->tinyint('blocked')->comment('0: normal, 1: blocked');
+			$sc->tinyint('blocked')->length(1)->comment('0: normal, 1: blocked');
 			$sc->varchar('activation')->comment('Activation code.');
 			$sc->varchar('reset_token')->comment('Reset Token');
 			$sc->datetime('last_reset')->comment('Last Reset Time');
@@ -44,6 +44,7 @@ class UserInit extends AbstractMigration
 			$sc->addIndex('id');
 			$sc->addIndex('username');
 			$sc->addIndex('email');
+			$sc->addIndex('group');
 		});
 
 		$this->createTable(WarderTable::USER_SOCIALS, function (Schema $sc)
