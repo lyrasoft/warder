@@ -15,6 +15,7 @@ use Windwalker\Core\Language\Translator;
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
+use Windwalker\Validator\Rule\EmailValidator;
 
 /**
  * The RegistrationDefinition class.
@@ -55,7 +56,9 @@ class RegistrationDefinition extends AbstractFieldDefinition
 			$this->email('email')
 				->label(Translator::translate($langPrefix . 'user.field.email'))
 				->addValidator(new UserExistsValidator('email'))
+				->addValidator(EmailValidator::class)
 				->addFilter('trim')
+				->addClass('validate-email')
 				->required();
 
 			$this->password('password')

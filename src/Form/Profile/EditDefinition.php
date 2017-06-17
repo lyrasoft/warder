@@ -16,6 +16,7 @@ use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
+use Windwalker\Validator\Rule\EmailValidator;
 
 /**
  * The EditDefinition class.
@@ -71,6 +72,8 @@ class EditDefinition extends AbstractFieldDefinition
 			$this->email('email')
 				->label(Translator::translate('warder.user.field.email'))
 				->addFilter('trim')
+				->addValidator(EmailValidator::class)
+				->addClass('validate-email')
 				->required();
 
 			$this->password('password')

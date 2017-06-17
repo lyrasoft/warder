@@ -19,6 +19,7 @@ use Windwalker\Core\Language\Translator;
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
+use Windwalker\Validator\Rule\EmailValidator;
 
 /**
  * The UserEditDefinition class.
@@ -67,6 +68,8 @@ class EditDefinition extends AbstractFieldDefinition
 			$this->email('email')
 				->label(Translator::translate($langPrefix . 'user.field.email'))
 				->addFilter('trim')
+				->addValidator(EmailValidator::class)
+				->addClass('validate-email')
 				->autocomplete('false')
 				->required();
 
