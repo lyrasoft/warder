@@ -8,17 +8,13 @@
 
 namespace Lyrasoft\Warder\Handler;
 
-use Windwalker\Core\Language\Translator;
-use Windwalker\Record\Exception\NoResultException;
-use Windwalker\Record\Record;
 use Lyrasoft\Warder\Admin\Record\UserRecord;
 use Lyrasoft\Warder\Data\UserData;
+use Lyrasoft\Warder\WarderPackage;
+use Windwalker\Core\Ioc;
 use Windwalker\Core\User\UserDataInterface;
 use Windwalker\Core\User\UserHandlerInterface;
-use Windwalker\Core\Ioc;
-use Windwalker\Data\Data;
-use Windwalker\DataMapper\DataMapper;
-use Lyrasoft\Warder\WarderPackage;
+use Windwalker\Record\Exception\NoResultException;
 
 /**
  * The UserHandler class.

@@ -8,11 +8,10 @@
 
 namespace Lyrasoft\Warder\Controller\User;
 
-use Phoenix\Controller\AbstractSaveController;
-use Windwalker\Data\Data;
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Model\UserModel;
+use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Data\DataInterface;
 
 /**

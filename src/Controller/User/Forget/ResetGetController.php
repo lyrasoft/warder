@@ -8,13 +8,13 @@
 
 namespace Lyrasoft\Warder\Controller\User\Forget;
 
-use Phoenix\Controller\Display\ItemDisplayController;
-use Windwalker\Core\User\User;
-use Windwalker\Core\Frontend\Bootstrap;
-use Windwalker\Core\Language\Translator;
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Model\UserModel;
 use Lyrasoft\Warder\View\User\UserHtmlView;
+use Phoenix\Controller\Display\ItemDisplayController;
+use Windwalker\Core\Frontend\Bootstrap;
+use Windwalker\Core\Language\Translator;
+use Windwalker\Core\User\User;
 
 /**
  * The GetController class.

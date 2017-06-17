@@ -8,11 +8,11 @@
 
 namespace Lyrasoft\Warder\Admin\Field\User;
 
-use Windwalker\Core\Language\Translator;
 use Lyrasoft\Warder\Admin\Table\Table;
-use Phoenix\Field\ModalField;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Table\WarderTable;
+use Phoenix\Field\ModalField;
+use Windwalker\Core\Language\Translator;
 
 /**
  * The UserModalField class.

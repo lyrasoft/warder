@@ -8,17 +8,17 @@
 
 namespace Lyrasoft\Warder\Authentication\Method;
 
-use Windwalker\Authentication\Authentication;
-use Windwalker\Authentication\Credential;
-use Windwalker\Authentication\Method\AbstractMethod;
-use Windwalker\Core\User\User;
-use Windwalker\Core\Router\CoreRouter;
-use Windwalker\Core\Security\CsrfProtection;
-use Windwalker\Data\Data;
 use Lyrasoft\Warder\Admin\DataMapper\UserSocialMapper;
 use Lyrasoft\Warder\Data\UserData;
 use Lyrasoft\Warder\Model\UserModel;
 use Lyrasoft\Warder\WarderPackage;
+use Windwalker\Authentication\Authentication;
+use Windwalker\Authentication\Credential;
+use Windwalker\Authentication\Method\AbstractMethod;
+use Windwalker\Core\Router\CoreRouter;
+use Windwalker\Core\Security\CsrfProtection;
+use Windwalker\Core\User\User;
+use Windwalker\Data\Data;
 
 /**
  * The SocialMethod class.

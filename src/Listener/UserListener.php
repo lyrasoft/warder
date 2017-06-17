@@ -8,17 +8,14 @@
 
 namespace Lyrasoft\Warder\Listener;
 
-use Lyrasoft\Warder\Authentication\Method\WarderMethod;
-use Lyrasoft\Warder\Handler\UserHandler;
+use Lyrasoft\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\WarderPackage;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\User\Exception\AuthenticateFailException;
 use Windwalker\Core\User\User;
 use Windwalker\Core\View\HtmlView;
 use Windwalker\Event\Event;
-use Windwalker\Ioc;
-use Lyrasoft\Warder\Helper\WarderHelper;
-use Lyrasoft\Warder\WarderPackage;
 
 /**
  * The UserListener class.

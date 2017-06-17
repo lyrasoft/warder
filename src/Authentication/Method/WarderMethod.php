@@ -10,11 +10,11 @@ namespace Lyrasoft\Warder\Authentication\Method;
 
 use Lyrasoft\Warder\Data\UserData;
 use Lyrasoft\Warder\Helper\UserHelper;
+use Lyrasoft\Warder\WarderPackage;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Authentication\Credential;
 use Windwalker\Authentication\Method\AbstractMethod;
 use Windwalker\Core\User\User;
-use Lyrasoft\Warder\WarderPackage;
 
 /**
  * The Eng4TwMethod class.

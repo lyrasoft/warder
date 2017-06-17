@@ -8,15 +8,13 @@
 
 namespace Lyrasoft\Warder\Controller\User\Forget;
 
+use Lyrasoft\Warder\Model\UserModel;
 use Phoenix\Controller\AbstractSaveController;
-use Windwalker\Core\User\User;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidateFailException;
+use Windwalker\Core\User\User;
 use Windwalker\Crypt\Password;
-use Windwalker\Data\Data;
 use Windwalker\Data\DataInterface;
-use Windwalker\Filter\InputFilter;
-use Lyrasoft\Warder\Model\UserModel;
 
 /**
  * The SaveController class.

@@ -8,14 +8,12 @@
 
 namespace Lyrasoft\Warder\Form\User;
 
+use Lyrasoft\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Validator\UserExistsValidator;
 use Windwalker\Core\Language\Translator;
-use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
-use Lyrasoft\Warder\Helper\WarderHelper;
-use Lyrasoft\Warder\Validator\UserExistsValidator;
-use Lyrasoft\Warder\WarderPackage;
 
 /**
  * The RegistrationDefinition class.

@@ -8,19 +8,18 @@
 
 namespace Lyrasoft\Warder\Controller\User\Forget;
 
-use Phoenix\Controller\AbstractSaveController;
-use Windwalker\Core\Mailer\Mailer;
-use Windwalker\Core\Mailer\MailMessage;
-use Windwalker\Core\User\User;
-use Windwalker\Core\DateTime\DateTime;
-use Windwalker\Core\Language\Translator;
-use Windwalker\Core\Model\Exception\ValidateFailException;
-use Windwalker\Core\Router\CoreRouter;
-use Windwalker\Core\View\HtmlView;
-use Windwalker\Crypt\Password;
-use Windwalker\Data\Data;
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Model\UserModel;
+use Phoenix\Controller\AbstractSaveController;
+use Windwalker\Core\DateTime\DateTime;
+use Windwalker\Core\Language\Translator;
+use Windwalker\Core\Mailer\Mailer;
+use Windwalker\Core\Mailer\MailMessage;
+use Windwalker\Core\Model\Exception\ValidateFailException;
+use Windwalker\Core\Router\CoreRouter;
+use Windwalker\Core\User\User;
+use Windwalker\Core\View\HtmlView;
+use Windwalker\Crypt\Password;
 use Windwalker\Data\DataInterface;
 
 /**

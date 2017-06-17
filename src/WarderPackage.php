@@ -8,13 +8,10 @@
 
 namespace Lyrasoft\Warder;
 
-use Phoenix\Language\TranslatorHelper;
 use Lyrasoft\Warder\Data\UserData;
 use Lyrasoft\Warder\Helper\WarderHelper;
-use Lyrasoft\Warder\Listener\WarderListener;
-use Lyrasoft\Warder\Listener\UserListener;
+use Phoenix\Language\TranslatorHelper;
 use Windwalker\Core\Package\AbstractPackage;
-use Windwalker\Event\Dispatcher;
 
 define('WARDER_ROOT', dirname(__DIR__));
 define('WARDER_SOURCE', WARDER_ROOT . '/src');

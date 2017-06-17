@@ -9,14 +9,9 @@
 namespace Lyrasoft\Warder\Model;
 
 use Lyrasoft\Warder\Admin\Record\Traits\UserDataTrait;
-use Phoenix\Model\CrudModel;
-use Windwalker\Authentication\Credential;
-use Windwalker\Core\User\User;
-use Windwalker\Core\DateTime\DateTime;
-use Windwalker\Core\Language\Translator;
-use Windwalker\Core\Model\Exception\ValidateFailException;
-use Windwalker\Data\Data;
 use Lyrasoft\Warder\Helper\UserHelper;
+use Windwalker\Core\DateTime\DateTime;
+use Windwalker\Core\User\User;
 use Windwalker\Data\DataInterface;
 
 /**

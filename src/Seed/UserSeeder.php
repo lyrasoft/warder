@@ -8,14 +8,12 @@
 
 use Faker\Factory;
 use Lyrasoft\Unidev\Helper\PravatarHelper;
-use Windwalker\Core\DateTime\DateTime;
-use Windwalker\Core\Seeder\AbstractSeeder;
-use Windwalker\Crypt\Password;
-use Windwalker\Data\Data;
-use Windwalker\DataMapper\DataMapper;
 use Lyrasoft\Warder\Admin\DataMapper\UserMapper;
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Table\WarderTable;
+use Windwalker\Core\DateTime\DateTime;
+use Windwalker\Core\Seeder\AbstractSeeder;
+use Windwalker\Data\Data;
 
 /**
  * The UserSeeder class.

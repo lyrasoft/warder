@@ -8,9 +8,9 @@
 
 namespace Lyrasoft\Warder\Controller\User\Forget;
 
-use Phoenix\Controller\Display\ItemDisplayController;
 use Lyrasoft\Warder\Model\UserModel;
 use Lyrasoft\Warder\View\User\UserHtmlView;
+use Phoenix\Controller\Display\ItemDisplayController;
 
 /**
  * The GetController class.

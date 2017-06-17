@@ -9,8 +9,8 @@
 namespace Lyrasoft\Warder\Admin\Field\User;
 
 use Lyrasoft\Warder\Admin\Table\Table;
-use Phoenix\Field\ItemListField;
 use Lyrasoft\Warder\Helper\WarderHelper;
+use Phoenix\Field\ItemListField;
 
 /**
  * The UserField class.

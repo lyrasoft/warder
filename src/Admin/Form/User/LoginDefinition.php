@@ -8,12 +8,12 @@
 
 namespace Lyrasoft\Warder\Admin\Form\User;
 
+use Lyrasoft\Warder\Helper\WarderHelper;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
-use Lyrasoft\Warder\Helper\WarderHelper;
 
 /**
  * The LoginDefinition class.

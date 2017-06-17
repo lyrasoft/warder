@@ -9,13 +9,13 @@
 namespace Lyrasoft\Warder\Admin\Form\User;
 
 use Lyrasoft\Unidev\Field\SingleImageDragField;
+use Lyrasoft\Warder\Helper\AvatarUploadHelper;
+use Lyrasoft\Warder\Helper\WarderHelper;
 use Phoenix\Field\CalendarField;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
-use Lyrasoft\Warder\Helper\AvatarUploadHelper;
-use Lyrasoft\Warder\Helper\WarderHelper;
 
 /**
  * The UserEditDefinition class.

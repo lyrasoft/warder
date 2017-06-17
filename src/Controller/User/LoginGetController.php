@@ -8,9 +8,9 @@
 
 namespace Lyrasoft\Warder\Controller\User;
 
-use Phoenix\Controller\Display\DisplayController;
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
+use Phoenix\Controller\Display\DisplayController;
 
 /**
  * The GetController class.

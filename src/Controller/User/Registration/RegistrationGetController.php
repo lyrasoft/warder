@@ -8,12 +8,12 @@
 
 namespace Lyrasoft\Warder\Controller\User\Registration;
 
-use Phoenix\Controller\Display\EditDisplayController;
-use Windwalker\Core\Model\ModelRepository;
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Model\UserModel;
 use Lyrasoft\Warder\View\User\UserHtmlView;
+use Phoenix\Controller\Display\EditDisplayController;
+use Windwalker\Core\Model\ModelRepository;
 
 /**
  * The GetController class.

@@ -8,12 +8,11 @@
 
 namespace Lyrasoft\Warder\View\User;
 
+use Lyrasoft\Warder\Helper\WarderHelper;
 use Phoenix\View\AbstractPhoenixHtmView;
 use Windwalker\Core\Language\Translator;
-use Windwalker\Data\Data;
 use Windwalker\Data\DataInterface;
 use Windwalker\String\StringNormalise;
-use Lyrasoft\Warder\Helper\WarderHelper;
 
 /**
  * The UserHtmlView class.

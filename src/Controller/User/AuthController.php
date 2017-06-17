@@ -9,7 +9,6 @@
 namespace Lyrasoft\Warder\Controller\User;
 
 use Phoenix\Controller\AbstractPhoenixController;
-use Windwalker\Core\Security\CsrfProtection;
 
 /**
  * The AuthController class.

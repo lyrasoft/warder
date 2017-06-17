@@ -8,8 +8,8 @@
 
 namespace Lyrasoft\Warder\Admin\DataMapper;
 
-use Windwalker\Core\DataMapper\CoreDataMapper;
 use Lyrasoft\Warder\Table\WarderTable;
+use Windwalker\Core\DataMapper\CoreDataMapper;
 
 /**
  * The UserMapper class.

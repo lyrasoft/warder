@@ -8,19 +8,17 @@
 
 namespace Lyrasoft\Warder\Controller\User\Registration;
 
-use Phoenix\Controller\AbstractSaveController;
-use Windwalker\Core\Mailer\Mailer;
-use Windwalker\Core\Mailer\MailMessage;
-use Windwalker\Core\Language\Translator;
-use Windwalker\Core\Model\Exception\ValidateFailException;
-use Windwalker\Core\Router\CoreRouter;
-use Windwalker\Core\View\HtmlView;
-use Windwalker\Data\Data;
-use Windwalker\Data\DataInterface;
-use Windwalker\Validator\Rule\EmailValidator;
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Model\UserModel;
+use Phoenix\Controller\AbstractSaveController;
+use Windwalker\Core\Language\Translator;
+use Windwalker\Core\Mailer\MailMessage;
+use Windwalker\Core\Model\Exception\ValidateFailException;
+use Windwalker\Core\Router\CoreRouter;
+use Windwalker\Core\View\HtmlView;
+use Windwalker\Data\DataInterface;
+use Windwalker\Validator\Rule\EmailValidator;
 
 /**
  * The SaveController class.

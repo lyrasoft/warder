@@ -8,12 +8,12 @@
 
 namespace Lyrasoft\Warder\Admin\View\User;
 
+use Lyrasoft\Warder\Admin\Form\User\LoginDefinition;
+use Lyrasoft\Warder\Helper\WarderHelper;
 use Phoenix\Script\BootstrapScript;
 use Phoenix\Script\PhoenixScript;
 use Phoenix\View\EditView;
 use Windwalker\Core\Language\Translator;
-use Lyrasoft\Warder\Admin\Form\User\LoginDefinition;
-use Lyrasoft\Warder\Helper\WarderHelper;
 use Windwalker\Core\Renderer\RendererHelper;
 
 /**
