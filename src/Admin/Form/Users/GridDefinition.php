@@ -49,7 +49,7 @@ class GridDefinition extends AbstractFieldDefinition
 				->defaultValue('*')
 				->option(Translator::translate('phoenix.core.all'), '*');
 
-			if ($loginName != 'email')
+			if ($loginName !== 'email')
 			{
 				$fieldField->option(Translator::translate($langPrefix . 'user.field.' . $loginName), 'user.' . $loginName);
 			}

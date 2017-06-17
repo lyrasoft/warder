@@ -56,7 +56,7 @@ class EditDefinition implements FieldDefinitionInterface
 				->label(Translator::translate('warder.user.field.name'))
 				->required();
 
-			if (strtolower($loginName) != 'email')
+			if (strtolower($loginName) !== 'email')
 			{
 				$form->add($loginName, new Field\TextField)
 					->label(Translator::translate('warder.user.field.' . $loginName))

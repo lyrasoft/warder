@@ -46,7 +46,7 @@ class EditDefinition implements FieldDefinitionInterface
 				->label(Translator::translate($langPrefix . 'user.field.name'))
 				->required(true);
 
-			if ($loginName != 'email')
+			if ($loginName !== 'email')
 			{
 				// Name
 				$form->add($loginName, new  Field\TextField)

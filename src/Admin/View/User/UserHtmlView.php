@@ -53,7 +53,7 @@ class UserHtmlView extends EditView
 	 */
 	protected function prepareRender($data)
 	{
-		if ($this->getLayout() == 'login')
+		if ($this->getLayout() === 'login')
 		{
 			$this->formDefinition = new LoginDefinition(WarderHelper::getPackage());
 			$this->formControl = 'user';
@@ -102,7 +102,7 @@ class UserHtmlView extends EditView
 	{
 		$layout = $this->getLayout();
 
-		if ($layout != 'user' && !$title)
+		if ($layout !== 'user' && !$title)
 		{
 			$langPrefix = WarderHelper::getPackage()->get('admin.language.prefix', 'warder.');
 			$title = Translator::translate($langPrefix . $layout . '.title');

@@ -213,7 +213,7 @@ class RegistrationSaveController extends AbstractSaveController
 			throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.password.not.entered'));
 		}
 
-		if ($data->password != $data->password2)
+		if ($data->password !== $data->password2)
 		{
 			throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.password.not.match'));
 		}

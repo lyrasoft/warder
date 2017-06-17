@@ -174,7 +174,7 @@ class SaveController extends AbstractSaveController
 
 		if ('' !== (string) $data->password)
 		{
-			if ($data->password != $data->password2)
+			if ($data->password !== $data->password2)
 			{
 				throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.password.not.match'));
 			}

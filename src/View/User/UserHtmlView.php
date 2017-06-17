@@ -53,7 +53,7 @@ class UserHtmlView extends AbstractPhoenixHtmView
 	{
 		$layout = $this->getLayout();
 
-		if ($layout != 'user' && !$title)
+		if ($layout !== 'user' && !$title)
 		{
 			$langPrefix = WarderHelper::getPackage()->get('admin.language.prefix', 'warder.');
 			$title = Translator::translate($langPrefix . $layout . '.title');

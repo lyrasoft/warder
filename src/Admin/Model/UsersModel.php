@@ -102,7 +102,7 @@ class UsersModel extends ListModel
 	{
 		$filterHelper->setHandler('activation', function(Query $query, $field, $value)
 		{
-			if ( (string) $value == '0')
+			if (((string) $value) === '0')
 			{
 				$query->where('CHAR_LENGTH(user.activation) > 0');
 			}

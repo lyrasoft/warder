@@ -346,7 +346,7 @@ class SocialMethod extends AbstractMethod
 		$loginName = $this->warder->getLoginName();
 
 		// Generate a temp username that usr can edit it later.
-		if ($loginName != 'email')
+		if ($loginName !== 'email')
 		{
 			$username = strtolower(str_replace(' ', '', $userProfile->displayName)) . '-' . $userProfile->identifier;
 			$credential->$loginName = $username;
@@ -374,7 +374,7 @@ class SocialMethod extends AbstractMethod
 		$loginName = $this->warder->getLoginName();
 
 		// Generate a temp username that usr can edit it later.
-		if ($loginName != 'email')
+		if ($loginName !== 'email')
 		{
 			$username = strtolower(str_replace(' ', '', $userProfile->displayName)) . '-' . $userProfile->identifier;
 			$credential->$loginName = $username;
@@ -401,7 +401,7 @@ class SocialMethod extends AbstractMethod
 		$loginName = $this->warder->getLoginName();
 
 		// Generate a temp username that usr can edit it later.
-		if ($loginName != 'email')
+		if ($loginName !== 'email')
 		{
 			$username = strtolower(str_replace(' ', '', $userProfile->displayName)) . '-' . $userProfile->identifier;
 			$credential->$loginName = $username;
@@ -432,7 +432,7 @@ class SocialMethod extends AbstractMethod
 		$loginName = $this->warder->getLoginName();
 
 		// Generate a temp username that usr can edit it later.
-		if ($loginName != 'email')
+		if ($loginName !== 'email')
 		{
 			$username = strtolower(str_replace(' ', '', $userProfile->displayName)) . '-' . $userProfile->identifier;
 			$credential->$loginName = $username;
@@ -456,7 +456,7 @@ class SocialMethod extends AbstractMethod
 		$loginName = $this->warder->getLoginName();
 
 		// Generate a temp username that usr can edit it later.
-		if ($loginName != 'email')
+		if ($loginName !== 'email')
 		{
 			$username = strtolower(str_replace(' ', '', $userProfile->displayName)) . '-' . $userProfile->identifier;
 			$credential->$loginName = $username;

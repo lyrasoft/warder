@@ -96,7 +96,7 @@ class ResetSaveController extends AbstractSaveController
 			throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.password.not.entered'));
 		}
 
-		if ($this->data['password'] != $this->data['password2'])
+		if ($this->data['password'] !== $this->data['password2'])
 		{
 			throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.password.not.match'));
 		}

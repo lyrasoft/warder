@@ -8,7 +8,7 @@
 
 namespace Lyrasoft\Warder\Helper;
 
-use Phoenix\Uri\Uri;
+use Windwalker\Core\Asset\Asset;
 use Windwalker\Core\User\User;
 use Windwalker\Crypt\CryptHelper;
 use Windwalker\Crypt\Password;
@@ -104,7 +104,7 @@ class UserHelper
 	{
 		$gender = mt_rand(0, 1) ? 'men' : 'women';
 
-		$max = $gender == 'men' ? 100 : 95;
+		$max = $gender === 'men' ? 100 : 95;
 
 		return sprintf('https://randomuser.me/api/portraits/%s/%s.jpg', $gender, mt_rand(0, $max));
 	}
@@ -116,7 +116,7 @@ class UserHelper
 	 */
 	public static function defaultAvatar()
 	{
-		return Uri::media(Uri::RELATIVE) . 'images/users/default-avatar.gif';
+		return Asset::path('images/users/default-avatar.gif');
 	}
 
 	/**
@@ -133,6 +133,6 @@ class UserHelper
 
 		$data = json_encode($data);
 
-		return md5($secret . $data . uniqid() . CryptHelper::genRandomBytes());
+		return md5($secret . $data . uniqid('Warder', true) . CryptHelper::genRandomBytes());
 	}
 }
