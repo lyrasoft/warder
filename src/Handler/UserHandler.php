@@ -10,11 +10,13 @@ namespace Lyrasoft\Warder\Handler;
 
 use Lyrasoft\Warder\Admin\Record\UserRecord;
 use Lyrasoft\Warder\Data\UserData;
+use Lyrasoft\Warder\Model\UserModel;
 use Lyrasoft\Warder\WarderPackage;
 use Windwalker\Core\Ioc;
 use Windwalker\Core\User\UserDataInterface;
 use Windwalker\Core\User\UserHandlerInterface;
 use Windwalker\Record\Exception\NoResultException;
+use Windwalker\Record\Record;
 
 /**
  * The UserHandler class.
@@ -29,13 +31,6 @@ class UserHandler implements UserHandlerInterface
 	 * @var  WarderPackage
 	 */
 	protected $warder;
-
-	/**
-	 * Property recordClass.
-	 *
-	 * @var  string
-	 */
-	public static $recordClass = UserRecord::class;
 
 	/**
 	 * UserHandler constructor.
@@ -181,17 +176,16 @@ class UserHandler implements UserHandlerInterface
 	/**
 	 * getDataMapper
 	 *
-	 * @return  UserRecord
+	 * @return  UserRecord|Record
 	 */
 	protected function getRecord()
 	{
-		$class = static::$recordClass;
+		$package = $this->warder->getCurrentPackage();
+		$resolver = $package->getMvcResolver()->getModelResolver();
 
-		if (!class_exists($class))
-		{
-			throw new \LogicException('Class: ' . $class . ' not found.');
-		}
+		/** @var UserModel $model */
+		$model = $resolver->create('UserModel', null, null, $package->app->database);
 
-		return new $class;
+		return $model->getRecord();
 	}
 }
