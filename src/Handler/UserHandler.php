@@ -12,7 +12,6 @@ use Lyrasoft\Warder\Admin\Record\UserRecord;
 use Lyrasoft\Warder\Data\UserData;
 use Lyrasoft\Warder\Model\UserModel;
 use Lyrasoft\Warder\WarderPackage;
-use Windwalker\Core\Ioc;
 use Windwalker\Core\User\UserDataInterface;
 use Windwalker\Core\User\UserHandlerInterface;
 use Windwalker\Record\Exception\NoResultException;

@@ -9,12 +9,9 @@
 namespace Lyrasoft\Warder\Form\Profile;
 
 use Lyrasoft\Warder\Helper\WarderHelper;
-use Lyrasoft\Warder\Validator\UserExistsValidator;
 use Windwalker\Core\Form\AbstractFieldDefinition;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Package\AbstractPackage;
-use Windwalker\Form\Field;
-use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
 use Windwalker\Validator\Rule\EmailValidator;
 

@@ -9,7 +9,6 @@
 namespace Lyrasoft\Warder\Admin\Controller\Users;
 
 use Phoenix\Controller\Display\ListDisplayController;
-use Windwalker\Core\Model\ModelRepository;
 
 /**
  * The GetController class.

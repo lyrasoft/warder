@@ -11,8 +11,6 @@ namespace Lyrasoft\Warder\Form\User;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Windwalker\Core\Form\AbstractFieldDefinition;
 use Windwalker\Core\Language\Translator;
-use Windwalker\Form\Field;
-use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
 
 /**

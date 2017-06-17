@@ -9,8 +9,6 @@
 namespace Lyrasoft\Warder\Model;
 
 use Windwalker\Core\User\User;
-use Windwalker\Utilities\Arr;
-use Windwalker\Utilities\ArrayHelper;
 
 /**
  * The ProfileModel class.
