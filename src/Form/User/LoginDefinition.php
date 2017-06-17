@@ -9,6 +9,7 @@
 namespace Lyrasoft\Warder\Form\User;
 
 use Lyrasoft\Warder\Helper\WarderHelper;
+use Windwalker\Core\Form\AbstractFieldDefinition;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
@@ -19,7 +20,7 @@ use Windwalker\Form\Form;
  *
  * @since  1.0
  */
-class LoginDefinition implements FieldDefinitionInterface
+class LoginDefinition extends AbstractFieldDefinition
 {
 	/**
 	 * Define the form fields.
@@ -28,18 +29,18 @@ class LoginDefinition implements FieldDefinitionInterface
 	 *
 	 * @return  void
 	 */
-	public function define(Form $form)
+	public function doDefine(Form $form)
 	{
 		$loginName = WarderHelper::getLoginName();
 		$langPrefix = WarderHelper::getPackage()->get('frontend.language.prefix', 'warder.');
 
-		$form->add($loginName, new Field\TextField)
+		$this->text($loginName)
 			->label(Translator::translate($langPrefix . 'user.field.' . $loginName));
 
-		$form->add('password', new Field\PasswordField)
+		$this->password('password')
 			->label(Translator::translate($langPrefix . 'user.field.password'));
 
-		$form->add('remember', new Field\CheckboxField)
+		$this->checkbox('remember')
 			->label(Translator::translate($langPrefix . 'user.field.remember'));
 	}
 }

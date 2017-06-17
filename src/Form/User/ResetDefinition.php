@@ -9,6 +9,7 @@
 namespace Lyrasoft\Warder\Form\User;
 
 use Lyrasoft\Warder\Helper\WarderHelper;
+use Windwalker\Core\Form\AbstractFieldDefinition;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
@@ -19,7 +20,7 @@ use Windwalker\Form\Form;
  *
  * @since  1.0
  */
-class ResetDefinition implements FieldDefinitionInterface
+class ResetDefinition extends AbstractFieldDefinition
 {
 	/**
 	 * Define the form fields.
@@ -28,19 +29,19 @@ class ResetDefinition implements FieldDefinitionInterface
 	 *
 	 * @return  void
 	 */
-	public function define(Form $form)
+	public function doDefine(Form $form)
 	{
 		$langPrefix = WarderHelper::getPackage()->get('frontend.language.prefix', 'warder.');
 
-		$form->add('password', new Field\PasswordField)
+		$this->password('password')
 			->label(Translator::translate($langPrefix . 'user.field.password'))
-			->set('placeholder', Translator::translate($langPrefix . 'user.field.password'));
+			->placeholder(Translator::translate($langPrefix . 'user.field.password'));
 
-		$form->add('password2', new Field\PasswordField)
+		$this->password('password2')
 			->label(Translator::translate($langPrefix . 'user.field.password.confirm'))
-			->set('placeholder', Translator::translate($langPrefix . 'user.field.password.confirm'));
+			->placeholder(Translator::translate($langPrefix . 'user.field.password.confirm'));
 
-		$form->add('email', new Field\HiddenField);
-		$form->add('token', new Field\HiddenField);
+		$this->hidden('email');
+		$this->hidden('token');
 	}
 }

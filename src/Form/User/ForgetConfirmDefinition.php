@@ -9,6 +9,7 @@
 namespace Lyrasoft\Warder\Form\User;
 
 use Lyrasoft\Warder\Helper\WarderHelper;
+use Windwalker\Core\Form\AbstractFieldDefinition;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
@@ -19,7 +20,7 @@ use Windwalker\Form\Form;
  *
  * @since  1.0
  */
-class ForgetConfirmDefinition implements FieldDefinitionInterface
+class ForgetConfirmDefinition extends AbstractFieldDefinition
 {
 	/**
 	 * Define the form fields.
@@ -28,18 +29,18 @@ class ForgetConfirmDefinition implements FieldDefinitionInterface
 	 *
 	 * @return  void
 	 */
-	public function define(Form $form)
+	public function doDefine(Form $form)
 	{
 		$langPrefix = WarderHelper::getPackage()->get('frontend.language.prefix', 'warder.');
 
-		$form->add('email', new Field\EmailField)
+		$this->email('email')
 			->label(Translator::translate($langPrefix . '.user.field.email'))
-			->set('placeholder', Translator::translate($langPrefix . '.user.field.email'))
+			->placeholder(Translator::translate($langPrefix . '.user.field.email'))
 			->required();
 
-		$form->add('token', new Field\TextField)
+		$this->text('token')
 			->label(Translator::translate($langPrefix . 'user.field.token'))
-			->set('placeholder', Translator::translate($langPrefix . 'user.field.token'))
+			->placeholder(Translator::translate($langPrefix . 'user.field.token'))
 			->required();
 	}
 }

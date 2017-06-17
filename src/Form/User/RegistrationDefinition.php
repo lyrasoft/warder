@@ -10,6 +10,7 @@ namespace Lyrasoft\Warder\Form\User;
 
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Validator\UserExistsValidator;
+use Windwalker\Core\Form\AbstractFieldDefinition;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
@@ -20,7 +21,7 @@ use Windwalker\Form\Form;
  *
  * @since  1.0
  */
-class RegistrationDefinition implements FieldDefinitionInterface
+class RegistrationDefinition extends AbstractFieldDefinition
 {
 	/**
 	 * Define the form fields.
@@ -30,40 +31,40 @@ class RegistrationDefinition implements FieldDefinitionInterface
 	 * @return  void
 	 * @throws \InvalidArgumentException
 	 */
-	public function define(Form $form)
+	public function doDefine(Form $form)
 	{
 		$loginName = WarderHelper::getLoginName();
 		$langPrefix = WarderHelper::getPackage()->get('frontend.language.prefix', 'warder.');
 
-		$form->wrap('basic', null, function(Form $form) use ($loginName, $langPrefix)
+		$form->fieldset('basic', function(Form $form) use ($loginName, $langPrefix)
 		{
-			$form->add('name', new Field\TextField)
+			$this->text('name')
 				->label(Translator::translate($langPrefix . 'user.field.name'))
 				->addFilter('trim')
 				->required();
 
 			if (strtolower($loginName) !== 'email')
 			{
-				$form->add($loginName, new Field\TextField)
+				$this->text($loginName)
 					->label(Translator::translate($langPrefix . 'user.field.' . $loginName))
 					->addValidator(new UserExistsValidator($loginName))
 					->addFilter('trim')
 					->required();
 			}
 
-			$form->add('email', new Field\EmailField)
+			$this->email('email')
 				->label(Translator::translate($langPrefix . 'user.field.email'))
 				->addValidator(new UserExistsValidator('email'))
 				->addFilter('trim')
 				->required();
 
-			$form->add('password', new Field\PasswordField)
+			$this->password('password')
 				->label(Translator::translate($langPrefix . 'user.field.password'))
-				->set('autocomplete', 'off');
+				->autocomplete('false');
 
-			$form->add('password2', new Field\PasswordField)
+			$this->password('password2')
 				->label(Translator::translate($langPrefix . 'user.field.password.confirm'))
-				->set('autocomplete', 'off');
+				->autocomplete('false');
 		});
 	}
 }

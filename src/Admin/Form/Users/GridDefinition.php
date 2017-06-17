@@ -61,7 +61,7 @@ class GridDefinition extends AbstractFieldDefinition
 			// Search Content
 			$this->text('content')
 				->label(Translator::translate('phoenix.grid.search.label'))
-				->set('placeholder', Translator::translate('phoenix.grid.search.label'));
+				->placeholder(Translator::translate('phoenix.grid.search.label'));
 		});
 
 		/*
@@ -82,7 +82,7 @@ class GridDefinition extends AbstractFieldDefinition
 				->option(Translator::translate($langPrefix . 'filter.activation.select'), '')
 				->option(Translator::translate($langPrefix . 'filter.activation.activated'), '1')
 				->option(Translator::translate($langPrefix . 'filter.activation.unactivated'), '0')
-				->set('onchange', 'this.form.submit()');
+				->onchange('this.form.submit()');
 
 			// State
 			$this->list('user.blocked')
@@ -92,7 +92,7 @@ class GridDefinition extends AbstractFieldDefinition
 				->option(Translator::translate($langPrefix . 'filter.block.select'), '')
 				->option(Translator::translate($langPrefix . 'filter.block.blocked'), '1')
 				->option(Translator::translate($langPrefix . 'filter.block.unblocked'), '0')
-				->set('onchange', 'this.form.submit()');
+				->onchange('this.form.submit()');
 		});
 
 		/*
