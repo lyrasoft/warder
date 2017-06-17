@@ -15,7 +15,7 @@ use Lyrasoft\Warder\Helper\WarderHelper;
 use Phoenix\Model\AdminModel;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Authentication\Credential;
-use Windwalker\Core\DateTime\DateTime;
+use Windwalker\Core\DateTime\Chronos;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Core\User\Exception\AuthenticateFailException;
@@ -190,7 +190,7 @@ class UserModel extends AdminModel
 	{
 		if (!$user->registered)
 		{
-			$date = new DateTime;
+			$date = new Chronos;
 			$user->registered = $date->toSql();
 		}
 	}

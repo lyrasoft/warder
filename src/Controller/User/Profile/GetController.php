@@ -13,6 +13,7 @@ use Lyrasoft\Warder\Model\UserModel;
 use Lyrasoft\Warder\View\User\UserHtmlView;
 use Phoenix\Controller\Display\EditDisplayController;
 use Windwalker\Core\Model\ModelRepository;
+use Windwalker\Core\View\AbstractView;
 
 /**
  * The GetController class.
@@ -21,27 +22,6 @@ use Windwalker\Core\Model\ModelRepository;
  */
 class GetController extends EditDisplayController
 {
-	/**
-	 * Property name.
-	 *
-	 * @var  string
-	 */
-	protected $name = 'profile';
-
-	/**
-	 * Property itemName.
-	 *
-	 * @var  string
-	 */
-	protected $itemName = 'profile';
-
-	/**
-	 * Property listName.
-	 *
-	 * @var  string
-	 */
-	protected $listName = 'profile';
-
 	/**
 	 * Property model.
 	 *
@@ -72,15 +52,19 @@ class GetController extends EditDisplayController
 	}
 
 	/**
-	 * prepareExecute
+	 * Prepare view and default model.
 	 *
-	 * @param ModelRepository $model
+	 * You can configure default model state here, or add more sub models to view.
+	 * Remember to call parent to make sure default model already set in view.
 	 *
-	 * @return void
+	 * @param AbstractView    $view  The view to render page.
+	 * @param ModelRepository $model The default mode.
+	 *
+	 * @return  void
 	 */
-	protected function prepareModelState(ModelRepository $model)
+	protected function prepareViewModel(AbstractView $view, ModelRepository $model)
 	{
-		parent::prepareModelState($model);
+		parent::prepareViewModel($view, $model);
 
 		// Only use once
 		$this->removeUserState($this->getContext('edit.data'));

@@ -11,7 +11,7 @@ namespace Lyrasoft\Warder\Controller\User\Forget;
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Model\UserModel;
 use Phoenix\Controller\AbstractSaveController;
-use Windwalker\Core\DateTime\DateTime;
+use Windwalker\Core\DateTime\Chronos;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Mailer\Mailer;
 use Windwalker\Core\Mailer\MailMessage;
@@ -112,7 +112,7 @@ class RequestSaveController extends AbstractSaveController
 		$password = new Password;
 
 		$user->reset_token = $password->create($token);
-		$user->last_reset = DateTime::create()->toSql();
+		$user->last_reset = Chronos::create()->toSql();
 
 		User::save($user);
 

@@ -172,7 +172,7 @@
 
                         {{-- REGISTERED --}}
                         <td>
-                            {{ Windwalker\Core\DateTime\DateTime::toLocalTime($item->registered) }}
+                            {{ Windwalker\Core\DateTime\Chronos::toLocalTime($item->registered) }}
                         </td>
 
                         {{-- Delete --}}

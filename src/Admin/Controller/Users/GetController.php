@@ -19,27 +19,6 @@ use Windwalker\Core\Model\ModelRepository;
 class GetController extends ListDisplayController
 {
 	/**
-	 * Property name.
-	 *
-	 * @var  string
-	 */
-	protected $name = 'users';
-
-	/**
-	 * Property itemName.
-	 *
-	 * @var  string
-	 */
-	protected $itemName = 'user';
-
-	/**
-	 * Property listName.
-	 *
-	 * @var  string
-	 */
-	protected $listName = 'users';
-
-	/**
 	 * prepareExecute
 	 *
 	 * @return  void
@@ -49,17 +28,5 @@ class GetController extends ListDisplayController
 		$this->layout = $this->input->get('layout');
 
 		parent::prepareExecute();
-	}
-
-	/**
-	 * prepareModelState
-	 *
-	 * @param   ModelRepository $model
-	 *
-	 * @return  void
-	 */
-	protected function prepareModelState(ModelRepository $model)
-	{
-		parent::prepareModelState($model);
 	}
 }

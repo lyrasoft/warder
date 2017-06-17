@@ -28,6 +28,7 @@ class RegistrationDefinition implements FieldDefinitionInterface
 	 * @param Form $form The Windwalker form object.
 	 *
 	 * @return  void
+	 * @throws \InvalidArgumentException
 	 */
 	public function define(Form $form)
 	{
@@ -40,17 +41,17 @@ class RegistrationDefinition implements FieldDefinitionInterface
 				->label(Translator::translate($langPrefix . 'user.field.name'))
 				->required();
 
-			if (strtolower($loginName) != 'email')
+			if (strtolower($loginName) !== 'email')
 			{
 				$form->add($loginName, new Field\TextField)
 					->label(Translator::translate($langPrefix . 'user.field.' . $loginName))
-					->setValidator(new UserExistsValidator($loginName))
+					->addValidator(new UserExistsValidator($loginName))
 					->required();
 			}
 
 			$form->add('email', new Field\EmailField)
 				->label(Translator::translate($langPrefix . 'user.field.email'))
-				->setValidator(new UserExistsValidator('email'))
+				->addValidator(new UserExistsValidator('email'))
 				->required();
 
 			$form->add('password', new Field\PasswordField)

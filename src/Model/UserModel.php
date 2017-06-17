@@ -10,7 +10,7 @@ namespace Lyrasoft\Warder\Model;
 
 use Lyrasoft\Warder\Admin\Record\Traits\UserDataTrait;
 use Lyrasoft\Warder\Helper\UserHelper;
-use Windwalker\Core\DateTime\DateTime;
+use Windwalker\Core\DateTime\Chronos;
 use Windwalker\Core\User\User;
 use Windwalker\Data\DataInterface;
 
@@ -53,7 +53,7 @@ class UserModel extends \Lyrasoft\Warder\Admin\Model\UserModel
 	 */
 	protected function prepareDefaultData(DataInterface $user)
 	{
-		$user->registered = $user->registered ? : DateTime::create()->format(DateTime::getSqlFormat());
+		$user->registered = $user->registered ? : Chronos::create()->format(Chronos::getSqlFormat());
 		$user->blocked = $user->blocked === null ? 1 : $user->blocked;
 	}
 }
