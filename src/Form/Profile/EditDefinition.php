@@ -65,14 +65,12 @@ class EditDefinition extends AbstractFieldDefinition
 				$this->text($loginName)
 					->label(Translator::translate('warder.user.field.' . $loginName))
 					->addFilter('trim')
-					->addValidator(new UserExistsValidator($loginName))
 					->required();
 			}
 
 			$this->email('email')
 				->label(Translator::translate('warder.user.field.email'))
 				->addFilter('trim')
-				->addValidator(new UserExistsValidator('email'))
 				->required();
 
 			$this->password('password')

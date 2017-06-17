@@ -58,7 +58,6 @@ class EditDefinition extends AbstractFieldDefinition
 				// Name
 				$this->text($loginName)
 					->label(Translator::translate($langPrefix . 'user.field.' . $loginName))
-					->addValidator(new UserExistsValidator($loginName))
 					->addFilter('trim')
 					->autocomplete('false')
 					->required(true);
@@ -67,7 +66,6 @@ class EditDefinition extends AbstractFieldDefinition
 			// Email
 			$this->email('email')
 				->label(Translator::translate($langPrefix . 'user.field.email'))
-				->addValidator(new UserExistsValidator('email'))
 				->addFilter('trim')
 				->autocomplete('false')
 				->required();
