@@ -15,7 +15,6 @@ use Lyrasoft\Warder\WarderPackage;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Authentication\Credential;
 use Windwalker\Authentication\Method\AbstractMethod;
-use Windwalker\Core\Mailer\Punycode;
 use Windwalker\Core\Router\CoreRouter;
 use Windwalker\Core\Security\CsrfProtection;
 use Windwalker\Core\User\User;
