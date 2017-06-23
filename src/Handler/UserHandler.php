@@ -111,7 +111,10 @@ class UserHandler implements UserHandlerInterface
 	{
 		$record = $this->getRecord();
 
-		$user->email = Punycode::toAscii($user->email);
+		if ($user->email !== null)
+		{
+			$user->email = Punycode::toAscii($user->email);
+		}
 
 		if ($user->id)
 		{
