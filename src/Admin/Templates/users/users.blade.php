@@ -2,9 +2,10 @@
 
 <?php
 /**
- * @var  $items  \Lyrasoft\Warder\Admin\Record\Traits\UserDataTrait[]
- * @var  $item   \Lyrasoft\Warder\Admin\Record\Traits\UserDataTrait
+ * @var  $items  \Windwalker\Data\DataSet
+ * @var  $item   \Lyrasoft\Warder\Admin\Record\UserRecord
  * @var  $blockedButton   \Phoenix\Html\State\IconButton
+ * @var  $grid   \Phoenix\View\Helper\GridHelper
  */
 
 \Phoenix\Script\JQueryScript::highlight('.searchable', $state['input.search.content']);
@@ -141,7 +142,7 @@
 
                         {{-- ENABLED --}}
                         <td>
-                            {!! $blockedButton->render(!$item->blocked) !!}
+                            {!! $blockedButton->render(!$item->blocked, $i) !!}
                         </td>
 
                         {{-- Activation --}}
