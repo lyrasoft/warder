@@ -73,6 +73,8 @@ class ActivateSaveController extends AbstractSaveController
 	 */
 	protected function prepareExecute()
 	{
+		$this->csrfProtect(false);
+
 		if (UserHelper::isLogin())
 		{
 			$warder = WarderHelper::getPackage();
