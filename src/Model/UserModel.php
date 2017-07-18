@@ -54,6 +54,6 @@ class UserModel extends \Lyrasoft\Warder\Admin\Model\UserModel
 	protected function prepareDefaultData(DataInterface $user)
 	{
 		$user->registered = $user->registered ? : Chronos::create()->format(Chronos::getSqlFormat());
-		$user->blocked = $user->blocked === null ? 1 : $user->blocked;
+		$user->blocked = $user->id === null ? 1 : $user->blocked;
 	}
 }
