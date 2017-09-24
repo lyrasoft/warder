@@ -92,7 +92,12 @@ class LoginSaveController extends AbstractSaveController
 	 */
 	protected function getSuccessRedirect(DataInterface $data = null)
 	{
-		$return = $this->getUserState($this->getContext('return'));
+		$return = $this->input->getBase64('return');
+
+		if (!$return)
+		{
+			$return = $this->getUserState($this->getContext('return'));
+		}
 
 		if ($return)
 		{

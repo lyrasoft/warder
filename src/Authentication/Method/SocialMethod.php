@@ -277,12 +277,14 @@ class SocialMethod extends AbstractMethod
 	{
 		$package = $this->warder->app->getPackage();
 
-		$callbackUrl = $package->router->route('social_login', ['provider' => $provider, CsrfProtection::getFormToken() => 1], CoreRouter::TYPE_FULL);
+		$callbackUrl = $package->router->route('social_login', [
+			'provider' => $provider, CsrfProtection::getFormToken() => 1,
+			'return' => $this->warder->app->input->getBase64('return')
+		], CoreRouter::TYPE_FULL);
 
 		return $auth->authenticate($provider, [
 			'hauth_return_to' => $callbackUrl
-		]
-		);
+		]);
 	}
 
 	/**
