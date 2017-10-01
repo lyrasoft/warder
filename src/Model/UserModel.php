@@ -39,6 +39,8 @@ class UserModel extends \Lyrasoft\Warder\Admin\Model\UserModel
 
 		$this->prepareDefaultData($user);
 
+		$user->_isNew = true;
+
 		$user->id = User::save($user)->id;
 
 		return true;

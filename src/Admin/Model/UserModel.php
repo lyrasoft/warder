@@ -159,6 +159,8 @@ class UserModel extends AdminModel
 
 		$this->prepareDefaultData($user);
 
+		$user->_isNew = !$user->id;
+
 		$user->bind(User::save($user));
 
 		return true;
