@@ -230,6 +230,13 @@ class RegistrationSaveController extends AbstractSaveController
 	 */
 	protected function getSuccessRedirect(DataInterface $data = null)
 	{
+		$return = $this->input->getBase64('return');
+
+		if ($return)
+		{
+			return base64_decode($return);
+		}
+
 		return $this->router->route('login');
 	}
 
