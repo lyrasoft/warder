@@ -8,6 +8,7 @@
 
 namespace Lyrasoft\Warder\Listener;
 
+use Lyrasoft\Warder\Handler\UserHandler;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\WarderPackage;
 use Windwalker\Authentication\Authentication;
@@ -105,12 +106,7 @@ class UserListener
 	 */
 	public function onAfterInitialise(Event $event)
 	{
-		if ($this->warder->app->isConsole())
-		{
-			return;
-		}
-
-		$class = $this->warder->get('class.handler', 'Lyrasoft\Warder\Handler\UserHandler');
+		$class = $this->warder->get('class.handler', UserHandler::class);
 
 		User::setHandler(new $class($this->warder));
 	}

@@ -13,6 +13,7 @@ use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Table\WarderTable;
 use Windwalker\Core\DateTime\Chronos;
 use Windwalker\Core\Seeder\AbstractSeeder;
+use Windwalker\Core\User\User;
 use Windwalker\Data\Data;
 
 /**
@@ -52,7 +53,7 @@ class UserSeeder extends AbstractSeeder
 			$data->modified    = $faker->dateTime->format(Chronos::getSqlFormat());
 			$data->params      = '';
 
-			UserMapper::createOne($data);
+			User::save($data);
 
 			$this->outCounting();
 		}
