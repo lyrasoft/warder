@@ -55,49 +55,49 @@
                 <thead>
                 <tr>
                     {{-- CHECKBOX --}}
-                    <th>
+                    <th width="1%" class="text-nowrap">
                         {!! $grid->checkboxesToggle(array('duration' => 150)) !!}
                     </th>
 
                     {{-- NAME --}}
-                    <th>
+                    <th class="text-nowrap">
                         {!! $grid->sortTitle($warder->langPrefix . 'user.field.name', 'user.name') !!}
                     </th>
 
                     @if ($warder->package->getLoginName() !== 'email')
                         {{-- USERNAME --}}
-                        <th>
+                        <th class="text-nowrap">
                             {!! $grid->sortTitle($warder->langPrefix . 'user.field.' . $warder->package->getLoginName(), 'user.' . $warder->package->getLoginName()) !!}
                         </th>
                     @endif
 
                     {{-- Email --}}
-                    <th width="5%" class="nowrap">
+                    <th width="5%" class="text-nowrap">
                         {!! $grid->sortTitle($warder->langPrefix . 'user.field.email', 'user.email') !!}
                     </th>
 
                     {{-- ENABLED --}}
-                    <th  width="3%">
+                    <th  width="3%" class="text-nowrap">
                         {!! $grid->sortTitle($warder->langPrefix . 'user.field.enabled', 'user.blocked') !!}
                     </th>
 
                     {{-- Activation --}}
-                    <th width="3%">
+                    <th width="3%" class="text-nowrap">
                         {!! $grid->sortTitle($warder->langPrefix . 'user.field.activation', 'user.activation') !!}
                     </th>
 
                     {{-- REGISTERED --}}
-                    <th>
+                    <th class="text-nowrap">
                         {!! $grid->sortTitle($warder->langPrefix . 'user.field.registered', 'user.registered') !!}
                     </th>
 
                     {{-- Delete --}}
-                    <th>
-                        Delete
+                    <th width="3%" class="text-nowrap">
+                        @translate($warder->langPrefix . 'user.field.delete')
                     </th>
 
                     {{-- ID --}}
-                    <th>
+                    <th class="text-nowrap">
                         {!! $grid->sortTitle($warder->langPrefix . 'user.field.id', 'user.id') !!}
                     </th>
                 </tr>
