@@ -47,18 +47,20 @@ class ProfileModel extends UserModel
 
 		$pk = $this['load.conditions'];
 
-		$item = User::get($pk);
-
-		if ($sessionData)
+		if (!$pk)
 		{
-			unset($sessionData['password']);
-			unset($sessionData['password2']);
-
-			return $sessionData;
+			$pk = User::get()->id;
 		}
 
-		unset($item->password);
+		$item = $this->getItem($pk);
 
-		return $item->dump();
+		$this->postGetItem($item);
+
+		$item->bind($sessionData);
+
+		unset($item->password);
+		unset($item->password2);
+
+		return $item->dump(true);
 	}
 }

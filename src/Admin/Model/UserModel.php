@@ -57,6 +57,8 @@ class UserModel extends AdminModel
 
 		$pk = $pk ? : $state['load.conditions'];
 
+		ksort($pk);
+
 		return $this->fetch('item.' . json_encode($pk), function() use ($pk, $state)
 		{
 			if (!$pk)
