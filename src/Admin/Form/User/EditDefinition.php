@@ -93,7 +93,7 @@ class EditDefinition extends AbstractFieldDefinition
 
 			// Blocked
 			$this->radio('blocked')
-				->label(Translator::translate($langPrefix . 'user.field.enabled'))
+				->label(Translator::translate($langPrefix . 'user.field.blocked'))
 				->class('btn-group')
 				->defaultValue(0)
 				->option(Translator::translate($langPrefix . 'user.field.blocked.block'), 1)
