@@ -8,6 +8,8 @@
 
 namespace Lyrasoft\Warder\Controller\User\Profile;
 
+use Lyrasoft\Unidev\Field\SingleImageDragField;
+use Lyrasoft\Warder\Helper\AvatarUploadHelper;
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Model\UserModel;
@@ -125,6 +127,15 @@ class SaveController extends AbstractSaveController
 	protected function postSave(DataInterface $data)
 	{
 		parent::postSave($data);
+
+		// Remove password to prevent double hash
+		unset($data->password);
+
+		// Image
+		if (false !== SingleImageDragField::uploadFromController($this, 'avatar', $data, AvatarUploadHelper::getPath($data->id)))
+		{
+			$this->model->save($data);
+		}
 
 		// Set user data to session if is current user.
 		if (User::get()->id == $data->id)

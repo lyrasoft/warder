@@ -33,12 +33,10 @@ $basicFieldset = array_shift($fieldsets);
                         @yield('profile-custom')
 
                         @section('profile-buttons')
-                            <div class="row">
-                                <div class="col-md-offset-4 col-md-8">
-                                    <button type="submit" class="login-button btn btn-primary">
-                                        @translate($warder->langPrefix . 'profile.submit.button')
-                                    </button>
-                                </div>
+                            <div class="profile-edit-actions">
+                                <button type="submit" class="login-button btn btn-primary btn-block">
+                                    @translate($warder->langPrefix . 'profile.submit.button')
+                                </button>
                             </div>
                         @show
                     </div>

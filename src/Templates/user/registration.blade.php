@@ -2,6 +2,8 @@
 
 <?php
 \Phoenix\Script\PhoenixScript::formValidation('#user-form');
+
+$basicFieldset = array_shift($fieldsets);
 ?>
 
 @extends($warder->noauthExtends)
@@ -16,6 +18,10 @@
 
                         @yield('registration-desc')
 
+                        <fieldset>
+                            {!! $form->renderFields($basicFieldset) !!}
+                        </fieldset>
+
                         @foreach ($fieldsets as $fieldset)
                             <fieldset>
                                 <legend>{{ ucfirst($fieldset) }}</legend>
@@ -27,12 +33,10 @@
                         @yield('registration-custom')
 
                         @section('registration-buttons')
-                        <div class="row">
-                            <div class="col-md-offset-3 col-md-9">
-                                <button type="submit" class="login-button btn btn-primary">
-                                    @translate($warder->langPrefix . 'registration.submit.button')
-                                </button>
-                            </div>
+                        <div class="registration-actions">
+                            <button type="submit" class="login-button btn btn-primary btn-block">
+                                @translate($warder->langPrefix . 'registration.submit.button')
+                            </button>
                         </div>
                         @show
                     </div>

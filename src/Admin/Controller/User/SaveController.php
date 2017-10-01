@@ -76,6 +76,9 @@ class SaveController extends AbstractSaveController
 	 */
 	protected function postSave(DataInterface $data)
 	{
+		// Remove password to prevent double hash
+		unset($data->password);
+
 		// Image
 		if (false !== SingleImageDragField::uploadFromController($this, 'avatar', $data, AvatarUploadHelper::getPath($data->id)))
 		{
