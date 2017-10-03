@@ -5,7 +5,8 @@
     "license": "LGPL-2.0+",
     "minimum-stability": "beta",
     "require": {
-        "windwalker/phoenix": "~1.0"
+        "windwalker/phoenix": "~1.0",
+        "lyrasoft/unidev": "~1.0"
     },
     "require-dev": {
 
