@@ -92,12 +92,12 @@ class EditDefinition extends AbstractFieldDefinition
 			}
 
 			// Blocked
-			$this->radio('blocked')
+			$this->switch('blocked')
 				->label(Translator::translate($langPrefix . 'user.field.blocked'))
-				->class('btn-group')
-				->defaultValue(0)
-				->option(Translator::translate($langPrefix . 'user.field.blocked.block'), 1)
-				->option(Translator::translate($langPrefix . 'user.field.blocked.unblock'), 0);
+				->class('')
+				->round(true)
+				->color('danger')
+				->defaultValue(0);
 
 			// ID
 			$this->text('id')

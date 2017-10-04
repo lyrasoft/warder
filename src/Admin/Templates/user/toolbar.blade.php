@@ -1,12 +1,12 @@
 {{-- Part of phoenix project. --}}
 
-<button type="button" class="waves-effect waves-light btn btn-success" onclick="Phoenix.post();">
+<button type="button" class="btn btn-success" onclick="Phoenix.post();">
     <span class="glyphicon glyphicon-floppy-disk fa fa-save"></span>
     @translate('phoenix.toolbar.save')
 </button>
 
-<button type="button" class="waves-effect btn btn-default" onclick="Phoenix.post(null, {task: 'save2close'});">
-    <span class="glyphicon glyphicon-ok fa fa-check text-success"></span>
+<button type="button" class="btn btn-primary" onclick="Phoenix.post(null, {task: 'save2close'});">
+    <span class="glyphicon glyphicon-ok fa fa-check"></span>
     @translate('phoenix.toolbar.save2close')
 </button>
 
@@ -20,7 +20,7 @@
     {{--@translate('phoenix.toolbar.save2new')--}}
 {{--</button>--}}
 
-<a type="button" class="waves-effect btn btn-default" href="{{ $router->route('users') }}">
-    <span class="glyphicon glyphicon-remove fa fa-remove text-danger"></span>
+<a role="button" class="btn btn-default btn-outline-secondary" href="{{ $router->route('users') }}">
+    <span class="glyphicon glyphicon-remove fa fa-remove"></span>
     @translate('phoenix.toolbar.cancel')
 </a>

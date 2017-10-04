@@ -46,7 +46,7 @@
         </div>
 
         {{-- RESPONSIVE TABLE DESC --}}
-        <p class="visible-xs-block">
+        <p class="visible-xs-block d-sm-block d-md-none">
             @translate($warder->langPrefix . 'grid.responsive.table.desc')
         </p>
 
@@ -163,8 +163,8 @@
                         </td>
 
                         {{-- Delete --}}
-                        <td>
-                            <button type="button" class="waves-effect btn btn-default btn-xs hasTooltip" onclick="Phoenix.Grid.deleteRow({{ $i }});"
+                        <td class="text-center">
+                            <button type="button" class="waves-effect btn btn-default btn-outline-secondary btn-sm hasTooltip" onclick="Phoenix.Grid.deleteRow({{ $i }});"
                                 title="@translate('phoenix.toolbar.delete')">
                                 <span class="glyphicon glyphicon-trash fa fa-trash"></span>
                             </button>

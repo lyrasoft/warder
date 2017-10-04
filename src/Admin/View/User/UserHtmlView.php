@@ -86,7 +86,7 @@ class UserHtmlView extends EditView
 		PhoenixScript::core();
 		PhoenixScript::chosen();
 		PhoenixScript::formValidation();
-		BootstrapScript::checkbox(BootstrapScript::GLYPHICONS);
+		BootstrapScript::checkbox(BootstrapScript::FONTAWESOME);
 		BootstrapScript::buttonRadio();
 		BootstrapScript::tooltip();
 	}
