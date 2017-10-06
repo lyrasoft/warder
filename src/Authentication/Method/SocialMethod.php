@@ -172,10 +172,13 @@ class SocialMethod extends AbstractMethod
 
 		$user->bind($credential);
 
-		$user->blocked = 0;
-		
 		$model = new UserModel;
 		$model->register($user);
+
+		// Set blocked
+		$user->blocked = 0;
+		unset($user->password);
+		$model->save($user);
 
 		return $user;
 	}
