@@ -18,6 +18,20 @@ use Phoenix\Controller\Display\ListDisplayController;
 class GetController extends ListDisplayController
 {
 	/**
+	 * Property defaultOrdering.
+	 *
+	 * @var  string
+	 */
+	protected $defaultOrdering = 'user.id';
+
+	/**
+	 * Property defaultDirection.
+	 *
+	 * @var  string
+	 */
+	protected $defaultDirection = 'DESC';
+
+	/**
 	 * prepareExecute
 	 *
 	 * @return  void
