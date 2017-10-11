@@ -7,8 +7,8 @@
     <div class="row">
 
         @section('login-content')
-            <form id="user-form" class="form-horizontal" action="{{ $router->route('login') }}" method="POST" enctype="multipart/form-data">
-                <div class="col-md-6 col-md-offset-3" style="margin-top: 50px">
+            <div class="col-md-6 col-md-offset-3 mx-md-auto" style="margin-top: 50px">
+                <form id="user-form" class="form-horizontal" action="{{ $router->route('login') }}" method="POST" enctype="multipart/form-data">
 
                     @section('message')
                         @messages()
@@ -19,22 +19,18 @@
                     {!! $form->renderFields() !!}
 
                     @section('login-buttons')
-                    <div class="row">
-                        <div class="col-md-offset-3 col-md-9">
-                            <p class="login-button-group">
-                                <button class="login-button btn btn-primary">
-                                    @translate($warder->langPrefix . 'login.submit.button')
-                                </button>
-                            </p>
-                        </div>
-                    </div>
+                    <p class="login-button-group">
+                        <button class="login-button btn btn-primary btn-block">
+                            @translate($warder->langPrefix . 'login.submit.button')
+                        </button>
+                    </p>
                     @show
-                </div>
 
-                <div class="hidden-inputs">
-                    @formToken()
-                </div>
-            </form>
+                    <div class="hidden-inputs">
+                        @formToken()
+                    </div>
+                </form>
+            </div>
         @show
 
     </div>
