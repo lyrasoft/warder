@@ -95,7 +95,7 @@ class EditDefinition extends AbstractFieldDefinition
 			$this->switch('blocked')
 				->label(Translator::translate($langPrefix . 'user.field.blocked'))
 				->class('')
-				->round(true)
+				->circle(true)
 				->color('danger')
 				->defaultValue(0);
 
