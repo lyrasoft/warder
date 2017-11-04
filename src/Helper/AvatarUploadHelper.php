@@ -12,6 +12,7 @@ use Lyrasoft\Unidev\Storage\AbstractStorageHelper;
 use Lyrasoft\Unidev\UnidevPackage;
 use Windwalker\Core\Asset\Asset;
 use Windwalker\Core\Package\PackageHelper;
+use Windwalker\Uri\Uri;
 
 /**
  * The AvatarHelper class.
@@ -51,6 +52,12 @@ class AvatarUploadHelper extends AbstractStorageHelper
 	{
 		$alias = PackageHelper::getAlias(UnidevPackage::class);
 
-		return Asset::root($alias . '/images/default-avatar.png');
+		$uri = Asset::root($alias . '/images/default-avatar.png');
+
+		$uri = new Uri($uri);
+
+		$uri->setScheme('');
+
+		return '//' . $uri->toString();
 	}
 }
