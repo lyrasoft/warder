@@ -12,6 +12,7 @@ namespace Lyrasoft\Warder\Controller\User\Forget;
 use Lyrasoft\Warder\Admin\Record\UserRecord;
 use Lyrasoft\Warder\Model\UserModel;
 use Phoenix\Controller\AbstractSaveController;
+use Windwalker\Core\DateTime\Chronos;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Core\Security\Hasher;
@@ -116,7 +117,7 @@ class ResetSaveController extends AbstractSaveController
 
 		$user->password    = Hasher::create($this->data['password']);
 		$user->reset_token = '';
-		$user->last_reset  = '';
+		$user->last_reset  = Chronos::getNullDate();
 
 		User::save($user);
 	}
