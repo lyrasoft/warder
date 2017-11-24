@@ -116,7 +116,7 @@ class UserHelper
 	 */
 	public static function defaultAvatar()
 	{
-		return Asset::path('images/users/default-avatar.gif');
+		return AvatarUploadHelper::getDefaultImage();
 	}
 
 	/**

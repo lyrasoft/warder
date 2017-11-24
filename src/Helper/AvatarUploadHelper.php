@@ -22,6 +22,13 @@ use Windwalker\Uri\Uri;
 class AvatarUploadHelper extends AbstractStorageHelper
 {
 	/**
+	 * Property defaultImage.
+	 *
+	 * @var string
+	 */
+	public static $defaultImage;
+
+	/**
 	 * Get base folder name.
 	 *
 	 * @return  string
@@ -50,6 +57,11 @@ class AvatarUploadHelper extends AbstractStorageHelper
 	 */
 	public static function getDefaultImage()
 	{
+		if (static::$defaultImage)
+		{
+			return static::$defaultImage;
+		}
+
 		$alias = PackageHelper::getAlias(UnidevPackage::class);
 
 		$uri = Asset::root($alias . '/images/default-avatar.png');
@@ -59,5 +71,17 @@ class AvatarUploadHelper extends AbstractStorageHelper
 		$uri->setScheme('');
 
 		return '//' . $uri->toString();
+	}
+
+	/**
+	 * setDefaultImage
+	 *
+	 * @param string $url
+	 *
+	 * @return  void
+	 */
+	public static function setDefaultImage($url)
+	{
+		static::$defaultImage = $url;
 	}
 }
