@@ -115,7 +115,7 @@
                         </td>
 
                         {{-- NAME --}}
-                        <td class="searchable">
+                        <td class="searchable" style="min-width: 300px;">
                             @if (property_exists($item, 'avatar'))
                                 @if ($item->avatar)
                                     <img class="user-avatar" src="{{ $item->avatar }}" alt="Avatar">
@@ -148,12 +148,12 @@
                         {{-- Activation --}}
                         <td>
                             @if ($item->activation)
-                                <button type="button" class="waves-effect btn btn-default btn-xs hasTooltip" onclick="Phoenix.Grid.updateRow({{ $i }}, null, {task: 'activate'});"
+                                <button type="button" class="waves-effect btn btn-light btn-default btn-sm hasTooltip" onclick="Phoenix.Grid.updateRow({{ $i }}, null, {task: 'activate'});"
                                     title="@translate($warder->langPrefix . 'button.unactivated.desc')">
-                                    <span class="glyphicon glyphicon-remove fa fa-remove text-danger"></span>
+                                    <span class="fa fa-remove text-danger"></span>
                                 </button>
                             @else
-                                <span class="glyphicon glyphicon-ok fa fa-check text-success hasTooltip" title="@translate($warder->langPrefix . 'button.activated.desc')"></span>
+                                <span class="fa fa-check text-success hasTooltip" title="@translate($warder->langPrefix . 'button.activated.desc')"></span>
                             @endif
                         </td>
 

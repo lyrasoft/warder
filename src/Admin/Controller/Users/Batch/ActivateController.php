@@ -10,6 +10,7 @@ namespace Lyrasoft\Warder\Admin\Controller\Users\Batch;
 
 use Phoenix\Controller\Batch\AbstractBatchController;
 use Windwalker\Data\Data;
+use Windwalker\Data\DataInterface;
 
 /**
  * The UnpublishController class.
@@ -51,14 +52,14 @@ class ActivateController extends AbstractBatchController
 	/**
 	 * save
 	 *
-	 * @param   string|int $pk
-	 * @param   Data       $data
+	 * @param   string|int     $pk
+	 * @param   DataInterface  $data
 	 *
 	 * @return  mixed
 	 */
-	protected function save($pk, Data $data)
+	protected function save($pk, DataInterface $data)
 	{
-		$data->{$this->pkName} = $pk;
+		$data->{$this->keyName} = $pk;
 
 		$data->activation = '';
 
