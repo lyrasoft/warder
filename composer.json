@@ -2,7 +2,7 @@
     "name": "lyrasoft/warder",
     "description": "A use package for Windwalker.",
     "homepage": "https://github.com/lyrasoft/warder",
-    "license": "LGPL-2.0+",
+    "license": "LGPL-2.0-or-later",
     "minimum-stability": "beta",
     "require": {
         "windwalker/phoenix": "~1.0",
