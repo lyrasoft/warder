@@ -13,7 +13,8 @@ $basicFieldset = array_shift($fieldsets);
         <div class="row">
 
             @section('profile-content')
-                <form id="user-form" class="form-horizontal" action="{{ $router->route('profile_edit') }}" method="POST" enctype="multipart/form-data">
+                <form id="user-form" class="form-horizontal" action="{{ $router->route('profile_edit') }}" method="POST"
+                      enctype="multipart/form-data">
                     <div class="col-md-6 col-md-offset-3" style="margin-top: 50px">
 
                         @yield('profile-desc')

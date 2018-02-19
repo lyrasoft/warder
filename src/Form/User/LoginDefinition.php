@@ -20,25 +20,25 @@ use Windwalker\Form\Form;
  */
 class LoginDefinition extends AbstractFieldDefinition
 {
-	/**
-	 * Define the form fields.
-	 *
-	 * @param Form $form The Windwalker form object.
-	 *
-	 * @return  void
-	 */
-	public function doDefine(Form $form)
-	{
-		$loginName = WarderHelper::getLoginName();
-		$langPrefix = WarderHelper::getPackage()->get('frontend.language.prefix', 'warder.');
+    /**
+     * Define the form fields.
+     *
+     * @param Form $form The Windwalker form object.
+     *
+     * @return  void
+     */
+    public function doDefine(Form $form)
+    {
+        $loginName  = WarderHelper::getLoginName();
+        $langPrefix = WarderHelper::getPackage()->get('frontend.language.prefix', 'warder.');
 
-		$this->text($loginName)
-			->label(Translator::translate($langPrefix . 'user.field.' . $loginName));
+        $this->text($loginName)
+            ->label(Translator::translate($langPrefix . 'user.field.' . $loginName));
 
-		$this->password('password')
-			->label(Translator::translate($langPrefix . 'user.field.password'));
+        $this->password('password')
+            ->label(Translator::translate($langPrefix . 'user.field.password'));
 
-		$this->checkbox('remember')
-			->label(Translator::translate($langPrefix . 'user.field.remember'));
-	}
+        $this->checkbox('remember')
+            ->label(Translator::translate($langPrefix . 'user.field.remember'));
+    }
 }

@@ -21,92 +21,88 @@ use Windwalker\Data\DataInterface;
  */
 class LoginSaveController extends AbstractSaveController
 {
-	/**
-	 * Property model.
-	 *
-	 * @var  UserModel
-	 */
-	protected $model;
+    /**
+     * Property model.
+     *
+     * @var  UserModel
+     */
+    protected $model;
 
-	/**
-	 * Property formControl.
-	 *
-	 * @var  string
-	 */
-	protected $formControl = 'user';
+    /**
+     * Property formControl.
+     *
+     * @var  string
+     */
+    protected $formControl = 'user';
 
-	/**
-	 * Property langPrefix.
-	 *
-	 * @var  string
-	 */
-	protected $langPrefix = 'warder.login.';
+    /**
+     * Property langPrefix.
+     *
+     * @var  string
+     */
+    protected $langPrefix = 'warder.login.';
 
-	/**
-	 * prepareExecute
-	 *
-	 * @return  void
-	 */
-	protected function prepareExecute()
-	{
-		if (UserHelper::isLogin())
-		{
-			$warder = WarderHelper::getPackage();
+    /**
+     * prepareExecute
+     *
+     * @return  void
+     */
+    protected function prepareExecute()
+    {
+        if (UserHelper::isLogin()) {
+            $warder = WarderHelper::getPackage();
 
-			$this->redirect($this->router->route($warder->get('frontend.redirect.login', 'home')));
+            $this->redirect($this->router->route($warder->get('frontend.redirect.login', 'home')));
 
-			return;
-		}
+            return;
+        }
 
-		parent::prepareExecute();
-	}
+        parent::prepareExecute();
+    }
 
-	/**
-	 * doSave
-	 *
-	 * @param DataInterface $data
-	 *
-	 * @return void
-	 */
-	protected function doSave(DataInterface $data)
-	{
-		$loginName = WarderHelper::getLoginName();
+    /**
+     * doSave
+     *
+     * @param DataInterface $data
+     *
+     * @return void
+     */
+    protected function doSave(DataInterface $data)
+    {
+        $loginName = WarderHelper::getLoginName();
 
-		$this->model->login($data->$loginName, $data->password, $data->remember, []);
-	}
+        $this->model->login($data->$loginName, $data->password, $data->remember, []);
+    }
 
-	/**
-	 * getSuccessRedirect
-	 *
-	 * @param DataInterface $data
-	 *
-	 * @return  string
-	 */
-	protected function getSuccessRedirect(DataInterface $data = null)
-	{
-		$return = $this->getUserState($this->getContext('return'));
+    /**
+     * getSuccessRedirect
+     *
+     * @param DataInterface $data
+     *
+     * @return  string
+     */
+    protected function getSuccessRedirect(DataInterface $data = null)
+    {
+        $return = $this->getUserState($this->getContext('return'));
 
-		if ($return)
-		{
-			$this->removeUserState($this->getContext('return'));
+        if ($return) {
+            $this->removeUserState($this->getContext('return'));
 
-			return base64_decode($return);
-		}
-		else
-		{
-			return $this->router->route(WarderHelper::getPackage()->get('frontend.redirect.login', 'home'));
-		}
-	}
+            return base64_decode($return);
+        } else {
+            return $this->router->route(WarderHelper::getPackage()->get('frontend.redirect.login', 'home'));
+        }
+    }
 
-	/**
-	 * getFailRedirect
-	 *
-	 * @param DataInterface $data
-	 *
-	 * @return  string
-	 */
-	protected function getFailRedirect(DataInterface $data = null)
-	{
-		return $this->router->route('login');
-	}
+    /**
+     * getFailRedirect
+     *
+     * @param DataInterface $data
+     *
+     * @return  string
+     */
+    protected function getFailRedirect(DataInterface $data = null)
+    {
+        return $this->router->route('login');
+    }
 }

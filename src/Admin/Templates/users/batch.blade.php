@@ -4,16 +4,18 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
                 <h4 class="modal-title" id="batch-modal-title">
-                    <span class="glyphicon glyphicon-modal-window fa fa-sliders"></span> @translate('phoenix.batch.modal.title')
+                    <span class="glyphicon glyphicon-modal-window fa fa-sliders"></span>
+                    @translate('phoenix.batch.modal.title')
                 </h4>
             </div>
             <div class="modal-body">
                 <p>
                     @translate('phoenix.batch.modal.desc')
                 </p>
-                <hr />
+                <hr/>
                 <div class="form-horizontal">
                     {!! $form->renderFields(null, 'batch') !!}
                 </div>
@@ -23,11 +25,13 @@
                     <span class="glyphicon glyphicon-remove fa fa-remove"></span>
                     @translate('phoenix.core.close')
                 </button>
-                <button type="button" class="waves-effect waves-light btn btn-info" onclick="Phoenix.Grid.hasChecked();Phoenix.patch()">
+                <button type="button" class="waves-effect waves-light btn btn-info"
+                        onclick="Phoenix.Grid.hasChecked();Phoenix.patch()">
                     <span class="glyphicon glyphicon-ok fa fa-check"></span>
                     @translate('phoenix.core.update')
                 </button>
-                <button type="button" class="waves-effect waves-light btn btn-primary" onclick="Phoenix.Grid.hasChecked();Phoenix.post()">
+                <button type="button" class="waves-effect waves-light btn btn-primary"
+                        onclick="Phoenix.Grid.hasChecked();Phoenix.post()">
                     <span class="glyphicon glyphicon-duplicate fa fa-copy"></span>
                     @translate('phoenix.core.copy')
                 </button>

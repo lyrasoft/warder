@@ -21,43 +21,44 @@ use Windwalker\Core\Language\Translator;
  */
 class UserModalField extends ModalField
 {
-	/**
-	 * Property view.
-	 *
-	 * @var  string
-	 */
-	protected $view = 'users';
+    /**
+     * Property view.
+     *
+     * @var  string
+     */
+    protected $view = 'users';
 
-	/**
-	 * Property titleuser.field.
-	 *
-	 * @var  string
-	 */
-	protected $titleField = 'name';
+    /**
+     * Property titleuser.field.
+     *
+     * @var  string
+     */
+    protected $titleField = 'name';
 
-	/**
-	 * Property keyuser.field.
-	 *
-	 * @var  string
-	 */
-	protected $keyField = 'id';
+    /**
+     * Property keyuser.field.
+     *
+     * @var  string
+     */
+    protected $keyField = 'id';
 
-	/**
-	 * buildInput
-	 *
-	 * @param array $attrs
-	 *
-	 * @return  string
-	 */
-	public function buildInput($attrs)
-	{
-		$warder = WarderHelper::getPackage();
-		$this->package = $this->get('package') ? : WarderHelper::getAdminPackage(true);
-		$this->table = $this->get('table') ? : WarderTable::USERS;
-		$langPrefix = $this->get('lang_prefix') ? : $warder->get('admin.language.prefix');
+    /**
+     * buildInput
+     *
+     * @param array $attrs
+     *
+     * @return  string
+     */
+    public function buildInput($attrs)
+    {
+        $warder        = WarderHelper::getPackage();
+        $this->package = $this->get('package') ?: WarderHelper::getAdminPackage(true);
+        $this->table   = $this->get('table') ?: WarderTable::USERS;
+        $langPrefix    = $this->get('lang_prefix') ?: $warder->get('admin.language.prefix');
 
-		$this->def('buttonText', '<i class="glyphicon glyphicon-user fa fa-user"></i> ' . Translator::translate($langPrefix . 'user.modal.field.button.select'));
+        $this->def('buttonText',
+            '<i class="glyphicon glyphicon-user fa fa-user"></i> ' . Translator::translate($langPrefix . 'user.modal.field.button.select'));
 
-		return parent::buildInput($attrs);
-	}
+        return parent::buildInput($attrs);
+    }
 }

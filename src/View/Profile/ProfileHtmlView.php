@@ -19,57 +19,55 @@ use Windwalker\Core\Language\Translator;
  */
 class ProfileHtmlView extends EditView
 {
-	/**
-	 * Property name.
-	 *
-	 * @var  string
-	 */
-	protected $name = 'profile';
+    /**
+     * Property name.
+     *
+     * @var  string
+     */
+    protected $name = 'profile';
 
-	/**
-	 * Property formControl.
-	 *
-	 * @var  string
-	 */
-	protected $formControl = 'user';
+    /**
+     * Property formControl.
+     *
+     * @var  string
+     */
+    protected $formControl = 'user';
 
-	/**
-	 * prepareData
-	 *
-	 * @param \Windwalker\Data\Data $data
-	 *
-	 * @return  void
-	 */
-	protected function prepareData($data)
-	{
-		parent::prepareData($data);
+    /**
+     * prepareData
+     *
+     * @param \Windwalker\Data\Data $data
+     *
+     * @return  void
+     */
+    protected function prepareData($data)
+    {
+        parent::prepareData($data);
 
-		$data->fieldsets = $data->form->getFieldsets();
-	}
+        $data->fieldsets = $data->form->getFieldsets();
+    }
 
-	/**
-	 * setTitle
-	 *
-	 * @param string $title
-	 *
-	 * @return  static
-	 */
-	public function setTitle($title = null)
-	{
-		$layout = $this->getLayout();
+    /**
+     * setTitle
+     *
+     * @param string $title
+     *
+     * @return  static
+     */
+    public function setTitle($title = null)
+    {
+        $layout = $this->getLayout();
 
-		if ($layout !== 'user' && !$title)
-		{
-			$langPrefix = WarderHelper::getPackage()->get('admin.language.prefix', 'warder.');
+        if ($layout !== 'user' && !$title) {
+            $langPrefix = WarderHelper::getPackage()->get('admin.language.prefix', 'warder.');
 
-			if ($layout === 'edit')
-			{
-				$layout = 'profile.edit';
-			}
+            if ($layout === 'edit') {
+                $layout = 'profile.edit';
+            }
 
-			$title = Translator::translate($langPrefix . $layout . '.title');
-		}
+            $title = Translator::translate($langPrefix . $layout . '.title');
+        }
 
-		return parent::setTitle($title);
-	}
+        return parent::setTitle($title);
+    }
 }

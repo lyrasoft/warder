@@ -19,134 +19,132 @@ use Windwalker\Data\DataInterface;
 
 /**
  * The SaveController class.
- * 
+ *
  * @since  1.0
  */
 class ActivateSaveController extends AbstractSaveController
 {
-	/**
-	 * Property name.
-	 *
-	 * @var  string
-	 */
-	protected $name = 'user';
+    /**
+     * Property name.
+     *
+     * @var  string
+     */
+    protected $name = 'user';
 
-	/**
-	 * Property itemName.
-	 *
-	 * @var  string
-	 */
-	protected $itemName = 'user';
+    /**
+     * Property itemName.
+     *
+     * @var  string
+     */
+    protected $itemName = 'user';
 
-	/**
-	 * Property listName.
-	 *
-	 * @var  string
-	 */
-	protected $listName = 'user';
+    /**
+     * Property listName.
+     *
+     * @var  string
+     */
+    protected $listName = 'user';
 
-	/**
-	 * Property model.
-	 *
-	 * @var  UserModel
-	 */
-	protected $model;
+    /**
+     * Property model.
+     *
+     * @var  UserModel
+     */
+    protected $model;
 
-	/**
-	 * Property langPrefix.
-	 *
-	 * @var  string
-	 */
-	protected $langPrefix = 'warder.activate.';
+    /**
+     * Property langPrefix.
+     *
+     * @var  string
+     */
+    protected $langPrefix = 'warder.activate.';
 
-	/**
-	 * Property useTransaction.
-	 *
-	 * @var  bool
-	 */
-	protected $useTransaction = true;
+    /**
+     * Property useTransaction.
+     *
+     * @var  bool
+     */
+    protected $useTransaction = true;
 
-	/**
-	 * prepareExecute
-	 *
-	 * @return  void
-	 */
-	protected function prepareExecute()
-	{
-		$this->csrfProtect(false);
+    /**
+     * prepareExecute
+     *
+     * @return  void
+     */
+    protected function prepareExecute()
+    {
+        $this->csrfProtect(false);
 
-		if (UserHelper::isLogin())
-		{
-			$warder = WarderHelper::getPackage();
+        if (UserHelper::isLogin()) {
+            $warder = WarderHelper::getPackage();
 
-			$this->redirect($this->router->route($warder->get('frontend.redirect.login', 'home')));
+            $this->redirect($this->router->route($warder->get('frontend.redirect.login', 'home')));
 
-			return;
-		}
+            return;
+        }
 
-		parent::prepareExecute();
+        parent::prepareExecute();
 
-		$this->data['email'] = $this->input->getEmail('email');
-		$this->data['token'] = $this->input->get('token');
-	}
+        $this->data['email'] = $this->input->getEmail('email');
+        $this->data['token'] = $this->input->get('token');
+    }
 
-	/**
-	 * doSave
-	 *
-	 * @param DataInterface $data
-	 *
-	 * @return bool
-	 *
-	 * @throws ValidateFailException
-	 */
-	protected function doSave(DataInterface $data)
-	{
-		$user = User::get(['email' => $this->data['email']]);
+    /**
+     * doSave
+     *
+     * @param DataInterface $data
+     *
+     * @return bool
+     *
+     * @throws ValidateFailException
+     */
+    protected function doSave(DataInterface $data)
+    {
+        $user = User::get(['email' => $this->data['email']]);
 
-		if (!UserHelper::verifyPassword($this->data['token'], $user->activation))
-		{
-			throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.activate.fail'));
-		}
+        if (!UserHelper::verifyPassword($this->data['token'], $user->activation)) {
+            throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.activate.fail'));
+        }
 
-		$user->activation = '';
-		$user->blocked = 0;
+        $user->activation = '';
+        $user->blocked    = 0;
 
-		User::save($user);
+        User::save($user);
 
-		return true;
-	}
+        return true;
+    }
 
-	/**
-	 * getSuccessRedirect
-	 *
-	 * @param DataInterface $data
-	 *
-	 * @return  string
-	 */
-	protected function getSuccessRedirect(DataInterface $data = null)
-	{
-		return $this->router->route('login');
-	}
+    /**
+     * getSuccessRedirect
+     *
+     * @param DataInterface $data
+     *
+     * @return  string
+     */
+    protected function getSuccessRedirect(DataInterface $data = null)
+    {
+        return $this->router->route('login');
+    }
 
-	/**
-	 * getFailRedirect
-	 *
-	 * @param DataInterface $data
-	 *
-	 * @return  string
-	 */
-	protected function getFailRedirect(DataInterface $data = null)
-	{
-		return $this->router->route('login');
-	}
+    /**
+     * getFailRedirect
+     *
+     * @param DataInterface $data
+     *
+     * @return  string
+     */
+    protected function getFailRedirect(DataInterface $data = null)
+    {
+        return $this->router->route('login');
+    }
 
-	/**
-	 * checkToken
-	 *
-	 * @return  bool
-	 */
-	protected function checkToken()
-	{
-		return true;
-	}
+    /**
+     * checkToken
+     *
+     * @return  bool
+     */
+    protected function checkToken()
+    {
+        return true;
+    }
 }

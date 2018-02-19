@@ -17,26 +17,26 @@ use Phoenix\Controller\Batch\AbstractBatchController;
  */
 class UnblockController extends AbstractBatchController
 {
-	/**
-	 * Property action.
-	 *
-	 * @var  string
-	 */
-	protected $action = 'unblock';
+    /**
+     * Property action.
+     *
+     * @var  string
+     */
+    protected $action = 'unblock';
 
-	/**
-	 * Property data.
-	 *
-	 * @var  array
-	 */
-	protected $data = [
-		'blocked' => 0
-	];
+    /**
+     * Property data.
+     *
+     * @var  array
+     */
+    protected $data = [
+        'blocked' => 0,
+    ];
 
-	/**
-	 * Property langPrefix.
-	 *
-	 * @var  string
-	 */
-	protected $langPrefix = 'warder.';
+    /**
+     * Property langPrefix.
+     *
+     * @var  string
+     */
+    protected $langPrefix = 'warder.';
 }

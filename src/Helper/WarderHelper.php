@@ -18,177 +18,173 @@ use Lyrasoft\Warder\WarderPackage;
  */
 class WarderHelper
 {
-	/**
-	 * Property package.
-	 *
-	 * @var  WarderPackage
-	 */
-	protected static $package;
+    /**
+     * Property package.
+     *
+     * @var  WarderPackage
+     */
+    protected static $package;
 
-	/**
-	 * getLoginName
-	 *
-	 * @param string $default
-	 *
-	 * @return string
-	 */
-	public static function getLoginName($default = 'username')
-	{
-		return static::getPackage()->getLoginName($default);
-	}
+    /**
+     * getLoginName
+     *
+     * @param string $default
+     *
+     * @return string
+     */
+    public static function getLoginName($default = 'username')
+    {
+        return static::getPackage()->getLoginName($default);
+    }
 
-	/**
-	 * isFrontend
-	 *
-	 * @param   string $name
-	 *
-	 * @return  boolean
-	 */
-	public static function isFrontend($name = null)
-	{
-		return static::getPackage()->isFrontend($name);
-	}
+    /**
+     * isFrontend
+     *
+     * @param   string $name
+     *
+     * @return  boolean
+     */
+    public static function isFrontend($name = null)
+    {
+        return static::getPackage()->isFrontend($name);
+    }
 
-	/**
-	 * isAdmin
-	 *
-	 * @param   string $name
-	 *
-	 * @return  boolean
-	 */
-	public static function isAdmin($name = null)
-	{
-		return static::getPackage()->isAdmin($name);
-	}
+    /**
+     * isAdmin
+     *
+     * @param   string $name
+     *
+     * @return  boolean
+     */
+    public static function isAdmin($name = null)
+    {
+        return static::getPackage()->isAdmin($name);
+    }
 
-	/**
-	 * getFrontendRouting
-	 *
-	 * @return  array
-	 */
-	public static function getFrontendRouting()
-	{
-		if (!static::$package)
-		{
-			throw new \LogicException('Please register warder into Windwalker first.');
-		}
+    /**
+     * getFrontendRouting
+     *
+     * @return  array
+     */
+    public static function getFrontendRouting()
+    {
+        if (!static::$package) {
+            throw new \LogicException('Please register warder into Windwalker first.');
+        }
 
-		return WARDER_SOURCE . '/routing.yml';
-	}
+        return WARDER_SOURCE . '/routing.yml';
+    }
 
-	/**
-	 * getFrontendRouting
-	 *
-	 * @return  array
-	 */
-	public static function getAdminRouting()
-	{
-		if (!static::$package)
-		{
-			throw new \LogicException('Please register warder into Windwalker first.');
-		}
+    /**
+     * getFrontendRouting
+     *
+     * @return  array
+     */
+    public static function getAdminRouting()
+    {
+        if (!static::$package) {
+            throw new \LogicException('Please register warder into Windwalker first.');
+        }
 
-		return WARDER_SOURCE_ADMIN . '/routing.yml';
-	}
+        return WARDER_SOURCE_ADMIN . '/routing.yml';
+    }
 
-	/**
-	 * getPackage
-	 *
-	 * @return  WarderPackage
-	 */
-	public static function getPackage()
-	{
-		if (!static::$package)
-		{
-			throw new \LogicException('Please register warder into Windwalker first.');
-		}
+    /**
+     * getPackage
+     *
+     * @return  WarderPackage
+     */
+    public static function getPackage()
+    {
+        if (!static::$package) {
+            throw new \LogicException('Please register warder into Windwalker first.');
+        }
 
-		return static::$package;
-	}
+        return static::$package;
+    }
 
-	/**
-	 * Method to set property package
-	 *
-	 * @param   WarderPackage $package
-	 *
-	 * @return  void
-	 */
-	public static function setPackage(WarderPackage $package)
-	{
-		static::$package = $package;
-	}
+    /**
+     * Method to set property package
+     *
+     * @param   WarderPackage $package
+     *
+     * @return  void
+     */
+    public static function setPackage(WarderPackage $package)
+    {
+        static::$package = $package;
+    }
 
-	/**
-	 * createUserData
-	 *
-	 * @param array $data
-	 *
-	 * @return  UserData
-	 */
-	public static function createUserData($data = [])
-	{
-		return static::getPackage()->createUserData($data);
-	}
+    /**
+     * createUserData
+     *
+     * @param array $data
+     *
+     * @return  UserData
+     */
+    public static function createUserData($data = [])
+    {
+        return static::getPackage()->createUserData($data);
+    }
 
-	/**
-	 * getTable
-	 *
-	 * @param string $alias
-	 * @param string $default
-	 *
-	 * @return  string
-	 */
-	public static function getTable($alias, $default = null)
-	{
-		$default = $default ? : $alias;
+    /**
+     * getTable
+     *
+     * @param string $alias
+     * @param string $default
+     *
+     * @return  string
+     */
+    public static function getTable($alias, $default = null)
+    {
+        $default = $default ?: $alias;
 
-		return static::getPackage()->get('table.' . $alias, $default);
-	}
+        return static::getPackage()->get('table.' . $alias, $default);
+    }
 
-	/**
-	 * tableExists
-	 *
-	 * @param   string  $alias
-	 *
-	 * @return  boolean
-	 */
-	public static function tableExists($alias)
-	{
-		if (!static::$package)
-		{
-			return false;
-		}
+    /**
+     * tableExists
+     *
+     * @param   string $alias
+     *
+     * @return  boolean
+     */
+    public static function tableExists($alias)
+    {
+        if (!static::$package) {
+            return false;
+        }
 
-		$table = static::getTable($alias);
+        $table = static::getTable($alias);
 
-		return static::getPackage()->getContainer()->get('db')->getTable($table)->exists();
-	}
+        return static::getPackage()->getContainer()->get('db')->getTable($table)->exists();
+    }
 
-	/**
-	 * getFrontendPackage
-	 *
-	 * @param bool $main
-	 *
-	 * @return  array|string
-	 */
-	public static function getFrontendPackage($main = false)
-	{
-		$packages = (array) static::getPackage()->get('frontend.package');
+    /**
+     * getFrontendPackage
+     *
+     * @param bool $main
+     *
+     * @return  array|string
+     */
+    public static function getFrontendPackage($main = false)
+    {
+        $packages = (array) static::getPackage()->get('frontend.package');
 
-		return $main ? $packages[0] : $packages;
-	}
+        return $main ? $packages[0] : $packages;
+    }
 
-	/**
-	 * getFrontendPackage
-	 *
-	 * @param bool $main
-	 *
-	 * @return  array|string
-	 */
-	public static function getAdminPackage($main = false)
-	{
-		$packages = (array) static::getPackage()->get('admin.package');
+    /**
+     * getFrontendPackage
+     *
+     * @param bool $main
+     *
+     * @return  array|string
+     */
+    public static function getAdminPackage($main = false)
+    {
+        $packages = (array) static::getPackage()->get('admin.package');
 
-		return $main ? $packages[0] : $packages;
-	}
+        return $main ? $packages[0] : $packages;
+    }
 }

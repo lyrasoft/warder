@@ -24,95 +24,93 @@ use Windwalker\Record\Record;
  */
 class UserRecord extends Record
 {
-	use UserDataTrait;
+    use UserDataTrait;
 
-	/**
-	 * Property table.
-	 *
-	 * @var  string
-	 */
-	protected $table = WarderTable::USERS;
+    /**
+     * Property table.
+     *
+     * @var  string
+     */
+    protected $table = WarderTable::USERS;
 
-	/**
-	 * Property keys.
-	 *
-	 * @var  string
-	 */
-	protected $keys = 'id';
+    /**
+     * Property keys.
+     *
+     * @var  string
+     */
+    protected $keys = 'id';
 
-	/**
-	 * check
-	 *
-	 * @return  static
-	 * @throws \InvalidArgumentException
-	 */
-	public function check()
-	{
-		$loginName = WarderHelper::getLoginName();
+    /**
+     * check
+     *
+     * @return  static
+     * @throws \InvalidArgumentException
+     */
+    public function check()
+    {
+        $loginName = WarderHelper::getLoginName();
 
-		if (!$this->$loginName)
-		{
-			throw new \InvalidArgumentException(
-				Translator::sprintf(
-					'warder.user.save.message.account.empty',
-					Translator::translate('warder.user.field.' . $loginName)
-				)
-			);
-		}
+        if (!$this->$loginName) {
+            throw new \InvalidArgumentException(
+                Translator::sprintf(
+                    'warder.user.save.message.account.empty',
+                    Translator::translate('warder.user.field.' . $loginName)
+                )
+            );
+        }
 
-		$exists = UserMapper::findOne([$loginName => $this->$loginName]);
+        $exists = UserMapper::findOne([$loginName => $this->$loginName]);
 
-		if ($exists->notNull() && $this->id != $exists->id)
-		{
-			throw new \InvalidArgumentException(Translator::sprintf('warder.user.save.message.exists', $loginName, $this->$loginName));
-		}
+        if ($exists->notNull() && $this->id != $exists->id) {
+            throw new \InvalidArgumentException(Translator::sprintf('warder.user.save.message.exists', $loginName,
+                $this->$loginName));
+        }
 
-		if ($this->email)
-		{
-			$exists = UserMapper::findOne(['email' => $this->email]);
+        if ($this->email) {
+            $exists = UserMapper::findOne(['email' => $this->email]);
 
-			if ($exists->notNull() && $this->id != $exists->id)
-			{
-				throw new \InvalidArgumentException(Translator::sprintf('warder.user.save.message.exists', $loginName, $this->email));
-			}
-		}
+            if ($exists->notNull() && $this->id != $exists->id) {
+                throw new \InvalidArgumentException(Translator::sprintf('warder.user.save.message.exists', $loginName,
+                    $this->email));
+            }
+        }
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * onAfterLoad
-	 *
-	 * @param Event $event
-	 *
-	 * @return  void
-	 */
-	public function onAfterLoad(Event $event)
-	{
-		// Add your logic
-	}
+    /**
+     * onAfterLoad
+     *
+     * @param Event $event
+     *
+     * @return  void
+     */
+    public function onAfterLoad(Event $event)
+    {
+        // Add your logic
+    }
 
-	/**
-	 * onAfterStore
-	 *
-	 * @param Event $event
-	 *
-	 * @return  void
-	 */
-	public function onAfterStore(Event $event)
-	{
-		// Add your logic
-	}
+    /**
+     * onAfterStore
+     *
+     * @param Event $event
+     *
+     * @return  void
+     */
+    public function onAfterStore(Event $event)
+    {
+        // Add your logic
+    }
 
-	/**
-	 * onAfterDelete
-	 *
-	 * @param Event $event
-	 *
-	 * @return  void
-	 */
-	public function onAfterDelete(Event $event)
-	{
-		UserSocialMapper::delete(['user_id' => $this->id]);
-	}
+    /**
+     * onAfterDelete
+     *
+     * @param Event $event
+     *
+     * @return  void
+     */
+    public function onAfterDelete(Event $event)
+    {
+        UserSocialMapper::delete(['user_id' => $this->id]);
+    }
 }

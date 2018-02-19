@@ -19,32 +19,32 @@ use Phoenix\Field\ItemListField;
  */
 class UserListField extends ItemListField
 {
-	/**
-	 * Property ordering.
-	 *
-	 * @var  string
-	 */
-	protected $ordering = null;
+    /**
+     * Property ordering.
+     *
+     * @var  string
+     */
+    protected $ordering = null;
 
-	/**
-	 * Property textuser.field.
-	 *
-	 * @var  string
-	 */
-	protected $textField = 'name';
+    /**
+     * Property textuser.field.
+     *
+     * @var  string
+     */
+    protected $textField = 'name';
 
-	/**
-	 * buildInput
-	 *
-	 * @param array $attrs
-	 *
-	 * @return  mixed|void
-	 */
-	public function buildInput($attrs)
-	{
-		$warder = WarderHelper::getPackage();
-		$this->table = $warder->get('table.users', 'username');
+    /**
+     * buildInput
+     *
+     * @param array $attrs
+     *
+     * @return  mixed|void
+     */
+    public function buildInput($attrs)
+    {
+        $warder      = WarderHelper::getPackage();
+        $this->table = $warder->get('table.users', 'username');
 
-		return parent::buildInput($attrs);
-	}
+        return parent::buildInput($attrs);
+    }
 }

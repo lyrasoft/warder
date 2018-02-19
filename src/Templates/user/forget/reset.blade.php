@@ -7,7 +7,8 @@
         <div class="row">
 
             @section('login-content')
-                <form id="user-form" class="form-horizontal" action="{{ $router->route('forget_reset') }}" method="POST" enctype="multipart/form-data">
+                <form id="user-form" class="form-horizontal" action="{{ $router->route('forget_reset') }}" method="POST"
+                      enctype="multipart/form-data">
                     <div class="col-md-6 col-md-offset-3" style="margin-top: 50px">
 
                         @yield('forget-reset-desc')

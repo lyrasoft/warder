@@ -8,7 +8,6 @@
 
 namespace Lyrasoft\Warder\Helper;
 
-use Windwalker\Core\Asset\Asset;
 use Windwalker\Core\Security\Hasher;
 use Windwalker\Core\User\User;
 use Windwalker\Crypt\CryptHelper;
@@ -21,118 +20,117 @@ use Windwalker\Ioc;
  */
 class UserHelper
 {
-	/**
-	 * isLogin
-	 *
-	 * @return  boolean
-	 */
-	public static function isLogin()
-	{
-		$user = User::getUser();
+    /**
+     * isLogin
+     *
+     * @return  boolean
+     */
+    public static function isLogin()
+    {
+        $user = User::getUser();
 
-		return $user->isMember();
-	}
+        return $user->isMember();
+    }
 
-	/**
-	 * authorise
-	 *
-	 * @return  boolean
-	 */
-	public static function authorise()
-	{
-		$config = Ioc::getConfig();
+    /**
+     * authorise
+     *
+     * @return  boolean
+     */
+    public static function authorise()
+    {
+        $config = Ioc::getConfig();
 
-		$requestLogin = $config->get('route.extra.warder.require_login', true);
+        $requestLogin = $config->get('route.extra.warder.require_login', true);
 
-		return UserHelper::isLogin() || !$requestLogin;
-	}
+        return UserHelper::isLogin() || !$requestLogin;
+    }
 
-	/**
-	 * hashPassword
-	 *
-	 * @param   string  $password
-	 *
-	 * @return  string
-	 */
-	public static function hashPassword($password)
-	{
-		return Hasher::create($password);
-	}
+    /**
+     * hashPassword
+     *
+     * @param   string $password
+     *
+     * @return  string
+     */
+    public static function hashPassword($password)
+    {
+        return Hasher::create($password);
+    }
 
-	/**
-	 * verifyPassword
-	 *
-	 * @param   string  $password
-	 * @param   string  $hash
-	 *
-	 * @return  boolean
-	 */
-	public static function verifyPassword($password, $hash)
-	{
-		return Hasher::verify($password, $hash);
-	}
+    /**
+     * verifyPassword
+     *
+     * @param   string $password
+     * @param   string $hash
+     *
+     * @return  boolean
+     */
+    public static function verifyPassword($password, $hash)
+    {
+        return Hasher::verify($password, $hash);
+    }
 
-	/**
-	 * goToLogin
-	 *
-	 * @param   string  $return
-	 *
-	 * @return  void
-	 */
-	public static function goToLogin($return = null)
-	{
-		$query = [];
+    /**
+     * goToLogin
+     *
+     * @param   string $return
+     *
+     * @return  void
+     */
+    public static function goToLogin($return = null)
+    {
+        $query = [];
 
-		if ($return)
-		{
-			$query['return'] = base64_encode($return);
-		}
+        if ($return) {
+            $query['return'] = base64_encode($return);
+        }
 
-		$package = WarderHelper::getPackage()->getCurrentPackage();
+        $package = WarderHelper::getPackage()->getCurrentPackage();
 
-		$url = $package->router->route('login', $query);
+        $url = $package->router->route('login', $query);
 
-		Ioc::getApplication()->redirect($url);
-	}
+        Ioc::getApplication()->redirect($url);
+    }
 
-	/**
-	 * fakeAvatar
-	 *
-	 * @return  string
-	 */
-	public static function fakeAvatar()
-	{
-		$gender = mt_rand(0, 1) ? 'men' : 'women';
+    /**
+     * fakeAvatar
+     *
+     * @return  string
+     */
+    public static function fakeAvatar()
+    {
+        $gender = mt_rand(0, 1) ? 'men' : 'women';
 
-		$max = $gender === 'men' ? 100 : 95;
+        $max = $gender === 'men' ? 100 : 95;
 
-		return sprintf('https://randomuser.me/api/portraits/%s/%s.jpg', $gender, mt_rand(0, $max));
-	}
+        return sprintf('https://randomuser.me/api/portraits/%s/%s.jpg', $gender, mt_rand(0, $max));
+    }
 
-	/**
-	 * defaultAvatar
-	 *
-	 * @return  string
-	 */
-	public static function defaultAvatar()
-	{
-		return AvatarUploadHelper::getDefaultImage();
-	}
+    /**
+     * defaultAvatar
+     *
+     * @return  string
+     */
+    public static function defaultAvatar()
+    {
+        return AvatarUploadHelper::getDefaultImage();
+    }
 
-	/**
-	 * getToken
-	 *
-	 * @param string $data
-	 * @param string $secret
-	 *
-	 * @return  string
-	 */
-	public static function getToken($data = null, $secret = null)
-	{
-		$secret = $secret ? : Ioc::getConfig()->get('system.secret');
+    /**
+     * getToken
+     *
+     * @param string $data
+     * @param string $secret
+     *
+     * @return  string
+     */
+    public static function getToken($data = null, $secret = null)
+    {
+        $secret = $secret ?: Ioc::getConfig()->get('system.secret');
 
-		$data = json_encode($data);
+        $data = json_encode($data);
 
-		return md5($secret . $data . uniqid('Warder', true) . CryptHelper::genRandomBytes());
-	}
+        return md5($secret . $data . uniqid('Warder', true) . CryptHelper::genRandomBytes());
+    }
 }

@@ -17,31 +17,31 @@ use Phoenix\Controller\Batch\AbstractCopyController;
  */
 class CopyController extends AbstractCopyController
 {
-	/**
-	 * Property name.
-	 *
-	 * @var  string
-	 */
-	protected $name = 'users';
+    /**
+     * Property name.
+     *
+     * @var  string
+     */
+    protected $name = 'users';
 
-	/**
-	 * Property itemName.
-	 *
-	 * @var  string
-	 */
-	protected $itemName = 'user';
+    /**
+     * Property itemName.
+     *
+     * @var  string
+     */
+    protected $itemName = 'user';
 
-	/**
-	 * Property listName.
-	 *
-	 * @var  string
-	 */
-	protected $listName = 'users';
+    /**
+     * Property listName.
+     *
+     * @var  string
+     */
+    protected $listName = 'users';
 
-	/**
-	 * Property langPrefix.
-	 *
-	 * @var  string
-	 */
-	protected $langPrefix = 'warder.';
+    /**
+     * Property langPrefix.
+     *
+     * @var  string
+     */
+    protected $langPrefix = 'warder.';
 }

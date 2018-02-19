@@ -20,26 +20,26 @@ use Windwalker\Form\Form;
  */
 class ResetDefinition extends AbstractFieldDefinition
 {
-	/**
-	 * Define the form fields.
-	 *
-	 * @param Form $form The Windwalker form object.
-	 *
-	 * @return  void
-	 */
-	public function doDefine(Form $form)
-	{
-		$langPrefix = WarderHelper::getPackage()->get('frontend.language.prefix', 'warder.');
+    /**
+     * Define the form fields.
+     *
+     * @param Form $form The Windwalker form object.
+     *
+     * @return  void
+     */
+    public function doDefine(Form $form)
+    {
+        $langPrefix = WarderHelper::getPackage()->get('frontend.language.prefix', 'warder.');
 
-		$this->password('password')
-			->label(Translator::translate($langPrefix . 'user.field.password'))
-			->placeholder(Translator::translate($langPrefix . 'user.field.password'));
+        $this->password('password')
+            ->label(Translator::translate($langPrefix . 'user.field.password'))
+            ->placeholder(Translator::translate($langPrefix . 'user.field.password'));
 
-		$this->password('password2')
-			->label(Translator::translate($langPrefix . 'user.field.password.confirm'))
-			->placeholder(Translator::translate($langPrefix . 'user.field.password.confirm'));
+        $this->password('password2')
+            ->label(Translator::translate($langPrefix . 'user.field.password.confirm'))
+            ->placeholder(Translator::translate($langPrefix . 'user.field.password.confirm'));
 
-		$this->hidden('email');
-		$this->hidden('token');
-	}
+        $this->hidden('email');
+        $this->hidden('token');
+    }
 }

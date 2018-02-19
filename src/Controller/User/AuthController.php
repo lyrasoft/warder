@@ -17,13 +17,13 @@ use Phoenix\Controller\AbstractPhoenixController;
  */
 class AuthController extends AbstractPhoenixController
 {
-	/**
-	 * doExecute
-	 *
-	 * @return  mixed
-	 */
-	protected function doExecute()
-	{
-		\Hybrid_Endpoint::process();
-	}
+    /**
+     * doExecute
+     *
+     * @return  mixed
+     */
+    protected function doExecute()
+    {
+        \Hybrid_Endpoint::process();
+    }
 }

@@ -24,75 +24,72 @@ use Windwalker\Validator\Rule\EmailValidator;
  */
 class EditDefinition extends AbstractFieldDefinition
 {
-	/**
-	 * Property package.
-	 *
-	 * @var  AbstractPackage
-	 */
-	protected $package;
+    /**
+     * Property package.
+     *
+     * @var  AbstractPackage
+     */
+    protected $package;
 
-	/**
-	 * WarderMethod constructor.
-	 *
-	 * @param AbstractPackage $package
-	 */
-	public function __construct(AbstractPackage $package = null)
-	{
-		$this->package = $package ? : WarderHelper::getPackage();
-	}
+    /**
+     * WarderMethod constructor.
+     *
+     * @param AbstractPackage $package
+     */
+    public function __construct(AbstractPackage $package = null)
+    {
+        $this->package = $package ?: WarderHelper::getPackage();
+    }
 
-	/**
-	 * Define the form fields.
-	 *
-	 * @param Form $form The Windwalker form object.
-	 *
-	 * @return  void
-	 * @throws \InvalidArgumentException
-	 */
-	public function doDefine(Form $form)
-	{
-		$loginName = $this->package->getLoginName();
+    /**
+     * Define the form fields.
+     *
+     * @param Form $form The Windwalker form object.
+     *
+     * @return  void
+     * @throws \InvalidArgumentException
+     */
+    public function doDefine(Form $form)
+    {
+        $loginName = $this->package->getLoginName();
 
-		$warder = WarderHelper::getPackage();
-		$langPrefix = $warder->get('admin.language.prefix', 'warder.');
+        $warder     = WarderHelper::getPackage();
+        $langPrefix = $warder->get('admin.language.prefix', 'warder.');
 
-		$form->fieldset('basic', function(Form $form) use ($loginName, $langPrefix)
-		{
-			if (class_exists(SingleImageDragField::class))
-			{
-				// Avatar
-				$this->add('avatar', new SingleImageDragField)
-					->label(Translator::translate($langPrefix . 'user.field.avatar'))
-					->set('default_image', AvatarUploadHelper::getDefaultImage());
-			}
-			
-			$this->text('name')
-				->label(Translator::translate($langPrefix . 'user.field.name'))
-				->addFilter('trim')
-				->required();
+        $form->fieldset('basic', function (Form $form) use ($loginName, $langPrefix) {
+            if (class_exists(SingleImageDragField::class)) {
+                // Avatar
+                $this->add('avatar', new SingleImageDragField)
+                    ->label(Translator::translate($langPrefix . 'user.field.avatar'))
+                    ->set('default_image', AvatarUploadHelper::getDefaultImage());
+            }
 
-			if (strtolower($loginName) !== 'email')
-			{
-				$this->text($loginName)
-					->label(Translator::translate($langPrefix . 'user.field.' . $loginName))
-					->addFilter('trim')
-					->required();
-			}
+            $this->text('name')
+                ->label(Translator::translate($langPrefix . 'user.field.name'))
+                ->addFilter('trim')
+                ->required();
 
-			$this->email('email')
-				->label(Translator::translate($langPrefix . 'user.field.email'))
-				->addFilter('trim')
-				->addValidator(EmailValidator::class)
-				->addClass('validate-email')
-				->required();
+            if (strtolower($loginName) !== 'email') {
+                $this->text($loginName)
+                    ->label(Translator::translate($langPrefix . 'user.field.' . $loginName))
+                    ->addFilter('trim')
+                    ->required();
+            }
 
-			$this->password('password')
-				->label(Translator::translate($langPrefix . 'user.field.password'))
-				->autocomplete('false');
+            $this->email('email')
+                ->label(Translator::translate($langPrefix . 'user.field.email'))
+                ->addFilter('trim')
+                ->addValidator(EmailValidator::class)
+                ->addClass('validate-email')
+                ->required();
 
-			$this->password('password2')
-				->label(Translator::translate($langPrefix . 'user.field.password.confirm'))
-				->autocomplete('false');
-		});
-	}
+            $this->password('password')
+                ->label(Translator::translate($langPrefix . 'user.field.password'))
+                ->autocomplete('false');
+
+            $this->password('password2')
+                ->label(Translator::translate($langPrefix . 'user.field.password.confirm'))
+                ->autocomplete('false');
+        });
+    }
 }

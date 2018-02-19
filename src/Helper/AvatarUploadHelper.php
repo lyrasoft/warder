@@ -21,67 +21,66 @@ use Windwalker\Uri\Uri;
  */
 class AvatarUploadHelper extends AbstractStorageHelper
 {
-	/**
-	 * Property defaultImage.
-	 *
-	 * @var string
-	 */
-	public static $defaultImage;
+    /**
+     * Property defaultImage.
+     *
+     * @var string
+     */
+    public static $defaultImage;
 
-	/**
-	 * Get base folder name.
-	 *
-	 * @return  string
-	 */
-	public static function getBaseFolder()
-	{
-		return 'images/user/';
-	}
+    /**
+     * Get base folder name.
+     *
+     * @return  string
+     */
+    public static function getBaseFolder()
+    {
+        return 'images/user/';
+    }
 
-	/**
-	 * Get remote uri path.
-	 *
-	 * @param   mixed $identify The identify of this file or item.
-	 *
-	 * @return  string  Identify path.
-	 */
-	public static function getPath($identify)
-	{
-		return static::getBaseFolder() . $identify . '/avatar.jpg';
-	}
+    /**
+     * Get remote uri path.
+     *
+     * @param   mixed $identify The identify of this file or item.
+     *
+     * @return  string  Identify path.
+     */
+    public static function getPath($identify)
+    {
+        return static::getBaseFolder() . $identify . '/avatar.jpg';
+    }
 
-	/**
-	 * getDefaultImage
-	 *
-	 * @return  string
-	 */
-	public static function getDefaultImage()
-	{
-		if (static::$defaultImage)
-		{
-			return static::$defaultImage;
-		}
+    /**
+     * getDefaultImage
+     *
+     * @return  string
+     */
+    public static function getDefaultImage()
+    {
+        if (static::$defaultImage) {
+            return static::$defaultImage;
+        }
 
-		$alias = PackageHelper::getAlias(UnidevPackage::class);
+        $alias = PackageHelper::getAlias(UnidevPackage::class);
 
-		$uri = Asset::root($alias . '/images/default-avatar.png');
+        $uri = Asset::root($alias . '/images/default-avatar.png');
 
-		$uri = new Uri($uri);
+        $uri = new Uri($uri);
 
-		$uri->setScheme('');
+        $uri->setScheme('');
 
-		return '//' . $uri->toString();
-	}
+        return '//' . $uri->toString();
+    }
 
-	/**
-	 * setDefaultImage
-	 *
-	 * @param string $url
-	 *
-	 * @return  void
-	 */
-	public static function setDefaultImage($url)
-	{
-		static::$defaultImage = $url;
-	}
+    /**
+     * setDefaultImage
+     *
+     * @param string $url
+     *
+     * @return  void
+     */
+    public static function setDefaultImage($url)
+    {
+        static::$defaultImage = $url;
+    }
 }

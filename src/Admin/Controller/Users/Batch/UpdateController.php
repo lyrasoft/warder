@@ -17,10 +17,10 @@ use Phoenix\Controller\Batch\AbstractUpdateController;
  */
 class UpdateController extends AbstractUpdateController
 {
-	/**
-	 * Property langPrefix.
-	 *
-	 * @var  string
-	 */
-	protected $langPrefix = 'warder.';
+    /**
+     * Property langPrefix.
+     *
+     * @var  string
+     */
+    protected $langPrefix = 'warder.';
 }

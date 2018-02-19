@@ -7,7 +7,8 @@
         <div class="row">
 
             @section('login-content')
-                <form id="user-form" class="form-horizontal" action="{{ $router->route('forget_confirm') }}" method="POST" enctype="multipart/form-data">
+                <form id="user-form" class="form-horizontal" action="{{ $router->route('forget_confirm') }}"
+                      method="POST" enctype="multipart/form-data">
                     <div class="col-md-6 col-md-offset-3" style="margin-top: 50px">
                         <p class="text-center">
                             @yield('forget-complete-desc', $translator->translate($warder->langPrefix . 'forget.complete.desc'))

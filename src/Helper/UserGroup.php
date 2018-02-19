@@ -15,9 +15,9 @@ namespace Lyrasoft\Warder\Helper;
  */
 abstract class UserGroup
 {
-	const USER = 0;
+    const USER = 0;
 
-	const ADMIN = 1;
+    const ADMIN = 1;
 
-	const SUPERUSER = 2;
+    const SUPERUSER = 2;
 }

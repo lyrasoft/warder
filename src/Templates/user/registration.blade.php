@@ -13,7 +13,8 @@ $basicFieldset = array_shift($fieldsets);
         <div class="row">
 
             @section('registration-content')
-                <form id="user-form" class="form-horizontal" action="{{ $router->route('registration') }}" method="POST" enctype="multipart/form-data">
+                <form id="user-form" class="form-horizontal" action="{{ $router->route('registration') }}" method="POST"
+                      enctype="multipart/form-data">
                     <div class="col-md-6 col-md-offset-3" style="margin-top: 50px">
 
                         @yield('registration-desc')
@@ -33,11 +34,11 @@ $basicFieldset = array_shift($fieldsets);
                         @yield('registration-custom')
 
                         @section('registration-buttons')
-                        <div class="registration-actions">
-                            <button type="submit" class="login-button btn btn-primary btn-block">
-                                @translate($warder->langPrefix . 'registration.submit.button')
-                            </button>
-                        </div>
+                            <div class="registration-actions">
+                                <button type="submit" class="login-button btn btn-primary btn-block">
+                                    @translate($warder->langPrefix . 'registration.submit.button')
+                                </button>
+                            </div>
                         @show
                     </div>
 

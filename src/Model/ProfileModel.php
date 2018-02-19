@@ -17,50 +17,49 @@ use Windwalker\Core\User\User;
  */
 class ProfileModel extends UserModel
 {
-	/**
-	 * Property name.
-	 *
-	 * @var  string
-	 */
-	protected $name = 'profile';
+    /**
+     * Property name.
+     *
+     * @var  string
+     */
+    protected $name = 'profile';
 
-	/**
-	 * getRecord
-	 *
-	 * @param string $name
-	 *
-	 * @return  \Windwalker\Record\Record
-	 */
-	public function getRecord($name = 'User')
-	{
-		return parent::getRecord($name);
-	}
+    /**
+     * getRecord
+     *
+     * @param string $name
+     *
+     * @return  \Windwalker\Record\Record
+     */
+    public function getRecord($name = 'User')
+    {
+        return parent::getRecord($name);
+    }
 
-	/**
-	 * getDefaultData
-	 *
-	 * @return array
-	 */
-	public function getFormDefaultData()
-	{
-		$sessionData = (array) $this['form.data'];
+    /**
+     * getDefaultData
+     *
+     * @return array
+     */
+    public function getFormDefaultData()
+    {
+        $sessionData = (array) $this['form.data'];
 
-		$pk = $this['load.conditions'];
+        $pk = $this['load.conditions'];
 
-		if (!$pk)
-		{
-			$pk = User::get()->id;
-		}
+        if (!$pk) {
+            $pk = User::get()->id;
+        }
 
-		$item = $this->getItem($pk);
+        $item = $this->getItem($pk);
 
-		$this->postGetItem($item);
+        $this->postGetItem($item);
 
-		$item->bind($sessionData);
+        $item->bind($sessionData);
 
-		unset($item->password);
-		unset($item->password2);
+        unset($item->password);
+        unset($item->password2);
 
-		return $item->dump(true);
-	}
+        return $item->dump(true);
+    }
 }

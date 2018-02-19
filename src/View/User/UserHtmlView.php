@@ -21,119 +21,117 @@ use Windwalker\String\StringNormalise;
  */
 class UserHtmlView extends AbstractPhoenixHtmView
 {
-	/**
-	 * prepareData
-	 *
-	 * @param \Windwalker\Data\Data $data
-	 *
-	 * @return  void
-	 */
-	protected function prepareData($data)
-	{
-		$layout = $this->getLayout();
+    /**
+     * prepareData
+     *
+     * @param \Windwalker\Data\Data $data
+     *
+     * @return  void
+     */
+    protected function prepareData($data)
+    {
+        $layout = $this->getLayout();
 
-		$method = StringNormalise::toCamelCase(str_replace('.', '_', $layout));
+        $method = StringNormalise::toCamelCase(str_replace('.', '_', $layout));
 
-		if (is_callable([$this, $method]))
-		{
-			$this->$method($data);
-		}
+        if (is_callable([$this, $method])) {
+            $this->$method($data);
+        }
 
-		$this->setTitle();
-	}
+        $this->setTitle();
+    }
 
-	/**
-	 * setTitle
-	 *
-	 * @param string $title
-	 *
-	 * @return  static
-	 */
-	public function setTitle($title = null)
-	{
-		$layout = $this->getLayout();
+    /**
+     * setTitle
+     *
+     * @param string $title
+     *
+     * @return  static
+     */
+    public function setTitle($title = null)
+    {
+        $layout = $this->getLayout();
 
-		if ($layout !== 'user' && !$title)
-		{
-			$langPrefix = WarderHelper::getPackage()->get('admin.language.prefix', 'warder.');
-			$title = Translator::translate($langPrefix . $layout . '.title');
-		}
+        if ($layout !== 'user' && !$title) {
+            $langPrefix = WarderHelper::getPackage()->get('admin.language.prefix', 'warder.');
+            $title      = Translator::translate($langPrefix . $layout . '.title');
+        }
 
-		return parent::setTitle($title);
-	}
+        return parent::setTitle($title);
+    }
 
-	/**
-	 * login
-	 *
-	 * @param DataInterface $data
-	 *
-	 * @return  void
-	 */
-	protected function login(DataInterface $data)
-	{
-		$data->form = $this->model->getForm('login', 'user');
-	}
+    /**
+     * login
+     *
+     * @param DataInterface $data
+     *
+     * @return  void
+     */
+    protected function login(DataInterface $data)
+    {
+        $data->form = $this->model->getForm('login', 'user');
+    }
 
-	/**
-	 * registration
-	 *
-	 * @param DataInterface $data
-	 *
-	 * @return  void
-	 */
-	protected function registration(DataInterface $data)
-	{
-		$data->form = $this->model->getForm('registration', 'user', true);
-		$data->fieldsets = $data->form->getFieldsets();
-	}
+    /**
+     * registration
+     *
+     * @param DataInterface $data
+     *
+     * @return  void
+     */
+    protected function registration(DataInterface $data)
+    {
+        $data->form      = $this->model->getForm('registration', 'user', true);
+        $data->fieldsets = $data->form->getFieldsets();
+    }
 
-	/**
-	 * forgetRequest
-	 *
-	 * @param DataInterface $data
-	 *
-	 * @return  void
-	 */
-	protected function forgetRequest(DataInterface $data)
-	{
-		$data->form = $this->model->getForm('ForgetRequest');
-	}
+    /**
+     * forgetRequest
+     *
+     * @param DataInterface $data
+     *
+     * @return  void
+     */
+    protected function forgetRequest(DataInterface $data)
+    {
+        $data->form = $this->model->getForm('ForgetRequest');
+    }
 
-	/**
-	 * forgetConfirm
-	 *
-	 * @param DataInterface $data
-	 *
-	 * @return  void
-	 */
-	protected function forgetConfirm(DataInterface $data)
-	{
-		$data->form = $this->model->getForm('ForgetConfirm');
+    /**
+     * forgetConfirm
+     *
+     * @param DataInterface $data
+     *
+     * @return  void
+     */
+    protected function forgetConfirm(DataInterface $data)
+    {
+        $data->form = $this->model->getForm('ForgetConfirm');
 
-		$data->form->bind(
-			[
-			'email' => $data->email,
-			'token' => $data->token,
-			]
-		);
-	}
+        $data->form->bind(
+            [
+                'email' => $data->email,
+                'token' => $data->token,
+            ]
+        );
+    }
 
-	/**
-	 * forgetReset
-	 *
-	 * @param DataInterface $data
-	 *
-	 * @return  void
-	 */
-	protected function forgetReset(DataInterface $data)
-	{
-		$data->form = $this->model->getForm('Reset');
+    /**
+     * forgetReset
+     *
+     * @param DataInterface $data
+     *
+     * @return  void
+     */
+    protected function forgetReset(DataInterface $data)
+    {
+        $data->form = $this->model->getForm('Reset');
 
-		$data->form->bind(
-			[
-			'email' => $data->email,
-			'token' => $data->token,
-			]
-		);
-	}
+        $data->form->bind(
+            [
+                'email' => $data->email,
+                'token' => $data->token,
+            ]
+        );
+    }
 }

@@ -18,10 +18,10 @@ use Windwalker\DataMapper\AbstractDatabaseMapperProxy;
  */
 class UserMapper extends AbstractDatabaseMapperProxy
 {
-	/**
-	 * Property table.
-	 *
-	 * @var  string
-	 */
-	protected static $table = WarderTable::USERS;
+    /**
+     * Property table.
+     *
+     * @var  string
+     */
+    protected static $table = WarderTable::USERS;
 }

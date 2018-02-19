@@ -20,25 +20,25 @@ use Windwalker\Form\Form;
  */
 class ForgetConfirmDefinition extends AbstractFieldDefinition
 {
-	/**
-	 * Define the form fields.
-	 *
-	 * @param Form $form The Windwalker form object.
-	 *
-	 * @return  void
-	 */
-	public function doDefine(Form $form)
-	{
-		$langPrefix = WarderHelper::getPackage()->get('frontend.language.prefix', 'warder.');
+    /**
+     * Define the form fields.
+     *
+     * @param Form $form The Windwalker form object.
+     *
+     * @return  void
+     */
+    public function doDefine(Form $form)
+    {
+        $langPrefix = WarderHelper::getPackage()->get('frontend.language.prefix', 'warder.');
 
-		$this->email('email')
-			->label(Translator::translate($langPrefix . '.user.field.email'))
-			->placeholder(Translator::translate($langPrefix . '.user.field.email'))
-			->required();
+        $this->email('email')
+            ->label(Translator::translate($langPrefix . '.user.field.email'))
+            ->placeholder(Translator::translate($langPrefix . '.user.field.email'))
+            ->required();
 
-		$this->text('token')
-			->label(Translator::translate($langPrefix . 'user.field.token'))
-			->placeholder(Translator::translate($langPrefix . 'user.field.token'))
-			->required();
-	}
+        $this->text('token')
+            ->label(Translator::translate($langPrefix . 'user.field.token'))
+            ->placeholder(Translator::translate($langPrefix . 'user.field.token'))
+            ->required();
+    }
 }

@@ -18,8 +18,8 @@ $form->removeField('password')->removeField('password2');
 
             <div class="col-md-6 col-md-offset-3">
 
-                    <fieldset>
-                        @foreach ($form->getFields($basicFieldset) as $field)
+                <fieldset>
+                    @foreach ($form->getFields($basicFieldset) as $field)
                         <div class="row" style="margin-bottom: 10px">
                             <div class="col-md-4">
                                 <strong>
@@ -30,10 +30,10 @@ $form->removeField('password')->removeField('password2');
                                 {!! $field->renderView() !!}
                             </div>
                         </div>
-                        @endforeach
-                    </fieldset>
+                    @endforeach
+                </fieldset>
 
-                    @foreach ($fieldsets as $fieldset)
+                @foreach ($fieldsets as $fieldset)
                     <fieldset>
                         @foreach ($form->getFields($fieldset) as $field)
                             <legend>{{ ucfirst($fieldset) }}</legend>
@@ -51,15 +51,15 @@ $form->removeField('password')->removeField('password2');
                         @endforeach
 
                     </fieldset>
-                    @endforeach
+                @endforeach
 
                 @if ($item->id == $user->id)
-                <div class="edit-button" style="margin-top: 30px">
-                    <a class="btn btn-default" href="{{ $router->route('profile_edit') }}">
-                        <span class="glyphicon glyphicon-edit fa fa-edit"></span>
-                        @translate($warder->langPrefix . 'profile.edit.button.title')
-                    </a>
-                </div>
+                    <div class="edit-button" style="margin-top: 30px">
+                        <a class="btn btn-default" href="{{ $router->route('profile_edit') }}">
+                            <span class="glyphicon glyphicon-edit fa fa-edit"></span>
+                            @translate($warder->langPrefix . 'profile.edit.button.title')
+                        </a>
+                    </div>
                 @endif
             </div>
 

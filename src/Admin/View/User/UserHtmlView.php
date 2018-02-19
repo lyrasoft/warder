@@ -1,6 +1,6 @@
 <?php
 /**
- * Part of phoenix project. 
+ * Part of phoenix project.
  *
  * @copyright  Copyright (C) 2015 {ORGANIZATION}. All rights reserved.
  * @license    GNU General Public License version 2 or later.
@@ -18,96 +18,94 @@ use Windwalker\Core\Renderer\RendererHelper;
 
 /**
  * The UserHtmlView class.
- * 
+ *
  * @since  1.0
  */
 class UserHtmlView extends EditView
 {
-	/**
-	 * Property name.
-	 *
-	 * @var  string
-	 */
-	protected $name = 'user';
+    /**
+     * Property name.
+     *
+     * @var  string
+     */
+    protected $name = 'user';
 
-	/**
-	 * Property renderer.
-	 *
-	 * @var  string
-	 */
-	protected $renderer = RendererHelper::EDGE;
+    /**
+     * Property renderer.
+     *
+     * @var  string
+     */
+    protected $renderer = RendererHelper::EDGE;
 
-	/**
-	 * Property langPrefix.
-	 *
-	 * @var  string
-	 */
-	protected $langPrefix = 'warder.';
+    /**
+     * Property langPrefix.
+     *
+     * @var  string
+     */
+    protected $langPrefix = 'warder.';
 
-	/**
-	 * prepareRender
-	 *
-	 * @param \Windwalker\Data\Data $data
-	 *
-	 * @return  void
-	 */
-	protected function prepareRender($data)
-	{
-		if ($this->getLayout() === 'login')
-		{
-			$this->formDefinition = new LoginDefinition(WarderHelper::getPackage());
-			$this->formControl = 'user';
-		}
+    /**
+     * prepareRender
+     *
+     * @param \Windwalker\Data\Data $data
+     *
+     * @return  void
+     */
+    protected function prepareRender($data)
+    {
+        if ($this->getLayout() === 'login') {
+            $this->formDefinition = new LoginDefinition(WarderHelper::getPackage());
+            $this->formControl    = 'user';
+        }
 
-		parent::prepareRender($data);
-	}
+        parent::prepareRender($data);
+    }
 
-	/**
-	 * prepareData
-	 *
-	 * @param \Windwalker\Data\Data $data
-	 *
-	 * @return  void
-	 */
-	protected function prepareData($data)
-	{
-		parent::prepareData($data);
-		
-		$this->prepareScripts();
-	}
+    /**
+     * prepareData
+     *
+     * @param \Windwalker\Data\Data $data
+     *
+     * @return  void
+     */
+    protected function prepareData($data)
+    {
+        parent::prepareData($data);
 
-	/**
-	 * prepareDocument
-	 *
-	 * @return  void
-	 */
-	protected function prepareScripts()
-	{
-		PhoenixScript::core();
-		PhoenixScript::chosen();
-		PhoenixScript::formValidation();
-		BootstrapScript::checkbox(BootstrapScript::FONTAWESOME);
-		BootstrapScript::buttonRadio();
-		BootstrapScript::tooltip();
-	}
+        $this->prepareScripts();
+    }
 
-	/**
-	 * setTitle
-	 *
-	 * @param string $title
-	 *
-	 * @return  static
-	 */
-	public function setTitle($title = null)
-	{
-		$layout = $this->getLayout();
+    /**
+     * prepareDocument
+     *
+     * @return  void
+     */
+    protected function prepareScripts()
+    {
+        PhoenixScript::core();
+        PhoenixScript::chosen();
+        PhoenixScript::formValidation();
+        BootstrapScript::checkbox(BootstrapScript::FONTAWESOME);
+        BootstrapScript::buttonRadio();
+        BootstrapScript::tooltip();
+    }
 
-		if ($layout !== 'user' && !$title)
-		{
-			$langPrefix = WarderHelper::getPackage()->get('admin.language.prefix', 'warder.');
-			$title = Translator::translate($langPrefix . $layout . '.title');
-		}
+    /**
+     * setTitle
+     *
+     * @param string $title
+     *
+     * @return  static
+     */
+    public function setTitle($title = null)
+    {
+        $layout = $this->getLayout();
 
-		return parent::setTitle($title);
-	}
+        if ($layout !== 'user' && !$title) {
+            $langPrefix = WarderHelper::getPackage()->get('admin.language.prefix', 'warder.');
+            $title      = Translator::translate($langPrefix . $layout . '.title');
+        }
+
+        return parent::setTitle($title);
+    }
 }

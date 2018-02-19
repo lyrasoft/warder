@@ -19,28 +19,27 @@ use Windwalker\Core\User\User;
  */
 class LogoutSaveController extends AbstractPhoenixController
 {
-	/**
-	 * doExecute
-	 *
-	 * @return  mixed
-	 */
-	protected function doExecute()
-	{
-		User::logout();
+    /**
+     * doExecute
+     *
+     * @return  mixed
+     */
+    protected function doExecute()
+    {
+        User::logout();
 
-		$return = $this->input->getBase64(
-			$this->package->get('frontend.login.return_key', 'return')
-		);
+        $return = $this->input->getBase64(
+            $this->package->get('frontend.login.return_key', 'return')
+        );
 
-		if ($return)
-		{
-			$this->setRedirect(base64_decode($return));
+        if ($return) {
+            $this->setRedirect(base64_decode($return));
 
-			return true;
-		}
+            return true;
+        }
 
-		$this->setRedirect($this->router->route(WarderHelper::getPackage()->get('frontend.redirect.logout', 'home')));
+        $this->setRedirect($this->router->route(WarderHelper::getPackage()->get('frontend.redirect.logout', 'home')));
 
-		return true;
-	}
+        return true;
+    }
 }

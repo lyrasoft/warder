@@ -10,11 +10,11 @@ namespace Lyrasoft\Warder\Table;
 
 use Lyrasoft\Warder\Helper\WarderHelper;
 
-define('WARDER_TABLE_USERS',           WarderHelper::getTable('users'));
-define('WARDER_TABLE_USER_SOCIALS',    WarderHelper::getTable('user_socials'));
-define('WARDER_TABLE_GROUPS',          WarderHelper::getTable('groups'));
+define('WARDER_TABLE_USERS', WarderHelper::getTable('users'));
+define('WARDER_TABLE_USER_SOCIALS', WarderHelper::getTable('user_socials'));
+define('WARDER_TABLE_GROUPS', WarderHelper::getTable('groups'));
 define('WARDER_TABLE_USER_GROUP_MAPS', WarderHelper::getTable('user_group_maps'));
-define('WARDER_TABLE_ACTIONS',         WarderHelper::getTable('actions'));
+define('WARDER_TABLE_ACTIONS', WarderHelper::getTable('actions'));
 
 /**
  * The WarderTable class.
@@ -23,13 +23,13 @@ define('WARDER_TABLE_ACTIONS',         WarderHelper::getTable('actions'));
  */
 class WarderTable
 {
-	const USERS = WARDER_TABLE_USERS;
+    const USERS = WARDER_TABLE_USERS;
 
-	const USER_SOCIALS = WARDER_TABLE_USER_SOCIALS;
+    const USER_SOCIALS = WARDER_TABLE_USER_SOCIALS;
 
-	const GROUPS = WARDER_TABLE_GROUPS;
+    const GROUPS = WARDER_TABLE_GROUPS;
 
-	const USER_GROUP_MAPS = WARDER_TABLE_USER_GROUP_MAPS;
+    const USER_GROUP_MAPS = WARDER_TABLE_USER_GROUP_MAPS;
 
-	const ACTIONS = WARDER_TABLE_ACTIONS;
+    const ACTIONS = WARDER_TABLE_ACTIONS;
 }

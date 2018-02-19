@@ -15,7 +15,8 @@
     @translate($warder->langPrefix . 'toolbar.disable')
 </button>
 
-<button type="button" class="btn btn-default btn-outline-danger btn-sm" onclick="Phoenix.Grid.hasChecked().deleteList();">
+<button type="button" class="btn btn-default btn-outline-danger btn-sm"
+        onclick="Phoenix.Grid.hasChecked().deleteList();">
     <span class="glyphicon glyphicon-trash fa fa-trash"></span>
     @translate('phoenix.toolbar.delete')
 </button>

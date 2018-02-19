@@ -15,23 +15,23 @@ use Windwalker\Core\Seeder\AbstractSeeder;
  */
 class MainSeeder extends AbstractSeeder
 {
-	/**
-	 * doExecute
-	 *
-	 * @return  void
-	 */
-	public function doExecute()
-	{
-		$this->execute(UserSeeder::class);
-	}
+    /**
+     * doExecute
+     *
+     * @return  void
+     */
+    public function doExecute()
+    {
+        $this->execute(UserSeeder::class);
+    }
 
-	/**
-	 * doClear
-	 *
-	 * @return  void
-	 */
-	public function doClear()
-	{
-		$this->clear(UserSeeder::class);
-	}
+    /**
+     * doClear
+     *
+     * @return  void
+     */
+    public function doClear()
+    {
+        $this->clear(UserSeeder::class);
+    }
 }

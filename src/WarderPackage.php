@@ -25,119 +25,116 @@ define('WARDER_TEMPLATES', WARDER_ROOT . '/templates');
  */
 class WarderPackage extends AbstractPackage
 {
-	/**
-	 * WarderPackage constructor.
-	 */
-	public function __construct()
-	{
-		WarderHelper::setPackage($this);
-	}
+    /**
+     * WarderPackage constructor.
+     */
+    public function __construct()
+    {
+        WarderHelper::setPackage($this);
+    }
 
-	/**
-	 * initialise
-	 *
-	 * @throws  \LogicException
-	 * @return  void
-	 */
-	public function boot()
-	{
-		parent::boot();
+    /**
+     * initialise
+     *
+     * @throws  \LogicException
+     * @return  void
+     */
+    public function boot()
+    {
+        parent::boot();
 
-		TranslatorHelper::loadAll($this);
-	}
+        TranslatorHelper::loadAll($this);
+    }
 
-	/**
-	 * getLoginName
-	 *
-	 * @param  string $default
-	 *
-	 * @return string
-	 */
-	public function getLoginName($default = 'username')
-	{
-		return $this->get('user.login_name', $default);
-	}
+    /**
+     * getLoginName
+     *
+     * @param  string $default
+     *
+     * @return string
+     */
+    public function getLoginName($default = 'username')
+    {
+        return $this->get('user.login_name', $default);
+    }
 
-	/**
-	 * isFrontend
-	 *
-	 * @param   string $name
-	 *
-	 * @return  boolean
-	 */
-	public function isFrontend($name = null)
-	{
-		$package = $this->getCurrentPackage();
+    /**
+     * isFrontend
+     *
+     * @param   string $name
+     *
+     * @return  boolean
+     */
+    public function isFrontend($name = null)
+    {
+        $package = $this->getCurrentPackage();
 
-		if (!$package)
-		{
-			return false;
-		}
+        if (!$package) {
+            return false;
+        }
 
-		$name = $name ? : $package->getName();
+        $name = $name ?: $package->getName();
 
-		return in_array($name, (array) $this->get('frontend.package'));
-	}
+        return in_array($name, (array) $this->get('frontend.package'));
+    }
 
-	/**
-	 * isFrontend
-	 *
-	 * @param   string $name
-	 *
-	 * @return  boolean
-	 */
-	public function isAdmin($name = null)
-	{
-		$package = $this->getCurrentPackage();
+    /**
+     * isFrontend
+     *
+     * @param   string $name
+     *
+     * @return  boolean
+     */
+    public function isAdmin($name = null)
+    {
+        $package = $this->getCurrentPackage();
 
-		if (!$package)
-		{
-			return false;
-		}
+        if (!$package) {
+            return false;
+        }
 
-		$name = $name ? : $package->getName();
+        $name = $name ?: $package->getName();
 
-		return in_array($name, (array) $this->get('admin.package'));
-	}
+        return in_array($name, (array) $this->get('admin.package'));
+    }
 
-	/**
-	 * isEnabled
-	 *
-	 * @param   string $name
-	 *
-	 * @return  boolean
-	 */
-	public function isEnabled($name = null)
-	{
-		return $this->isFrontend($name) || $this->isAdmin($name);
-	}
+    /**
+     * isEnabled
+     *
+     * @param   string $name
+     *
+     * @return  boolean
+     */
+    public function isEnabled($name = null)
+    {
+        return $this->isFrontend($name) || $this->isAdmin($name);
+    }
 
-	/**
-	 * createUserData
-	 *
-	 * @param array $data
-	 *
-	 * @return  UserData
-	 */
-	public function createUserData($data = [])
-	{
-		$class = $this->get('class.data', 'Lyrasoft\Warder\Data\UserData');
+    /**
+     * createUserData
+     *
+     * @param array $data
+     *
+     * @return  UserData
+     */
+    public function createUserData($data = [])
+    {
+        $class = $this->get('class.data', 'Lyrasoft\Warder\Data\UserData');
 
-		return new $class($data);
-	}
+        return new $class($data);
+    }
 
-	/**
-	 * getCurrentPackage
-	 *
-	 * @return  AbstractPackage
-	 */
-	public function getCurrentPackage()
-	{
-		if (!$this->container->exists('current.package'))
-		{
-			return null;
-		}
+    /**
+     * getCurrentPackage
+     *
+     * @return  AbstractPackage
+     */
+    public function getCurrentPackage()
+    {
+        if (!$this->container->exists('current.package')) {
+            return null;
+        }
 
-		return $this->container->get('current.package');
-	}
+        return $this->container->get('current.package');
+    }
 }

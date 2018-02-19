@@ -21,49 +21,48 @@ use Windwalker\Data\Data;
  */
 class UserSeeder extends AbstractSeeder
 {
-	/**
-	 * doExecute
-	 *
-	 * @return  void
-	 */
-	public function doExecute()
-	{
-		$faker = Factory::create();
+    /**
+     * doExecute
+     *
+     * @return  void
+     */
+    public function doExecute()
+    {
+        $faker = Factory::create();
 
-		$pass = UserHelper::hashPassword(1234);
+        $pass = UserHelper::hashPassword(1234);
 
-		foreach (range(1, 50) as $i)
-		{
-			$data = new Data;
+        foreach (range(1, 50) as $i) {
+            $data = new Data;
 
-			$data->name        = $faker->name;
-			$data->username    = $faker->userName;
-			$data->email       = $faker->email;
-			$data->password    = $pass;
-			$data->avatar      = PravatarHelper::unique(600, uniqid($i));
-			$data->group       = 1;
-			$data->blocked     = 0;
-			$data->activation  = '';
-			$data->reset_token = '';
-			$data->last_reset  = $faker->dateTimeThisYear->format($this->getDateFormat());
-			$data->last_login  = $faker->dateTimeThisYear->format($this->getDateFormat());
-			$data->registered  = $faker->dateTimeThisYear->format($this->getDateFormat());
-			$data->modified    = $faker->dateTimeThisYear->format($this->getDateFormat());
-			$data->params      = '';
+            $data->name        = $faker->name;
+            $data->username    = $faker->userName;
+            $data->email       = $faker->email;
+            $data->password    = $pass;
+            $data->avatar      = PravatarHelper::unique(600, uniqid($i));
+            $data->group       = 1;
+            $data->blocked     = 0;
+            $data->activation  = '';
+            $data->reset_token = '';
+            $data->last_reset  = $faker->dateTimeThisYear->format($this->getDateFormat());
+            $data->last_login  = $faker->dateTimeThisYear->format($this->getDateFormat());
+            $data->registered  = $faker->dateTimeThisYear->format($this->getDateFormat());
+            $data->modified    = $faker->dateTimeThisYear->format($this->getDateFormat());
+            $data->params      = '';
 
-			UserMapper::createOne($data);
+            UserMapper::createOne($data);
 
-			$this->outCounting();
-		}
-	}
+            $this->outCounting();
+        }
+    }
 
-	/**
-	 * doClear
-	 *
-	 * @return  void
-	 */
-	public function doClear()
-	{
-		$this->truncate(WarderTable::USERS);
-	}
+    /**
+     * doClear
+     *
+     * @return  void
+     */
+    public function doClear()
+    {
+        $this->truncate(WarderTable::USERS);
+    }
 }

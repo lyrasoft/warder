@@ -21,41 +21,40 @@ use Windwalker\Data\DataInterface;
  */
 class UserModel extends \Lyrasoft\Warder\Admin\Model\UserModel
 {
-	/**
-	 * register
-	 *
-	 * @param DataInterface|UserDataTrait $user
-	 *
-	 * @return  bool
-	 *
-	 * @throws \Exception
-	 */
-	public function register(DataInterface $user)
-	{
-		if ($user->password)
-		{
-			$user->password = UserHelper::hashPassword($user->password);
-		}
+    /**
+     * register
+     *
+     * @param DataInterface|UserDataTrait $user
+     *
+     * @return  bool
+     *
+     * @throws \Exception
+     */
+    public function register(DataInterface $user)
+    {
+        if ($user->password) {
+            $user->password = UserHelper::hashPassword($user->password);
+        }
 
-		$this->prepareDefaultData($user);
+        $this->prepareDefaultData($user);
 
-		$user->_isNew = true;
+        $user->_isNew = true;
 
-		$user->id = User::save($user)->id;
+        $user->id = User::save($user)->id;
 
-		return true;
-	}
+        return true;
+    }
 
-	/**
-	 * prepareDefaultData
-	 *
-	 * @param DataInterface|UserDataTrait $user
-	 *
-	 * @return  void
-	 */
-	protected function prepareDefaultData(DataInterface $user)
-	{
-		$user->registered = $user->registered ? : Chronos::create()->format(Chronos::getSqlFormat());
-		$user->blocked = $user->id === null ? 1 : $user->blocked;
-	}
+    /**
+     * prepareDefaultData
+     *
+     * @param DataInterface|UserDataTrait $user
+     *
+     * @return  void
+     */
+    protected function prepareDefaultData(DataInterface $user)
+    {
+        $user->registered = $user->registered ?: Chronos::create()->format(Chronos::getSqlFormat());
+        $user->blocked    = $user->id === null ? 1 : $user->blocked;
+    }
 }

@@ -20,187 +20,174 @@ use Windwalker\Record\Record;
 
 /**
  * The UserHandler class.
- * 
+ *
  * @since  2.1.1
  */
 class UserHandler implements UserHandlerInterface
 {
-	/**
-	 * Property package.
-	 *
-	 * @var  WarderPackage
-	 */
-	protected $warder;
+    /**
+     * Property package.
+     *
+     * @var  WarderPackage
+     */
+    protected $warder;
 
-	/**
-	 * UserHandler constructor.
-	 *
-	 * @param WarderPackage $package
-	 */
-	public function __construct(WarderPackage $package)
-	{
-		$this->warder = $package;
-	}
+    /**
+     * UserHandler constructor.
+     *
+     * @param WarderPackage $package
+     */
+    public function __construct(WarderPackage $package)
+    {
+        $this->warder = $package;
+    }
 
-	/**
-	 * load
-	 *
-	 * @param array $conditions
-	 *
-	 * @return  UserDataInterface
-	 * @throws \RuntimeException
-	 * @throws \UnexpectedValueException
-	 */
-	public function load($conditions)
-	{
-		if (is_object($conditions))
-		{
-			$conditions = get_object_vars($conditions);
-		}
+    /**
+     * load
+     *
+     * @param array $conditions
+     *
+     * @return  UserDataInterface
+     * @throws \RuntimeException
+     * @throws \UnexpectedValueException
+     */
+    public function load($conditions)
+    {
+        if (is_object($conditions)) {
+            $conditions = get_object_vars($conditions);
+        }
 
-		if (!$conditions)
-		{
-			$session = $this->warder->getContainer()->get('session');
+        if (!$conditions) {
+            $session = $this->warder->getContainer()->get('session');
 
-			$user = $session->get($this->warder->get('user.session_name', 'user'));
-		}
-		else
-		{
-			$user = $this->getRecord();
+            $user = $session->get($this->warder->get('user.session_name', 'user'));
+        } else {
+            $user = $this->getRecord();
 
-			if (isset($conditions['email']))
-			{
-				$conditions['email'] = Punycode::toAscii($conditions['email']);
-			}
+            if (isset($conditions['email'])) {
+                $conditions['email'] = Punycode::toAscii($conditions['email']);
+            }
 
-			try
-			{
-				$user->load($conditions);
+            try {
+                $user->load($conditions);
 
-				$user = $user->dump(true);
-			}
-			catch (NoResultException $e)
-			{
-				$user = [];
-			}
-		}
+                $user = $user->dump(true);
+            } catch (NoResultException $e) {
+                $user = [];
+            }
+        }
 
-		$class = $this->warder->get('class.data', UserData::class);
-		$user = new $class((array) $user);
+        $class = $this->warder->get('class.data', UserData::class);
+        $user  = new $class((array) $user);
 
-		if (isset($user->email))
-		{
-			$user->email = Punycode::toUtf8($user->email);
-		}
+        if (isset($user->email)) {
+            $user->email = Punycode::toUtf8($user->email);
+        }
 
-		return $user;
-	}
+        return $user;
+    }
 
-	/**
-	 * create
-	 *
-	 * @param UserDataInterface|UserData $user
-	 *
-	 * @return  UserData
-	 * @throws \Windwalker\Record\Exception\NoResultException
-	 * @throws \UnexpectedValueException
-	 * @throws \RuntimeException
-	 * @throws \InvalidArgumentException
-	 */
-	public function save(UserDataInterface $user)
-	{
-		$record = $this->getRecord();
+    /**
+     * create
+     *
+     * @param UserDataInterface|UserData $user
+     *
+     * @return  UserData
+     * @throws \Windwalker\Record\Exception\NoResultException
+     * @throws \UnexpectedValueException
+     * @throws \RuntimeException
+     * @throws \InvalidArgumentException
+     */
+    public function save(UserDataInterface $user)
+    {
+        $record = $this->getRecord();
 
-		if ($user->email !== null)
-		{
-			$user->email = Punycode::toAscii($user->email);
-		}
+        if ($user->email !== null) {
+            $user->email = Punycode::toAscii($user->email);
+        }
 
-		if ($user->id)
-		{
-			$record->load($user->id)
-				->bind($user->dump())
-				->check()
-				->store(true);
-		}
-		else
-		{
-			$record->bind($user->dump())
-				->check()
-				->store(true);
-		}
+        if ($user->id) {
+            $record->load($user->id)
+                ->bind($user->dump())
+                ->check()
+                ->store(true);
+        } else {
+            $record->bind($user->dump())
+                ->check()
+                ->store(true);
+        }
 
-		$user->id = $record->id;
+        $user->id = $record->id;
 
-		return $user;
-	}
+        return $user;
+    }
 
-	/**
-	 * delete
-	 *
-	 * @param array $conditions
-	 *
-	 * @return  boolean
-	 * @throws \UnexpectedValueException
-	 * @throws \RuntimeException
-	 * @throws \InvalidArgumentException
-	 */
-	public function delete($conditions)
-	{
-		$this->getRecord()->delete($conditions);
+    /**
+     * delete
+     *
+     * @param array $conditions
+     *
+     * @return  boolean
+     * @throws \UnexpectedValueException
+     * @throws \RuntimeException
+     * @throws \InvalidArgumentException
+     */
+    public function delete($conditions)
+    {
+        $this->getRecord()->delete($conditions);
 
-		return true;
-	}
+        return true;
+    }
 
-	/**
-	 * login
-	 *
-	 * @param UserDataInterface|UserData $user
-	 *
-	 * @return  boolean
-	 * @throws \RuntimeException
-	 */
-	public function login(UserDataInterface $user)
-	{
-		$session = $this->warder->getCurrentPackage()->app->session;
+    /**
+     * login
+     *
+     * @param UserDataInterface|UserData $user
+     *
+     * @return  boolean
+     * @throws \RuntimeException
+     */
+    public function login(UserDataInterface $user)
+    {
+        $session = $this->warder->getCurrentPackage()->app->session;
 
-		unset($user->password);
+        unset($user->password);
 
-		$session->set($this->warder->get('user.session_name', 'user'), $user->dump(true));
+        $session->set($this->warder->get('user.session_name', 'user'), $user->dump(true));
 
-		return true;
-	}
+        return true;
+    }
 
-	/**
-	 * logout
-	 *
-	 * @param UserDataInterface|UserData $user
-	 *
-	 * @return bool
-	 */
-	public function logout(UserDataInterface $user = null)
-	{
-		$session = $this->warder->getCurrentPackage()->app->session;
+    /**
+     * logout
+     *
+     * @param UserDataInterface|UserData $user
+     *
+     * @return bool
+     */
+    public function logout(UserDataInterface $user = null)
+    {
+        $session = $this->warder->getCurrentPackage()->app->session;
 
-		$session->destroy();
-		$session->restart();
+        $session->destroy();
+        $session->restart();
 
-		return true;
-	}
+        return true;
+    }
 
-	/**
-	 * getDataMapper
-	 *
-	 * @return  UserRecord|Record
-	 */
-	protected function getRecord()
-	{
-		$package = $this->warder->getCurrentPackage();
-		$resolver = $package->getMvcResolver()->getModelResolver();
+    /**
+     * getDataMapper
+     *
+     * @return  UserRecord|Record
+     */
+    protected function getRecord()
+    {
+        $package  = $this->warder->getCurrentPackage();
+        $resolver = $package->getMvcResolver()->getModelResolver();
 
-		/** @var UserModel $model */
-		$model = $resolver->create('UserModel', null, null, $package->app->database);
+        /** @var UserModel $model */
+        $model = $resolver->create('UserModel', null, null, $package->app->database);
 
-		return $model->getRecord();
-	}
+        return $model->getRecord();
+    }
 }

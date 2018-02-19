@@ -21,54 +21,53 @@ use Windwalker\Validator\AbstractValidator;
  */
 class UserExistsValidator extends AbstractValidator
 {
-	/**
-	 * Property value.
-	 *
-	 * @var  string
-	 */
-	protected $field;
+    /**
+     * Property value.
+     *
+     * @var  string
+     */
+    protected $field;
 
-	/**
-	 * Property key.
-	 *
-	 * @var  string
-	 */
-	protected $key;
+    /**
+     * Property key.
+     *
+     * @var  string
+     */
+    protected $key;
 
-	/**
-	 * UserExistsValidator constructor.
-	 *
-	 * @param string $field
-	 * @param string $key
-	 */
-	public function __construct($field, $key = 'id')
-	{
-		$this->field = $field;
-		$this->key = $key;
-	}
+    /**
+     * UserExistsValidator constructor.
+     *
+     * @param string $field
+     * @param string $key
+     */
+    public function __construct($field, $key = 'id')
+    {
+        $this->field = $field;
+        $this->key   = $key;
+    }
 
-	/**
-	 * Test value and return boolean
-	 *
-	 * @param mixed $value
-	 *
-	 * @return bool
-	 * @throws ValidateFailException
-	 */
-	protected function test($value)
-	{
-		if ($this->field === 'email')
-		{
-			$value = Punycode::toAscii($value);
-		}
-		
-		$user = User::get([$this->field => $value]);
+    /**
+     * Test value and return boolean
+     *
+     * @param mixed $value
+     *
+     * @return bool
+     * @throws ValidateFailException
+     */
+    protected function test($value)
+    {
+        if ($this->field === 'email') {
+            $value = Punycode::toAscii($value);
+        }
 
-		if ($user->notNull())
-		{
-			throw new ValidateFailException(Translator::sprintf('warder.user.save.message.exists', $this->field, $value));
-		}
+        $user = User::get([$this->field => $value]);
 
-		return true;
-	}
+        if ($user->notNull()) {
+            throw new ValidateFailException(Translator::sprintf('warder.user.save.message.exists', $this->field,
+                $value));
+        }
+
+        return true;
+    }
 }
