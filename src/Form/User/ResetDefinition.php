@@ -32,12 +32,10 @@ class ResetDefinition extends AbstractFieldDefinition
         $langPrefix = WarderHelper::getPackage()->get('frontend.language.prefix', 'warder.');
 
         $this->password('password')
-            ->label(Translator::translate($langPrefix . 'user.field.password'))
-            ->placeholder(Translator::translate($langPrefix . 'user.field.password'));
+            ->label(Translator::translate($langPrefix . 'user.field.password'));
 
         $this->password('password2')
-            ->label(Translator::translate($langPrefix . 'user.field.password.confirm'))
-            ->placeholder(Translator::translate($langPrefix . 'user.field.password.confirm'));
+            ->label(Translator::translate($langPrefix . 'user.field.password.confirm'));
 
         $this->hidden('email');
         $this->hidden('token');

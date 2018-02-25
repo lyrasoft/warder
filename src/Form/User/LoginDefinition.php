@@ -32,11 +32,13 @@ class LoginDefinition extends AbstractFieldDefinition
         $loginName  = WarderHelper::getLoginName();
         $langPrefix = WarderHelper::getPackage()->get('frontend.language.prefix', 'warder.');
 
-        $this->text($loginName)
-            ->label(Translator::translate($langPrefix . 'user.field.' . $loginName));
+        $this->fieldset('login', function () use ($loginName, $langPrefix) {
+            $this->text($loginName)
+                ->label(Translator::translate($langPrefix . 'user.field.' . $loginName));
 
-        $this->password('password')
-            ->label(Translator::translate($langPrefix . 'user.field.password'));
+            $this->password('password')
+                ->label(Translator::translate($langPrefix . 'user.field.password'));
+        });
 
         $this->checkbox('remember')
             ->label(Translator::translate($langPrefix . 'user.field.remember'));

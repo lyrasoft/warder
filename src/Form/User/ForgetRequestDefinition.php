@@ -33,7 +33,6 @@ class ForgetRequestDefinition extends AbstractFieldDefinition
 
         $this->email('email')
             ->label(Translator::translate($langPrefix . 'user.field.email'))
-            ->placeholder(Translator::translate($langPrefix . 'user.field.email'))
             ->required();
     }
 }

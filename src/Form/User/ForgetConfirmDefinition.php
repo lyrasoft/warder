@@ -33,12 +33,10 @@ class ForgetConfirmDefinition extends AbstractFieldDefinition
 
         $this->email('email')
             ->label(Translator::translate($langPrefix . '.user.field.email'))
-            ->placeholder(Translator::translate($langPrefix . '.user.field.email'))
             ->required();
 
         $this->text('token')
             ->label(Translator::translate($langPrefix . 'user.field.token'))
-            ->placeholder(Translator::translate($langPrefix . 'user.field.token'))
             ->required();
     }
 }

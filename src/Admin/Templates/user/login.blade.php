@@ -1,4 +1,30 @@
 {{-- Part of Front project. --}}
+<?php
+/**
+ * Global variables
+ * --------------------------------------------------------------
+ * @var $app      \Windwalker\Web\Application                 Global Application
+ * @var $package  \Lyrasoft\Warder\WarderPackage              Package object.
+ * @var $view     \Windwalker\Data\Data                       Some information of this view.
+ * @var $uri      \Windwalker\Uri\UriData                     Uri information, example: $uri->path
+ * @var $datetime \DateTime                                   PHP DateTime object of current time.
+ * @var $helper   \Windwalker\Core\View\Helper\Set\HelperSet  The Windwalker HelperSet object.
+ * @var $router   \Windwalker\Core\Router\PackageRouter       Router object.
+ * @var $asset    \Windwalker\Core\Asset\AssetManager         The Asset manager.
+ *
+ * View variables
+ * --------------------------------------------------------------
+ * @var $state    \Windwalker\Structure\Structure
+ * @var $form     \Windwalker\Form\Form
+ */
+
+use Phoenix\Script\BootstrapScript;
+
+BootstrapScript::checkbox(BootstrapScript::FONTAWESOME);
+
+$form->setAttributes('labelWidth', 'col-md-12', 'login')
+    ->setAttributes('fieldWidth', 'col-md-12', 'login');
+?>
 
 @extends($warder->noauthExtends)
 
@@ -17,7 +43,16 @@
 
                         @yield('login-desc')
 
-                        {!! $form->renderFields() !!}
+                        {!! $form->renderFields('login') !!}
+
+                        <div id="input-user-remember-control" class="checkbox-field" style="margin-bottom: 20px">
+                            <div class="form-check checkbox checkbox-primary">
+                                <input name="user[remember]" class="form-check-input" type="checkbox" id="input-user-remember" value="on">
+                                <label class="form-check-label" for="input-user-remember">
+                                    @translate($warder->langPrefix . 'user.field.remember')
+                                </label>
+                            </div>
+                        </div>
 
                         @section('login-buttons')
                             <p class="login-button-group">
