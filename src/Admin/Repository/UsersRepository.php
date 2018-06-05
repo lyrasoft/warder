@@ -10,7 +10,7 @@ namespace Lyrasoft\Warder\Admin\Model;
 
 use Lyrasoft\Warder\Table\WarderTable;
 use Phoenix\Model\Filter\FilterHelperInterface;
-use Phoenix\Model\ListModel;
+use Phoenix\Repository\ListRepository;
 use Windwalker\Query\Query;
 
 /**
@@ -18,7 +18,7 @@ use Windwalker\Query\Query;
  *
  * @since  1.0
  */
-class UsersModel extends ListModel
+class UsersRepository extends ListRepository
 {
     /**
      * Property name.

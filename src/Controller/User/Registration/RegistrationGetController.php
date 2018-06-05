@@ -10,7 +10,7 @@ namespace Lyrasoft\Warder\Controller\User\Registration;
 
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
-use Lyrasoft\Warder\Model\UserModel;
+use Lyrasoft\Warder\Model\UserRepository;
 use Lyrasoft\Warder\View\User\UserHtmlView;
 use Phoenix\Controller\Display\EditDisplayController;
 use Windwalker\Core\Model\ModelRepository;
@@ -33,7 +33,7 @@ class RegistrationGetController extends EditDisplayController
     /**
      * Property model.
      *
-     * @var  UserModel
+     * @var  UserRepository
      */
     protected $model;
 

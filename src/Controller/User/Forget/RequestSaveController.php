@@ -9,7 +9,7 @@
 namespace Lyrasoft\Warder\Controller\User\Forget;
 
 use Lyrasoft\Warder\Helper\UserHelper;
-use Lyrasoft\Warder\Model\UserModel;
+use Lyrasoft\Warder\Model\UserRepository;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\DateTime\Chronos;
 use Windwalker\Core\Language\Translator;
@@ -53,7 +53,7 @@ class RequestSaveController extends AbstractSaveController
     /**
      * Property model.
      *
-     * @var  UserModel
+     * @var  UserRepository
      */
     protected $model;
 

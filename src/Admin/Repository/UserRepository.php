@@ -12,7 +12,7 @@ use Lyrasoft\Warder\Admin\Record\UserRecord;
 use Lyrasoft\Warder\Data\UserData;
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
-use Phoenix\Model\AdminModel;
+use Phoenix\Repository\AdminRepository;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Authentication\Credential;
 use Windwalker\Core\DateTime\Chronos;
@@ -28,7 +28,7 @@ use Windwalker\Data\DataInterface;
  *
  * @since  1.0
  */
-class UserModel extends AdminModel
+class UserRepository extends AdminRepository
 {
     /**
      * Property name.

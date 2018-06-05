@@ -10,7 +10,7 @@ namespace Lyrasoft\Warder\Handler;
 
 use Lyrasoft\Warder\Admin\Record\UserRecord;
 use Lyrasoft\Warder\Data\UserData;
-use Lyrasoft\Warder\Model\UserModel;
+use Lyrasoft\Warder\Model\UserRepository;
 use Lyrasoft\Warder\WarderPackage;
 use Windwalker\Core\Mailer\Punycode;
 use Windwalker\Core\User\UserDataInterface;
@@ -185,7 +185,7 @@ class UserHandler implements UserHandlerInterface
         $package  = $this->warder->getCurrentPackage();
         $resolver = $package->getMvcResolver()->getModelResolver();
 
-        /** @var UserModel $model */
+        /** @var UserRepository $model */
         $model = $resolver->create('UserModel', null, null, $package->app->database);
 
         return $model->getRecord();

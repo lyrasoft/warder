@@ -8,7 +8,7 @@
 
 namespace Lyrasoft\Warder\Controller\User\Forget;
 
-use Lyrasoft\Warder\Model\UserModel;
+use Lyrasoft\Warder\Model\UserRepository;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidateFailException;
@@ -47,7 +47,7 @@ class ConfirmSaveController extends AbstractSaveController
     /**
      * Property model.
      *
-     * @var  UserModel
+     * @var  UserRepository
      */
     protected $model;
 

@@ -10,7 +10,7 @@ namespace Lyrasoft\Warder\Controller\User\Registration;
 
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
-use Lyrasoft\Warder\Model\UserModel;
+use Lyrasoft\Warder\Model\UserRepository;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidateFailException;
@@ -48,7 +48,7 @@ class ActivateSaveController extends AbstractSaveController
     /**
      * Property model.
      *
-     * @var  UserModel
+     * @var  UserRepository
      */
     protected $model;
 

@@ -19,7 +19,7 @@ use Windwalker\Data\DataInterface;
  *
  * @since  1.0
  */
-class UserModel extends \Lyrasoft\Warder\Admin\Model\UserModel
+class UserRepository extends \Lyrasoft\Warder\Admin\Model\UserRepository
 {
     /**
      * register

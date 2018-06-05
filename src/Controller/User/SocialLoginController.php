@@ -10,7 +10,7 @@ namespace Lyrasoft\Warder\Controller\User;
 
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
-use Lyrasoft\Warder\Model\UserModel;
+use Lyrasoft\Warder\Model\UserRepository;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Data\DataInterface;
 
@@ -24,7 +24,7 @@ class LoginSaveController extends AbstractSaveController
     /**
      * Property model.
      *
-     * @var  UserModel
+     * @var  UserRepository
      */
     protected $model;
 

@@ -10,7 +10,7 @@ namespace Lyrasoft\Warder\Authentication\Method;
 
 use Lyrasoft\Warder\Admin\DataMapper\UserSocialMapper;
 use Lyrasoft\Warder\Data\UserData;
-use Lyrasoft\Warder\Model\UserModel;
+use Lyrasoft\Warder\Model\UserRepository;
 use Lyrasoft\Warder\WarderPackage;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Authentication\Credential;
@@ -164,7 +164,7 @@ class SocialMethod extends AbstractMethod
 
         $user->bind($credential);
 
-        $model = new UserModel;
+        $model = new UserRepository;
         $model->register($user);
 
         // Set blocked

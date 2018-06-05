@@ -8,7 +8,7 @@
 
 namespace Lyrasoft\Warder\Controller\User\Forget;
 
-use Lyrasoft\Warder\Model\UserModel;
+use Lyrasoft\Warder\Model\UserRepository;
 use Lyrasoft\Warder\View\User\UserHtmlView;
 use Phoenix\Controller\Display\ItemDisplayController;
 
@@ -43,7 +43,7 @@ class CompleteGetController extends ItemDisplayController
     /**
      * Property model.
      *
-     * @var  UserModel
+     * @var  UserRepository
      */
     protected $model;
 

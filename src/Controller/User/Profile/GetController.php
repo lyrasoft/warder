@@ -9,7 +9,7 @@
 namespace Lyrasoft\Warder\Controller\User\Profile;
 
 use Lyrasoft\Warder\Helper\UserHelper;
-use Lyrasoft\Warder\Model\ProfileModel;
+use Lyrasoft\Warder\Model\ProfileRepository;
 use Lyrasoft\Warder\View\Profile\ProfileHtmlView;
 use Phoenix\Controller\Display\EditDisplayController;
 use Windwalker\Core\Model\ModelRepository;
@@ -25,7 +25,7 @@ class GetController extends EditDisplayController
     /**
      * Property model.
      *
-     * @var  ProfileModel
+     * @var  ProfileRepository
      */
     protected $model = 'Profile';
 

@@ -15,7 +15,7 @@ use Windwalker\Core\User\User;
  *
  * @since  1.0
  */
-class ProfileModel extends UserModel
+class ProfileRepository extends UserRepository
 {
     /**
      * Property name.
