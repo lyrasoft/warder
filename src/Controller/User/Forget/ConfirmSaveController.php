@@ -8,7 +8,7 @@
 
 namespace Lyrasoft\Warder\Controller\User\Forget;
 
-use Lyrasoft\Warder\Model\UserRepository;
+use Lyrasoft\Warder\Repository\UserRepository;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidateFailException;

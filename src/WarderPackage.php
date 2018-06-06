@@ -75,7 +75,7 @@ class WarderPackage extends AbstractPackage
 
         $name = $name ?: $package->getName();
 
-        return in_array($name, (array) $this->get('frontend.package'));
+        return in_array($name, (array) $this->get('frontend.package'), true);
     }
 
     /**
@@ -95,7 +95,7 @@ class WarderPackage extends AbstractPackage
 
         $name = $name ?: $package->getName();
 
-        return in_array($name, (array) $this->get('admin.package'));
+        return in_array($name, (array) $this->get('admin.package'), true);
     }
 
     /**
@@ -119,7 +119,7 @@ class WarderPackage extends AbstractPackage
      */
     public function createUserData($data = [])
     {
-        $class = $this->get('class.data', 'Lyrasoft\Warder\Data\UserData');
+        $class = $this->get('class.data', UserData::class);
 
         return new $class($data);
     }

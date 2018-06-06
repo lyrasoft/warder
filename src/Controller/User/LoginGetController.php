@@ -30,6 +30,7 @@ class LoginGetController extends DisplayController
      * prepareExecute
      *
      * @return  void
+     * @throws \Exception
      */
     protected function prepareExecute()
     {

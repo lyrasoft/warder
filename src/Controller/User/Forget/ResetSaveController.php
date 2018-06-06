@@ -10,7 +10,7 @@ namespace Lyrasoft\Warder\Controller\User\Forget;
 
 
 use Lyrasoft\Warder\Admin\Record\UserRecord;
-use Lyrasoft\Warder\Model\UserRepository;
+use Lyrasoft\Warder\Repository\UserRepository;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\DateTime\Chronos;
 use Windwalker\Core\Language\Translator;

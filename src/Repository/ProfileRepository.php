@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Lyrasoft\Warder\Model;
+namespace Lyrasoft\Warder\Repository;
 
 use Windwalker\Core\User\User;
 

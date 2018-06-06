@@ -69,7 +69,7 @@ class UserHtmlView extends AbstractPhoenixHtmView
      */
     protected function login(DataInterface $data)
     {
-        $data->form = $this->model->getForm('login', 'user');
+        $data->form = $this->repository->getForm('login', 'user');
     }
 
     /**

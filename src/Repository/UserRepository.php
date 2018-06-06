@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-namespace Lyrasoft\Warder\Model;
+namespace Lyrasoft\Warder\Repository;
 
 use Lyrasoft\Warder\Admin\Record\Traits\UserDataTrait;
 use Lyrasoft\Warder\Helper\UserHelper;
@@ -19,7 +19,7 @@ use Windwalker\Data\DataInterface;
  *
  * @since  1.0
  */
-class UserRepository extends \Lyrasoft\Warder\Admin\Model\UserRepository
+class UserRepository extends \Lyrasoft\Warder\Admin\Repository\UserRepository
 {
     /**
      * register

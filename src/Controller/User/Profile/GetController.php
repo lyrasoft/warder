@@ -9,7 +9,7 @@
 namespace Lyrasoft\Warder\Controller\User\Profile;
 
 use Lyrasoft\Warder\Helper\UserHelper;
-use Lyrasoft\Warder\Model\ProfileRepository;
+use Lyrasoft\Warder\Repository\ProfileRepository;
 use Lyrasoft\Warder\View\Profile\ProfileHtmlView;
 use Phoenix\Controller\Display\EditDisplayController;
 use Windwalker\Core\Model\ModelRepository;

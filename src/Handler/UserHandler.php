@@ -10,7 +10,7 @@ namespace Lyrasoft\Warder\Handler;
 
 use Lyrasoft\Warder\Admin\Record\UserRecord;
 use Lyrasoft\Warder\Data\UserData;
-use Lyrasoft\Warder\Model\UserRepository;
+use Lyrasoft\Warder\Repository\UserRepository;
 use Lyrasoft\Warder\WarderPackage;
 use Windwalker\Core\Mailer\Punycode;
 use Windwalker\Core\User\UserDataInterface;
@@ -179,14 +179,20 @@ class UserHandler implements UserHandlerInterface
      * getDataMapper
      *
      * @return  UserRecord|Record
+     * @throws \LogicException
      */
     protected function getRecord()
     {
         $package  = $this->warder->getCurrentPackage();
-        $resolver = $package->getMvcResolver()->getModelResolver();
+        $resolver = $package->getMvcResolver()->getRepositoryResolver();
 
         /** @var UserRepository $model */
-        $model = $resolver->create('UserModel', null, null, $package->app->database);
+        try {
+            // For B/C
+            $model = $resolver->create('UserModel', null, null, $package->app->database);
+        } catch (\DomainException $e) {
+            $model = $resolver->create('UserRepository', null, null, $package->app->database);
+        }
 
         return $model->getRecord();
     }

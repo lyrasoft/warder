@@ -8,7 +8,7 @@
 
 namespace Lyrasoft\Warder\Controller\User\Forget;
 
-use Lyrasoft\Warder\Model\UserRepository;
+use Lyrasoft\Warder\Repository\UserRepository;
 use Lyrasoft\Warder\View\User\UserHtmlView;
 use Phoenix\Controller\Display\ItemDisplayController;
 
