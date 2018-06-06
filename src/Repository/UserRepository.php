@@ -15,7 +15,7 @@ use Windwalker\Core\User\User;
 use Windwalker\Data\DataInterface;
 
 /**
- * The LoginModel class.
+ * The LoginRepository class.
  *
  * @since  1.0
  */

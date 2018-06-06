@@ -187,12 +187,7 @@ class UserHandler implements UserHandlerInterface
         $resolver = $package->getMvcResolver()->getRepositoryResolver();
 
         /** @var UserRepository $model */
-        try {
-            // For B/C
-            $model = $resolver->create('UserModel', null, null, $package->app->database);
-        } catch (\DomainException $e) {
-            $model = $resolver->create('UserRepository', null, null, $package->app->database);
-        }
+        $model = $resolver->create('UserRepository', null, null, $package->app->database);
 
         return $model->getRecord();
     }
