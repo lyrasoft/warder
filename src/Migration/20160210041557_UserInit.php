@@ -6,8 +6,13 @@
  * @license    GNU General Public License version 2 or later;
  */
 
+use Faker\Factory;
+use Lyrasoft\Unidev\Helper\PravatarHelper;
+use Lyrasoft\Warder\Admin\DataMapper\UserMapper;
+use Lyrasoft\Warder\Data\UserData;
 use Lyrasoft\Warder\Table\WarderTable;
 use Windwalker\Core\Migration\AbstractMigration;
+use Windwalker\Core\Security\Hasher;
 use Windwalker\Database\Schema\Schema;
 
 /**
@@ -20,37 +25,55 @@ class UserInit extends AbstractMigration
      */
     public function up()
     {
-        $this->createTable(WarderTable::USERS, function (Schema $sc) {
-            $sc->primary('id')->comment('Primary Key');
-            $sc->varchar('name')->comment('Full Name');
-            $sc->varchar('username')->comment('Login name');
-            $sc->varchar('email')->comment('Email');
-            $sc->varchar('password')->comment('Password');
-            $sc->varchar('avatar')->comment('Avatar');
-            $sc->varchar('group')->comment('Group');
-            $sc->tinyint('blocked')->length(1)->comment('0: normal, 1: blocked');
-            $sc->varchar('activation')->comment('Activation code.');
-            $sc->varchar('reset_token')->comment('Reset Token');
-            $sc->datetime('last_reset')->comment('Last Reset Time');
-            $sc->datetime('last_login')->comment('Last Login Time');
-            $sc->datetime('registered')->comment('Register Time');
-            $sc->datetime('modified')->comment('Modified Time');
-            $sc->text('params')->comment('Params');
+        $this->createTable(WarderTable::USERS, function (Schema $schema) {
+            $schema->primary('id')->comment('Primary Key');
+            $schema->varchar('name')->comment('Full Name');
+            $schema->varchar('username')->comment('Login name');
+            $schema->varchar('email')->comment('Email');
+            $schema->varchar('password')->comment('Password');
+            $schema->varchar('avatar')->comment('Avatar');
+            $schema->varchar('group')->comment('Group');
+            $schema->tinyint('blocked')->length(1)->comment('0: normal, 1: blocked');
+            $schema->varchar('activation')->comment('Activation code.');
+            $schema->varchar('reset_token')->comment('Reset Token');
+            $schema->datetime('last_reset')->comment('Last Reset Time');
+            $schema->datetime('last_login')->comment('Last Login Time');
+            $schema->datetime('registered')->comment('Register Time');
+            $schema->datetime('modified')->comment('Modified Time');
+            $schema->text('params')->comment('Params');
 
-            $sc->addIndex('id');
-            $sc->addIndex('username');
-            $sc->addIndex('email');
-            $sc->addIndex('group');
+            $schema->addIndex('id');
+            $schema->addIndex('username');
+            $schema->addIndex('email');
+            $schema->addIndex('group');
         });
 
-        $this->createTable(WarderTable::USER_SOCIALS, function (Schema $sc) {
-            $sc->integer('user_id')->comment('User ID');
-            $sc->varchar('identifier')->comment('User identifier name');
-            $sc->char('provider')->length(15)->comment('Social provider');
+        $this->createTable(WarderTable::USER_SOCIALS, function (Schema $schema) {
+            $schema->integer('user_id')->comment('User ID');
+            $schema->varchar('identifier')->comment('User identifier name');
+            $schema->char('provider')->length(15)->comment('Social provider');
 
-            $sc->addIndex('user_id');
-            $sc->addIndex('identifier');
+            $schema->addIndex('user_id');
+            $schema->addIndex('identifier');
         });
+
+        $faker = Factory::create();
+
+        $user = new UserData();
+
+        $user->email      = 'admin@windwalker.io';
+        $user->name       = 'Super User';
+        $user->username   = 'admin';
+        $user->avatar     = PravatarHelper::unique(400, uniqid('', true));
+        $user->password   = Hasher::create('pass1234');
+        $user->blocked    = 0;
+        $user->activation = '';
+        $user->last_reset = $faker->dateTimeThisYear->format($this->getDateFormat());
+        $user->last_login = $faker->dateTimeThisYear->format($this->getDateFormat());
+        $user->registered = $faker->dateTimeThisYear->format($this->getDateFormat());
+        $user->modified   = $faker->dateTimeThisYear->format($this->getDateFormat());
+
+        UserMapper::createOne($user);
     }
 
     /**
