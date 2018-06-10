@@ -42,10 +42,9 @@ class UserInit extends AbstractMigration
             $schema->datetime('modified')->comment('Modified Time');
             $schema->text('params')->comment('Params');
 
-            $schema->addIndex('id');
-            $schema->addIndex('username');
-            $schema->addIndex('email');
-            $schema->addIndex('group');
+            $schema->addIndex('username(150)');
+            $schema->addIndex('email(150)');
+            $schema->addIndex('group(150)');
         });
 
         $this->createTable(WarderTable::USER_SOCIALS, function (Schema $schema) {
