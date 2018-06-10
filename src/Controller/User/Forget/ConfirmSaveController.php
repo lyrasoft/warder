@@ -97,7 +97,7 @@ class ConfirmSaveController extends AbstractSaveController
         $user = User::get(['email' => $this->data['email']]);
 
         if ($user->isNull()) {
-            throw new ValidateFailException(Translator::translate($this->langPrefix . 'user.not.found'));
+            throw new ValidateFailException(__($this->langPrefix . 'user.not.found'));
         }
 
         // Check token

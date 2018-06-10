@@ -37,20 +37,20 @@ class RegistrationDefinition extends AbstractFieldDefinition
 
         $form->fieldset('basic', function (Form $form) use ($loginName, $langPrefix) {
             $this->text('name')
-                ->label(Translator::translate($langPrefix . 'user.field.name'))
+                ->label(__($langPrefix . 'user.field.name'))
                 ->addFilter('trim')
                 ->required();
 
             if (strtolower($loginName) !== 'email') {
                 $this->text($loginName)
-                    ->label(Translator::translate($langPrefix . 'user.field.' . $loginName))
+                    ->label(__($langPrefix . 'user.field.' . $loginName))
                     ->addValidator(new UserExistsValidator($loginName))
                     ->addFilter('trim')
                     ->required();
             }
 
             $this->email('email')
-                ->label(Translator::translate($langPrefix . 'user.field.email'))
+                ->label(__($langPrefix . 'user.field.email'))
                 ->addValidator(new UserExistsValidator('email'))
                 ->addValidator(EmailValidator::class)
                 ->addFilter('trim')
@@ -58,11 +58,11 @@ class RegistrationDefinition extends AbstractFieldDefinition
                 ->required();
 
             $this->password('password')
-                ->label(Translator::translate($langPrefix . 'user.field.password'))
+                ->label(__($langPrefix . 'user.field.password'))
                 ->autocomplete('false');
 
             $this->password('password2')
-                ->label(Translator::translate($langPrefix . 'user.field.password.confirm'))
+                ->label(__($langPrefix . 'user.field.password.confirm'))
                 ->autocomplete('false');
         });
     }

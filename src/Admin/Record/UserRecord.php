@@ -54,7 +54,7 @@ class UserRecord extends Record
             throw new \InvalidArgumentException(
                 Translator::sprintf(
                     'warder.user.save.message.account.empty',
-                    Translator::translate('warder.user.field.' . $loginName)
+                    __('warder.user.field.' . $loginName)
                 )
             );
         }

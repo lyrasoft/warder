@@ -100,23 +100,23 @@ class UserRepository extends AdminRepository
 
             switch (array_values($e->getMessages())[0]) {
                 case Authentication::USER_NOT_FOUND:
-                    $message = Translator::translate($langPrefix . 'login.message.user.not.found');
+                    $message = __($langPrefix . 'login.message.user.not.found');
                     break;
 
                 case Authentication::EMPTY_CREDENTIAL:
-                    $message = Translator::translate($langPrefix . 'login.message.empty.credential');
+                    $message = __($langPrefix . 'login.message.empty.credential');
                     break;
 
                 case Authentication::INVALID_CREDENTIAL:
-                    $message = Translator::translate($langPrefix . 'login.message.invalid.credential');
+                    $message = __($langPrefix . 'login.message.invalid.credential');
                     break;
 
                 case Authentication::INVALID_PASSWORD:
-                    $message = Translator::translate($langPrefix . 'login.message.invalid.password');
+                    $message = __($langPrefix . 'login.message.invalid.password');
                     break;
 
                 case Authentication::INVALID_USERNAME:
-                    $message = Translator::translate($langPrefix . 'login.message.invalid.username');
+                    $message = __($langPrefix . 'login.message.invalid.username');
                     break;
 
                 default:

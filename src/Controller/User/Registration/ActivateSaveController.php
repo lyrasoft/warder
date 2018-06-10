@@ -103,7 +103,7 @@ class ActivateSaveController extends AbstractSaveController
         $user = User::get(['email' => $this->data['email']]);
 
         if (!UserHelper::verifyPassword($this->data['token'], $user->activation)) {
-            throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.activate.fail'));
+            throw new ValidateFailException(__($this->langPrefix . 'message.activate.fail'));
         }
 
         $user->activation = '';

@@ -60,35 +60,35 @@ class EditDefinition extends AbstractFieldDefinition
             if (class_exists(SingleImageDragField::class)) {
                 // Avatar
                 $this->add('avatar', new SingleImageDragField)
-                    ->label(Translator::translate($langPrefix . 'user.field.avatar'))
+                    ->label(__($langPrefix . 'user.field.avatar'))
                     ->set('default_image', AvatarUploadHelper::getDefaultImage());
             }
 
             $this->text('name')
-                ->label(Translator::translate($langPrefix . 'user.field.name'))
+                ->label(__($langPrefix . 'user.field.name'))
                 ->addFilter('trim')
                 ->required();
 
             if (strtolower($loginName) !== 'email') {
                 $this->text($loginName)
-                    ->label(Translator::translate($langPrefix . 'user.field.' . $loginName))
+                    ->label(__($langPrefix . 'user.field.' . $loginName))
                     ->addFilter('trim')
                     ->required();
             }
 
             $this->email('email')
-                ->label(Translator::translate($langPrefix . 'user.field.email'))
+                ->label(__($langPrefix . 'user.field.email'))
                 ->addFilter('trim')
                 ->addValidator(EmailValidator::class)
                 ->addClass('validate-email')
                 ->required();
 
             $this->password('password')
-                ->label(Translator::translate($langPrefix . 'user.field.password'))
+                ->label(__($langPrefix . 'user.field.password'))
                 ->autocomplete('false');
 
             $this->password('password2')
-                ->label(Translator::translate($langPrefix . 'user.field.password.confirm'))
+                ->label(__($langPrefix . 'user.field.password.confirm'))
                 ->autocomplete('false');
         });
     }

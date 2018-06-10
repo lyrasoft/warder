@@ -65,7 +65,7 @@ class ProfileHtmlView extends EditView
                 $layout = 'profile.edit';
             }
 
-            $title = Translator::translate($langPrefix . $layout . '.title');
+            $title = __($langPrefix . $layout . '.title');
         }
 
         return parent::setTitle($title);

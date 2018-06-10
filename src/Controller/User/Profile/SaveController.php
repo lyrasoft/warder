@@ -156,7 +156,7 @@ class SaveController extends AbstractSaveController
         $validator = new EmailValidator;
 
         if (!$validator->validate($data->email)) {
-            throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.email.invalid'));
+            throw new ValidateFailException(__($this->langPrefix . 'message.email.invalid'));
         }
 
         parent::validate($data);
@@ -167,19 +167,19 @@ class SaveController extends AbstractSaveController
             $originUser = User::get([$loginName => $data->$loginName]);
 
             if ($originUser->notNull() && $originUser->id !== $data->id) {
-                throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.user.account.exists'));
+                throw new ValidateFailException(__($this->langPrefix . 'message.user.account.exists'));
             }
         }
 
         $user = User::get(['email' => $data->email]);
 
         if ($user->notNull() && $user->id != $data->id) {
-            throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.user.email.exists'));
+            throw new ValidateFailException(__($this->langPrefix . 'message.user.email.exists'));
         }
 
         if ('' !== (string) $data->password) {
             if ($data->password !== $data->password2) {
-                throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.password.not.match'));
+                throw new ValidateFailException(__($this->langPrefix . 'message.password.not.match'));
             }
 
             unset($data->password2);

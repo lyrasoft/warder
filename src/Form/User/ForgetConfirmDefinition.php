@@ -32,11 +32,11 @@ class ForgetConfirmDefinition extends AbstractFieldDefinition
         $langPrefix = WarderHelper::getPackage()->get('frontend.language.prefix', 'warder.');
 
         $this->email('email')
-            ->label(Translator::translate($langPrefix . '.user.field.email'))
+            ->label(__($langPrefix . '.user.field.email'))
             ->required();
 
         $this->text('token')
-            ->label(Translator::translate($langPrefix . 'user.field.token'))
+            ->label(__($langPrefix . 'user.field.token'))
             ->required();
     }
 }

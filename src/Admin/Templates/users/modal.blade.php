@@ -97,13 +97,13 @@
                                         1,
                                         'block',
                                         'ok fa fa-check text-success',
-                                        \Windwalker\Core\Language\Translator::translate($warder->langPrefix . 'button.enabled.desc')
+                                        \Windwalker\Core\Language\__($warder->langPrefix . 'button.enabled.desc')
                                     )
                                     ->addState(
                                         0,
                                         'unblock',
                                         'remove fa fa-remove text-danger',
-                                        \Windwalker\Core\Language\Translator::translate($warder->langPrefix . 'button.disabled.desc')
+                                        \Windwalker\Core\Language\__($warder->langPrefix . 'button.disabled.desc')
                                     )->render(!$item->blocked)
                                 !!}
                             </td>

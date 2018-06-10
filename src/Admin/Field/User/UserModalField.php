@@ -57,7 +57,7 @@ class UserModalField extends ModalField
         $langPrefix    = $this->get('lang_prefix') ?: $warder->get('admin.language.prefix');
 
         $this->def('buttonText',
-            '<i class="glyphicon glyphicon-user fa fa-user"></i> ' . Translator::translate($langPrefix . 'user.modal.field.button.select'));
+            '<i class="glyphicon glyphicon-user fa fa-user"></i> ' . __($langPrefix . 'user.modal.field.button.select'));
 
         return parent::buildInput($attrs);
     }

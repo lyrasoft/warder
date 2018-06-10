@@ -74,7 +74,7 @@ class ResetGetController extends ItemDisplayController
         $user = User::get(['email' => $this->view['email']]);
 
         if ($user->isNull()) {
-            $this->backToConfirm(Translator::translate($this->langPrefix . 'user.not.found'));
+            $this->backToConfirm(__($this->langPrefix . 'user.not.found'));
 
             return;
         }

@@ -126,11 +126,11 @@ class UserListener
         $langPrefix = WarderHelper::getPackage()->get('admin.language.prefix', 'warder.');
 
         if (property_exists($user, 'activation') && $user->activation) {
-            throw new AuthenticateFailException(Translator::translate($langPrefix . 'login.message.inactivated'));
+            throw new AuthenticateFailException(__($langPrefix . 'login.message.inactivated'));
         }
 
         if (property_exists($user, 'blocked') && $user->blocked) {
-            throw new AuthenticateFailException(Translator::translate($langPrefix . 'login.message.blocked'));
+            throw new AuthenticateFailException(__($langPrefix . 'login.message.blocked'));
         }
     }
 

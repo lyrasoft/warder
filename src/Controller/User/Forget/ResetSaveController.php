@@ -93,22 +93,22 @@ class ResetSaveController extends AbstractSaveController
     protected function doSave(DataInterface $data)
     {
         if (!trim($this->data['password'])) {
-            throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.password.not.entered'));
+            throw new ValidateFailException(__($this->langPrefix . 'message.password.not.entered'));
         }
 
         if ($this->data['password'] !== $this->data['password2']) {
-            throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.password.not.match'));
+            throw new ValidateFailException(__($this->langPrefix . 'message.password.not.match'));
         }
 
         /** @var UserRecord $user */
         $user = User::get(['email' => $this->data['email']]);
 
         if ($user->isNull()) {
-            throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.user.not.found'));
+            throw new ValidateFailException(__($this->langPrefix . 'message.user.not.found'));
         }
 
         if (!Hasher::verify($this->data['token'], $user->reset_token)) {
-            throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.invalid.token'));
+            throw new ValidateFailException(__($this->langPrefix . 'message.invalid.token'));
         }
 
         $user->password    = Hasher::create($this->data['password']);

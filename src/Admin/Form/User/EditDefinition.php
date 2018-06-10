@@ -45,14 +45,14 @@ class EditDefinition extends AbstractFieldDefinition
         $form->fieldset('basic', function (Form $form) use ($loginName, $langPrefix) {
             // Name
             $this->text('name')
-                ->label(Translator::translate($langPrefix . 'user.field.name'))
+                ->label(__($langPrefix . 'user.field.name'))
                 ->addFilter('trim')
                 ->required(true);
 
             if ($loginName !== 'email') {
                 // Name
                 $this->text($loginName)
-                    ->label(Translator::translate($langPrefix . 'user.field.' . $loginName))
+                    ->label(__($langPrefix . 'user.field.' . $loginName))
                     ->addFilter('trim')
                     ->autocomplete('false')
                     ->required(true);
@@ -60,7 +60,7 @@ class EditDefinition extends AbstractFieldDefinition
 
             // Email
             $this->email('email')
-                ->label(Translator::translate($langPrefix . 'user.field.email'))
+                ->label(__($langPrefix . 'user.field.email'))
                 ->addFilter('trim')
                 ->addValidator(EmailValidator::class)
                 ->addClass('validate-email')
@@ -70,12 +70,12 @@ class EditDefinition extends AbstractFieldDefinition
             // Password
             $this->password('password')
                 ->autocomplete('false')
-                ->label(Translator::translate($langPrefix . 'user.field.password'));
+                ->label(__($langPrefix . 'user.field.password'));
 
             // Password
             $this->password('password2')
                 ->autocomplete('false')
-                ->label(Translator::translate($langPrefix . 'user.field.password.confirm'));
+                ->label(__($langPrefix . 'user.field.password.confirm'));
         });
 
         // Created fieldset
@@ -83,13 +83,13 @@ class EditDefinition extends AbstractFieldDefinition
             if (class_exists(SingleImageDragField::class)) {
                 // Avatar
                 $this->add('avatar', new SingleImageDragField)
-                    ->label(Translator::translate($langPrefix . 'user.field.avatar'))
+                    ->label(__($langPrefix . 'user.field.avatar'))
                     ->set('default_image', AvatarUploadHelper::getDefaultImage());
             }
 
             // Blocked
             $this->switch('blocked')
-                ->label(Translator::translate($langPrefix . 'user.field.blocked'))
+                ->label(__($langPrefix . 'user.field.blocked'))
                 ->class('')
                 ->circle(true)
                 ->color('danger')
@@ -97,17 +97,17 @@ class EditDefinition extends AbstractFieldDefinition
 
             // ID
             $this->text('id')
-                ->label(Translator::translate($langPrefix . 'user.field.id'))
+                ->label(__($langPrefix . 'user.field.id'))
                 ->readonly();
 
             // Registered
             $this->calendar('registered')
-                ->label(Translator::translate($langPrefix . 'user.field.registered'))
+                ->label(__($langPrefix . 'user.field.registered'))
                 ->disabled();
 
             // Last Login
             $this->calendar('last_login')
-                ->label(Translator::translate($langPrefix . 'user.field.last.login'))
+                ->label(__($langPrefix . 'user.field.last.login'))
                 ->disabled();
         });
     }

@@ -180,7 +180,7 @@ class RegistrationSaveController extends AbstractSaveController
     protected function sendEmail($email, $body)
     {
         $this->app->mailer->send(function (MailMessage $message) use ($email, $body) {
-            $message->subject(Translator::translate($this->langPrefix . 'mail.subject'))
+            $message->subject(__($this->langPrefix . 'mail.subject'))
                 ->from($this->app->get('mail.from.email', $this->app->get('mail.from.email')),
                     $this->app->get('mail.from.name', $this->app->get('mail.from.name')))
                 ->to($email)
@@ -200,7 +200,7 @@ class RegistrationSaveController extends AbstractSaveController
     protected function validate(DataInterface $data)
     {
         if (!(new EmailValidator)->validate($data->email)) {
-            throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.email.invalid'));
+            throw new ValidateFailException(__($this->langPrefix . 'message.email.invalid'));
         }
 
         $form = $this->model->getForm('registration', 'user');
@@ -208,11 +208,11 @@ class RegistrationSaveController extends AbstractSaveController
         $this->model->validate($data->dump(), $form);
 
         if (!$data->password) {
-            throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.password.not.entered'));
+            throw new ValidateFailException(__($this->langPrefix . 'message.password.not.entered'));
         }
 
         if ($data->password !== $data->password2) {
-            throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.password.not.match'));
+            throw new ValidateFailException(__($this->langPrefix . 'message.password.not.match'));
         }
 
         unset($data->password2);

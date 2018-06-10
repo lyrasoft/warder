@@ -43,24 +43,24 @@ class GridDefinition extends AbstractFieldDefinition
         $this->wrap(null, 'search', function (Form $form) use ($loginName, $langPrefix) {
             // Search Field
             $fieldField = $this->list('field')
-                ->label(Translator::translate('phoenix.grid.search.user.field.label'))
+                ->label(__('phoenix.grid.search.user.field.label'))
                 ->set('display', false)
                 ->defaultValue('*')
-                ->option(Translator::translate('phoenix.core.all'), '*');
+                ->option(__('phoenix.core.all'), '*');
 
             if ($loginName !== 'email') {
-                $fieldField->option(Translator::translate($langPrefix . 'user.field.' . $loginName),
+                $fieldField->option(__($langPrefix . 'user.field.' . $loginName),
                     'user.' . $loginName);
             }
 
-            $fieldField->option(Translator::translate($langPrefix . 'user.field.name'), 'user.name')
-                ->option(Translator::translate($langPrefix . 'user.field.email'), 'user.email')
-                ->option(Translator::translate($langPrefix . 'user.field.id'), 'user.id');
+            $fieldField->option(__($langPrefix . 'user.field.name'), 'user.name')
+                ->option(__($langPrefix . 'user.field.email'), 'user.email')
+                ->option(__($langPrefix . 'user.field.id'), 'user.id');
 
             // Search Content
             $this->text('content')
-                ->label(Translator::translate('phoenix.grid.search.label'))
-                ->placeholder(Translator::translate('phoenix.grid.search.label'));
+                ->label(__('phoenix.grid.search.label'))
+                ->placeholder(__('phoenix.grid.search.label'));
         });
 
         /*
@@ -77,9 +77,9 @@ class GridDefinition extends AbstractFieldDefinition
                 ->label($langPrefix . 'filter.activation.label')
                 // Add empty option to support single deselect button
                 ->option('', '')
-                ->option(Translator::translate($langPrefix . 'filter.activation.select'), '')
-                ->option(Translator::translate($langPrefix . 'filter.activation.activated'), '1')
-                ->option(Translator::translate($langPrefix . 'filter.activation.unactivated'), '0')
+                ->option(__($langPrefix . 'filter.activation.select'), '')
+                ->option(__($langPrefix . 'filter.activation.activated'), '1')
+                ->option(__($langPrefix . 'filter.activation.unactivated'), '0')
                 ->onchange('this.form.submit()');
 
             // State
@@ -87,9 +87,9 @@ class GridDefinition extends AbstractFieldDefinition
                 ->label($langPrefix . 'filter.block.label')
                 // Add empty option to support single deselect button
                 ->option('', '')
-                ->option(Translator::translate($langPrefix . 'filter.block.select'), '')
-                ->option(Translator::translate($langPrefix . 'filter.block.blocked'), '1')
-                ->option(Translator::translate($langPrefix . 'filter.block.unblocked'), '0')
+                ->option(__($langPrefix . 'filter.block.select'), '')
+                ->option(__($langPrefix . 'filter.block.blocked'), '1')
+                ->option(__($langPrefix . 'filter.block.unblocked'), '0')
                 ->onchange('this.form.submit()');
         });
 

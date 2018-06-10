@@ -93,7 +93,7 @@ class RequestSaveController extends AbstractSaveController
         $email = $this->input->getEmail('email');
 
         if (!$email) {
-            throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.user.not.found'));
+            throw new ValidateFailException(__($this->langPrefix . 'message.user.not.found'));
         }
 
         $view = $this->getView();
@@ -101,7 +101,7 @@ class RequestSaveController extends AbstractSaveController
         $user = User::get(['email' => $email]);
 
         if ($user->isNull()) {
-            throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.user.not.found'));
+            throw new ValidateFailException(__($this->langPrefix . 'message.user.not.found'));
         }
 
         $token = UserHelper::getToken($user->email);
@@ -146,7 +146,7 @@ class RequestSaveController extends AbstractSaveController
     protected function sendEmail($email, $body)
     {
         Mailer::send(function (MailMessage $message) use ($email, $body) {
-            $message->subject(Translator::translate($this->langPrefix . 'mail.subject'))
+            $message->subject(__($this->langPrefix . 'mail.subject'))
                 ->from($this->app->get('mail.from.email', $this->app->get('mail.from.email')),
                     $this->app->get('mail.from.name', $this->app->get('mail.from.name')))
                 ->to($email)

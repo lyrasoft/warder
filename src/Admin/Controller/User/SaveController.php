@@ -110,19 +110,19 @@ class SaveController extends AbstractSaveController
             $originUser = User::get([$loginName => $data->$loginName]);
 
             if ($originUser->notNull() && $originUser->id != $data->id) {
-                throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.user.account.exists'));
+                throw new ValidateFailException(__($this->langPrefix . 'message.user.account.exists'));
             }
         }
 
         $user = User::get(['email' => Punycode::toAscii($data->email)]);
 
         if ($user->notNull() && $user->id != $data->id) {
-            throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.user.email.exists'));
+            throw new ValidateFailException(__($this->langPrefix . 'message.user.email.exists'));
         }
 
         if ('' !== (string) $data->password) {
             if ($data->password !== $data->password2) {
-                throw new ValidateFailException(Translator::translate($this->langPrefix . 'message.password.not.match'));
+                throw new ValidateFailException(__($this->langPrefix . 'message.password.not.match'));
             }
 
             unset($data->password2);

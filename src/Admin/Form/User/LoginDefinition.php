@@ -52,13 +52,13 @@ class LoginDefinition extends AbstractFieldDefinition
 
         $this->fieldset('login', function () use ($loginName, $langPrefix) {
             $this->text($loginName)
-                ->label(Translator::translate($langPrefix . 'user.field.' . $loginName));
+                ->label(__($langPrefix . 'user.field.' . $loginName));
 
             $this->password('password')
-                ->label(Translator::translate($langPrefix . 'user.field.password'));
+                ->label(__($langPrefix . 'user.field.password'));
         });
 
         $this->checkbox('remember')
-            ->label(Translator::translate($langPrefix . 'user.field.remember'));
+            ->label(__($langPrefix . 'user.field.remember'));
     }
 }

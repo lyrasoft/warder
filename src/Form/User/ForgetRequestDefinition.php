@@ -32,7 +32,7 @@ class ForgetRequestDefinition extends AbstractFieldDefinition
         $langPrefix = WarderHelper::getPackage()->get('frontend.language.prefix', 'warder.');
 
         $this->email('email')
-            ->label(Translator::translate($langPrefix . 'user.field.email'))
+            ->label(__($langPrefix . 'user.field.email'))
             ->required();
     }
 }
