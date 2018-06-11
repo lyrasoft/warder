@@ -84,6 +84,7 @@ class EditDefinition extends AbstractFieldDefinition
                 // Avatar
                 $this->add('avatar', new SingleImageDragField)
                     ->label(__($langPrefix . 'user.field.avatar'))
+                    ->set('force_v1', true)
                     ->set('default_image', AvatarUploadHelper::getDefaultImage());
             }
 
