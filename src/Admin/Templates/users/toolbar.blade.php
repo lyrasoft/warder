@@ -11,7 +11,7 @@
 </button>
 
 <button type="button" class="btn btn-danger btn-sm" onclick="Phoenix.Grid.hasChecked();Phoenix.Grid.batch('block');">
-    <span class="glyphicon glyphicon-remove fa fa-remove"></span>
+    <span class="glyphicon glyphicon-remove fa fa-remove fa-times"></span>
     @translate($warder->langPrefix . 'toolbar.disable')
 </button>
 

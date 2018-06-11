@@ -21,6 +21,6 @@
 {{--</button>--}}
 
 <a role="button" class="btn btn-default btn-outline-secondary" href="{{ $router->route('users') }}">
-    <span class="glyphicon glyphicon-remove fa fa-remove"></span>
+    <span class="glyphicon glyphicon-remove fa fa-remove fa-times"></span>
     @translate('phoenix.toolbar.cancel')
 </a>

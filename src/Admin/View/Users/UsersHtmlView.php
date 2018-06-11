@@ -99,7 +99,7 @@ class UsersHtmlView extends GridView
             ->addState(
                 0,
                 'unblock',
-                'remove fa fa-remove text-danger',
+                'remove fa fa-remove fa-times text-danger',
                 $langPrefix . 'button.disabled.desc'
             );
 

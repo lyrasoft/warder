@@ -7,7 +7,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title" id="batch-modal-title">
-                    <span class="glyphicon glyphicon-modal-window fa fa-sliders"></span>
+                    <span class="glyphicon glyphicon-modal-window fa fa-sliders fa-sliders-h"></span>
                     @translate('phoenix.batch.modal.title')
                 </h4>
             </div>
@@ -22,7 +22,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="waves-effect btn btn-default" data-dismiss="modal">
-                    <span class="glyphicon glyphicon-remove fa fa-remove"></span>
+                    <span class="glyphicon glyphicon-remove fa fa-remove fa-times"></span>
                     @translate('phoenix.core.close')
                 </button>
                 <button type="button" class="waves-effect waves-light btn btn-info"

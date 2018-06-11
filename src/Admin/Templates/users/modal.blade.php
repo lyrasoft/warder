@@ -13,7 +13,7 @@
             {{-- FILTER BAR --}}
             <div class="filter-bar">
                 <button class="btn btn-default pull-right" onclick="parent.{{ $function }}('{{ $selector }}', '', '');">
-                    <span class="glyphicon glyphicon-remove fa fa-remove text-danger"></span>
+                    <span class="glyphicon glyphicon-remove fa fa-remove fa-times text-danger"></span>
                     @translate('phoenix.grid.modal.button.cancel')
                 </button>
                 {!! $filterBar->render(array('form' => $form, 'show' => $showFilterBar)) !!}
@@ -102,7 +102,7 @@
                                     ->addState(
                                         0,
                                         'unblock',
-                                        'remove fa fa-remove text-danger',
+                                        'remove fa fa-remove fa-times text-danger',
                                         \Windwalker\Core\Language\__($warder->langPrefix . 'button.disabled.desc')
                                     )->render(!$item->blocked)
                                 !!}
@@ -111,7 +111,7 @@
                             {{-- Activation --}}
                             <td>
                                 @if ($item->activation)
-                                    <span class="glyphicon glyphicon-remove fa fa-remove text-danger hasTooltip"
+                                    <span class="glyphicon glyphicon-remove fa fa-remove fa-times text-danger hasTooltip"
                                           title="@translate($warder->langPrefix . 'button.unactivated.desc')"></span>
                                 @else
                                     <span class="glyphicon glyphicon-ok fa fa-check text-success hasTooltip"

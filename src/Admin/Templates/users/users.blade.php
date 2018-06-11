@@ -154,7 +154,7 @@
                                             class="waves-effect btn btn-light btn-default btn-sm hasTooltip"
                                             onclick="Phoenix.Grid.updateRow({{ $i }}, null, {task: 'activate'});"
                                             title="@translate($warder->langPrefix . 'button.unactivated.desc')">
-                                        <span class="fa fa-remove text-danger"></span>
+                                        <span class="fa fa-remove fa-times text-danger"></span>
                                     </button>
                                 @else
                                     <span class="fa fa-check text-success hasTooltip"
