@@ -12,6 +12,8 @@ namespace Lyrasoft\Warder\Helper;
  * The UserGroup class.
  *
  * @since  1.0
+ *
+ * @deprecated  Do not use this class anymore.
  */
 abstract class UserGroup
 {
