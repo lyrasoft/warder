@@ -44,7 +44,7 @@ class UserSeeder extends AbstractSeeder
             $data->blocked     = 0;
             $data->activation  = '';
             $data->reset_token = '';
-            $data->last_reset  = $faker->dateTimeThisYear->format($this->getDateFormat());
+            $data->last_reset  = $this->getNullDate();
             $data->last_login  = $faker->dateTimeThisYear->format($this->getDateFormat());
             $data->registered  = $faker->dateTimeThisYear->format($this->getDateFormat());
             $data->modified    = $faker->dateTimeThisYear->format($this->getDateFormat());
