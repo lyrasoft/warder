@@ -6,6 +6,7 @@
  * @var  $item            \Lyrasoft\Warder\Admin\Record\UserRecord
  * @var  $blockedButton   \Phoenix\Html\State\IconButton
  * @var  $grid            \Phoenix\View\Helper\GridHelper
+ * @var  $pagination      \Windwalker\Core\Pagination\Pagination
  */
 
 \Phoenix\Script\JQueryScript::highlight('.searchable', $state['input.search.content']);
@@ -178,7 +179,7 @@
                             </td>
 
                             {{-- ID --}}
-                            <td class="searchable">
+                            <td class="searchable text-right">
                                 {{ $item->id }}
                             </td>
                         </tr>
@@ -201,7 +202,7 @@
                 <input type="hidden" name="_method" value="PUT"/>
 
                 {{-- TOKEN --}}
-                @formToken()
+                @formToken
             </div>
 
             @include('batch')

@@ -61,7 +61,7 @@ $basicFieldset = array_shift($fieldsets);
                     @show
 
                     <div class="hidden-inputs">
-                        @formToken()
+                        @formToken
                     </div>
                 </form>
             @show

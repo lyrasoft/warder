@@ -43,7 +43,7 @@ $form->setAttributes('labelWidth', 'col-md-12')
                     </p>
 
                     <div class="hidden-inputs">
-                        @formToken()
+                        @formToken
                     </div>
                 </form>
             @show

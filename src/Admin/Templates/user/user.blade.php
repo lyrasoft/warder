@@ -30,7 +30,7 @@
         @yield('user-edit-custom-fields')
 
         <div class="hidden-inputs">
-            @formToken()
+            @formToken
         </div>
 
     </form>
