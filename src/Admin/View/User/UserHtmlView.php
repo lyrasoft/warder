@@ -83,7 +83,7 @@ class UserHtmlView extends EditView
     protected function prepareScripts()
     {
         PhoenixScript::core();
-        PhoenixScript::chosen();
+        PhoenixScript::select2('.has-select2');
         PhoenixScript::formValidation();
         BootstrapScript::checkbox(BootstrapScript::FONTAWESOME);
         BootstrapScript::buttonRadio();

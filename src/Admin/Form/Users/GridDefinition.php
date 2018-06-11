@@ -49,8 +49,10 @@ class GridDefinition extends AbstractFieldDefinition
                 ->option(__('phoenix.core.all'), '*');
 
             if ($loginName !== 'email') {
-                $fieldField->option(__($langPrefix . 'user.field.' . $loginName),
-                    'user.' . $loginName);
+                $fieldField->option(
+                    __($langPrefix . 'user.field.' . $loginName),
+                    'user.' . $loginName
+                );
             }
 
             $fieldField->option(__($langPrefix . 'user.field.name'), 'user.name')
@@ -80,6 +82,7 @@ class GridDefinition extends AbstractFieldDefinition
                 ->option(__($langPrefix . 'filter.activation.select'), '')
                 ->option(__($langPrefix . 'filter.activation.activated'), '1')
                 ->option(__($langPrefix . 'filter.activation.unactivated'), '0')
+                ->class('has-select2')
                 ->onchange('this.form.submit()');
 
             // State
@@ -90,6 +93,7 @@ class GridDefinition extends AbstractFieldDefinition
                 ->option(__($langPrefix . 'filter.block.select'), '')
                 ->option(__($langPrefix . 'filter.block.blocked'), '1')
                 ->option(__($langPrefix . 'filter.block.unblocked'), '0')
+                ->class('has-select2')
                 ->onchange('this.form.submit()');
         });
 

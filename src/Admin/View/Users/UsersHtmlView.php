@@ -115,7 +115,7 @@ class UsersHtmlView extends GridView
     {
         PhoenixScript::core();
         PhoenixScript::grid();
-        PhoenixScript::chosen();
+        PhoenixScript::select2('.has-select2');
         PhoenixScript::multiSelect('#admin-form table', ['duration' => 100]);
         BootstrapScript::checkbox(BootstrapScript::FONTAWESOME);
         BootstrapScript::tooltip();
