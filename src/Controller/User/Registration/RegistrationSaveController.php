@@ -87,6 +87,8 @@ class RegistrationSaveController extends AbstractSaveController
      * prepareExecute
      *
      * @return  void
+     * @throws \Psr\Cache\InvalidArgumentException
+     * @throws \ReflectionException
      */
     protected function prepareExecute()
     {
@@ -125,6 +127,7 @@ class RegistrationSaveController extends AbstractSaveController
      * @param DataInterface $data
      *
      * @return  void
+     * @throws \Exception
      */
     protected function doSave(DataInterface $data)
     {
@@ -141,6 +144,8 @@ class RegistrationSaveController extends AbstractSaveController
      * @param DataInterface $user
      *
      * @return  void
+     * @throws \Psr\Cache\InvalidArgumentException
+     * @throws \ReflectionException
      */
     protected function postSave(DataInterface $user)
     {
@@ -162,6 +167,7 @@ class RegistrationSaveController extends AbstractSaveController
      * @param HtmlView $view
      *
      * @return  string
+     * @throws \ReflectionException
      */
     protected function getMailBody(HtmlView $view)
     {
@@ -224,6 +230,7 @@ class RegistrationSaveController extends AbstractSaveController
      * @param DataInterface $data
      *
      * @return  string
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     protected function getSuccessRedirect(DataInterface $data = null)
     {
@@ -242,6 +249,7 @@ class RegistrationSaveController extends AbstractSaveController
      * @param DataInterface $data
      *
      * @return  string
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     protected function getFailRedirect(DataInterface $data = null)
     {

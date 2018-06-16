@@ -30,6 +30,7 @@ class ProfileRepository extends UserRepository
      * @param string $name
      *
      * @return  \Windwalker\Record\Record
+     * @throws \Exception
      */
     public function getRecord($name = 'User')
     {
@@ -40,6 +41,7 @@ class ProfileRepository extends UserRepository
      * getDefaultData
      *
      * @return array
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     public function getFormDefaultData()
     {

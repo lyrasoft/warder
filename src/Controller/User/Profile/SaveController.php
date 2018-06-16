@@ -88,6 +88,8 @@ class SaveController extends AbstractSaveController
      * prepareExecute
      *
      * @return  void
+     * @throws \Psr\Cache\InvalidArgumentException
+     * @throws \ReflectionException
      */
     protected function prepareExecute()
     {
@@ -122,6 +124,7 @@ class SaveController extends AbstractSaveController
      * @param DataInterface $data
      *
      * @return  void
+     * @throws \ReflectionException
      */
     protected function postSave(DataInterface $data)
     {
@@ -149,7 +152,7 @@ class SaveController extends AbstractSaveController
      *
      * @return  void
      *
-     * @throws ValidateFailException
+     * @throws \Exception
      */
     protected function validate(DataInterface $data)
     {
@@ -194,7 +197,7 @@ class SaveController extends AbstractSaveController
      * @param  DataInterface $data
      *
      * @return  string
-     * @throws \OutOfRangeException
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     protected function getFailRedirect(DataInterface $data = null)
     {

@@ -55,6 +55,7 @@ class ActivateController extends AbstractBatchController
      * @param   DataInterface $data
      *
      * @return  mixed
+     * @throws \Exception
      */
     protected function save($pk, DataInterface $data)
     {

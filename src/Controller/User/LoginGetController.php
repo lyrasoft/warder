@@ -30,7 +30,7 @@ class LoginGetController extends DisplayController
      * prepareExecute
      *
      * @return  void
-     * @throws \Exception
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     protected function prepareExecute()
     {
@@ -59,6 +59,7 @@ class LoginGetController extends DisplayController
      * getHomeRedirect
      *
      * @return  string
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     protected function getHomeRedirect()
     {

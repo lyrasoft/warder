@@ -48,8 +48,7 @@ class UserHandler implements UserHandlerInterface
      * @param array $conditions
      *
      * @return  UserDataInterface
-     * @throws \RuntimeException
-     * @throws \UnexpectedValueException
+     * @throws \Exception
      */
     public function load($conditions)
     {
@@ -93,10 +92,7 @@ class UserHandler implements UserHandlerInterface
      * @param UserDataInterface|UserData $user
      *
      * @return  UserData
-     * @throws \Windwalker\Record\Exception\NoResultException
-     * @throws \UnexpectedValueException
-     * @throws \RuntimeException
-     * @throws \InvalidArgumentException
+     * @throws \Exception
      */
     public function save(UserDataInterface $user)
     {
@@ -128,9 +124,7 @@ class UserHandler implements UserHandlerInterface
      * @param array $conditions
      *
      * @return  boolean
-     * @throws \UnexpectedValueException
-     * @throws \RuntimeException
-     * @throws \InvalidArgumentException
+     * @throws \Exception
      */
     public function delete($conditions)
     {
@@ -179,7 +173,7 @@ class UserHandler implements UserHandlerInterface
      * getDataMapper
      *
      * @return  UserRecord|Record
-     * @throws \LogicException
+     * @throws \Exception
      */
     protected function getRecord()
     {

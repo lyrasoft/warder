@@ -58,6 +58,7 @@ class CompleteGetController extends ItemDisplayController
      * prepareExecute
      *
      * @return  void
+     * @throws \Exception
      */
     protected function prepareExecute()
     {

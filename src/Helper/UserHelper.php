@@ -77,6 +77,7 @@ class UserHelper
      * @param   string $return
      *
      * @return  void
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     public static function goToLogin($return = null)
     {

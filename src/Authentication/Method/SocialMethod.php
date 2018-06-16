@@ -58,7 +58,7 @@ class SocialMethod extends AbstractMethod
      * @param Credential $credential
      *
      * @return  integer
-     * @throws \Exception
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     public function authenticate(Credential $credential)
     {
@@ -197,7 +197,7 @@ class SocialMethod extends AbstractMethod
      * createHAuth
      *
      * @return  array
-     * @throws \OutOfRangeException
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     protected function getHAConfig()
     {

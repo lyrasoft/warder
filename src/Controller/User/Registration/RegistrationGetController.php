@@ -48,6 +48,7 @@ class RegistrationGetController extends EditDisplayController
      * prepareExecute
      *
      * @return  void
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     protected function prepareExecute()
     {
@@ -72,6 +73,7 @@ class RegistrationGetController extends EditDisplayController
      * @param ModelRepository $model The default mode.
      *
      * @return  void
+     * @throws \ReflectionException
      */
     protected function prepareViewModel(AbstractView $view, ModelRepository $model)
     {

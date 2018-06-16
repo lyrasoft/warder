@@ -23,6 +23,7 @@ class LogoutSaveController extends AbstractPhoenixController
      * doExecute
      *
      * @return  mixed
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     protected function doExecute()
     {

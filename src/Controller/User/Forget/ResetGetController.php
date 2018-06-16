@@ -62,6 +62,7 @@ class ResetGetController extends ItemDisplayController
      * prepareExecute
      *
      * @return  void
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     protected function prepareExecute()
     {
@@ -93,6 +94,7 @@ class ResetGetController extends ItemDisplayController
      * @param string $type
      *
      * @return  void
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     protected function backToConfirm($message = null, $type = Bootstrap::MSG_WARNING)
     {

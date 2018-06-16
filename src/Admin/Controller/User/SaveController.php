@@ -73,6 +73,7 @@ class SaveController extends AbstractSaveController
      * @param DataInterface $data
      *
      * @return  void
+     * @throws \Exception
      */
     protected function postSave(DataInterface $data)
     {
@@ -98,7 +99,7 @@ class SaveController extends AbstractSaveController
      *
      * @return  void
      *
-     * @throws ValidateFailException
+     * @throws \Exception
      */
     protected function validate(DataInterface $data)
     {

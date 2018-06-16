@@ -46,6 +46,8 @@ class LoginSaveController extends AbstractSaveController
      * prepareExecute
      *
      * @return  void
+     * @throws \Psr\Cache\InvalidArgumentException
+     * @throws \ReflectionException
      */
     protected function prepareExecute()
     {
@@ -80,6 +82,7 @@ class LoginSaveController extends AbstractSaveController
      * @param DataInterface $data
      *
      * @return  string
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     protected function getSuccessRedirect(DataInterface $data = null)
     {
@@ -100,6 +103,7 @@ class LoginSaveController extends AbstractSaveController
      * @param DataInterface $data
      *
      * @return  string
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     protected function getFailRedirect(DataInterface $data = null)
     {

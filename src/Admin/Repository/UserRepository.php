@@ -50,6 +50,7 @@ class UserRepository extends AdminRepository
      * @param   mixed $pk
      *
      * @return  Data
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     public function getItem($pk = null)
     {
@@ -135,7 +136,7 @@ class UserRepository extends AdminRepository
      * @param DataInterface|UserRecord $user
      *
      * @return bool
-     * @throws ValidateFailException
+     * @throws \Exception
      */
     public function save(DataInterface $user)
     {

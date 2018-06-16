@@ -114,6 +114,7 @@ class ConfirmSaveController extends AbstractSaveController
      * @param DataInterface $data
      *
      * @return  string
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     protected function getFailRedirect(DataInterface $data = null)
     {
@@ -126,6 +127,7 @@ class ConfirmSaveController extends AbstractSaveController
      * @param DataInterface $data
      *
      * @return  string
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     protected function getSuccessRedirect(DataInterface $data = null)
     {
