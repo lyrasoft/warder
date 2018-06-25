@@ -21,7 +21,7 @@ define('WARDER_TABLE_ACTIONS', WarderHelper::getTable('actions'));
  *
  * @since  1.0
  */
-class WarderTable
+interface WarderTable
 {
     const USERS = WARDER_TABLE_USERS;
 
