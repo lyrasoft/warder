@@ -1,6 +1,6 @@
 <?php
 /**
- * Part of eng4tw project.
+ * Part of warder project.
  *
  * @copyright  Copyright (C) 2016 {ORGANIZATION}. All rights reserved.
  * @license    GNU General Public License version 2 or later.
@@ -41,7 +41,7 @@ class UserHelper
     {
         $config = Ioc::getConfig();
 
-        $requestLogin = $config->get('route.extra.warder.require_login', true);
+        $requestLogin = $config->get('route.extra.warder.require_login');
 
         return UserHelper::isLogin() || !$requestLogin;
     }
