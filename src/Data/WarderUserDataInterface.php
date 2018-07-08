@@ -8,12 +8,14 @@
 
 namespace Lyrasoft\Warder\Data;
 
+use Windwalker\Core\User\UserDataInterface;
+
 /**
  * Interface WarderUserDataInterface
  *
  * @since  1.4.2
  */
-interface WarderUserDataInterface
+interface WarderUserDataInterface extends UserDataInterface
 {
     /**
      * authorise

@@ -64,7 +64,7 @@ class WarderHelper
     /**
      * getFrontendRouting
      *
-     * @return  array
+     * @return  string
      */
     public static function getFrontendRouting()
     {
@@ -78,7 +78,7 @@ class WarderHelper
     /**
      * getFrontendRouting
      *
-     * @return  array
+     * @return  string
      */
     public static function getAdminRouting()
     {
