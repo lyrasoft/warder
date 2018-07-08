@@ -98,16 +98,19 @@ class EditDefinition extends AbstractFieldDefinition
             // ID
             $this->text('id')
                 ->label(__($langPrefix . 'user.field.id'))
-                ->readonly();
+                ->set('plain-text', true)
+                ->readonly(true);
 
             // Registered
             $this->calendar('registered')
                 ->label(__($langPrefix . 'user.field.registered'))
-                ->disabled();
+                ->set('plain-text', true)
+                ->disabled(true);
 
             // Last Login
             $this->calendar('last_login')
                 ->label(__($langPrefix . 'user.field.last.login'))
+                ->set('plain-text', true)
                 ->disabled();
         });
     }

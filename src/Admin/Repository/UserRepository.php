@@ -16,7 +16,6 @@ use Phoenix\Repository\AdminRepository;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Authentication\Credential;
 use Windwalker\Core\DateTime\Chronos;
-use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Repository\Exception\ValidateFailException;
 use Windwalker\Core\User\Exception\AuthenticateFailException;
 use Windwalker\Core\User\User;
@@ -60,7 +59,7 @@ class UserRepository extends AdminRepository
 
         return $this->fetch('item.' . json_encode($pk), function () use ($pk, $state) {
             if (!$pk) {
-                return new UserData;
+                return new UserData();
             }
 
             $item = User::get($pk);
@@ -86,7 +85,8 @@ class UserRepository extends AdminRepository
     {
         $loginName = WarderHelper::getLoginName();
 
-        $credential             = new Credential;
+        $credential = new Credential();
+
         $credential->$loginName = $account;
         $credential->password   = $password;
 
@@ -148,9 +148,11 @@ class UserRepository extends AdminRepository
 
         unset($user->password2);
 
-        $this->prepareDefaultData($user);
+        $key = $this->getKeyName();
 
-        $user->_isNew = !$user->id;
+        $user->_isNew = !$user->$key;
+
+        $this->prepareDefaultData($user);
 
         $user->bind(User::save($user));
 
@@ -181,9 +183,12 @@ class UserRepository extends AdminRepository
      */
     protected function prepareDefaultData(DataInterface $user)
     {
-        if (!$user->registered) {
-            $date             = new Chronos;
+        $date = new Chronos();
+
+        if ($user->_isNew) {
             $user->registered = $date->toSql();
         }
+
+        $user->modified = $date->toSql();
     }
 }

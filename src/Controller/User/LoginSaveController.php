@@ -12,6 +12,8 @@ use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Repository\UserRepository;
 use Phoenix\Controller\AbstractSaveController;
+use Windwalker\Core\DateTime\Chronos;
+use Windwalker\Core\User\User;
 use Windwalker\Data\DataInterface;
 
 /**
@@ -26,7 +28,7 @@ class LoginSaveController extends AbstractSaveController
      *
      * @var  UserRepository
      */
-    protected $model;
+    protected $repository;
 
     /**
      * Property formControl.
@@ -65,6 +67,7 @@ class LoginSaveController extends AbstractSaveController
      * @param DataInterface $data
      *
      * @return void
+     * @throws \Exception
      */
     protected function doSave(DataInterface $data)
     {
@@ -79,7 +82,15 @@ class LoginSaveController extends AbstractSaveController
             $data->password   = null;
         }
 
-        $this->model->login($data->$loginName, $data->password, $data->remember, $options);
+        $this->repository->login($data->$loginName, $data->password, $data->remember, $options);
+
+        $user = User::get();
+        $keyName = $this->repository->getKeyName();
+
+        $this->repository->getDataMapper()->updateBatch(
+            ['last_login' => Chronos::create()->toSql()],
+            [$keyName => $user->$keyName]
+        );
     }
 
     /**
