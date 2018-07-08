@@ -80,6 +80,7 @@ class LoginSaveController extends AbstractSaveController
 
             $data->$loginName = null;
             $data->password   = null;
+            $data->remember   = true;
         }
 
         $this->repository->login($data->$loginName, $data->password, $data->remember, $options);

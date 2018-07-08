@@ -34,7 +34,7 @@ class UserInit extends AbstractMigration
             $schema->varchar('avatar')->comment('Avatar');
             $schema->varchar('group')->comment('Group');
             $schema->tinyint('blocked')->length(1)->comment('0: normal, 1: blocked');
-            $schema->tinyint('receive_mail')->length(1);
+            $schema->tinyint('receive_mail')->defaultValue(0)->length(1);
             $schema->varchar('activation')->comment('Activation code.');
             $schema->varchar('reset_token')->comment('Reset Token');
             $schema->datetime('last_reset')->comment('Last Reset Time');
