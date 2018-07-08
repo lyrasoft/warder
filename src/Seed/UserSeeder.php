@@ -1,6 +1,6 @@
 <?php
 /**
- * Part of phoenix project.
+ * Part of warder project.
  *
  * @copyright  Copyright (C) 2016 {ORGANIZATION}. All rights reserved.
  * @license    GNU General Public License version 2 or later.
@@ -33,14 +33,14 @@ class UserSeeder extends AbstractSeeder
         $pass = UserHelper::hashPassword(1234);
 
         foreach (range(1, 50) as $i) {
-            $data = new Data;
+            $data = new Data();
 
             $data->name        = $faker->name;
             $data->username    = $faker->userName;
-            $data->email       = $faker->email;
+            $data->email       = $faker->safeEmail;
             $data->password    = $pass;
-            $data->avatar      = PravatarHelper::unique(600, uniqid($i));
-            $data->group       = 1;
+            $data->avatar      = PravatarHelper::unique(600, uniqid($i, true));
+            $data->group       = 'member';
             $data->blocked     = 0;
             $data->activation  = '';
             $data->reset_token = '';
