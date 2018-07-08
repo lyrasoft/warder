@@ -25,7 +25,7 @@ use Windwalker\Crypt\CryptHelper;
  * @method static WarderUserDataInterface get($conditions = [])
  * @method static WarderUserDataInterface save($user = [], $options = [])
  *
- * @since  __DEPLOY_VERSION__
+ * @since  1.4.2
  */
 class Warder extends User
 {
