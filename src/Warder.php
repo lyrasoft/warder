@@ -9,6 +9,7 @@
 namespace Lyrasoft\Warder;
 
 use Lyrasoft\Unidev\Helper\PravatarHelper;
+use Lyrasoft\Warder\Admin\DataMapper\UserMapper;
 use Lyrasoft\Warder\Data\WarderUserDataInterface;
 use Lyrasoft\Warder\Helper\AvatarUploadHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
@@ -140,5 +141,21 @@ class Warder extends User
         $data = json_encode($data);
 
         return md5($secret . $data . uniqid('Warder', true) . CryptHelper::genRandomBytes());
+    }
+
+    /**
+     * getReceiveMailUsers
+     *
+     * @param array $conditions
+     *
+     * @return  \Windwalker\Data\Data[]|\Windwalker\Data\DataSet
+     *
+     * @since   1.4.2
+     */
+    public static function getReceiveMailUsers($conditions = [])
+    {
+        $conditions['receive_mail'] = 1;
+
+        return UserMapper::find($conditions);
     }
 }
