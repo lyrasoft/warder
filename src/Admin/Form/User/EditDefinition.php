@@ -13,7 +13,6 @@ use Lyrasoft\Warder\Helper\AvatarUploadHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Phoenix\Form\PhoenixFieldTrait;
 use Windwalker\Core\Form\AbstractFieldDefinition;
-use Windwalker\Core\Language\Translator;
 use Windwalker\Form\Form;
 use Windwalker\Validator\Rule\EmailValidator;
 
@@ -82,7 +81,7 @@ class EditDefinition extends AbstractFieldDefinition
         $form->fieldset('created', function (Form $form) use ($langPrefix) {
             if (class_exists(SingleImageDragField::class)) {
                 // Avatar
-                $this->add('avatar', new SingleImageDragField)
+                $this->add('avatar', new SingleImageDragField())
                     ->label(__($langPrefix . 'user.field.avatar'))
                     ->set('force_v1', true)
                     ->set('default_image', AvatarUploadHelper::getDefaultImage());

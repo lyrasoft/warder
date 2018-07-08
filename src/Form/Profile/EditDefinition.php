@@ -12,7 +12,6 @@ use Lyrasoft\Unidev\Field\SingleImageDragField;
 use Lyrasoft\Warder\Helper\AvatarUploadHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Windwalker\Core\Form\AbstractFieldDefinition;
-use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Form\Form;
 use Windwalker\Validator\Rule\EmailValidator;
@@ -59,8 +58,9 @@ class EditDefinition extends AbstractFieldDefinition
         $form->fieldset('basic', function (Form $form) use ($loginName, $langPrefix) {
             if (class_exists(SingleImageDragField::class)) {
                 // Avatar
-                $this->add('avatar', new SingleImageDragField)
+                $this->add('avatar', new SingleImageDragField())
                     ->label(__($langPrefix . 'user.field.avatar'))
+                    ->set('force_v1', true)
                     ->set('default_image', AvatarUploadHelper::getDefaultImage());
             }
 

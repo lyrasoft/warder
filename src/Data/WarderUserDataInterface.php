@@ -52,4 +52,48 @@ interface WarderUserDataInterface extends UserDataInterface
      * @since  1.4.2
      */
     public function cannot($policy, ...$args);
+
+    /**
+     * is
+     *
+     * @param string $policy
+     * @param mixed  ...$args
+     *
+     * @return  bool
+     *
+     * @since  1.4.2
+     */
+    public function is($policy, ...$args);
+
+    /**
+     * not
+     *
+     * @param string $policy
+     * @param mixed  ...$args
+     *
+     * @return  bool
+     *
+     * @since  1.4.2
+     */
+    public function not($policy, ...$args);
+
+    /**
+     * isGroup
+     *
+     * @param string|array $groups
+     *
+     * @return  bool
+     *
+     * @since  1.4.2
+     */
+    public function isGroup($groups);
+
+    /**
+     * isLogin
+     *
+     * @return  bool
+     *
+     * @since  1.4.2
+     */
+    public function isLogin();
 }

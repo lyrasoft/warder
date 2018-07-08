@@ -8,7 +8,7 @@
 
 namespace Lyrasoft\Warder\Data;
 
-use Windwalker\Core\User\User;
+use Lyrasoft\Warder\Warder;
 
 /**
  * The UserData class.
@@ -29,7 +29,7 @@ class UserData extends \Windwalker\Core\User\UserData implements WarderUserDataI
      */
     public function authorise($policy, ...$args)
     {
-        return User::authorise($policy, $this, ...$args);
+        return Warder::authorise($policy, $this, ...$args);
     }
 
     /**
@@ -60,5 +60,67 @@ class UserData extends \Windwalker\Core\User\UserData implements WarderUserDataI
     public function cannot($policy, ...$args)
     {
         return !$this->can($policy, $this, ...$args);
+    }
+
+    /**
+     * is
+     *
+     * @param string $policy
+     * @param mixed  ...$args
+     *
+     * @return  bool
+     *
+     * @since  1.4.2
+     */
+    public function is($policy, ...$args)
+    {
+        return $this->can($policy, $this, ...$args);
+    }
+
+    /**
+     * not
+     *
+     * @param string $policy
+     * @param mixed  ...$args
+     *
+     * @return  bool
+     *
+     * @since  1.4.2
+     */
+    public function not($policy, ...$args)
+    {
+        return $this->cannot($policy, $this, ...$args);
+    }
+
+    /**
+     * isGroup
+     *
+     * @param string|array $groups
+     *
+     * @return  bool
+     *
+     * @since  1.4.2
+     */
+    public function isGroup($groups)
+    {
+        $groups = (array) $groups;
+
+        if (!property_exists($this, 'group')) {
+            return false;
+        }
+
+        return in_array($this->group, $groups);
+    }
+
+    /**
+     * isLogin
+     *
+     * @return  bool
+     *
+     * @since  1.4.2
+     */
+    public function isLogin()
+    {
+        return $this->isMember();
     }
 }
