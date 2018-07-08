@@ -24,4 +24,11 @@ class UserMapper extends AbstractDatabaseMapperProxy
      * @var  string
      */
     protected static $table = WarderTable::USERS;
+
+    /**
+     * Keep plural fo B/C
+     *
+     * @var  string
+     */
+    protected static $alias = 'users';
 }

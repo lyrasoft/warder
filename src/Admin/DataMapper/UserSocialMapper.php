@@ -24,4 +24,11 @@ class UserSocialMapper extends AbstractDatabaseMapperProxy
      * @var  string
      */
     protected static $table = WarderTable::USER_SOCIALS;
+
+    /**
+     * Keep plural fo B/C
+     *
+     * @var  string
+     */
+    protected static $alias = 'user_socials';
 }
