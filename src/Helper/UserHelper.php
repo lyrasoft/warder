@@ -17,6 +17,8 @@ use Windwalker\Ioc;
  * The UserHelper class.
  *
  * @since  1.0
+ *
+ * @deprecated  Use Warder class instead.
  */
 class UserHelper
 {

@@ -44,15 +44,17 @@ class Warder extends User
     /**
      * authorise
      *
+     * @param bool $defaultRequireLogin
+     *
      * @return  boolean
      */
-    public static function requireLogin()
+    public static function requireLogin($defaultRequireLogin = true)
     {
         $config = static::getContainer()->get('config');
 
-        $requestLogin = $config->get('route.extra.warder.require_login');
+        $requestLogin = $config->get('route.extra.warder.require_login', $defaultRequireLogin);
 
-        return $requestLogin && !static::isLogin();
+        return $requestLogin !== false && !static::isLogin();
     }
 
     /**
