@@ -63,8 +63,13 @@ class UserListener
 
             $uri = $container->get('uri');
 
-            setcookie(session_name(), $_COOKIE[session_name()], time() + 60 * 60 * 24 * 100,
-                $session->getOption('cookie_path', $uri->path), $session->getOption('cookie_domain'));
+            setcookie(
+                session_name(),
+                $_COOKIE[session_name()],
+                time() + 60 * 60 * 24 * 100,
+                '/' . ltrim($session->getOption('cookie_path', $uri->path), '/'),
+                $session->getOption('cookie_domain')
+            );
         }
     }
 
