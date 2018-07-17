@@ -11,6 +11,7 @@ namespace Lyrasoft\Warder\Controller\User\Profile;
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Repository\ProfileRepository;
 use Lyrasoft\Warder\View\Profile\ProfileHtmlView;
+use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\Display\EditDisplayController;
 use Windwalker\Core\Model\ModelRepository;
 use Windwalker\Core\View\AbstractView;
@@ -44,8 +45,8 @@ class GetController extends EditDisplayController
      */
     protected function prepareExecute()
     {
-        if (!UserHelper::isLogin()) {
-            UserHelper::goToLogin($this->app->uri->full);
+        if (!Warder::isLogin()) {
+            Warder::goToLogin($this->app->uri->full);
         }
 
         parent::prepareExecute();

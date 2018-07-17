@@ -11,6 +11,7 @@ namespace Lyrasoft\Warder\Controller\User\Registration;
 use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Repository\UserRepository;
+use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidateFailException;
@@ -77,7 +78,7 @@ class ActivateSaveController extends AbstractSaveController
     {
         $this->csrfProtect(false);
 
-        if (UserHelper::isLogin()) {
+        if (Warder::isLogin()) {
             $warder = WarderHelper::getPackage();
 
             $this->redirect($this->router->route($warder->get('frontend.redirect.login', 'home')));
@@ -104,7 +105,7 @@ class ActivateSaveController extends AbstractSaveController
     {
         $user = User::get(['email' => $this->data['email']]);
 
-        if (!UserHelper::verifyPassword($this->data['token'], $user->activation)) {
+        if (!Warder::verifyPassword($this->data['token'], $user->activation)) {
             throw new ValidateFailException(__($this->langPrefix . 'message.activate.fail'));
         }
 
