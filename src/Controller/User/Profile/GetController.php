@@ -8,7 +8,6 @@
 
 namespace Lyrasoft\Warder\Controller\User\Profile;
 
-use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Repository\ProfileRepository;
 use Lyrasoft\Warder\View\Profile\ProfileHtmlView;
 use Lyrasoft\Warder\Warder;

@@ -10,7 +10,6 @@ namespace Lyrasoft\Warder\Admin\Form\User;
 
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Windwalker\Core\Form\AbstractFieldDefinition;
-use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Form\Form;
 

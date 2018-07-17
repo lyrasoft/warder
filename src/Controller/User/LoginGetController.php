@@ -8,8 +8,8 @@
 
 namespace Lyrasoft\Warder\Controller\User;
 
-use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\Display\DisplayController;
 
 /**
@@ -38,7 +38,7 @@ class LoginGetController extends DisplayController
             $this->package->get('frontend.login.return_key', 'return')
         );
 
-        if (UserHelper::isLogin()) {
+        if (Warder::isLogin()) {
             if ($return) {
                 $this->app->redirect(base64_decode($return));
             } else {

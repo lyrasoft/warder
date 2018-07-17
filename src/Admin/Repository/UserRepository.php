@@ -10,8 +10,8 @@ namespace Lyrasoft\Warder\Admin\Repository;
 
 use Lyrasoft\Warder\Admin\Record\UserRecord;
 use Lyrasoft\Warder\Data\UserData;
-use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\Warder;
 use Phoenix\Repository\AdminRepository;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Authentication\Credential;
@@ -141,7 +141,7 @@ class UserRepository extends AdminRepository
     public function save(DataInterface $user)
     {
         if ('' !== (string) $user->password) {
-            $user->password = UserHelper::hashPassword($user->password);
+            $user->password = Warder::hashPassword($user->password);
         } else {
             unset($user->password);
         }

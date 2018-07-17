@@ -8,11 +8,10 @@
 
 namespace Lyrasoft\Warder\Controller\User\Forget;
 
-use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Repository\UserRepository;
+use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\DateTime\Chronos;
-use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Mailer\Mailer;
 use Windwalker\Core\Mailer\MailMessage;
 use Windwalker\Core\Mailer\Punycode;
@@ -104,7 +103,7 @@ class RequestSaveController extends AbstractSaveController
             throw new ValidateFailException(__($this->langPrefix . 'message.user.not.found'));
         }
 
-        $token = UserHelper::getToken($user->email);
+        $token = Warder::getToken($user->email);
         $link  = $this->router->to('forget_reset', ['token' => $token, 'email' => Punycode::toAscii($email)])->full();
 
         $user->reset_token = Hasher::create($token);

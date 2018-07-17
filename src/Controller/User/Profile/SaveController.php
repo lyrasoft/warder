@@ -10,11 +10,10 @@ namespace Lyrasoft\Warder\Controller\User\Profile;
 
 use Lyrasoft\Unidev\Field\SingleImageDragField;
 use Lyrasoft\Warder\Helper\AvatarUploadHelper;
-use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Repository\UserRepository;
+use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\AbstractSaveController;
-use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Core\User\User;
 use Windwalker\Core\User\UserData;
@@ -93,8 +92,8 @@ class SaveController extends AbstractSaveController
      */
     protected function prepareExecute()
     {
-        if (!UserHelper::isLogin()) {
-            UserHelper::goToLogin();
+        if (!Warder::isLogin()) {
+            Warder::goToLogin();
         }
 
         parent::prepareExecute();

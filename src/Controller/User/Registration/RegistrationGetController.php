@@ -8,10 +8,10 @@
 
 namespace Lyrasoft\Warder\Controller\User\Registration;
 
-use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Repository\UserRepository;
 use Lyrasoft\Warder\View\User\UserHtmlView;
+use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\Display\EditDisplayController;
 use Windwalker\Core\Model\ModelRepository;
 use Windwalker\Core\View\AbstractView;
@@ -52,7 +52,7 @@ class RegistrationGetController extends EditDisplayController
      */
     protected function prepareExecute()
     {
-        if (UserHelper::isLogin()) {
+        if (Warder::isLogin()) {
             $warder = WarderHelper::getPackage();
 
             $this->redirect($this->router->route($warder->get('frontend.redirect.login', 'home')));

@@ -8,11 +8,10 @@
 
 namespace Lyrasoft\Warder\Controller\User\Registration;
 
-use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Repository\UserRepository;
+use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\AbstractSaveController;
-use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Mailer\MailMessage;
 use Windwalker\Core\Model\Exception\ValidateFailException;
 use Windwalker\Core\Router\CoreRouter;
@@ -92,7 +91,7 @@ class RegistrationSaveController extends AbstractSaveController
      */
     protected function prepareExecute()
     {
-        if (UserHelper::isLogin()) {
+        if (Warder::isLogin()) {
             $warder = WarderHelper::getPackage();
 
             $this->redirect($this->router->route($warder->get('frontend.redirect.login', 'home')));
@@ -102,9 +101,9 @@ class RegistrationSaveController extends AbstractSaveController
 
         parent::prepareExecute();
 
-        $this->token = UserHelper::getToken($this->data['email']);
+        $this->token = Warder::getToken($this->data['email']);
 
-        $this->data['activation'] = UserHelper::hashPassword($this->token);
+        $this->data['activation'] = Warder::hashPassword($this->token);
     }
 
     /**

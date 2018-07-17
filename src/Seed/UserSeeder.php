@@ -9,8 +9,8 @@
 use Faker\Factory;
 use Lyrasoft\Unidev\Helper\PravatarHelper;
 use Lyrasoft\Warder\Admin\DataMapper\UserMapper;
-use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Table\WarderTable;
+use Lyrasoft\Warder\Warder;
 use Windwalker\Core\Seeder\AbstractSeeder;
 use Windwalker\Data\Data;
 
@@ -30,7 +30,7 @@ class UserSeeder extends AbstractSeeder
     {
         $faker = Factory::create();
 
-        $pass = UserHelper::hashPassword(1234);
+        $pass = Warder::hashPassword(1234);
 
         foreach (range(1, 50) as $i) {
             $data = new Data();

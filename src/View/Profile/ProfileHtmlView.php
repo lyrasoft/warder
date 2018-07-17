@@ -10,7 +10,6 @@ namespace Lyrasoft\Warder\View\Profile;
 
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Phoenix\View\EditView;
-use Windwalker\Core\Language\Translator;
 
 /**
  * The ProfileHtmlView class.

@@ -45,7 +45,7 @@ class UserHelper
 
         $requestLogin = $config->get('route.extra.warder.require_login', true);
 
-        return UserHelper::isLogin() || !$requestLogin;
+        return static::isLogin() || !$requestLogin;
     }
 
     /**

@@ -9,7 +9,7 @@
 namespace Lyrasoft\Warder\Repository;
 
 use Lyrasoft\Warder\Admin\Record\Traits\UserDataTrait;
-use Lyrasoft\Warder\Helper\UserHelper;
+use Lyrasoft\Warder\Warder;
 use Windwalker\Core\DateTime\Chronos;
 use Windwalker\Core\User\User;
 use Windwalker\Data\DataInterface;
@@ -33,7 +33,7 @@ class UserRepository extends \Lyrasoft\Warder\Admin\Repository\UserRepository
     public function register(DataInterface $user)
     {
         if ($user->password) {
-            $user->password = UserHelper::hashPassword($user->password);
+            $user->password = Warder::hashPassword($user->password);
         }
 
         $this->prepareDefaultData($user);

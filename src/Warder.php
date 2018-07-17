@@ -17,6 +17,7 @@ use Windwalker\Core\Ioc;
 use Windwalker\Core\Security\Hasher;
 use Windwalker\Core\User\User;
 use Windwalker\Crypt\CryptHelper;
+use Windwalker\Crypt\Password;
 
 /**
  * The Warder class.
@@ -61,12 +62,14 @@ class Warder extends User
      * hashPassword
      *
      * @param   string $password
+     * @param int      $algo
+     * @param array    $options
      *
      * @return  string
      */
-    public static function hashPassword($password)
+    public static function hashPassword($password, $algo = PASSWORD_DEFAULT, array $options = [])
     {
-        return Hasher::create($password);
+        return Hasher::create($password, $algo, $options);
     }
 
     /**
@@ -80,6 +83,22 @@ class Warder extends User
     public static function verifyPassword($password, $hash)
     {
         return Hasher::verify($password, $hash);
+    }
+
+    /**
+     * needsRehash
+     *
+     * @param string $password
+     * @param int    $algo
+     * @param array  $options
+     *
+     * @return  bool
+     *
+     * @since  __DEPLOY_VERSION__
+     */
+    public static function needsRehash($password, $algo = PASSWORD_DEFAULT, array $options = [])
+    {
+        return Hasher::needsRehash($password, $algo, $options);
     }
 
     /**

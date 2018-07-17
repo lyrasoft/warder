@@ -13,7 +13,6 @@ use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\WarderPackage;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Authentication\Credential;
-use Windwalker\Core\Language\Translator;
 use Windwalker\Core\User\Exception\AuthenticateFailException;
 use Windwalker\Core\User\User;
 use Windwalker\Core\View\HtmlView;

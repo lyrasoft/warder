@@ -8,12 +8,11 @@
 
 namespace Lyrasoft\Warder\Controller\User\Forget;
 
-use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Repository\UserRepository;
 use Lyrasoft\Warder\View\User\UserHtmlView;
+use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\Display\ItemDisplayController;
 use Windwalker\Core\Frontend\Bootstrap;
-use Windwalker\Core\Language\Translator;
 use Windwalker\Core\User\User;
 
 /**
@@ -80,7 +79,7 @@ class ResetGetController extends ItemDisplayController
             return;
         }
 
-        if (!UserHelper::verifyPassword($this->view['token'], $user->reset_token)) {
+        if (!Warder::verifyPassword($this->view['token'], $user->reset_token)) {
             $this->backToConfirm('Invalid Token');
 
             return;

@@ -9,7 +9,7 @@
 namespace Lyrasoft\Warder\Authentication\Method;
 
 use Lyrasoft\Warder\Data\UserData;
-use Lyrasoft\Warder\Helper\UserHelper;
+use Lyrasoft\Warder\Warder;
 use Lyrasoft\Warder\WarderPackage;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Authentication\Credential;
@@ -66,10 +66,16 @@ class WarderMethod extends AbstractMethod
             return false;
         }
 
-        if (!UserHelper::verifyPassword($credential->password, $user->password)) {
+        if (!Warder::verifyPassword($credential->password, $user->password)) {
             $this->status = Authentication::INVALID_PASSWORD;
 
             return false;
+        }
+
+        if (Warder::needsRehash($user->password)) {
+            $user->password = Warder::hashPassword($credential->password);
+
+            User::save($user);
         }
 
         $credential->bind($user);

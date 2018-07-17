@@ -12,7 +12,6 @@ use Lyrasoft\Warder\Admin\Table\Table;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Table\WarderTable;
 use Phoenix\Field\ModalField;
-use Windwalker\Core\Language\Translator;
 
 /**
  * The UserModalField class.

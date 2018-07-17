@@ -8,9 +8,9 @@
 
 namespace Lyrasoft\Warder\Controller\User;
 
-use Lyrasoft\Warder\Helper\UserHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Repository\UserRepository;
+use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\DateTime\Chronos;
 use Windwalker\Core\User\User;
@@ -49,10 +49,11 @@ class LoginSaveController extends AbstractSaveController
      *
      * @return  void
      * @throws \ReflectionException
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     protected function prepareExecute()
     {
-        if (UserHelper::isLogin()) {
+        if (Warder::isLogin()) {
             $this->redirect($this->getSuccessRedirect());
 
             return;

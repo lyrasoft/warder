@@ -13,7 +13,6 @@ use Lyrasoft\Warder\Helper\WarderHelper;
 use Phoenix\Script\BootstrapScript;
 use Phoenix\Script\PhoenixScript;
 use Phoenix\View\EditView;
-use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Renderer\RendererHelper;
 
 /**
