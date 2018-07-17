@@ -43,7 +43,7 @@ class UserHelper
     {
         $config = Ioc::getConfig();
 
-        $requestLogin = $config->get('route.extra.warder.require_login');
+        $requestLogin = $config->get('route.extra.warder.require_login', true);
 
         return UserHelper::isLogin() || !$requestLogin;
     }
