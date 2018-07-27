@@ -72,16 +72,31 @@ class WarderMethod extends AbstractMethod
             return false;
         }
 
-        if (Warder::needsRehash($user->password)) {
-            $user->password = Warder::hashPassword($credential->password);
-
-            User::save($user);
-        }
+        $this->rehash($user, $credential);
 
         $credential->bind($user);
 
         $this->status = Authentication::SUCCESS;
 
         return true;
+    }
+
+    /**
+     * rehash
+     *
+     * @param UserData   $user
+     * @param Credential $credential
+     *
+     * @return  void
+     *
+     * @since  __DEPLOY_VERSION__
+     */
+    protected function rehash(UserData $user, Credential $credential)
+    {
+        if (Warder::needsRehash($user->password)) {
+            $user->password = Warder::hashPassword($credential->password);
+
+            User::save($user);
+        }
     }
 }
