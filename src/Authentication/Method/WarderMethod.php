@@ -15,6 +15,7 @@ use Windwalker\Authentication\Authentication;
 use Windwalker\Authentication\Credential;
 use Windwalker\Authentication\Method\AbstractMethod;
 use Windwalker\Core\User\User;
+use Windwalker\Core\User\UserDataInterface;
 
 /**
  * The Eng4TwMethod class.
@@ -57,8 +58,7 @@ class WarderMethod extends AbstractMethod
             return false;
         }
 
-        /** @var UserData $user */
-        $user = User::get([$loginName => $credential->$loginName]);
+        $user = $this->getUser([$loginName => $credential->$loginName]);
 
         if ($user->isNull()) {
             $this->status = Authentication::USER_NOT_FOUND;
@@ -66,7 +66,7 @@ class WarderMethod extends AbstractMethod
             return false;
         }
 
-        if (!Warder::verifyPassword($credential->password, $user->password)) {
+        if (!$this->verifyPassword($user, $credential)) {
             $this->status = Authentication::INVALID_PASSWORD;
 
             return false;
@@ -82,6 +82,35 @@ class WarderMethod extends AbstractMethod
     }
 
     /**
+     * getUser
+     *
+     * @param mixed $conditions
+     *
+     * @return  UserData|UserDataInterface
+     *
+     * @since  1.4.6
+     */
+    protected function getUser($conditions)
+    {
+        return User::get($conditions);
+    }
+
+    /**
+     * verifyPassword
+     *
+     * @param UserData   $user
+     * @param Credential $credential
+     *
+     * @return  bool
+     *
+     * @since  1.4.6
+     */
+    protected function verifyPassword(UserData $user, Credential $credential)
+    {
+        return Warder::verifyPassword($credential->password, $user->password);
+    }
+
+    /**
      * rehash
      *
      * @param UserData   $user
@@ -89,7 +118,7 @@ class WarderMethod extends AbstractMethod
      *
      * @return  void
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.4.6
      */
     protected function rehash(UserData $user, Credential $credential)
     {
