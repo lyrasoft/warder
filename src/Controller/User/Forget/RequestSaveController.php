@@ -15,7 +15,7 @@ use Windwalker\Core\DateTime\Chronos;
 use Windwalker\Core\Mailer\Mailer;
 use Windwalker\Core\Mailer\MailMessage;
 use Windwalker\Core\Mailer\Punycode;
-use Windwalker\Core\Model\Exception\ValidateFailException;
+use Windwalker\Core\Repository\Exception\ValidateFailException;
 use Windwalker\Core\Security\Hasher;
 use Windwalker\Core\User\User;
 use Windwalker\Core\View\HtmlView;
@@ -54,7 +54,7 @@ class RequestSaveController extends AbstractSaveController
      *
      * @var  UserRepository
      */
-    protected $model;
+    protected $repository;
 
     /**
      * Property formControl.

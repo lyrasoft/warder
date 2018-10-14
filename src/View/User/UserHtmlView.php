@@ -80,7 +80,7 @@ class UserHtmlView extends AbstractPhoenixHtmView
      */
     protected function registration(DataInterface $data)
     {
-        $data->form      = $this->model->getForm('registration', 'user', true);
+        $data->form      = $this->repository->getForm('registration', 'user', true);
         $data->fieldsets = $data->form->getFieldsets();
     }
 
@@ -93,7 +93,7 @@ class UserHtmlView extends AbstractPhoenixHtmView
      */
     protected function forgetRequest(DataInterface $data)
     {
-        $data->form = $this->model->getForm('ForgetRequest');
+        $data->form = $this->repository->getForm('ForgetRequest');
     }
 
     /**
@@ -105,7 +105,7 @@ class UserHtmlView extends AbstractPhoenixHtmView
      */
     protected function forgetConfirm(DataInterface $data)
     {
-        $data->form = $this->model->getForm('ForgetConfirm');
+        $data->form = $this->repository->getForm('ForgetConfirm');
 
         $data->form->bind(
             [
@@ -124,7 +124,7 @@ class UserHtmlView extends AbstractPhoenixHtmView
      */
     protected function forgetReset(DataInterface $data)
     {
-        $data->form = $this->model->getForm('Reset');
+        $data->form = $this->repository->getForm('Reset');
 
         $data->form->bind(
             [

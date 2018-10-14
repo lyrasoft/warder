@@ -45,7 +45,7 @@ class ConfirmGetController extends ItemDisplayController
      *
      * @var  UserRepository
      */
-    protected $model;
+    protected $repository;
 
     /**
      * Property view.

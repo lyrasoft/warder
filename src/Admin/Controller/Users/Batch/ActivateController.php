@@ -63,6 +63,6 @@ class ActivateController extends AbstractBatchController
 
         $data->activation = '';
 
-        $this->model->save($data);
+        $this->repository->save($data);
     }
 }

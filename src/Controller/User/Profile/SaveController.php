@@ -14,7 +14,7 @@ use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Repository\UserRepository;
 use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\AbstractSaveController;
-use Windwalker\Core\Model\Exception\ValidateFailException;
+use Windwalker\Core\Repository\Exception\ValidateFailException;
 use Windwalker\Core\User\User;
 use Windwalker\Core\User\UserData;
 use Windwalker\Data\DataInterface;
@@ -53,7 +53,7 @@ class SaveController extends AbstractSaveController
      *
      * @var  UserRepository
      */
-    protected $model = 'user';
+    protected $repository = 'user';
 
     /**
      * Property useTransaction.
@@ -82,6 +82,23 @@ class SaveController extends AbstractSaveController
      * @var  UserData
      */
     protected $user;
+
+    /**
+     * Property guards.
+     *
+     * @var  array
+     */
+    protected $guards = [
+        'group',
+        'blocked',
+        'activation',
+        'receive_mail',
+        'reset_token',
+        'last_reset',
+        'last_login',
+        'registered',
+        'modified',
+    ];
 
     /**
      * prepareExecute
@@ -135,7 +152,7 @@ class SaveController extends AbstractSaveController
         // Image
         if (false !== SingleImageDragField::uploadFromController($this, 'avatar', $data,
                 AvatarUploadHelper::getPath($data->id))) {
-            $this->model->save($data);
+            $this->repository->save($data);
         }
 
         // Set user data to session if is current user.

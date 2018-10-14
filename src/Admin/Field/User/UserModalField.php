@@ -42,6 +42,13 @@ class UserModalField extends ModalField
     protected $keyField = 'id';
 
     /**
+     * Property imageField.
+     *
+     * @var  string
+     */
+    protected $imageField = 'avatar';
+
+    /**
      * buildInput
      *
      * @param array $attrs
@@ -56,8 +63,10 @@ class UserModalField extends ModalField
         $this->table   = $this->get('table') ?: WarderTable::USERS;
         $langPrefix    = $this->get('lang_prefix') ?: $warder->get('admin.language.prefix');
 
-        $this->def('buttonText',
-            '<i class="glyphicon glyphicon-user fa fa-user"></i> ' . __($langPrefix . 'user.modal.field.button.select'));
+        $this->def(
+            'buttonText',
+            '<i class="glyphicon glyphicon-user fa fa-user"></i> ' . __($langPrefix . 'user.modal.field.button.select')
+        );
 
         return parent::buildInput($attrs);
     }

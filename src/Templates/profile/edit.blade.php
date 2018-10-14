@@ -12,10 +12,11 @@ $basicFieldset = array_shift($fieldsets);
     <div class="container warder-page profile-page">
         <div class="row">
 
+            <div class="col-md-6 col-md-offset-3 mx-auto" style="margin-top: 50px">
             @section('profile-content')
                 <form id="user-form" class="form-horizontal" action="{{ $router->route('profile_edit') }}" method="POST"
                       enctype="multipart/form-data">
-                    <div class="col-md-6 col-md-offset-3" style="margin-top: 50px">
+
 
                         @yield('profile-desc')
 

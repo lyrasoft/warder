@@ -48,7 +48,7 @@ class ResetGetController extends ItemDisplayController
      *
      * @var  UserRepository
      */
-    protected $model;
+    protected $repository;
 
     /**
      * Property view.

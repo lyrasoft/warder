@@ -66,8 +66,8 @@
                         <tr>
                             {{-- NAME --}}
                             <td class="searchable">
-                                <a href="#"
-                                   onclick="parent.{{ $function }}('{{ $selector }}', '{{ $item->id }}', '{{ $item->name }}');">
+                                <a href="javascript://"
+                                   onclick="parent.{{ $function }}('{{ $selector }}', { value: '{{ $item->id }}', title: '{{ $item->name }}', image: '{{ $item->avatar }}' });">
                                     <span
                                         class="glyphicon glyphicon-menu-left fa fa-angle-right text-muted"></span> {{ $item->name }}
                                 </a>

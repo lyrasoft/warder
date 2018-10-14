@@ -13,7 +13,7 @@ use Lyrasoft\Warder\Repository\UserRepository;
 use Lyrasoft\Warder\View\User\UserHtmlView;
 use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\Display\EditDisplayController;
-use Windwalker\Core\Model\ModelRepository;
+use Windwalker\Core\Repository\Repository;
 use Windwalker\Core\View\AbstractView;
 
 /**
@@ -35,7 +35,7 @@ class RegistrationGetController extends EditDisplayController
      *
      * @var  UserRepository
      */
-    protected $model;
+    protected $repository;
 
     /**
      * Property view.
@@ -70,16 +70,16 @@ class RegistrationGetController extends EditDisplayController
      * Remember to call parent to make sure default model already set in view.
      *
      * @param AbstractView    $view  The view to render page.
-     * @param ModelRepository $model The default mode.
+     * @param Repository $repository The default mode.
      *
      * @return  void
      * @throws \ReflectionException
      */
-    protected function prepareViewModel(AbstractView $view, ModelRepository $model)
+    protected function prepareViewModel(AbstractView $view, Repository $repository)
     {
-        parent::prepareViewModel($view, $model);
+        parent::prepareViewModel($view, $repository);
 
         // Force registration do not get any item
-        $model['item.pk'] = -1;
+        $repository['item.pk'] = -1;
     }
 }

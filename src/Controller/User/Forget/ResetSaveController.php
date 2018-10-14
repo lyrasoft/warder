@@ -13,7 +13,7 @@ use Lyrasoft\Warder\Admin\Record\UserRecord;
 use Lyrasoft\Warder\Repository\UserRepository;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\DateTime\Chronos;
-use Windwalker\Core\Model\Exception\ValidateFailException;
+use Windwalker\Core\Repository\Exception\ValidateFailException;
 use Windwalker\Core\Security\Hasher;
 use Windwalker\Core\User\User;
 use Windwalker\Data\DataInterface;
@@ -51,7 +51,7 @@ class ResetSaveController extends AbstractSaveController
      *
      * @var  UserRepository
      */
-    protected $model;
+    protected $repository;
 
     /**
      * Property formControl.

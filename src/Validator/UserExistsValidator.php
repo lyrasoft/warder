@@ -10,7 +10,7 @@ namespace Lyrasoft\Warder\Validator;
 
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Mailer\Punycode;
-use Windwalker\Core\Model\Exception\ValidateFailException;
+use Windwalker\Core\Repository\Exception\ValidateFailException;
 use Windwalker\Core\User\User;
 use Windwalker\Validator\AbstractValidator;
 

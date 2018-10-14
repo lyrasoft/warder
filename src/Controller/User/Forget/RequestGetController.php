@@ -45,7 +45,7 @@ class RequestGetController extends ItemDisplayController
      *
      * @var  UserRepository
      */
-    protected $model;
+    protected $repository;
 
     /**
      * Property view.

@@ -180,9 +180,9 @@ class UserHandler implements UserHandlerInterface
         $package  = $this->warder->getCurrentPackage();
         $resolver = $package->getMvcResolver()->getRepositoryResolver();
 
-        /** @var UserRepository $model */
-        $model = $resolver->create('UserRepository', null, null, $package->app->database);
+        /** @var UserRepository $repository */
+        $repository = $resolver->create('UserRepository', null, null, $package->app->database);
 
-        return $model->getRecord();
+        return $repository->getRecord();
     }
 }

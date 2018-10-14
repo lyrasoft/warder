@@ -13,7 +13,7 @@ use Lyrasoft\Warder\Helper\AvatarUploadHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\Mailer\Punycode;
-use Windwalker\Core\Model\Exception\ValidateFailException;
+use Windwalker\Core\Repository\Exception\ValidateFailException;
 use Windwalker\Core\User\User;
 use Windwalker\Data\DataInterface;
 
@@ -80,9 +80,13 @@ class SaveController extends AbstractSaveController
         unset($data->password);
 
         // Image
-        if (false !== SingleImageDragField::uploadFromController($this, 'avatar', $data,
-                AvatarUploadHelper::getPath($data->id))) {
-            $this->model->save($data);
+        if (false !== SingleImageDragField::uploadFromController(
+            $this,
+            'avatar',
+            $data,
+            AvatarUploadHelper::getPath($data->id)
+        )) {
+            $this->repository->save($data);
         }
 
         // Set user data to session if is current user.

@@ -9,7 +9,7 @@
 namespace Lyrasoft\Warder\Admin\Repository;
 
 use Lyrasoft\Warder\Table\WarderTable;
-use Phoenix\Model\Filter\FilterHelperInterface;
+use Phoenix\Repository\Filter\FilterHelperInterface;
 use Phoenix\Repository\ListRepository;
 use Windwalker\Query\Query;
 

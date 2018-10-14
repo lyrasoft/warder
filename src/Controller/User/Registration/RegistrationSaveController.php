@@ -13,7 +13,7 @@ use Lyrasoft\Warder\Repository\UserRepository;
 use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\Mailer\MailMessage;
-use Windwalker\Core\Model\Exception\ValidateFailException;
+use Windwalker\Core\Repository\Exception\ValidateFailException;
 use Windwalker\Core\Router\CoreRouter;
 use Windwalker\Core\View\HtmlView;
 use Windwalker\Data\DataInterface;
@@ -52,7 +52,7 @@ class RegistrationSaveController extends AbstractSaveController
      *
      * @var  UserRepository
      */
-    protected $model;
+    protected $repository;
 
     /**
      * Property formControl.
@@ -134,7 +134,7 @@ class RegistrationSaveController extends AbstractSaveController
 
         $this->validate($data);
 
-        $this->model->register($data);
+        $this->repository->register($data);
     }
 
     /**
@@ -208,9 +208,9 @@ class RegistrationSaveController extends AbstractSaveController
             throw new ValidateFailException(__($this->langPrefix . 'message.email.invalid'));
         }
 
-        $form = $this->model->getForm('registration', 'user');
+        $form = $this->repository->getForm('registration', 'user');
 
-        $this->model->validate($data->dump(), $form);
+        $this->repository->validate($data->dump(), $form);
 
         if (!$data->password) {
             throw new ValidateFailException(__($this->langPrefix . 'message.password.not.entered'));
