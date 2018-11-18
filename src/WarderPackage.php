@@ -10,7 +10,7 @@ namespace Lyrasoft\Warder;
 
 use Lyrasoft\Warder\Data\UserData;
 use Lyrasoft\Warder\Helper\WarderHelper;
-use Phoenix\Language\TranslatorHelper;
+use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Package\AbstractPackage;
 
 define('WARDER_ROOT', dirname(__DIR__));
@@ -44,7 +44,7 @@ class WarderPackage extends AbstractPackage
     {
         parent::boot();
 
-        TranslatorHelper::loadAll($this);
+        Translator::loadAll($this);
     }
 
     /**
