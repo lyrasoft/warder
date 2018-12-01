@@ -8,6 +8,7 @@
 
 namespace Lyrasoft\Warder\Form\User;
 
+use Lyrasoft\Unidev\Field\UnidevFieldTrait;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Validator\UserExistsValidator;
 use Windwalker\Core\Form\AbstractFieldDefinition;
@@ -21,6 +22,8 @@ use Windwalker\Validator\Rule\EmailValidator;
  */
 class RegistrationDefinition extends AbstractFieldDefinition
 {
+    use UnidevFieldTrait;
+
     /**
      * Define the form fields.
      *
@@ -63,6 +66,11 @@ class RegistrationDefinition extends AbstractFieldDefinition
             $this->password('password2')
                 ->label(__($langPrefix . 'user.field.password.confirm'))
                 ->autocomplete('false');
+
+            $this->captcha('captcha')
+                ->jsVerify(true)
+                ->required(true)
+                ->autoValidate(true);
         });
     }
 }
