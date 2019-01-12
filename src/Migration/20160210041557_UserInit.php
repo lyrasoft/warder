@@ -61,18 +61,18 @@ class UserInit extends AbstractMigration
 
         $user = new UserData();
 
-        $user->email      = 'admin@windwalker.io';
-        $user->name       = 'Super User';
-        $user->username   = 'admin';
-        $user->avatar     = PravatarHelper::unique(400, uniqid('', true));
-        $user->password   = Hasher::create('pass1234');
-        $user->blocked    = 0;
+        $user->email        = 'admin@windwalker.io';
+        $user->name         = 'Super User';
+        $user->username     = 'admin';
+        $user->avatar       = PravatarHelper::unique(400, uniqid('', true));
+        $user->password     = Hasher::create('pass1234');
+        $user->blocked      = 0;
         $user->receive_mail = 1;
-        $user->activation = '';
-        $user->last_reset = $faker->dateTimeThisYear->format($this->getDateFormat());
-        $user->last_login = $faker->dateTimeThisYear->format($this->getDateFormat());
-        $user->registered = $faker->dateTimeThisYear->format($this->getDateFormat());
-        $user->modified   = $faker->dateTimeThisYear->format($this->getDateFormat());
+        $user->activation   = '';
+        $user->last_reset   = $faker->dateTimeThisYear->format($this->getDateFormat());
+        $user->last_login   = $faker->dateTimeThisYear->format($this->getDateFormat());
+        $user->registered   = $faker->dateTimeThisYear->format($this->getDateFormat());
+        $user->modified     = $faker->dateTimeThisYear->format($this->getDateFormat());
 
         UserMapper::createOne($user);
     }

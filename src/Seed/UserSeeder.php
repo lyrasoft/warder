@@ -28,7 +28,7 @@ class UserSeeder extends AbstractSeeder
      */
     public function doExecute()
     {
-        $faker = Factory::create();
+        $faker = $this->faker->create();
 
         $pass = Warder::hashPassword(1234);
 
