@@ -94,7 +94,7 @@ class Warder extends User
      *
      * @return  bool
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.5.2
      */
     public static function needsRehash($password, $algo = PASSWORD_DEFAULT, array $options = [])
     {

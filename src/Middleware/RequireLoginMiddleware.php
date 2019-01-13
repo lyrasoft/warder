@@ -17,7 +17,7 @@ use Windwalker\Middleware\MiddlewareInterface;
 /**
  * The RequireLoginMiddleware class.
  *
- * @since  __DEPLOY_VERSION__
+ * @since  1.5.2
  */
 class RequireLoginMiddleware extends AbstractWebMiddleware
 {
