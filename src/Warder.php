@@ -53,7 +53,7 @@ class Warder extends User
     {
         $config = static::getContainer()->get('config');
 
-        $requestLogin = $config->get('route.extra.warder.require_login', $defaultRequireLogin);
+        $requestLogin = (bool) $config->get('route.extra.warder.require_login', $defaultRequireLogin);
 
         return $requestLogin !== false && !static::isLogin();
     }

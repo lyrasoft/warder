@@ -64,29 +64,33 @@ class WarderHelper
     /**
      * getFrontendRouting
      *
+     * @param string $ext
+     *
      * @return  string
      */
-    public static function getFrontendRouting()
+    public static function getFrontendRouting(string $ext = 'php')
     {
         if (!static::$package) {
             throw new \LogicException('Please register warder into Windwalker first.');
         }
 
-        return WARDER_SOURCE . '/routing.yml';
+        return WARDER_SOURCE . '/routing.' . $ext;
     }
 
     /**
      * getFrontendRouting
      *
+     * @param string $ext
+     *
      * @return  string
      */
-    public static function getAdminRouting()
+    public static function getAdminRouting(string $ext = 'php')
     {
         if (!static::$package) {
             throw new \LogicException('Please register warder into Windwalker first.');
         }
 
-        return WARDER_SOURCE_ADMIN . '/routing.yml';
+        return WARDER_SOURCE_ADMIN . '/routing.' . $ext;
     }
 
     /**
