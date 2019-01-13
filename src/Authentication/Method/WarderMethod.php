@@ -18,7 +18,7 @@ use Windwalker\Core\User\User;
 use Windwalker\Core\User\UserDataInterface;
 
 /**
- * The Eng4TwMethod class.
+ * The WarderMethod class.
  *
  * @since  1.0
  */

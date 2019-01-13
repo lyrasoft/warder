@@ -43,6 +43,13 @@ class SocialMethod extends AbstractMethod
     protected $auth;
 
     /**
+     * Property pk.
+     *
+     * @var  string
+     */
+    protected $pk = 'id';
+
+    /**
      * WarderMethod constructor.
      *
      * @param WarderPackage $warder
@@ -164,7 +171,7 @@ class SocialMethod extends AbstractMethod
 
         $user->bind($credential);
 
-        $repository = new UserRepository;
+        $repository = new UserRepository();
         $repository->register($user);
 
         // Set blocked
@@ -186,7 +193,7 @@ class SocialMethod extends AbstractMethod
     protected function createSocialMapping(UserDataInterface $user, array $mapping)
     {
         $socialMapping          = new Data($mapping);
-        $socialMapping->user_id = $user->id;
+        $socialMapping->user_id = $user->{$this->pk};
 
         UserSocialMapper::createOne($socialMapping);
 
@@ -251,8 +258,8 @@ class SocialMethod extends AbstractMethod
                         'class' => 'Hybrid_Providers_GitHub',
                     ],
                 ],
-                "OpenID" => [
-                    "enabled" => true,
+                'OpenID' => [
+                    'enabled' => true,
                 ],
             ],
         ];
@@ -417,7 +424,8 @@ class SocialMethod extends AbstractMethod
 
         // Generate a temp username that usr can edit it later.
         if ($loginName !== 'email') {
-            $username               = strtolower(str_replace(' ', '',
+            $username               = strtolower(
+                str_replace(' ', '',
                     $userProfile->displayName)) . '-' . $userProfile->identifier;
             $credential->$loginName = $username;
         }
@@ -448,8 +456,10 @@ class SocialMethod extends AbstractMethod
 
         // Generate a temp username that usr can edit it later.
         if ($loginName !== 'email') {
-            $username               = strtolower(str_replace(' ', '',
-                    $userProfile->displayName)) . '-' . $userProfile->identifier;
+            $username = strtolower(
+                str_replace(' ', '', $userProfile->displayName)
+            ) . '-' . $userProfile->identifier;
+
             $credential->$loginName = $username;
         }
 
@@ -472,8 +482,10 @@ class SocialMethod extends AbstractMethod
 
         // Generate a temp username that usr can edit it later.
         if ($loginName !== 'email') {
-            $username               = strtolower(str_replace(' ', '',
-                    $userProfile->displayName)) . '-' . $userProfile->identifier;
+            $username = strtolower(
+                str_replace(' ', '', $userProfile->displayName)
+            ) . '-' . $userProfile->identifier;
+
             $credential->$loginName = $username;
         }
 
