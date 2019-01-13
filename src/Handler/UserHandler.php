@@ -8,10 +8,12 @@
 
 namespace Lyrasoft\Warder\Handler;
 
+use Lyrasoft\Warder\Admin\DataMapper\UserMapper;
 use Lyrasoft\Warder\Admin\Record\UserRecord;
 use Lyrasoft\Warder\Data\UserData;
 use Lyrasoft\Warder\Repository\UserRepository;
 use Lyrasoft\Warder\WarderPackage;
+use Windwalker\Core\Cache\RuntimeCacheTrait;
 use Windwalker\Core\Mailer\Punycode;
 use Windwalker\Core\User\UserDataInterface;
 use Windwalker\Core\User\UserHandlerInterface;
@@ -25,12 +27,21 @@ use Windwalker\Record\Record;
  */
 class UserHandler implements UserHandlerInterface
 {
+    use RuntimeCacheTrait;
+
     /**
      * Property package.
      *
      * @var  WarderPackage
      */
     protected $warder;
+
+    /**
+     * Property key.
+     *
+     * @var  string
+     */
+    protected $pk = 'id';
 
     /**
      * UserHandler constructor.
@@ -45,10 +56,11 @@ class UserHandler implements UserHandlerInterface
     /**
      * load
      *
-     * @param array $conditions
+     * @param array|object $conditions
      *
      * @return  UserDataInterface
      * @throws \Exception
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     public function load($conditions)
     {
@@ -57,9 +69,23 @@ class UserHandler implements UserHandlerInterface
         }
 
         if (!$conditions) {
-            $session = $this->warder->getContainer()->get('session');
+            $user = $this->fetch('current.user', function () {
+                $session = $this->warder->getContainer()->get('session');
 
-            $user = $session->get($this->warder->get('user.session_name', 'user'));
+                $user = (array) $session->get($this->warder->get('user.session_name', 'user'));
+
+                // If user is logged-in, get user data from DB to refresh info.
+                if ($user[$this->pk] ?? null) {
+                    $userData = UserMapper::findOne([$this->pk => $user[$this->pk]]);
+
+                    if ($userData->notNull()) {
+                        unset($userData->password);
+                        $user = $userData->dump();
+                    }
+                }
+
+                return $user;
+            });
         } else {
             $user = $this->getRecord();
 
@@ -102,8 +128,10 @@ class UserHandler implements UserHandlerInterface
             $user->email = Punycode::toAscii($user->email);
         }
 
-        if ($user->id) {
-            $record->load($user->id)
+        $key = $this->pk;
+
+        if ($user->$key) {
+            $record->load($user->$key)
                 ->bind($user->dump())
                 ->check()
                 ->store(true);
@@ -113,7 +141,7 @@ class UserHandler implements UserHandlerInterface
                 ->store(true);
         }
 
-        $user->id = $record->id;
+        $user->$key = $record->$key;
 
         return $user;
     }
@@ -184,5 +212,33 @@ class UserHandler implements UserHandlerInterface
         $repository = $resolver->create('UserRepository', null, null, $package->app->database);
 
         return $repository->getRecord();
+    }
+
+    /**
+     * Method to get property Pk
+     *
+     * @return  string
+     *
+     * @since  __DEPLOY_VERSION__
+     */
+    public function getPk()
+    {
+        return $this->pk;
+    }
+
+    /**
+     * Method to set property pk
+     *
+     * @param   string $pk
+     *
+     * @return  static  Return self to support chaining.
+     *
+     * @since  __DEPLOY_VERSION__
+     */
+    public function setPk($pk)
+    {
+        $this->pk = $pk;
+
+        return $this;
     }
 }
