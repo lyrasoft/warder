@@ -69,7 +69,7 @@ class UserHandler implements UserHandlerInterface
         }
 
         if (!$conditions) {
-            $user = $this->fetch('current.user', function () {
+            $user = $this->once('current.user', function () {
                 $session = $this->warder->getContainer()->get('session');
 
                 $user = (array) $session->get($this->warder->get('user.session_name', 'user'));

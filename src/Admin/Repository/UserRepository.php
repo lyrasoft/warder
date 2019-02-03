@@ -57,7 +57,7 @@ class UserRepository extends AdminRepository
 
         $pk = $pk ?: $state['load.conditions'];
 
-        return $this->fetch('item.' . json_encode($pk), function () use ($pk, $state) {
+        return $this->once('item.' . json_encode($pk), function () use ($pk, $state) {
             if (!$pk) {
                 return new UserData();
             }
