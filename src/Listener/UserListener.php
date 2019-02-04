@@ -92,10 +92,12 @@ class UserListener
             }
 
             if (!is_subclass_of($class, 'Windwalker\Authentication\Method\MethodInterface')) {
-                throw new \LogicException('Class: ' . $class . ' must be sub class of Windwalker\Authentication\Method\MethodInterface');
+                throw new \LogicException(
+                    'Class: ' . $class . ' must be sub class of Windwalker\Authentication\Method\MethodInterface'
+                );
             }
 
-            $auth->addMethod($name, new $class($this->warder));
+            $auth->addMethod($name, $this->warder->app->make($class, ['package' => $this->warder]));
         }
     }
 
@@ -110,7 +112,7 @@ class UserListener
     {
         $class = $this->warder->get('class.handler', UserHandler::class);
 
-        User::setHandler(new $class($this->warder));
+        User::setHandler($this->warder->app->make($class, ['package' => $this->warder]));
     }
 
     /**

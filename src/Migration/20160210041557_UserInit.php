@@ -6,8 +6,6 @@
  * @license    GNU General Public License version 2 or later;
  */
 
-use Faker\Factory;
-use Lyrasoft\Unidev\Helper\PravatarHelper;
 use Lyrasoft\Warder\Admin\DataMapper\UserMapper;
 use Lyrasoft\Warder\Data\UserData;
 use Lyrasoft\Warder\Table\WarderTable;
@@ -57,14 +55,14 @@ class UserInit extends AbstractMigration
             $schema->addIndex('identifier');
         });
 
-        $faker = Factory::create();
+        $faker = $this->faker->create();
 
         $user = new UserData();
 
         $user->email        = 'admin@windwalker.io';
         $user->name         = 'Super User';
         $user->username     = 'admin';
-        $user->avatar       = PravatarHelper::unique(400, uniqid('', true));
+        $user->avatar       = $faker->unsplashImage();
         $user->password     = Hasher::create('pass1234');
         $user->blocked      = 0;
         $user->receive_mail = 1;

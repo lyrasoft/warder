@@ -6,8 +6,6 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-use Faker\Factory;
-use Lyrasoft\Unidev\Helper\PravatarHelper;
 use Lyrasoft\Warder\Admin\DataMapper\UserMapper;
 use Lyrasoft\Warder\Table\WarderTable;
 use Lyrasoft\Warder\Warder;
@@ -39,7 +37,7 @@ class UserSeeder extends AbstractSeeder
             $data->username    = $faker->userName;
             $data->email       = $faker->safeEmail;
             $data->password    = $pass;
-            $data->avatar      = PravatarHelper::unique(600, uniqid($i, true));
+            $data->avatar      = $faker->avatar(600, uniqid($i, true));
             $data->group       = 'member';
             $data->blocked     = 0;
             $data->activation  = '';

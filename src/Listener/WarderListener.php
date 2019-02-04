@@ -77,7 +77,7 @@ class WarderListener
             $package->getMvcResolver()
                 ->addNamespace(ReflectionHelper::getNamespaceName($this->warder), PriorityQueue::BELOW_NORMAL);
 
-            FieldDefinitionResolver::addNamespace((ReflectionHelper::getNamespaceName($this->warder) . '\Form'));
+            FieldDefinitionResolver::addNamespace(ReflectionHelper::getNamespaceName($this->warder) . '\Form');
         } elseif ($this->warder->isAdmin()) {
             $package->getMvcResolver()
                 ->addNamespace(

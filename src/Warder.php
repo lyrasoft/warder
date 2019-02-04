@@ -131,6 +131,7 @@ class Warder extends User
      * @param string $uniqid
      *
      * @return  string
+     * @throws \Exception
      */
     public static function fakeAvatar($size = 300, $uniqid = null)
     {
