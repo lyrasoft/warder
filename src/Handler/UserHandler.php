@@ -219,7 +219,7 @@ class UserHandler implements UserHandlerInterface
      *
      * @return  string
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.6.2
      */
     public function getPk()
     {
@@ -233,7 +233,7 @@ class UserHandler implements UserHandlerInterface
      *
      * @return  static  Return self to support chaining.
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.6.2
      */
     public function setPk($pk)
     {
