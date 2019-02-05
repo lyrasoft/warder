@@ -8,6 +8,7 @@
 
 namespace Lyrasoft\Warder\Admin\Repository;
 
+use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Table\WarderTable;
 use Phoenix\Repository\Filter\FilterHelperInterface;
 use Phoenix\Repository\ListRepository;
@@ -48,11 +49,11 @@ class UsersRepository extends ListRepository
      */
     protected function configureTables()
     {
-        $this->addTable('user', WarderTable::USERS)
-            ->addTable('social', WarderTable::USER_SOCIALS, 'social.user_id = user.id')
-//			->addTable('gmap',   WarderTable::USER_GROUP_MAPS, 'group.user_id = user.id')
-//			->addTable('group',  WarderTable::GROUPS,          'gmap.group_id = group.id');
-        ;
+        $this->addTable('user', WarderTable::USERS);
+
+        if (WarderHelper::tableExists('user_socials')) {
+            $this->addTable('social', WarderTable::USER_SOCIALS, 'social.user_id = user.id');
+        }
     }
 
     /**
@@ -102,7 +103,7 @@ class UsersRepository extends ListRepository
         $filterHelper->setHandler('activation', function (Query $query, $field, $value) {
             if (((string) $value) === '0') {
                 $query->where('CHAR_LENGTH(user.activation) > 0');
-            } elseif ($value == 1) {
+            } elseif ((string) $value === '1') {
                 $query->where('CHAR_LENGTH(user.activation) = 0');
             }
         });
