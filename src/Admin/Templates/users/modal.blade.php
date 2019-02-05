@@ -7,6 +7,22 @@
 @stop
 
 @section('body')
+    <style>
+        .user-avatar {
+            height: 48px;
+            width: 48px;
+            border-radius: 50%;
+            min-width: 48px;
+            margin-right: 10px;
+        }
+
+        .user-avatar-default {
+            background-image: url('{{ \Lyrasoft\Warder\Helper\AvatarUploadHelper::getDefaultImage() }}');
+            background-size: cover;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
     <div id="phoenix-admin" class="users-container grid-container">
         <form name="admin-form" id="admin-form" action="{{ $uri['full'] }}" method="POST" enctype="multipart/form-data">
 
@@ -65,11 +81,17 @@
                         ?>
                         <tr>
                             {{-- NAME --}}
-                            <td class="searchable">
+                            <td class="searchable text-nowrap">
                                 <a href="javascript://"
                                    onclick="parent.{{ $function }}('{{ $selector }}', { value: '{{ $item->id }}', title: '{{ $item->name }}', image: '{{ $item->avatar }}' });">
-                                    <span
-                                        class="glyphicon glyphicon-menu-left fa fa-angle-right text-muted"></span> {{ $item->name }}
+                                    @if (property_exists($item, 'avatar'))
+                                        @if ($item->avatar)
+                                            <img class="user-avatar" src="{{ $item->avatar }}" alt="Avatar">
+                                        @else
+                                            <div class="user-avatar user-avatar-default"></div>
+                                        @endif
+                                    @endif
+                                    {{ $item->name }}
                                 </a>
                             </td>
 
