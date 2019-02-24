@@ -97,7 +97,7 @@ class UserListener
                 );
             }
 
-            $auth->addMethod($name, $this->warder->app->make($class, ['package' => $this->warder]));
+            $auth->addMethod($name, $this->warder->app->make($class, ['package' => $this->warder, 'warder' => $this->warder]));
         }
     }
 
