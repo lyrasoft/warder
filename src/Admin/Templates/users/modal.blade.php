@@ -41,34 +41,34 @@
                     <thead>
                     <tr>
                         {{-- NAME --}}
-                        <th>
+                        <th class="text-nowrap">
                             {!! $grid->sortTitle($warder->langPrefix . 'user.field.name', 'user.name') !!}
                         </th>
 
                         @if ($warder->package->getLoginName() !== 'email')
                             {{-- USERNAME --}}
-                            <th>
+                            <th class="text-nowrap">
                                 {!! $grid->sortTitle($warder->langPrefix . 'user.field.' . $warder->package->getLoginName(), 'user.' . $warder->package->getLoginName()) !!}
                             </th>
                         @endif
 
                         {{-- EMAIL --}}
-                        <th>
+                        <th class="text-nowrap">
                             {!! $grid->sortTitle($warder->langPrefix . 'user.field.email', 'user.email') !!}
                         </th>
 
                         {{-- ENABLED --}}
-                        <th>
+                        <th class="text-nowrap">
                             {!! $grid->sortTitle($warder->langPrefix . 'user.field.enabled', 'user.blocked') !!}
                         </th>
 
                         {{-- ACTIVATED --}}
-                        <th>
+                        <th class="text-nowrap">
                             {!! $grid->sortTitle($warder->langPrefix . 'user.field.activation', 'user.activation') !!}
                         </th>
 
                         {{-- ID --}}
-                        <th>
+                        <th class="text-nowrap">
                             {!! $grid->sortTitle($warder->langPrefix . 'user.field.id', 'user.id') !!}
                         </th>
                     </tr>
