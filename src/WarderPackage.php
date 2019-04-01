@@ -44,7 +44,7 @@ class WarderPackage extends AbstractPackage
     {
         parent::boot();
 
-        $this->getDispatcher()->listen('onPackageBeforeExecute', function () {
+        $this->getDispatcher()->listen('onPackagePreprocess', function () {
             Translator::loadAll($this);
         });
     }
