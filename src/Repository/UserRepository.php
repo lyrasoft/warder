@@ -51,10 +51,11 @@ class UserRepository extends \Lyrasoft\Warder\Admin\Repository\UserRepository
      * @param DataInterface|UserDataTrait $user
      *
      * @return  void
+     * @throws \Exception
      */
     protected function prepareDefaultData(DataInterface $user)
     {
-        $user->registered = $user->registered ?: Chronos::create()->format(Chronos::getSqlFormat());
+        $user->registered = $user->registered ?: Chronos::create()->toSql();
         $user->blocked    = $user->id === null ? 1 : $user->blocked;
     }
 }

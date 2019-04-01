@@ -18,6 +18,7 @@ use Windwalker\Authentication\Credential;
 use Windwalker\Core\DateTime\Chronos;
 use Windwalker\Core\Repository\Exception\ValidateFailException;
 use Windwalker\Core\User\Exception\AuthenticateFailException;
+use Windwalker\Core\User\Exception\LoginFailException;
 use Windwalker\Core\User\User;
 use Windwalker\Data\Data;
 use Windwalker\Data\DataInterface;
@@ -99,32 +100,41 @@ class UserRepository extends AdminRepository
         } catch (AuthenticateFailException $e) {
             $langPrefix = WarderHelper::getPackage()->get('admin.language.prefix', 'warder.');
 
-            switch (array_values($e->getMessages())[0]) {
-                case Authentication::USER_NOT_FOUND:
-                    $message = __($langPrefix . 'login.message.user.not.found');
-                    break;
+            $messages = [];
 
-                case Authentication::EMPTY_CREDENTIAL:
-                    $message = __($langPrefix . 'login.message.empty.credential');
-                    break;
+            foreach ($e->getMessages() as $code) {
+                switch ($code) {
+                    case Authentication::USER_NOT_FOUND:
+                        $messages[$code] = __($langPrefix . 'login.message.user.not.found');
+                        break;
 
-                case Authentication::INVALID_CREDENTIAL:
-                    $message = __($langPrefix . 'login.message.invalid.credential');
-                    break;
+                    case Authentication::EMPTY_CREDENTIAL:
+                        $messages[$code] = __($langPrefix . 'login.message.empty.credential');
+                        break;
 
-                case Authentication::INVALID_PASSWORD:
-                    $message = __($langPrefix . 'login.message.invalid.password');
-                    break;
+                    case Authentication::INVALID_CREDENTIAL:
+                        $messages[$code] = __($langPrefix . 'login.message.invalid.credential');
+                        break;
 
-                case Authentication::INVALID_USERNAME:
-                    $message = __($langPrefix . 'login.message.invalid.username');
-                    break;
+                    case Authentication::INVALID_PASSWORD:
+                        $messages[$code] = __($langPrefix . 'login.message.invalid.password');
+                        break;
 
-                default:
-                    $message = $e->getMessage();
+                    case Authentication::INVALID_USERNAME:
+                        $messages[$code] = __($langPrefix . 'login.message.invalid.username');
+                        break;
+
+                    default:
+                        $messages[$code] = $code;
+                }
             }
 
-            throw new ValidateFailException($message);
+            throw new LoginFailException(
+                $messages[array_key_first($messages)],
+                $messages,
+                401,
+                $e
+            );
         }
 
         return $result;
@@ -168,8 +178,7 @@ class UserRepository extends AdminRepository
     {
         $item = parent::getFormDefaultData();
 
-        unset($item['password']);
-        unset($item['password2']);
+        unset($item['password'], $item['password2']);
 
         return $item;
     }
@@ -180,6 +189,7 @@ class UserRepository extends AdminRepository
      * @param   DataInterface|UserRecord $user
      *
      * @return  void
+     * @throws \Exception
      */
     protected function prepareDefaultData(DataInterface $user)
     {
