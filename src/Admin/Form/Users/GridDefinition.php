@@ -59,7 +59,7 @@ class GridDefinition extends AbstractFieldDefinition
                 ->option(__($langPrefix . 'user.field.id'), 'user.id');
 
             // Search Content
-            $this->text('content')
+            $this->search('content')
                 ->label(__('phoenix.grid.search.label'))
                 ->placeholder(__('phoenix.grid.search.label'));
         });
