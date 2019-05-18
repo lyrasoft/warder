@@ -50,7 +50,9 @@ class LoginDefinition extends AbstractFieldDefinition
         $langPrefix = $this->warder->get('admin.language.prefix', 'warder.');
 
         $this->fieldset('login', function () use ($loginName, $langPrefix) {
-            $this->text($loginName)
+            $fieldType = $loginName === 'email' ? 'email' : 'text';
+
+            $this->$fieldType($loginName)
                 ->label(__($langPrefix . 'user.field.' . $loginName));
 
             $this->password('password')
