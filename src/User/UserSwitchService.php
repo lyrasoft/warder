@@ -17,7 +17,7 @@ use Windwalker\Session\Session;
 /**
  * The UserSwitchService class.
  *
- * @since  __DEPLOY_VERSION__
+ * @since  1.7
  */
 class UserSwitchService
 {
@@ -45,7 +45,7 @@ class UserSwitchService
      *
      * @return  WarderUserDataInterface|null
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7
      */
     public function getOriginUser(): ?WarderUserDataInterface
     {
@@ -59,7 +59,7 @@ class UserSwitchService
      *
      * @return  static
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7
      */
     public function setOriginUser(WarderUserDataInterface $user): self
     {
@@ -73,7 +73,7 @@ class UserSwitchService
      *
      * @return  bool
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7
      */
     public function hasSwitched(): bool
     {
@@ -85,7 +85,7 @@ class UserSwitchService
      *
      * @return  static
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7
      */
     public function removeOriginUser(): self
     {
@@ -101,7 +101,7 @@ class UserSwitchService
      *
      * @return  static
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7
      */
     public function switch(WarderUserDataInterface $targetUser): self
     {
@@ -123,7 +123,7 @@ class UserSwitchService
      *
      * @return  static
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7
      */
     public function recover(): self
     {

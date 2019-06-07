@@ -21,7 +21,7 @@ use Windwalker\Core\Router\CoreRouter;
 /**
  * The ActivationService class.
  *
- * @since  __DEPLOY_VERSION__
+ * @since  1.7
  */
 class ActivationService
 {
@@ -51,7 +51,7 @@ class ActivationService
      *
      * @throws \ReflectionException
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7
      */
     public function sendActivateMail($conditions = []): void
     {

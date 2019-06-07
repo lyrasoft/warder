@@ -18,7 +18,7 @@ use Windwalker\DI\Annotation\Inject;
 /**
  * The SwitchController class.
  *
- * @since  __DEPLOY_VERSION__
+ * @since  1.7
  */
 class SwitchController extends AbstractController
 {
@@ -54,7 +54,7 @@ class SwitchController extends AbstractController
      *
      * @return  void
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7
      */
     protected function change(): void
     {
@@ -79,7 +79,7 @@ class SwitchController extends AbstractController
      *
      * @return  void
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7
      */
     protected function recover(): void
     {

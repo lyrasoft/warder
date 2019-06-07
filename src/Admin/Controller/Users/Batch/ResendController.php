@@ -23,7 +23,7 @@ use Windwalker\DI\Annotation\Inject;
 /**
  * The ResendController class.
  *
- * @since  __DEPLOY_VERSION__
+ * @since  1.7
  */
 class ResendController extends AbstractBatchController
 {
