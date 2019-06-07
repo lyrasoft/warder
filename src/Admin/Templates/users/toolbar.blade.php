@@ -15,6 +15,11 @@
     @translate($warder->langPrefix . 'toolbar.disable')
 </button>
 
+<button type="button" class="btn btn-info btn-sm" onclick="Phoenix.Grid.hasChecked();Phoenix.Grid.batch('resend');">
+    <span class="glyphicon glyphicon-ok fa fa-envelope"></span>
+    @lang('warder.button.resend.activate.mail')
+</button>
+
 <button type="button" class="btn btn-default btn-outline-danger btn-sm"
         onclick="Phoenix.Grid.hasChecked().deleteList();">
     <span class="glyphicon glyphicon-trash fa fa-trash"></span>

@@ -10,6 +10,7 @@ namespace Lyrasoft\Warder\Controller\User\Registration;
 
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Repository\UserRepository;
+use Lyrasoft\Warder\User\ActivationService;
 use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\Mailer\MailMessage;
@@ -17,6 +18,7 @@ use Windwalker\Core\Repository\Exception\ValidateFailException;
 use Windwalker\Core\Router\CoreRouter;
 use Windwalker\Core\View\HtmlView;
 use Windwalker\Data\DataInterface;
+use Windwalker\DI\Annotation\Inject;
 use Windwalker\Validator\Rule\EmailValidator;
 
 /**
@@ -76,6 +78,15 @@ class RegistrationSaveController extends AbstractSaveController
     protected $useTransaction = true;
 
     /**
+     * Property activateService.
+     *
+     * @Inject()
+     *
+     * @var ActivationService
+     */
+    protected $activateService;
+
+    /**
      * Property token.
      *
      * @var  string
@@ -100,10 +111,6 @@ class RegistrationSaveController extends AbstractSaveController
         }
 
         parent::prepareExecute();
-
-        $this->token = Warder::getToken($this->data['email']);
-
-        $this->data['activation'] = Warder::hashPassword($this->token);
     }
 
     /**
@@ -116,8 +123,7 @@ class RegistrationSaveController extends AbstractSaveController
     protected function preSave(DataInterface $data)
     {
         // Remove password from original data to make sure password won't push to session.
-        unset($this->data['password']);
-        unset($this->data['password2']);
+        unset($this->data['password'], $this->data['password2']);
     }
 
     /**
@@ -148,16 +154,7 @@ class RegistrationSaveController extends AbstractSaveController
      */
     protected function postSave(DataInterface $user)
     {
-        // Mail
-        $view = $this->getView();
-
-        $view['link'] = $this->router->route('registration_activate',
-            ['email' => $user->email, 'token' => $this->token], CoreRouter::TYPE_FULL);
-        $view['user'] = $user;
-
-        $body = $this->getMailBody($view);
-
-        $this->sendEmail($user->email, $body);
+        $this->activateService->sendActivateMail($user->id);
     }
 
     /**
@@ -186,8 +183,10 @@ class RegistrationSaveController extends AbstractSaveController
     {
         $this->app->mailer->send(function (MailMessage $message) use ($email, $body) {
             $message->subject(__($this->langPrefix . 'mail.subject'))
-                ->from($this->app->get('mail.from.email', $this->app->get('mail.from.email')),
-                    $this->app->get('mail.from.name', $this->app->get('mail.from.name')))
+                ->from(
+                    $this->app->get('mail.from.email', $this->app->get('mail.from.email')),
+                    $this->app->get('mail.from.name', $this->app->get('mail.from.name'))
+                )
                 ->to($email)
                 ->body($body);
         });

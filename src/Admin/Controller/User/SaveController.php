@@ -11,6 +11,7 @@ namespace Lyrasoft\Warder\Admin\Controller\User;
 use Lyrasoft\Unidev\Field\SingleImageDragField;
 use Lyrasoft\Warder\Helper\AvatarUploadHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\User\ActivationService;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\Mailer\Punycode;
 use Windwalker\Core\Repository\Exception\ValidateFailException;
@@ -62,8 +63,7 @@ class SaveController extends AbstractSaveController
     protected function preSave(DataInterface $data)
     {
         // Remove password from session
-        unset($this->data['password']);
-        unset($this->data['password2']);
+        unset($this->data['password'], $this->data['password2']);
     }
 
     /**
@@ -92,6 +92,10 @@ class SaveController extends AbstractSaveController
         // Set user data to session if is current user.
         if (User::get()->id == $data->id) {
             User::makeUserLoggedIn(User::get($data->id));
+        }
+
+        if ($this->task === 'save_resend') {
+            $this->app->service(ActivationService::class)->sendActivateMail($data->id);
         }
     }
 
