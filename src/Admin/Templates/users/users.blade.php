@@ -1,5 +1,4 @@
 {{-- Part of phoenix project. --}}
-
 <?php
 /**
  * @var  $items           \Windwalker\Data\DataSet
@@ -65,6 +64,8 @@
                         {{-- NAME --}}
                         <th class="text-nowrap">
                             {!! $grid->sortTitle($warder->langPrefix . 'user.field.name', 'user.name') !!}
+                            /
+                            {!! $grid->sortTitle($warder->langPrefix . 'user.field.email', 'user.email') !!}
                         </th>
 
                         @if ($warder->package->getLoginName() !== 'email')
@@ -73,11 +74,6 @@
                                 {!! $grid->sortTitle($warder->langPrefix . 'user.field.' . $warder->package->getLoginName(), 'user.' . $warder->package->getLoginName()) !!}
                             </th>
                         @endif
-
-                        {{-- Email --}}
-                        <th width="5%" class="text-nowrap">
-                            {!! $grid->sortTitle($warder->langPrefix . 'user.field.email', 'user.email') !!}
-                        </th>
 
                         {{-- ENABLED --}}
                         <th width="3%" class="text-nowrap">
@@ -92,6 +88,10 @@
                         {{-- REGISTERED --}}
                         <th class="text-nowrap">
                             {!! $grid->sortTitle($warder->langPrefix . 'user.field.registered', 'user.registered') !!}
+                        </th>
+
+                        <th width="5%" class="text-nowrap">
+                            @lang($warder->langPrefix . 'user.field.switch')
                         </th>
 
                         {{-- Delete --}}
@@ -118,17 +118,27 @@
                             </td>
 
                             {{-- NAME --}}
-                            <td class="searchable" style="min-width: 300px;">
-                                @if (property_exists($item, 'avatar'))
-                                    @if ($item->avatar)
-                                        <img class="user-avatar" src="{{ $item->avatar }}" alt="Avatar">
-                                    @else
-                                        <div class="user-avatar user-avatar-default"></div>
-                                    @endif
-                                @endif
-                                <a href="{{ $router->route('user', ['id' => $item->id]) }}">
-                                    {{ $item->name }}
-                                </a>
+                            <td class="searchable">
+                                <div class="d-flex align-items-center">
+                                    <div class="user-avatar-wrapper mr-2">
+                                        @if (property_exists($item, 'avatar'))
+                                            @if ($item->avatar)
+                                                <img class="user-avatar" src="{{ $item->avatar }}" alt="Avatar">
+                                            @else
+                                                <div class="user-avatar user-avatar-default"></div>
+                                            @endif
+                                        @endif
+                                    </div>
+                                    <div>
+                                        <div class="user-name">
+                                            <a href="{{ $router->route('user', ['id' => $item->id]) }}">
+                                                {{ $item->name }}
+                                            </a>
+                                        </div>
+
+                                        <span class="small user-email text-muted">{{ $item->email }}</span>
+                                    </div>
+                                </div>
                             </td>
 
                             @if ($warder->package->getLoginName() !== 'email')
@@ -137,11 +147,6 @@
                                     {{ $item->username }}
                                 </td>
                             @endif
-
-                            {{-- EMAIL --}}
-                            <td class="searchable">
-                                {{ $item->email }}
-                            </td>
 
                             {{-- ENABLED --}}
                             <td>
@@ -166,6 +171,17 @@
                             {{-- REGISTERED --}}
                             <td>
                                 {{ Windwalker\Core\DateTime\Chronos::toLocalTime($item->registered) }}
+                            </td>
+
+                            <td class="text-center">
+                                @if ($user->id !== $item->id)
+                                    <button type="button"
+                                        class="user-switch-button btn btn-default btn-outline-secondary btn-sm hasTooltip"
+                                        title="@lang($warder->langPrefix . '.user.switch.desc')"
+                                        onclick="Phoenix.Grid.doTask('switch', {{ $i }});">
+                                        <span class="fa fa-eye"></span>
+                                    </button>
+                                @endif
                             </td>
 
                             {{-- Delete --}}

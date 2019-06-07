@@ -10,13 +10,17 @@ namespace Lyrasoft\Warder\Listener;
 
 use Lyrasoft\Warder\Handler\UserHandler;
 use Lyrasoft\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\User\UserSwitchService;
+use Lyrasoft\Warder\Warder;
 use Lyrasoft\Warder\WarderPackage;
 use Windwalker\Authentication\Authentication;
 use Windwalker\Authentication\Credential;
+use Windwalker\Core\Security\CsrfProtection;
 use Windwalker\Core\User\Exception\AuthenticateFailException;
 use Windwalker\Core\User\User;
 use Windwalker\Core\View\HtmlView;
 use Windwalker\Event\Event;
+use function Windwalker\h;
 
 /**
  * The UserListener class.
@@ -97,7 +101,10 @@ class UserListener
                 );
             }
 
-            $auth->addMethod($name, $this->warder->app->make($class, ['package' => $this->warder, 'warder' => $this->warder]));
+            $auth->addMethod(
+                $name,
+                $this->warder->app->make($class, ['package' => $this->warder, 'warder' => $this->warder])
+            );
         }
     }
 
@@ -157,6 +164,43 @@ class UserListener
 
         if (!$data->user) {
             $data->user = User::get();
+        }
+
+        $userSwitcher = $this->warder->service(UserSwitchService::class);
+
+        if ($userSwitcher->hasSwitched()) {
+            $user = Warder::getUser();
+            $router = $this->warder->getCurrentPackage()->router;
+
+            $msg = h(
+                'span',
+                ['class' => 'd-flex align-items-center'],
+                [
+                    h(
+                        'span',
+                        [],
+                        __('warder.message.user.switch.switched.desc', $user->name)
+                    ),
+                    h(
+                        'a',
+                        [
+                            'class' => 'btn btn-warning btn-sm ml-auto',
+                            'href' => $router->to(
+                                'users',
+                                [
+                                    '_method' => 'PATCH',
+                                    'task' => 'switch',
+                                    'action' => 'recover',
+                                    CsrfProtection::getFormToken() => 1
+                                ]
+                            )
+                        ],
+                        __('warder.user.switch.recover.button')
+                    )
+                ]
+            );
+
+            $this->warder->app->addMessage((string) $msg, 'warning');
         }
     }
 }
