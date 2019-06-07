@@ -19,6 +19,7 @@
  */
 
 \Phoenix\Script\PhoenixScript::validation('#user-form');
+\Phoenix\Script\PhoenixScript::disableWhenSubmit('#user-form');
 
 $form->setAttributes('labelWidth', 'col-md-12')
     ->setAttributes('fieldWidth', 'col-md-12');
@@ -54,7 +55,7 @@ $basicFieldset = array_shift($fieldsets);
 
                     @section('registration-buttons')
                         <div class="registration-actions">
-                            <button type="submit" class="login-button btn btn-primary btn-block">
+                            <button type="submit" class="login-button btn btn-primary btn-block disable-on-submit">
                                 @translate($warder->langPrefix . 'registration.submit.button')
                             </button>
                         </div>

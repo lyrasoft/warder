@@ -21,9 +21,13 @@
 \Phoenix\Script\BootstrapScript::fontAwesome();
 \Phoenix\Script\BootstrapScript::checkbox(\Phoenix\Script\BootstrapScript::FONTAWESOME);
 \Phoenix\Script\PhoenixScript::validation('#user-form');
+\Phoenix\Script\PhoenixScript::disableWhenSubmit('#user-form');
 
 $form->setAttributes('labelWidth', 'col-md-12', 'login')
     ->setAttributes('fieldWidth', 'col-md-12', 'login');
+
+$reActivate = $app->session->get(\Lyrasoft\Warder\User\ActivationService::RE_ACTIVATE_SESSION_KEY);
+$app->session->remove(\Lyrasoft\Warder\User\ActivationService::RE_ACTIVATE_SESSION_KEY);
 ?>
 
 @extends($warder->noauthExtends)
@@ -49,6 +53,23 @@ $form->setAttributes('labelWidth', 'col-md-12', 'login')
 
                         @yield('login-desc')
 
+                        @if ($reActivate)
+                            {{-- Re-send activate email --}}
+                            <div class="mb-4">
+                                <div class="alert alert-info text-center">
+                                    <p>
+                                        @lang('warder.login.message.inactivated')
+                                    </p>
+                                    <div>
+                                        <button type="button" class="btn btn-info disable-on-submit"
+                                            onclick="$('#user-form').attr('action', '{{ $router->to('resend_activate', ['email' => $reActivate]) }}').submit()">
+                                            @lang('warder.button.resend.activate.mail')
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
                         {!! $form->renderFields('login') !!}
 
                         <div id="input-user-remember-control" class="checkbox-field" style="margin-bottom: 20px">
@@ -63,7 +84,7 @@ $form->setAttributes('labelWidth', 'col-md-12', 'login')
                         @section('login-buttons')
                             <div class="login-buttons">
                                 <p class="login-button-wrap">
-                                    <button class="login-button btn btn-primary btn-block">
+                                    <button class="login-button btn btn-primary btn-block disable-on-submit">
                                         <span class="fa fa-sign-in"></span>
                                         @translate($warder->langPrefix . 'login.submit.button')
                                     </button>
@@ -88,7 +109,7 @@ $form->setAttributes('labelWidth', 'col-md-12', 'login')
                             <div class="social-login-buttons row" style="margin-top: 50px">
                                 @if ($app->get('social_login.facebook.enabled'))
                                     <p class="col-md-4">
-                                        <button class="social-login-facebook-button btn btn-primary btn-block"
+                                        <button class="social-login-facebook-button btn btn-primary btn-block disable-on-submit"
                                                 onclick="jQuery('#user-form').attr('action', '{{ $router->route('social_login', array('provider' => 'facebook')) }}')">
                                             <span class="fa fab fa-fw fa-facebook-square"></span>
                                             Facebook
@@ -98,7 +119,7 @@ $form->setAttributes('labelWidth', 'col-md-12', 'login')
 
                                 @if ($app->get('social_login.twitter.enabled'))
                                     <p class="col-md-4">
-                                        <button class="social-login-twitter-button btn btn-info btn-block"
+                                        <button class="social-login-twitter-button btn btn-info btn-block disable-on-submit"
                                                 onclick="jQuery('#user-form').attr('action', '{{ $router->route('social_login', array('provider' => 'twitter')) }}')">
                                             <span class="fa fab fa-fw fa-twitter"></span>
                                             Twitter
@@ -108,7 +129,7 @@ $form->setAttributes('labelWidth', 'col-md-12', 'login')
 
                                 @if ($app->get('social_login.google.enabled'))
                                     <p class="col-md-4">
-                                        <button class="social-login-google-button btn btn-danger btn-block"
+                                        <button class="social-login-google-button btn btn-danger btn-block disable-on-submit"
                                                 onclick="jQuery('#user-form').attr('action', '{{ $router->route('social_login', array('provider' => 'google')) }}')">
                                             <span class="fa fab fa-fw fa-google"></span>
                                             Google
@@ -118,7 +139,7 @@ $form->setAttributes('labelWidth', 'col-md-12', 'login')
 
                                 @if ($app->get('social_login.yahoo.enabled'))
                                     <p class="col-md-4">
-                                        <button class="social-login-yahoo-button btn btn-success btn-block"
+                                        <button class="social-login-yahoo-button btn btn-success btn-block disable-on-submit"
                                                 style="background-color: #514099; border-color: #514099"
                                                 onclick="jQuery('#user-form').attr('action', '{{ $router->route('social_login', array('provider' => 'yahoo')) }}')">
                                             <span class="fa fab fa-fw fa-yahoo"></span>
@@ -129,7 +150,7 @@ $form->setAttributes('labelWidth', 'col-md-12', 'login')
 
                                 @if ($app->get('social_login.github.enabled'))
                                     <p class="col-md-4">
-                                        <button class="social-login-github-button btn btn-success btn-block"
+                                        <button class="social-login-github-button btn btn-success btn-block disable-on-submit"
                                                 style="background-color: #111; border-color: #111"
                                                 onclick="jQuery('#user-form').attr('action', '{{ $router->route('social_login', array('provider' => 'github')) }}')">
                                             <span class="fa fab fa-fw fa-github"></span>

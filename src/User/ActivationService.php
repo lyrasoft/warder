@@ -25,6 +25,8 @@ use Windwalker\Core\Router\CoreRouter;
  */
 class ActivationService
 {
+    public const RE_ACTIVATE_SESSION_KEY = 'reactivate.mail';
+
     /**
      * Property warder.
      *

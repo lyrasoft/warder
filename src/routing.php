@@ -72,6 +72,12 @@ $router->any('registration_activate', '/registration/activate')
         ],
     ]);
 
+// Resend Activate
+$router->post('resend_activate', '/activate-resend')
+    ->controller(\Lyrasoft\Warder\Admin\Controller\User\ResendActivateController::class)
+    ->extraValues([
+    ]);
+
 // Social Login
 $router->any('social_login', '/social-login/(provider)')
     ->controller('User')

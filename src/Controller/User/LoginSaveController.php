@@ -10,9 +10,11 @@ namespace Lyrasoft\Warder\Controller\User;
 
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Repository\UserRepository;
+use Lyrasoft\Warder\User\ActivationService;
 use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\DateTime\Chronos;
+use Windwalker\Core\User\Exception\LoginFailException;
 use Windwalker\Core\User\User;
 use Windwalker\Data\DataInterface;
 
@@ -84,7 +86,18 @@ class LoginSaveController extends AbstractSaveController
             $data->remember   = true;
         }
 
-        $this->repository->login($data->$loginName, $data->password, $data->remember, $options);
+        try {
+            $this->repository->login($data->$loginName, $data->password, $data->remember, $options);
+        } catch (LoginFailException $e) {
+            $code = $e->getPrevious()->getCode();
+
+            if ($code === 40101) {
+                $user = Warder::getUser([$loginName => $data->$loginName]);
+                $this->app->session->set(ActivationService::RE_ACTIVATE_SESSION_KEY, $user->email);
+            }
+
+            throw $e;
+        }
 
         $user = User::get();
         $keyName = $this->repository->getKeyName();
