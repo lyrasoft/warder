@@ -61,10 +61,16 @@ class RegistrationDefinition extends AbstractFieldDefinition
 
             $this->password('password')
                 ->label(__($langPrefix . 'user.field.password'))
+                ->required(true)
+                ->attr('data-role', 'password')
                 ->autocomplete('false');
 
             $this->password('password2')
                 ->label(__($langPrefix . 'user.field.password.confirm'))
+                ->required(true)
+                ->attr('data-validate', 'password-confirm')
+                ->attr('data-confirm-target', '[data-role=password]')
+                ->attr('data-custom-error-message', __('warder.forget.reset.message.password.not.match'))
                 ->autocomplete('false');
 
             $this->captcha('captcha')

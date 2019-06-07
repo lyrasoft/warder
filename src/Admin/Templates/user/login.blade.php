@@ -21,6 +21,7 @@
 use Phoenix\Script\BootstrapScript;
 
 BootstrapScript::checkbox(BootstrapScript::FONTAWESOME);
+\Phoenix\Script\PhoenixScript::validation('#user-form');
 
 $form->setAttributes('labelWidth', 'col-md-12', 'login')
     ->setAttributes('fieldWidth', 'col-md-12', 'login');

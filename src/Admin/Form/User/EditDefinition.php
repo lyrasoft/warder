@@ -68,13 +68,16 @@ class EditDefinition extends AbstractFieldDefinition
 
             // Password
             $this->password('password')
-                ->autocomplete('false')
-                ->label(__($langPrefix . 'user.field.password'));
+                ->label(__($langPrefix . 'user.field.password'))
+                ->attr('data-role', 'password')
+                ->autocomplete('off');
 
-            // Password
             $this->password('password2')
-                ->autocomplete('false')
-                ->label(__($langPrefix . 'user.field.password.confirm'));
+                ->label(__($langPrefix . 'user.field.password.confirm'))
+                ->attr('data-validate', 'password-confirm')
+                ->attr('data-confirm-target', '[data-role=password]')
+                ->attr('data-custom-error-message', __('warder.forget.reset.message.password.not.match'))
+                ->autocomplete('off');
         });
 
         // Created fieldset

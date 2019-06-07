@@ -128,6 +128,8 @@ class UserRepository extends AdminRepository
                         $messages[$code] = $code;
                 }
             }
+            
+            show($e);exit(' @Checkpoint');
 
             throw new LoginFailException(
                 $messages[array_key_first($messages)],

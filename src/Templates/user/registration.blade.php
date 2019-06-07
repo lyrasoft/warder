@@ -18,7 +18,7 @@
  * @var $form     \Windwalker\Form\Form
  */
 
-\Phoenix\Script\PhoenixScript::formValidation('#user-form');
+\Phoenix\Script\PhoenixScript::validation('#user-form');
 
 $form->setAttributes('labelWidth', 'col-md-12')
     ->setAttributes('fieldWidth', 'col-md-12');

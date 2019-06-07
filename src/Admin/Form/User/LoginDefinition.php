@@ -51,10 +51,12 @@ class LoginDefinition extends AbstractFieldDefinition
 
         $this->fieldset('login', function () use ($loginName, $langPrefix) {
             $this->text($loginName)
-                ->label(__($langPrefix . 'user.field.' . $loginName));
+                ->label(__($langPrefix . 'user.field.' . $loginName))
+                ->required(true);
 
             $this->password('password')
-                ->label(__($langPrefix . 'user.field.password'));
+                ->label(__($langPrefix . 'user.field.password'))
+                ->required(true);
         });
 
         $this->checkbox('remember')

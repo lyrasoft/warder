@@ -18,10 +18,9 @@
  * @var $form     \Windwalker\Form\Form
  */
 
-use Phoenix\Script\BootstrapScript;
-
-BootstrapScript::fontAwesome();
-BootstrapScript::checkbox(BootstrapScript::FONTAWESOME);
+\Phoenix\Script\BootstrapScript::fontAwesome();
+\Phoenix\Script\BootstrapScript::checkbox(\Phoenix\Script\BootstrapScript::FONTAWESOME);
+\Phoenix\Script\PhoenixScript::validation('#user-form');
 
 $form->setAttributes('labelWidth', 'col-md-12', 'login')
     ->setAttributes('fieldWidth', 'col-md-12', 'login');
