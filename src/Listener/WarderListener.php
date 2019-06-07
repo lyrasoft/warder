@@ -61,15 +61,7 @@ class WarderListener
 
         // In Warder
         if ($this->warder->isEnabled()) {
-            RecordResolver::addNamespace(
-                ReflectionHelper::getNamespaceName($this->warder) . '/Admin/Record',
-                PriorityQueue::LOW
-            );
-            DataMapperResolver::addNamespace(
-                ReflectionHelper::getNamespaceName($this->warder) . '/Admin/DataMapper',
-                PriorityQueue::LOW
-            );
-            FieldDefinitionResolver::addNamespace(ReflectionHelper::getNamespaceName($package) . '/Form');
+            //
         }
 
         // Frontend

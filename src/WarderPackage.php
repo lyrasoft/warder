@@ -12,6 +12,11 @@ use Lyrasoft\Warder\Data\UserData;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Package\AbstractPackage;
+use Windwalker\Core\Package\Resolver\DataMapperResolver;
+use Windwalker\Core\Package\Resolver\FieldDefinitionResolver;
+use Windwalker\Core\Package\Resolver\RecordResolver;
+use Windwalker\Utilities\Queue\PriorityQueue;
+use Windwalker\Utilities\Reflection\ReflectionHelper;
 
 define('WARDER_ROOT', dirname(__DIR__));
 define('WARDER_SOURCE', WARDER_ROOT . '/src');
@@ -47,6 +52,16 @@ class WarderPackage extends AbstractPackage
         $this->getDispatcher()->listen('onPackagePreprocess', function () {
             Translator::loadAll($this);
         });
+
+        RecordResolver::addNamespace(
+            ReflectionHelper::getNamespaceName($this) . '/Admin/Record',
+            PriorityQueue::LOW
+        );
+        DataMapperResolver::addNamespace(
+            ReflectionHelper::getNamespaceName($this) . '/Admin/DataMapper',
+            PriorityQueue::LOW
+        );
+        FieldDefinitionResolver::addNamespace(ReflectionHelper::getNamespaceName($this) . '/Form');
     }
 
     /**

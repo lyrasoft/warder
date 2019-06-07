@@ -15,10 +15,12 @@ use Lyrasoft\Warder\Repository\UserRepository;
 use Lyrasoft\Warder\WarderPackage;
 use Windwalker\Core\Cache\RuntimeCacheTrait;
 use Windwalker\Core\Mailer\Punycode;
+use Windwalker\Core\Package\Resolver\RecordResolver;
 use Windwalker\Core\User\UserDataInterface;
 use Windwalker\Core\User\UserHandlerInterface;
 use Windwalker\Record\Exception\NoResultException;
 use Windwalker\Record\Record;
+use Windwalker\Session\Session;
 
 /**
  * The UserHandler class.
@@ -70,6 +72,7 @@ class UserHandler implements UserHandlerInterface
 
         if (!$conditions) {
             $user = $this->once('current.user', function () {
+                /** @var Session $session */
                 $session = $this->warder->getContainer()->get('session');
 
                 $user = (array) $session->get($this->warder->get('user.session_name', 'user'));
@@ -205,13 +208,16 @@ class UserHandler implements UserHandlerInterface
      */
     protected function getRecord()
     {
-        $package  = $this->warder->getCurrentPackage();
-        $resolver = $package->getMvcResolver()->getRepositoryResolver();
+        $record = RecordResolver::create('User');
 
-        /** @var UserRepository $repository */
-        $repository = $resolver->create('UserRepository', null, null, $package->app->database);
+        if (!$record) {
+            throw new \DomainException(sprintf(
+                'Record: User not found, Namespaces: %s',
+                implode(" |\n", RecordResolver::dumpNamespaces())
+            ));
+        }
 
-        return $repository->getRecord();
+        return $record;
     }
 
     /**
