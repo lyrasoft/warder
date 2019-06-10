@@ -168,7 +168,7 @@ class UserListener
 
         $userSwitcher = $this->warder->service(UserSwitchService::class);
 
-        if ($userSwitcher->hasSwitched()) {
+        if ($userSwitcher->hasSwitched() && $this->warder->isAdmin()) {
             $user = Warder::getUser();
             $router = $this->warder->getCurrentPackage()->router;
 
