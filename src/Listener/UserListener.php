@@ -53,7 +53,7 @@ class UserListener
      * @return  void
      *
      * @throws \ReflectionException
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7.2
      */
     public function onAfterRouting(): void
     {
