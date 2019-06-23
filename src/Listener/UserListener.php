@@ -21,6 +21,7 @@ use Windwalker\Core\User\User;
 use Windwalker\Core\View\HtmlView;
 use Windwalker\Event\Event;
 use function Windwalker\h;
+use Windwalker\Session\Session;
 
 /**
  * The UserListener class.
@@ -47,6 +48,24 @@ class UserListener
     }
 
     /**
+     * onAfterRouting
+     *
+     * @return  void
+     *
+     * @throws \ReflectionException
+     * @since  __DEPLOY_VERSION__
+     */
+    public function onAfterRouting(): void
+    {
+        // Separate admin and frontend session
+        $sessSeparate = $this->warder->getConfig()->extract('session_separate');
+
+        if ($sessSeparate->get('enabled', false) && WarderHelper::isAdmin()) {
+            $this->warder->app->session->getBridge()->setName($sessSeparate->get('admin_session_name'));
+        }
+    }
+
+    /**
      * onUserAfterLogin
      *
      * @param Event $event
@@ -62,13 +81,15 @@ class UserListener
         if ($remember) {
             $container = $this->warder->getContainer();
 
-            $session = $container->get('session');
+            /** @var Session $session */
+            $session = $container->get(Session::class);
+            $bridge  = $session->getBridge();
 
             $uri = $container->get('uri');
 
             setcookie(
-                session_name(),
-                $_COOKIE[session_name()],
+                $bridge->getName(),
+                $_COOKIE[$bridge->getName()],
                 time() + 60 * 60 * 24 * 100,
                 '/' . ltrim($session->getOption('cookie_path', $uri->path), '/'),
                 $session->getOption('cookie_domain')

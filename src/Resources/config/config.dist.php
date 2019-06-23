@@ -40,6 +40,15 @@ return [
     ],
 
     /*
+     * Separate Admin & Frontend session name.
+     * ------------------------------------------------
+     */
+    'session_separate' => [
+        'enabled' => false,
+        'admin_session_name' => 'PHPSESSID_ADMIN'
+    ],
+
+    /*
      * Frontend package settings
      * ------------------------------------------------
      */
