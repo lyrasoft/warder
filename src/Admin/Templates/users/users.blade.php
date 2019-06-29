@@ -157,9 +157,9 @@
                             <td>
                                 @if ($item->activation)
                                     <button type="button"
-                                            class="waves-effect btn btn-light btn-default btn-sm hasTooltip"
-                                            onclick="Phoenix.Grid.updateRow({{ $i }}, null, {task: 'activate'});"
-                                            title="@translate($warder->langPrefix . 'button.unactivated.desc')">
+                                        class="waves-effect btn btn-light btn-default btn-sm hasTooltip"
+                                        onclick="Phoenix.Grid.updateRow({{ $i }}, null, {task: 'activate'});"
+                                        title="@translate($warder->langPrefix . 'button.unactivated.desc')">
                                         <span class="fa fa-remove fa-times text-danger"></span>
                                     </button>
                                 @else
