@@ -98,6 +98,15 @@ class EditDefinition extends AbstractFieldDefinition
                 ->color('danger')
                 ->defaultValue(0);
 
+            // Receive Mail
+            $this->switch('receive_mail')
+                ->label(__($langPrefix . 'user.field.receive.mail'))
+                ->description(__($langPrefix . 'user.field.receive.mail.desc'))
+                ->class('')
+                ->circle(true)
+                ->color('primary')
+                ->defaultValue(0);
+
             // ID
             $this->text('id')
                 ->label(__($langPrefix . 'user.field.id'))
