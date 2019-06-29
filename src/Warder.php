@@ -13,6 +13,7 @@ use Lyrasoft\Warder\Admin\DataMapper\UserMapper;
 use Lyrasoft\Warder\Data\WarderUserDataInterface;
 use Lyrasoft\Warder\Helper\AvatarUploadHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
+use function Windwalker\arr;
 use Windwalker\Core\Ioc;
 use Windwalker\Core\Security\Hasher;
 use Windwalker\Core\User\User;
@@ -177,7 +178,37 @@ class Warder extends User
     public static function getReceiveMailUsers($conditions = [])
     {
         $conditions['receive_mail'] = 1;
+        $conditions['group'] = arr((array) static::getWarderPackage()->get('groups'))
+            ->filter(static function ($group) {
+                return (bool) ($group['is_admin'] ?? false);
+            })
+            ->keys()
+            ->dump();
 
         return UserMapper::find($conditions);
+    }
+
+    /**
+     * getGroups
+     *
+     * @return  array
+     *
+     * @since  __DEPLOY_VERSION__
+     */
+    public static function getGroups(): array
+    {
+        return (array) static::getWarderPackage()->get('groups');
+    }
+
+    /**
+     * getWarderPackage
+     *
+     * @return  WarderPackage
+     *
+     * @since  __DEPLOY_VERSION__
+     */
+    public static function getWarderPackage(): WarderPackage
+    {
+        return WarderHelper::getPackage();
     }
 }

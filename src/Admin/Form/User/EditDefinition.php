@@ -9,6 +9,7 @@
 namespace Lyrasoft\Warder\Admin\Form\User;
 
 use Lyrasoft\Unidev\Field\SingleImageDragField;
+use Lyrasoft\Warder\Admin\Field\User\UserGroupField;
 use Lyrasoft\Warder\Helper\AvatarUploadHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Phoenix\Form\PhoenixFieldTrait;
@@ -89,6 +90,12 @@ class EditDefinition extends AbstractFieldDefinition
                     ->set('force_v1', true)
                     ->set('default_image', AvatarUploadHelper::getDefaultImage());
             }
+
+            // Group
+            $this->add('group', UserGroupField::class)
+                ->label(__($langPrefix . 'user.field.group'))
+                ->class('has-select2')
+                ->required(true);
 
             // Blocked
             $this->switch('blocked')

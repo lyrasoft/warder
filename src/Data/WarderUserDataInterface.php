@@ -8,6 +8,7 @@
 
 namespace Lyrasoft\Warder\Data;
 
+use Lyrasoft\Warder\Warder;
 use Windwalker\Core\User\UserDataInterface;
 
 /**
@@ -87,6 +88,26 @@ interface WarderUserDataInterface extends UserDataInterface
      * @since  1.4.2
      */
     public function isGroup($groups);
+
+    /**
+     * getGroupProperties
+     *
+     * @return  array
+     *
+     * @since  __DEPLOY_VERSION__
+     */
+    public function getGroupProperties(): array;
+
+    /**
+     * checkGroup
+     *
+     * @param callable $handler
+     *
+     * @return  bool
+     *
+     * @since  __DEPLOY_VERSION__
+     */
+    public function checkGroup(callable $handler): bool;
 
     /**
      * isLogin

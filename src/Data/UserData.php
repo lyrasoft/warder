@@ -109,7 +109,33 @@ class UserData extends \Windwalker\Core\User\UserData implements WarderUserDataI
             return false;
         }
 
-        return in_array($this->group, $groups);
+        return in_array($this->group, $groups, true);
+    }
+
+    /**
+     * getGroupProperties
+     *
+     * @return  array
+     *
+     * @since  __DEPLOY_VERSION__
+     */
+    public function getGroupProperties(): array
+    {
+        return Warder::getGroups()[$this->group] ?? [];
+    }
+
+    /**
+     * checkGroup
+     *
+     * @param callable $handler
+     *
+     * @return  bool
+     *
+     * @since  __DEPLOY_VERSION__
+     */
+    public function checkGroup(callable $handler): bool
+    {
+        return $handler($this->getGroupProperties());
     }
 
     /**
