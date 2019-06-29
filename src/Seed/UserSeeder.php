@@ -27,6 +27,7 @@ class UserSeeder extends AbstractSeeder
     public function doExecute()
     {
         $faker = $this->faker->create();
+        $defaultMember = Warder::getWarderPackage()->get('user.default_group', 'member');
 
         $pass = Warder::hashPassword(1234);
 
@@ -38,7 +39,7 @@ class UserSeeder extends AbstractSeeder
             $data->email       = $faker->safeEmail;
             $data->password    = $pass;
             $data->avatar      = $faker->avatar(600, uniqid($i, true));
-            $data->group       = 'member';
+            $data->group       = $defaultMember;
             $data->blocked     = 0;
             $data->activation  = '';
             $data->reset_token = '';
