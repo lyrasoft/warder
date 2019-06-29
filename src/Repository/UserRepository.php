@@ -12,6 +12,7 @@ use Lyrasoft\Warder\Admin\Record\Traits\UserDataTrait;
 use Lyrasoft\Warder\Warder;
 use Windwalker\Core\DateTime\Chronos;
 use Windwalker\Core\User\User;
+use Windwalker\Core\User\UserDataInterface;
 use Windwalker\Data\DataInterface;
 
 /**
@@ -26,7 +27,7 @@ class UserRepository extends \Lyrasoft\Warder\Admin\Repository\UserRepository
      *
      * @param DataInterface|UserDataTrait $user
      *
-     * @return  bool
+     * @return  DataInterface|UserDataTrait
      *
      * @throws \Exception
      */
@@ -42,7 +43,7 @@ class UserRepository extends \Lyrasoft\Warder\Admin\Repository\UserRepository
 
         $user->id = User::save($user)->id;
 
-        return true;
+        return $user;
     }
 
     /**
@@ -55,8 +56,9 @@ class UserRepository extends \Lyrasoft\Warder\Admin\Repository\UserRepository
      */
     protected function prepareDefaultData(DataInterface $user)
     {
-        $user->registered = $user->registered ?: Chronos::create()->toSql();
-        $user->blocked    = $user->id === null ? 1 : $user->blocked;
+        parent::prepareDefaultData($user);
+
+        $user->blocked = $user->id === null ? 1 : $user->blocked;
 
         $user->group = $user->group ?: Warder::getWarderPackage()->get('user.default_group', 'member');
     }

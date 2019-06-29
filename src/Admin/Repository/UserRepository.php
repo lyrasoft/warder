@@ -145,7 +145,7 @@ class UserRepository extends AdminRepository
      *
      * @param DataInterface|UserRecord $user
      *
-     * @return bool
+     * @return DataInterface|UserRecord
      * @throws \Exception
      */
     public function save(DataInterface $user)
@@ -166,7 +166,7 @@ class UserRepository extends AdminRepository
 
         $user->bind(User::save($user));
 
-        return true;
+        return $user;
     }
 
     /**
@@ -195,10 +195,10 @@ class UserRepository extends AdminRepository
     {
         $date = new Chronos();
 
-        if ($user->_isNew) {
+        if (!$user->id) {
             $user->registered = $date->toSql();
+        } else {
+            $user->modified = $date->toSql();
         }
-
-        $user->modified = $date->toSql();
     }
 }
