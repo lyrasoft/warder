@@ -62,6 +62,11 @@ $router->any('registration', '/registration')
         ],
     ]);
 
+// Check User Exists
+$router->get('user_account_check', '/_user/account/check')
+    ->controller(\Lyrasoft\Warder\Controller\User\Ajax\CheckAccountController::class)
+    ->middleware(\Windwalker\Core\Application\Middleware\JsonApiWebMiddleware::class);
+
 // Registration Activate
 $router->any('registration_activate', '/registration/activate')
     ->controller('User\Registration')

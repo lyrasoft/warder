@@ -18,8 +18,11 @@
  * @var $form     \Windwalker\Form\Form
  */
 
+$loginName = $warder->package->getLoginName();
+
 \Phoenix\Script\PhoenixScript::validation('#user-form');
 \Phoenix\Script\PhoenixScript::disableWhenSubmit('#user-form');
+\Lyrasoft\Warder\Script\WarderScript::accountCheckValidation('#input-user-' . $loginName);
 
 $form->setAttributes('labelWidth', 'col-md-12')
     ->setAttributes('fieldWidth', 'col-md-12');
