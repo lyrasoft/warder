@@ -15,7 +15,7 @@ use Windwalker\Html\Option;
 /**
  * The UserGroupField class.
  *
- * @since  __DEPLOY_VERSION__
+ * @since  1.7.3
  */
 class UserGroupField extends ListField
 {

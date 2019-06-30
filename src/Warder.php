@@ -193,7 +193,7 @@ class Warder extends User
      *
      * @return  array
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7.3
      */
     public static function getGroups(): array
     {
@@ -205,7 +205,7 @@ class Warder extends User
      *
      * @return  WarderPackage
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7.3
      */
     public static function getWarderPackage(): WarderPackage
     {

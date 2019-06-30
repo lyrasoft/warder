@@ -15,7 +15,7 @@ use Windwalker\Core\Controller\AbstractController;
 /**
  * The CheckAccountController class.
  *
- * @since  __DEPLOY_VERSION__
+ * @since  1.7.3
  */
 class CheckAccountController extends AbstractController
 {

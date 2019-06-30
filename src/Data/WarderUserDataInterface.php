@@ -94,7 +94,7 @@ interface WarderUserDataInterface extends UserDataInterface
      *
      * @return  array
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7.3
      */
     public function getGroupProperties(): array;
 
@@ -105,7 +105,7 @@ interface WarderUserDataInterface extends UserDataInterface
      *
      * @return  bool
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7.3
      */
     public function checkGroup(callable $handler): bool;
 

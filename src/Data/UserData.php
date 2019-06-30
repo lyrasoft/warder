@@ -117,7 +117,7 @@ class UserData extends \Windwalker\Core\User\UserData implements WarderUserDataI
      *
      * @return  array
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7.3
      */
     public function getGroupProperties(): array
     {
@@ -131,7 +131,7 @@ class UserData extends \Windwalker\Core\User\UserData implements WarderUserDataI
      *
      * @return  bool
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7.3
      */
     public function checkGroup(callable $handler): bool
     {

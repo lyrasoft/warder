@@ -15,7 +15,7 @@ use Windwalker\Core\Asset\AbstractScript;
 /**
  * The WarderScript class.
  *
- * @since  __DEPLOY_VERSION__
+ * @since  1.7.3
  */
 class WarderScript extends AbstractScript
 {
@@ -34,7 +34,7 @@ class WarderScript extends AbstractScript
      *
      * @return  void
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7.3
      */
     public static function accountCheckValidation(?string $selector = null, array $options = []): void
     {
