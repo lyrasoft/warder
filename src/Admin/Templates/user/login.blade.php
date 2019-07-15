@@ -18,10 +18,9 @@
  * @var $form     \Windwalker\Form\Form
  */
 
-use Phoenix\Script\BootstrapScript;
-
-BootstrapScript::checkbox(BootstrapScript::FONTAWESOME);
+\Phoenix\Script\BootstrapScript::checkbox(BootstrapScript::FONTAWESOME);
 \Phoenix\Script\PhoenixScript::validation('#user-form');
+\Phoenix\Script\PhoenixScript::disableWhenSubmit('#user-form');
 
 $form->setAttributes('labelWidth', 'col-md-12', 'login')
     ->setAttributes('fieldWidth', 'col-md-12', 'login');
@@ -57,7 +56,7 @@ $form->setAttributes('labelWidth', 'col-md-12', 'login')
 
                         @section('login-buttons')
                             <p class="login-button-group">
-                                <button class="login-button btn btn-primary btn-block">
+                                <button class="login-button btn btn-primary btn-block disable-on-submit">
                                     @translate($warder->langPrefix . 'login.submit.button')
                                 </button>
                             </p>
