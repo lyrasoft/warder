@@ -179,8 +179,10 @@ class Warder extends User
     {
         $conditions['receive_mail'] = 1;
         $conditions['group'] = arr((array) static::getWarderPackage()->get('groups'))
-            ->filter(static function ($group) {
-                return (bool) ($group['is_admin'] ?? false);
+            ->apply(function (array $storage) {
+                return array_filter($storage, static function ($group) {
+                    return (bool) ($group['is_admin'] ?? false);
+                });
             })
             ->keys()
             ->dump();
