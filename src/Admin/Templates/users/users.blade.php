@@ -9,6 +9,8 @@
  */
 
 \Phoenix\Script\JQueryScript::highlight('.searchable', $state['input.search.content']);
+
+$groups = \Lyrasoft\Warder\Warder::getGroups();
 ?>
 
 @extends($warder->extends)
@@ -74,6 +76,11 @@
                                 {!! $grid->sortTitle($warder->langPrefix . 'user.field.' . $warder->package->getLoginName(), 'user.' . $warder->package->getLoginName()) !!}
                             </th>
                         @endif
+
+                        {{-- GROUP --}}
+                        <th width="5%" class="text-nowrap">
+                            {!! $grid->sortTitle($warder->langPrefix . 'user.field.group', 'user.group') !!}
+                        </th>
 
                         {{-- ENABLED --}}
                         <th width="3%" class="text-nowrap">
@@ -147,6 +154,14 @@
                                     {{ $item->username }}
                                 </td>
                             @endif
+
+                            <td class="text-nowrap">
+                                @if ($groups[$item->group] ?? null)
+                                    @lang($groups[$item->group]['title'])
+                                @else
+                                    -
+                                @endif
+                            </td>
 
                             {{-- ENABLED --}}
                             <td>
