@@ -18,7 +18,7 @@
  * @var $form     \Windwalker\Form\Form
  */
 
-\Phoenix\Script\BootstrapScript::checkbox(BootstrapScript::FONTAWESOME);
+\Phoenix\Script\BootstrapScript::checkbox(\Phoenix\Script\BootstrapScript::FONTAWESOME);
 \Phoenix\Script\PhoenixScript::validation('#user-form');
 \Phoenix\Script\PhoenixScript::disableWhenSubmit('#user-form');
 
