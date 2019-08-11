@@ -15,6 +15,7 @@ define('WARDER_TABLE_USER_SOCIALS', WarderHelper::getTable('user_socials'));
 define('WARDER_TABLE_GROUPS', WarderHelper::getTable('groups'));
 define('WARDER_TABLE_USER_GROUP_MAPS', WarderHelper::getTable('user_group_maps'));
 define('WARDER_TABLE_ACTIONS', WarderHelper::getTable('actions'));
+define('WARDER_TABLE_SESSIONS', WarderHelper::getTable('sessions'));
 
 /**
  * The WarderTable class.
@@ -23,13 +24,15 @@ define('WARDER_TABLE_ACTIONS', WarderHelper::getTable('actions'));
  */
 interface WarderTable
 {
-    const USERS = WARDER_TABLE_USERS;
+    public const USERS = WARDER_TABLE_USERS;
 
-    const USER_SOCIALS = WARDER_TABLE_USER_SOCIALS;
+    public const USER_SOCIALS = WARDER_TABLE_USER_SOCIALS;
 
-    const GROUPS = WARDER_TABLE_GROUPS;
+    public const GROUPS = WARDER_TABLE_GROUPS;
 
-    const USER_GROUP_MAPS = WARDER_TABLE_USER_GROUP_MAPS;
+    public const USER_GROUP_MAPS = WARDER_TABLE_USER_GROUP_MAPS;
 
-    const ACTIONS = WARDER_TABLE_ACTIONS;
+    public const ACTIONS = WARDER_TABLE_ACTIONS;
+
+    public const SESSIONS = WARDER_TABLE_SESSIONS;
 }

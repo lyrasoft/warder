@@ -52,20 +52,32 @@ class UserInit extends AbstractMigration
             $schema->char('provider')->length(15)->comment('Social provider');
 
             $schema->addIndex('user_id');
-            $schema->addIndex('identifier');
+            $schema->addIndex('identifier(150)');
+        });
+
+        $this->createTable(WarderTable::SESSIONS, function (Schema $schema) {
+            $schema->varchar('id')->length(192);
+            $schema->text('data');
+            $schema->integer('user_id');
+            $schema->integer('time');
+
+            $schema->addIndex('id(150)');
+            $schema->addIndex('user_id');
+            $schema->addIndex('time');
         });
 
         $faker = $this->faker->create();
 
         $user = new UserData();
 
-        $user->email        = 'admin@windwalker.io';
-        $user->name         = 'Super User';
+        $user->email        = 'webadmin@simular.co';
+        $user->name         = 'Simular';
         $user->username     = 'admin';
-        $user->avatar       = $faker->unsplashImage();
-        $user->password     = Hasher::create('pass1234');
+        $user->avatar       = 'https://avatars0.githubusercontent.com/u/13175487';
+        $user->password     = Hasher::create('1234');
         $user->blocked      = 0;
         $user->receive_mail = 1;
+        $user->group        = 'admin';
         $user->activation   = '';
         $user->last_reset   = $faker->dateTimeThisYear->format($this->getDateFormat());
         $user->last_login   = $faker->dateTimeThisYear->format($this->getDateFormat());
@@ -82,5 +94,6 @@ class UserInit extends AbstractMigration
     {
         $this->drop(WarderTable::USERS);
         $this->drop(WarderTable::USER_SOCIALS);
+        $this->drop(WarderTable::SESSIONS);
     }
 }

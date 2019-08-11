@@ -66,6 +66,48 @@ class UserListener
     }
 
     /**
+     * onPackageBeforeExecute
+     *
+     * @param Event $event
+     *
+     * @return  void
+     *
+     * @since  __DEPLOY_VERSION__
+     */
+    public function onPackageBeforeExecute(Event $event): void
+    {
+        $user = Warder::getUser();
+
+        if ($user->isLogin()) {
+            $table = $this->warder->app->get('session.database.table', 'windwalker_sessions');
+
+            $db = $this->warder->app->database;
+            $tableCommand = $db->getTable($table);
+
+            if ($tableCommand->exists()) {
+                $sessId = $this->warder->app->session->getId();
+                $columns = $tableCommand->getColumns();
+
+                if (in_array('user_id', $columns, true)) {
+                    $query = $db->getQuery(true);
+
+                    $query->select('*')
+                        ->from($table)
+                        ->where('id = %q', $sessId);
+
+                    $session = $db->prepare($query)->loadOne();
+
+                    if ($session && !$session->user_id) {
+                        $session->user_id = $user->id;
+
+                        $db->getWriter()->updateOne($table, $session, 'id');
+                    }
+                }
+            }
+        }
+    }
+
+    /**
      * onUserAfterLogin
      *
      * @param Event $event
