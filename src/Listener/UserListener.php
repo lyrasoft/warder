@@ -77,8 +77,9 @@ class UserListener
     public function onPackageBeforeExecute(Event $event): void
     {
         $user = Warder::getUser();
+        $handler = $this->warder->app->get('session.handler', 'native');
 
-        if ($user->isLogin()) {
+        if ($handler === 'database' && $user->isLogin()) {
             $table = $this->warder->app->get('session.database.table', 'windwalker_sessions');
 
             $db = $this->warder->app->database;
