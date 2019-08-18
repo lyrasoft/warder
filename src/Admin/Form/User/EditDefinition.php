@@ -54,7 +54,7 @@ class EditDefinition extends AbstractFieldDefinition
                 $this->text($loginName)
                     ->label(__($langPrefix . 'user.field.' . $loginName))
                     ->addFilter('trim')
-                    ->autocomplete('false')
+                    ->autocomplete('new-password')
                     ->required(true);
             }
 
@@ -64,21 +64,21 @@ class EditDefinition extends AbstractFieldDefinition
                 ->addFilter('trim')
                 ->addValidator(EmailValidator::class)
                 ->addClass('validate-email')
-                ->autocomplete('false')
+                ->autocomplete('new-password')
                 ->required();
 
             // Password
             $this->password('password')
                 ->label(__($langPrefix . 'user.field.password'))
                 ->attr('data-role', 'password')
-                ->autocomplete('off');
+                ->autocomplete('new-password');
 
             $this->password('password2')
                 ->label(__($langPrefix . 'user.field.password.confirm'))
                 ->attr('data-validate', 'password-confirm')
                 ->attr('data-confirm-target', '[data-role=password]')
                 ->attr('data-custom-error-message', __('warder.forget.reset.message.password.not.match'))
-                ->autocomplete('off');
+                ->autocomplete('new-password');
         });
 
         // Created fieldset

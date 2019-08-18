@@ -73,6 +73,7 @@ class EditDefinition extends AbstractFieldDefinition
                 $this->text($loginName)
                     ->label(__($langPrefix . 'user.field.' . $loginName))
                     ->addFilter('trim')
+                    ->autocomplete('new-password')
                     ->required();
             }
 
@@ -81,15 +82,16 @@ class EditDefinition extends AbstractFieldDefinition
                 ->addFilter('trim')
                 ->addValidator(EmailValidator::class)
                 ->addClass('validate-email')
+                ->autocomplete('new-password')
                 ->required();
 
             $this->password('password')
                 ->label(__($langPrefix . 'user.field.password'))
-                ->autocomplete('false');
+                ->autocomplete('new-password');
 
             $this->password('password2')
                 ->label(__($langPrefix . 'user.field.password.confirm'))
-                ->autocomplete('false');
+                ->autocomplete('new-password');
         });
     }
 }
