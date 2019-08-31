@@ -20,8 +20,8 @@ use Windwalker\Core\User\Exception\AuthenticateFailException;
 use Windwalker\Core\User\User;
 use Windwalker\Core\View\HtmlView;
 use Windwalker\Event\Event;
-use function Windwalker\h;
 use Windwalker\Session\Session;
+use function Windwalker\h;
 
 /**
  * The UserListener class.
@@ -76,17 +76,17 @@ class UserListener
      */
     public function onPackageBeforeExecute(Event $event): void
     {
-        $user = Warder::getUser();
+        $user    = Warder::getUser();
         $handler = $this->warder->app->get('session.handler', 'native');
 
         if ($handler === 'database' && $user->isLogin()) {
             $table = $this->warder->app->get('session.database.table', 'windwalker_sessions');
 
-            $db = $this->warder->app->database;
+            $db           = $this->warder->app->database;
             $tableCommand = $db->getTable($table);
 
             if ($tableCommand->exists()) {
-                $sessId = $this->warder->app->session->getId();
+                $sessId  = $this->warder->app->session->getId();
                 $columns = $tableCommand->getColumns();
 
                 if (in_array('user_id', $columns, true)) {
@@ -184,6 +184,10 @@ class UserListener
         $class = $this->warder->get('class.handler', UserHandler::class);
 
         User::setHandler($this->warder->app->make($class, ['package' => $this->warder]));
+
+        if (env('WARDER_SESSION_DISABLE_PHP_GC')) {
+            ini_set('session.gc_probability', 0);
+        }
     }
 
     /**
@@ -233,7 +237,7 @@ class UserListener
         $userSwitcher = $this->warder->service(UserSwitchService::class);
 
         if ($userSwitcher->hasSwitched() && $this->warder->isAdmin()) {
-            $user = Warder::getUser();
+            $user   = Warder::getUser();
             $router = $this->warder->getCurrentPackage()->router;
 
             $msg = h(
@@ -265,6 +269,36 @@ class UserListener
             );
 
             $this->warder->app->addMessage((string) $msg, 'warning');
+        }
+    }
+
+    /**
+     * onAfterRespond
+     *
+     * @param Event $event
+     *
+     * @return  void
+     *
+     * @throws \Exception
+     * @since  __DEPLOY_VERSION__
+     */
+    public function onAfterRespond(Event $event): void
+    {
+        $handler = $this->warder->app->get('session.handler', 'native');
+
+        if ($handler === 'database') {
+            $session = $this->warder->app->session;
+
+            $probability = env('WARDER_SESSION_GC_PROBABILITY', 1);
+            $divisor     = env('WARDER_SESSION_GC_DIVISOR', 1000);
+
+            $random = random_int(1, $divisor);
+
+            if ($probability > 0 && $random <= $probability) {
+                $session->getHandler()->gc(
+                    $this->warder->app->get('session.expire_time', 150) * 60
+                );
+            }
         }
     }
 }
