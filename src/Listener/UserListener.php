@@ -135,7 +135,9 @@ class UserListener
                 $_COOKIE[$bridge->getName()],
                 time() + 60 * 60 * 24 * 100,
                 '/' . ltrim($session->getOption('cookie_path', $uri->path), '/'),
-                $session->getOption('cookie_domain')
+                $session->getOption('cookie_domain'),
+                false,
+                true
             );
         }
     }
