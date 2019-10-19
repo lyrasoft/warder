@@ -83,12 +83,9 @@ class LoginSaveController extends AbstractSaveController
 
         $this->repository->login($data->$loginName, $data->password, $data->remember, []);
 
-        $user = User::get();
-        $keyName = $this->repository->getKeyName();
-
         $this->repository->getDataMapper()->updateBatch(
             ['last_login' => Chronos::create()->toSql()],
-            [$keyName => $user->$keyName]
+            [$loginName => $data->$loginName]
         );
     }
 
