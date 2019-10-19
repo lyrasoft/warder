@@ -8,6 +8,7 @@
 
 namespace Lyrasoft\Warder\Data;
 
+use Lyrasoft\Warder\Helper\AvatarUploadHelper;
 use Lyrasoft\Warder\Warder;
 
 /**
@@ -148,5 +149,17 @@ class UserData extends \Windwalker\Core\User\UserData implements WarderUserDataI
     public function isLogin()
     {
         return $this->isMember();
+    }
+
+    /**
+     * defaultAvatar
+     *
+     * @return  string
+     *
+     * @since  __DEPLOY_VERSION__
+     */
+    public static function defaultAvatar(): string
+    {
+        return AvatarUploadHelper::getDefaultImage();
     }
 }
