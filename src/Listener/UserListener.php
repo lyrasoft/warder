@@ -2,7 +2,7 @@
 /**
  * Part of eng4tw project.
  *
- * @copyright  Copyright (C) 2016 {ORGANIZATION}. All rights reserved.
+ * @copyright  Copyright (C) 2016 LYRASOFT. All rights reserved.
  * @license    GNU General Public License version 2 or later.
  */
 
@@ -72,7 +72,7 @@ class UserListener
      *
      * @return  void
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7.9
      */
     public function onPackageBeforeExecute(Event $event): void
     {
@@ -282,7 +282,7 @@ class UserListener
      * @return  void
      *
      * @throws \Exception
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7.9
      */
     public function onAfterRespond(Event $event): void
     {

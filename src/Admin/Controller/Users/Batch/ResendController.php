@@ -2,8 +2,8 @@
 /**
  * Part of emooc project.
  *
- * @copyright  Copyright (C) 2017 ${ORGANIZATION}.
- * @license    __LICENSE__
+ * @copyright  Copyright (C) 2017 LYRASOFT.
+ * @license    LGPL-2.0-or-later
  */
 
 namespace Lyrasoft\Warder\Admin\Controller\Users\Batch;

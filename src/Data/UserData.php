@@ -2,7 +2,7 @@
 /**
  * Part of Warder project.
  *
- * @copyright  Copyright (C) 2015 {ORGANIZATION}. All rights reserved.
+ * @copyright  Copyright (C) 2015 LYRASOFT. All rights reserved.
  * @license    GNU General Public License version 2 or later.
  */
 
@@ -156,7 +156,7 @@ class UserData extends \Windwalker\Core\User\UserData implements WarderUserDataI
      *
      * @return  string
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7.9
      */
     public static function defaultAvatar(): string
     {
