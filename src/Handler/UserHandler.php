@@ -180,6 +180,8 @@ class UserHandler implements UserHandlerInterface
 
         $session->set($this->warder->get('user.session_name', 'user'), $user->dump(true));
 
+        $this->resetCache();
+
         return true;
     }
 
@@ -196,6 +198,8 @@ class UserHandler implements UserHandlerInterface
 
         $session->destroy();
         $session->restart();
+
+        $this->resetCache();
 
         return true;
     }
