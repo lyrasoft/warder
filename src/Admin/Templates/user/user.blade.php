@@ -1,6 +1,6 @@
 {{-- Part of phoenix project. --}}
 
-@extends($warder->extends)
+@extends($warder->editExtends)
 
 @section('toolbar-buttons')
     @include('toolbar')

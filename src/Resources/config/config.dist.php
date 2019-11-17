@@ -13,7 +13,7 @@ return [
      */
     'user' => [
         'login_name' => 'username',
-        'default_group' => 'member'
+        'default_group' => 'member',
     ],
 
     /*
@@ -26,6 +26,7 @@ return [
         'groups' => 'groups',
         'user_group_maps' => 'user_group_maps',
         'actions' => 'actions',
+        'sessions' => 'sessions'
     ],
 
     /*
@@ -33,7 +34,7 @@ return [
      * ------------------------------------------------
      */
     'methods' => [
-        'warder' => \Lyrasoft\Warder\Authentication\Method\WarderMethod::class,
+        'warder' => \Lyrasoft\Warder\Authentication\Method\WarderMethod::class
     ],
 
     /*
@@ -57,19 +58,47 @@ return [
         'package' => ['front', 'main'],
         'view' => [
             'extends' => '_global.html',
-            'noauth_extends' => '_global.html',
+            'edit_extends' => '_global.html',
+            'noauth_extends' => '_global.html'
         ],
         'redirect' => [
             'login' => 'home',
             'logout' => 'login',
-            'forget' => 'login',
+            'forget' => 'login'
         ],
         'login' => [
-            'return_key' => 'return',
+            'return_key' => 'return'
         ],
         'language' => [
             'prefix' => 'warder.',
         ],
+    ],
+
+    /*
+     * Backend package settings.
+     * ------------------------------------------------
+     */
+    'admin' => [
+        /*
+         * The backend packages
+         * @var  string|array
+         */
+        'package' => ['admin'],
+        'view' => [
+            'extends' => '_global.admin.admin',
+            'edit_extends' => '_global.admin.admin',
+            'noauth_extends' => '_global.admin.admin'
+        ],
+        'redirect' => [
+            'login' => 'home',
+            'logout' => 'login'
+        ],
+        'login' => [
+            'return_key' => 'return'
+        ],
+        'language' => [
+            'prefix' => 'warder.'
+        ]
     ],
 
     /*
@@ -88,42 +117,16 @@ return [
     ],
 
     /*
-     * Backend package settings.
-     * ------------------------------------------------
-     */
-    'admin' => [
-        /*
-         * The backend packages
-         * @var  string|array
-         */
-        'package' => ['admin'],
-        'view' => [
-            'extends' => '_global.admin.admin',
-            'noauth_extends' => '_global.admin.admin',
-        ],
-        'redirect' => [
-            'login' => 'home',
-            'logout' => 'login',
-        ],
-        'login' => [
-            'return_key' => 'return',
-        ],
-        'language' => [
-            'prefix' => 'warder.',
-        ],
-    ],
-
-    /*
      * User Handler Classes.
      * ------------------------------------------------
      */
     'class' => [
         'handler' => \Lyrasoft\Warder\Handler\UserHandler::class,
-        'data' => \Lyrasoft\Warder\Data\UserData::class,
+        'data' => \Lyrasoft\Warder\Data\UserData::class
     ],
 
     'listeners' => [
         \Lyrasoft\Warder\Listener\UserListener::class,
-        \Lyrasoft\Warder\Listener\WarderListener::class,
-    ],
+        \Lyrasoft\Warder\Listener\WarderListener::class
+    ]
 ];

@@ -110,6 +110,7 @@ class WarderListener
             // Extends
             $view['warder'] = new Data([
                 'extends' => $this->warder->get('frontend.view.extends', '_global.html'),
+                'editExtends' => $this->warder->get('frontend.view.edit_extends', $this->warder->get('frontend.view.extends')),
                 'noauthExtends' => $this->warder->get(
                     'frontend.view.noauth_extends',
                     $this->warder->get('frontend.view.extends', '_global.html')
@@ -132,6 +133,7 @@ class WarderListener
             // Extends
             $view['warder'] = new Data([
                 'extends' => $this->warder->get('admin.view.extends', '_global.admin.admin'),
+                'editExtends' => $this->warder->get('admin.view.edit_extends', $this->warder->get('admin.view.extends')),
                 'noauthExtends' => $this->warder->get(
                     'admin.view.noauth_extends',
                     $this->warder->get('admin.view.extends', '_global.admin.admin')
