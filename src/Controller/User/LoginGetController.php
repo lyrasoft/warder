@@ -11,6 +11,7 @@ namespace Lyrasoft\Warder\Controller\User;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\Display\DisplayController;
+use Windwalker\Router\Exception\RouteNotFoundException;
 
 /**
  * The GetController class.
@@ -34,6 +35,12 @@ class LoginGetController extends DisplayController
      */
     protected function prepareExecute()
     {
+        $warder = WarderHelper::getPackage();
+
+        if (!$warder->get('frontend.allow_login', true)) {
+            throw new RouteNotFoundException('Not found');
+        }
+
         $return = $this->input->getBase64(
             $this->package->get('frontend.login.return_key', 'return')
         );

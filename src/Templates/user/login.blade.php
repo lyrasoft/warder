@@ -28,6 +28,8 @@ $form->setAttributes('labelWidth', 'col-md-12', 'login')
 
 $reActivate = $app->session->get(\Lyrasoft\Warder\User\ActivationService::RE_ACTIVATE_SESSION_KEY);
 $app->session->remove(\Lyrasoft\Warder\User\ActivationService::RE_ACTIVATE_SESSION_KEY);
+
+$allowRegistration = \Lyrasoft\Warder\Helper\WarderHelper::getPackage()->get('allow_registration', true);
 ?>
 
 @extends($warder->noauthExtends)
@@ -89,13 +91,15 @@ $app->session->remove(\Lyrasoft\Warder\User\ActivationService::RE_ACTIVATE_SESSI
                                         @translate($warder->langPrefix . 'login.submit.button')
                                     </button>
                                 </p>
-                                <p class="register-button-wrap">
-                                    <a class="go-register-button btn btn-success btn-block"
-                                        href="{{ $router->route('registration') }}">
-                                        <span class="fa fa-user-plus"></span>
-                                        @translate($warder->langPrefix . 'login.register.button')
-                                    </a>
-                                </p>
+                                @if ($allowRegistration)
+                                    <p class="register-button-wrap">
+                                        <a class="go-register-button btn btn-success btn-block"
+                                            href="{{ $router->route('registration') }}">
+                                            <span class="fa fa-user-plus"></span>
+                                            @translate($warder->langPrefix . 'login.register.button')
+                                        </a>
+                                    </p>
+                                @endif
                                 <p class="login-action-wrap">
                                     <a class="forget-link" href="{{ $router->route('forget_request') }}">
                                         @translate($warder->langPrefix . 'login.forget.link')

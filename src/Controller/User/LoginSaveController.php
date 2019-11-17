@@ -17,6 +17,7 @@ use Windwalker\Core\DateTime\Chronos;
 use Windwalker\Core\User\Exception\LoginFailException;
 use Windwalker\Core\User\User;
 use Windwalker\Data\DataInterface;
+use Windwalker\Router\Exception\RouteNotFoundException;
 
 /**
  * The SaveController class.
@@ -55,6 +56,12 @@ class LoginSaveController extends AbstractSaveController
      */
     protected function prepareExecute()
     {
+        $warder = WarderHelper::getPackage();
+
+        if (!$warder->get('frontend.allow_login', true)) {
+            throw new RouteNotFoundException('Not found');
+        }
+
         if (Warder::isLogin()) {
             $this->redirect($this->getSuccessRedirect());
 

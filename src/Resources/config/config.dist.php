@@ -47,6 +47,11 @@ return [
     ],
 
     /*
+     * Allow user register new account.
+     */
+    'allow_registration' => true,
+
+    /*
      * Frontend package settings
      * ------------------------------------------------
      */
@@ -72,6 +77,7 @@ return [
         'language' => [
             'prefix' => 'warder.',
         ],
+        'allow_login' => true,
     ],
 
     /*

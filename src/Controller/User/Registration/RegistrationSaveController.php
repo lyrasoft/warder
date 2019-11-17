@@ -19,6 +19,7 @@ use Windwalker\Core\Router\CoreRouter;
 use Windwalker\Core\View\HtmlView;
 use Windwalker\Data\DataInterface;
 use Windwalker\DI\Annotation\Inject;
+use Windwalker\Router\Exception\RouteNotFoundException;
 use Windwalker\Validator\Rule\EmailValidator;
 
 /**
@@ -102,9 +103,13 @@ class RegistrationSaveController extends AbstractSaveController
      */
     protected function prepareExecute()
     {
-        if (Warder::isLogin()) {
-            $warder = WarderHelper::getPackage();
+        $warder = WarderHelper::getPackage();
 
+        if (!$warder->get('allow_registration', true)) {
+            throw new RouteNotFoundException('Not found');
+        }
+
+        if (Warder::isLogin()) {
             $this->redirect($this->router->route($warder->get('frontend.redirect.login', 'home')));
 
             return;

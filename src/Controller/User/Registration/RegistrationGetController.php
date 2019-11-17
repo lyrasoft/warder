@@ -15,6 +15,7 @@ use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\Display\EditDisplayController;
 use Windwalker\Core\Repository\Repository;
 use Windwalker\Core\View\AbstractView;
+use Windwalker\Router\Exception\RouteNotFoundException;
 
 /**
  * The GetController class.
@@ -52,9 +53,13 @@ class RegistrationGetController extends EditDisplayController
      */
     protected function prepareExecute()
     {
-        if (Warder::isLogin()) {
-            $warder = WarderHelper::getPackage();
+        $warder = WarderHelper::getPackage();
 
+        if (!$warder->get('allow_registration', true)) {
+            throw new RouteNotFoundException('Not found');
+        }
+
+        if (Warder::isLogin()) {
             $this->redirect($this->router->route($warder->get('frontend.redirect.login', 'home')));
 
             return;
