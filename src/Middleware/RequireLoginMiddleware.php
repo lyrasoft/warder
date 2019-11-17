@@ -13,6 +13,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Windwalker\Core\Application\Middleware\AbstractWebMiddleware;
 use Windwalker\Middleware\MiddlewareInterface;
+use Windwalker\Utilities\Classes\OptionAccessTrait;
 
 /**
  * The RequireLoginMiddleware class.
@@ -21,6 +22,16 @@ use Windwalker\Middleware\MiddlewareInterface;
  */
 class RequireLoginMiddleware extends AbstractWebMiddleware
 {
+    use OptionAccessTrait;
+
+    /**
+     * RequireLoginMiddleware constructor.
+     */
+    public function __construct(array $options = [])
+    {
+        $this->options = $options;
+    }
+
     /**
      * Middleware logic to be invoked.
      *
@@ -33,8 +44,37 @@ class RequireLoginMiddleware extends AbstractWebMiddleware
      */
     public function __invoke(Request $request, Response $response, $next = null)
     {
-        if (!Warder::isLogin()) {
-            Warder::goToLogin($this->app->uri->full);
+        $isLogin = false;
+        $handler = $this->options['handler'];
+
+        // Check login handler
+        if (is_callable($handler)) {
+            $isLogin = $this->app->getContainer()->call($handler);
+        } else {
+            $isLogin = Warder::isLogin();
+        }
+
+        // After failure hook
+        if (!$isLogin) {
+            $loginFailure = $this->options['login_failure'];
+
+            if (is_callable($loginFailure)) {
+                $this->app->getContainer()->call($loginFailure);
+            } else {
+                Warder::goToLogin($this->app->uri->full);
+            }
+        }
+
+        // After success hook
+        $loginSuccess = $this->options['login_success'];
+
+        $this->app->getContainer()->call($loginSuccess);
+
+        // Authorisation
+        $auth = $this->options['authorisation'];
+
+        if (is_callable($auth)) {
+            $this->app->getContainer()->call($loginSuccess);
         }
 
         return $next($request, $response);
