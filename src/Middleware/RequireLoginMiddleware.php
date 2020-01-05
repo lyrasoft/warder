@@ -45,7 +45,7 @@ class RequireLoginMiddleware extends AbstractWebMiddleware
     public function __invoke(Request $request, Response $response, $next = null)
     {
         $isLogin = false;
-        $handler = $this->options['handler'];
+        $handler = $this->getOption('handler');
 
         // Check login handler
         if (is_callable($handler)) {
@@ -56,7 +56,7 @@ class RequireLoginMiddleware extends AbstractWebMiddleware
 
         // After failure hook
         if (!$isLogin) {
-            $loginFailure = $this->options['login_failure'];
+            $loginFailure = $this->getOption('login_failure');
 
             if (is_callable($loginFailure)) {
                 $this->app->getContainer()->call($loginFailure);
@@ -66,12 +66,14 @@ class RequireLoginMiddleware extends AbstractWebMiddleware
         }
 
         // After success hook
-        $loginSuccess = $this->options['login_success'];
+        $loginSuccess = $this->getOption('login_success');
 
-        $this->app->getContainer()->call($loginSuccess);
+        if (is_callable($loginSuccess)) {
+            $this->app->getContainer()->call($loginSuccess);
+        }
 
         // Authorisation
-        $auth = $this->options['authorisation'];
+        $auth = $this->getOption('authorisation');
 
         if (is_callable($auth)) {
             $this->app->getContainer()->call($loginSuccess);
