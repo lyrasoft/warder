@@ -133,7 +133,7 @@ class UserData extends \Windwalker\Core\User\UserData implements WarderUserDataI
      *
      * @return  mixed|null
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7.14
      */
     public function getProp(string $name, $default = null)
     {

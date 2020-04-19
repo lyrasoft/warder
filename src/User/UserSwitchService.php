@@ -126,7 +126,7 @@ class UserSwitchService
      *
      * @return  static
      *
-     * @since  __DEPLOY_VERSION__
+     * @since  1.7.14
      */
     public function frontendLogin(WarderUserDataInterface $targetUser): self
     {
