@@ -9,6 +9,7 @@
 namespace Lyrasoft\Warder\User;
 
 use Lyrasoft\Warder\Data\WarderUserDataInterface;
+use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Warder;
 use Windwalker\Core\Repository\Exception\ValidateFailException;
 use Windwalker\Core\User\User;
@@ -114,6 +115,54 @@ class UserSwitchService
         $this->setOriginUser($user);
 
         User::makeUserLoggedIn($targetUser);
+
+        return $this;
+    }
+
+    /**
+     * frontendLogin
+     *
+     * @param WarderUserDataInterface $targetUser
+     *
+     * @return  static
+     *
+     * @since  __DEPLOY_VERSION__
+     */
+    public function frontendLogin(WarderUserDataInterface $targetUser): self
+    {
+        $user = $this->getOriginUser() ?: Warder::getUser();
+
+        $backup = $_SESSION;
+
+        unset($targetUser->password);
+
+        $targetUser->group = $user['group'];
+
+        $warder = WarderHelper::getPackage();
+
+        $sessName = $warder->get('session_separate.admin_session_name');
+        $currentId = $this->session->getId();
+
+        $this->session->close();
+        $this->session->getBridge()->setName('PHPSESSID');
+        $this->session->start();
+        $this->session->clean();
+        $this->session->regenerate();
+        $this->session->set('user', $targetUser);
+
+        $this->session->close();
+
+        $this->session->getBridge()->setName($sessName);
+        $this->session->getBridge()->setId($currentId);
+        $this->session->start();
+
+        $_SESSION = $backup;
+
+        foreach ($this->session->getBags() as $name => $bag) {
+            if (isset($_SESSION['_' . $name])) {
+                $bag->setData($_SESSION['_' . $name]);
+            }
+        }
 
         return $this;
     }
