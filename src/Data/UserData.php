@@ -126,6 +126,21 @@ class UserData extends \Windwalker\Core\User\UserData implements WarderUserDataI
     }
 
     /**
+     * getProp
+     *
+     * @param string $name
+     * @param mixed  $default
+     *
+     * @return  mixed|null
+     *
+     * @since  __DEPLOY_VERSION__
+     */
+    public function getProp(string $name, $default = null)
+    {
+        return $this->getGroupProperties()[$name] ?? $default;
+    }
+
+    /**
      * checkGroup
      *
      * @param callable $handler

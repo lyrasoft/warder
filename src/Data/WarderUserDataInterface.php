@@ -99,6 +99,18 @@ interface WarderUserDataInterface extends UserDataInterface
     public function getGroupProperties(): array;
 
     /**
+     * getProp
+     *
+     * @param string $name
+     * @param mixed  $default
+     *
+     * @return  mixed|null
+     *
+     * @since  __DEPLOY_VERSION__
+     */
+    public function getProp(string $name, $default = null);
+
+    /**
      * checkGroup
      *
      * @param callable $handler
