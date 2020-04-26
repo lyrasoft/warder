@@ -4,7 +4,7 @@
  * Part of earth project.
  *
  * @copyright  Copyright (C) 2020 .
- * @license    __LICENSE__
+ * @license    LGPL-2.0-or-later
  */
 
 namespace Lyrasoft\Warder\Admin\DataMapper;
@@ -15,7 +15,7 @@ use Windwalker\DataMapper\AbstractDatabaseMapperProxy;
 /**
  * The SessionMapper class.
  *
- * @since  __DEPLOY_VERSION__
+ * @since  1.7.15
  */
 class SessionMapper extends AbstractDatabaseMapperProxy
 {
