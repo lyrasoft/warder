@@ -84,6 +84,12 @@ class UserHandler implements UserHandlerInterface
                     if ($userData->notNull()) {
                         unset($userData->password);
                         $user = $userData->dump();
+
+                        $group = $session->get('keepgroup');
+
+                        if ($group) {
+                            $user['group'] = $group;
+                        }
                     }
                 }
 

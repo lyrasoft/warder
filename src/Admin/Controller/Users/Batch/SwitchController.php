@@ -8,12 +8,14 @@
 
 namespace Lyrasoft\Warder\Admin\Controller\Users\Batch;
 
+use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\User\UserSwitchService;
 use Lyrasoft\Warder\Warder;
 use Windwalker\Core\Controller\AbstractController;
 use Windwalker\Core\Frontend\Bootstrap;
 use Windwalker\Core\Repository\Exception\ValidateFailException;
 use Windwalker\DI\Annotation\Inject;
+use Windwalker\Utilities\Arr;
 
 /**
  * The SwitchController class.
@@ -30,6 +32,13 @@ class SwitchController extends AbstractController
      * @var UserSwitchService
      */
     protected $userSwitcher;
+
+    /**
+     * @var string[]
+     */
+    protected $defaultOptions = [
+        'group_field' => 'group'
+    ];
 
     /**
      * The main execution process.
@@ -59,6 +68,12 @@ class SwitchController extends AbstractController
     protected function change(): void
     {
         $ids = $this->input->getArray('id');
+        $options = Arr::mergeRecursive(
+            $this->defaultOptions,
+            [
+                'keepgroup' => $this->input->post->get('keepgroup'),
+            ]
+        );
 
         if ($ids === []) {
             throw new ValidateFailException('No user ID');
@@ -69,7 +84,13 @@ class SwitchController extends AbstractController
 
         $targetUser = Warder::getUser($id);
 
-        $this->userSwitcher->switch($targetUser);
+        $warder = WarderHelper::getPackage();
+
+        if ($warder->get('session_separate.enabled')) {
+            $this->userSwitcher->frontendLogin($targetUser, $options);
+        } else {
+            $this->userSwitcher->switch($targetUser, $options);
+        }
 
         $this->addMessage(__('warder.message.user.switch.success', $targetUser->name), Bootstrap::MSG_SUCCESS);
     }

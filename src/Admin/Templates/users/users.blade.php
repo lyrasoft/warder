@@ -189,14 +189,30 @@ $groups = \Lyrasoft\Warder\Warder::getGroups();
                             </td>
 
                             <td class="text-center">
-                                @if ($user->id !== $item->id)
-                                    <button type="button"
-                                        class="user-switch-button btn btn-default btn-outline-secondary btn-sm hasTooltip"
-                                        title="@lang($warder->langPrefix . '.user.switch.desc')"
-                                        onclick="Phoenix.Grid.doTask('switch', {{ $i }});">
+                                <div class="dropdown">
+                                    <button class="user-switch-button btn btn-outline-secondary btn-sm dropdown-toggle"
+                                        type="button"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false"
+                                    >
                                         <span class="fa fa-eye"></span>
                                     </button>
-                                @endif
+                                    <div class="dropdown-menu">
+                                        <button type="button"
+                                            class="dropdown-item"
+                                            onclick="Phoenix.Grid.doTask('switch', {{ $i }}, null, { keepgroup: 0 });">
+                                            <span class="fa fa-people-arrows"></span>
+                                            @lang($warder->langPrefix . '.user.switch.button.default')
+                                        </button>
+                                        <button type="button"
+                                            class="dropdown-item"
+                                            onclick="Phoenix.Grid.doTask('switch', {{ $i }}, null, { keepgroup: 1 });">
+                                            <span class="fa fa-user-shield"></span>
+                                            @lang($warder->langPrefix . '.user.switch.button.keepgroup')
+                                        </button>
+                                    </div>
+                                </div>
                             </td>
 
                             {{-- Delete --}}

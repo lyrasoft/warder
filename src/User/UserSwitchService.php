@@ -91,6 +91,7 @@ class UserSwitchService
     public function removeOriginUser(): self
     {
         $this->session->remove(static::ORIGIN_USER_SESSION_KEY);
+        $this->session->remove('keepgroup');
 
         return $this;
     }
@@ -98,19 +99,25 @@ class UserSwitchService
     /**
      * switch
      *
-     * @param WarderUserDataInterface $targetUser
+     * @param  WarderUserDataInterface  $targetUser
+     * @param  array                    $options
      *
      * @return  static
      *
      * @since  1.7
      */
-    public function switch(WarderUserDataInterface $targetUser): self
+    public function switch(WarderUserDataInterface $targetUser, array $options = []): self
     {
         $user = $this->getOriginUser() ?: Warder::getUser();
 
         unset($targetUser->password);
 
-        $targetUser->group = $user['group'];
+        if ($options['keepgroup'] ?? true) {
+            $groupField = $options['group_field'] ?? 'group';
+            $targetUser->$groupField = $user[$groupField];
+
+            $this->session->set('keepgroup', $targetUser->$groupField);
+        }
 
         $this->setOriginUser($user);
 
@@ -122,13 +129,14 @@ class UserSwitchService
     /**
      * frontendLogin
      *
-     * @param WarderUserDataInterface $targetUser
+     * @param  WarderUserDataInterface  $targetUser
+     * @param  array                    $options
      *
      * @return  static
      *
      * @since  1.7.14
      */
-    public function frontendLogin(WarderUserDataInterface $targetUser): self
+    public function frontendLogin(WarderUserDataInterface $targetUser, array $options = []): self
     {
         $user = $this->getOriginUser() ?: Warder::getUser();
 
@@ -136,7 +144,12 @@ class UserSwitchService
 
         unset($targetUser->password);
 
-        $targetUser->group = $user['group'];
+        if ($options['keepgroup'] ?? true) {
+            $groupField = $options['group_field'] ?? 'group';
+            $targetUser->$groupField = $user[$groupField];
+
+            $this->session->set('keepgroup', $targetUser->$groupField);
+        }
 
         $warder = WarderHelper::getPackage();
 

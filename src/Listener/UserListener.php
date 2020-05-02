@@ -241,6 +241,7 @@ class UserListener
         if ($userSwitcher->hasSwitched() && $this->warder->isAdmin()) {
             $user   = Warder::getUser();
             $router = $this->warder->getCurrentPackage()->router;
+            $group = $this->warder->app->session->get('keepgroup');
 
             $msg = h(
                 'span',
@@ -249,7 +250,9 @@ class UserListener
                     h(
                         'span',
                         [],
-                        __('warder.message.user.switch.switched.desc', $user->name)
+                        $group
+                            ? __('warder.message.user.switch.switched.keepgroup.desc', $user->name)
+                            : __('warder.message.user.switch.switched.desc', $user->name)
                     ),
                     h(
                         'a',
