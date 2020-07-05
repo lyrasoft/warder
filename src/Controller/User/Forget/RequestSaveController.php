@@ -104,7 +104,9 @@ class RequestSaveController extends AbstractSaveController
         }
 
         $token = Warder::getToken($user->email);
-        $link  = $this->router->to('forget_reset', ['token' => $token, 'email' => Punycode::toAscii($email)])->full();
+        $link  = $this->router->to('forget_reset', ['token' => $token, 'email' => Punycode::toAscii($email)])
+            ->c('locale', false)
+            ->full();
 
         $user->reset_token = Hasher::create($token);
         $user->last_reset  = Chronos::create()->toSql();

@@ -71,7 +71,9 @@ class ActivationService
             $link = $router->to(
                 'registration_activate',
                 ['email' => $user->email, 'token' => $user->token]
-            )->full();
+            )
+                ->c('locale', false)
+                ->full();
 
             $message->subject(__('warder.registration.mail.subject'))
                 ->to($user->email)

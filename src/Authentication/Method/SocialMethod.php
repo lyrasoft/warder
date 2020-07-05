@@ -211,7 +211,13 @@ class SocialMethod extends AbstractMethod
         $package = $this->warder->app->getPackage();
 
         $haConfig = [
-            'base_url' => $package->router->route('social_auth', null, CoreRouter::TYPE_FULL),
+            'base_url' => $package->router->to(
+                'social_auth',
+                null,
+                ['locale' => false]
+            )
+                ->full()
+                ->__toString(),
             'providers' => [
                 'Facebook' => [
                     'enabled' => $this->warder->app->get('social_login.facebook.enabled'),
@@ -284,7 +290,9 @@ class SocialMethod extends AbstractMethod
             'provider' => $provider,
             CsrfProtection::getFormToken() => 1,
             'return' => $this->warder->app->input->getBase64('return'),
-        ])->full();
+        ])
+            ->c('locale', false)
+            ->full();
 
         return $auth::authenticate($provider, [
             'hauth_return_to' => $callbackUrl,
