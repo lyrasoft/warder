@@ -61,7 +61,7 @@ class WarderPackage extends AbstractPackage
             ReflectionHelper::getNamespaceName($this) . '/Admin/DataMapper',
             PriorityQueue::LOW
         );
-        FieldDefinitionResolver::addNamespace(ReflectionHelper::getNamespaceName($this) . '/Form');
+        // FieldDefinitionResolver::addNamespace(ReflectionHelper::getNamespaceName($this) . '/Form');
     }
 
     /**

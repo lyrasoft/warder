@@ -9,6 +9,7 @@
 namespace Lyrasoft\Warder\Admin\Form\User;
 
 use Lyrasoft\Warder\Helper\WarderHelper;
+use Lyrasoft\Warder\WarderPackage;
 use Windwalker\Core\Form\AbstractFieldDefinition;
 use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Form\Form;
@@ -32,7 +33,7 @@ class LoginDefinition extends AbstractFieldDefinition
      *
      * @param AbstractPackage $warder
      */
-    public function __construct(AbstractPackage $warder = null)
+    public function __construct(WarderPackage $warder = null)
     {
         $this->warder = $warder ?: WarderHelper::getPackage();
     }

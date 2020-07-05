@@ -53,7 +53,7 @@ class UserHtmlView extends EditView
     protected function prepareRender($data)
     {
         if ($this->getLayout() === 'login') {
-            $this->formDefinition = new LoginDefinition(WarderHelper::getPackage());
+            $this->formDefinition = 'login';
             $this->formControl    = 'user';
         }
 
