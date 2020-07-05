@@ -8,6 +8,7 @@
 
 namespace Lyrasoft\Warder\Authentication\Method;
 
+use Lyrasoft\Warder\Admin\DataMapper\UserMapper;
 use Lyrasoft\Warder\Admin\DataMapper\UserSocialMapper;
 use Lyrasoft\Warder\Data\UserData;
 use Lyrasoft\Warder\Repository\UserRepository;
@@ -138,6 +139,13 @@ class SocialMethod extends AbstractMethod
 
             if ($createUser) {
                 $user = $this->createUser($credential);
+            } else {
+                UserMapper::updateBatch(
+                    [
+                        'activation' => ''
+                    ],
+                    ['id' => $user->id]
+                );
             }
 
             $socialMapping = $this->createSocialMapping($user, $mapping);
