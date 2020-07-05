@@ -60,6 +60,8 @@ class UserRepository extends \Lyrasoft\Warder\Admin\Repository\UserRepository
 
         $user->blocked = $user->id === null ? 1 : $user->blocked;
 
-        $user->group = $user->group ?: Warder::getWarderPackage()->get('user.default_group', 'member');
+        if ($user->_isNew) {
+            $user->group = $user->group ?: Warder::getWarderPackage()->get('user.default_group', 'member');
+        }
     }
 }

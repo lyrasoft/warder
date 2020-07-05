@@ -130,9 +130,7 @@ class SaveController extends AbstractSaveController
         $data->id = $this->user->id;
 
         // Remove password so that session will not store this data
-        unset($this->data['password']);
-        unset($this->data['password2']);
-        unset($data->avatar);
+        unset($this->data['password'], $this->data['password2'], $data->avatar);
     }
 
     /**
@@ -165,7 +163,7 @@ class SaveController extends AbstractSaveController
     /**
      * validate
      *
-     * @param  DataInterface $data
+     * @param DataInterface $data
      *
      * @return  void
      *
@@ -173,7 +171,7 @@ class SaveController extends AbstractSaveController
      */
     protected function validate(DataInterface $data)
     {
-        $validator = new EmailValidator;
+        $validator = new EmailValidator();
 
         if (!$validator->validate($data->email)) {
             throw new ValidateFailException(__($this->langPrefix . 'message.email.invalid'));
@@ -211,7 +209,7 @@ class SaveController extends AbstractSaveController
     /**
      * getFailRedirect
      *
-     * @param  DataInterface $data
+     * @param DataInterface $data
      *
      * @return  string
      * @throws \Psr\Cache\InvalidArgumentException
@@ -224,7 +222,7 @@ class SaveController extends AbstractSaveController
     /**
      * getFailRedirect
      *
-     * @param  DataInterface $data
+     * @param DataInterface $data
      *
      * @return  string
      * @throws \Psr\Cache\InvalidArgumentException
