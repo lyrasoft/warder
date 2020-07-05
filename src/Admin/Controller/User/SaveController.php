@@ -63,7 +63,7 @@ class SaveController extends AbstractSaveController
     protected function preSave(DataInterface $data)
     {
         // Remove password from session
-        unset($this->data['password'], $this->data['password2']);
+        unset($this->data['password'], $this->data['password2'], $data->avatar);
     }
 
     /**

@@ -32,22 +32,22 @@ $router->any('logout', '/logout')
         ],
     ]);
 
-// Profile
-$router->any('profile', '/profile/(id)')
-    ->controller('User\Profile')
-    ->getAction('GetController')
-    ->extraValues([
-        'layout' => 'profile',
-    ]);
-
 // Profile Edit
-$router->any('profile_edit', '/profile')
+$router->any('profile_edit', '/profile/edit')
     ->controller('User\Profile')
     ->extraValues([
         'layout' => 'edit',
         'warder' => [
             'require_login' => true
         ],
+    ]);
+
+// Profile
+$router->any('profile', '/profile/(id)')
+    ->controller('User\Profile')
+    ->getAction('GetController')
+    ->extraValues([
+        'layout' => 'profile',
     ]);
 
 // Registration

@@ -132,6 +132,7 @@ class SaveController extends AbstractSaveController
         // Remove password so that session will not store this data
         unset($this->data['password']);
         unset($this->data['password2']);
+        unset($data->avatar);
     }
 
     /**
@@ -205,6 +206,19 @@ class SaveController extends AbstractSaveController
         } else {
             unset($data->password);
         }
+    }
+
+    /**
+     * getFailRedirect
+     *
+     * @param  DataInterface $data
+     *
+     * @return  string
+     * @throws \Psr\Cache\InvalidArgumentException
+     */
+    protected function getSuccessRedirect(DataInterface $data = null)
+    {
+        return $this->router->route('profile_edit', $this->getRedirectQuery());
     }
 
     /**
