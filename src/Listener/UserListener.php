@@ -136,7 +136,7 @@ class UserListener
                 time() + 60 * 60 * 24 * 100,
                 '/' . ltrim($session->getOption('cookie_path', $uri->path), '/'),
                 $session->getOption('cookie_domain'),
-                false,
+                true,
                 true
             );
         }
