@@ -61,7 +61,7 @@ class UserInit extends AbstractMigration
             $schema->integer('user_id');
             $schema->integer('time');
 
-            $schema->addIndex('id(150)');
+            $schema->addUniqueKey('id(150)');
             $schema->addIndex('user_id');
             $schema->addIndex('time');
         });
