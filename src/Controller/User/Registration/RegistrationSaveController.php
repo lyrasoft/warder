@@ -13,14 +13,14 @@ use Lyrasoft\Warder\Repository\UserRepository;
 use Lyrasoft\Warder\User\ActivationService;
 use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\AbstractSaveController;
-use Windwalker\Core\Mailer\MailMessage;
-use Windwalker\Core\Repository\Exception\ValidateFailException;
-use Windwalker\Core\Router\CoreRouter;
-use Windwalker\Core\View\HtmlView;
-use Windwalker\Data\DataInterface;
-use Windwalker\DI\Annotation\Inject;
-use Windwalker\Router\Exception\RouteNotFoundException;
-use Windwalker\Validator\Rule\EmailValidator;
+use Windwalker\Legacy\Core\Mailer\MailMessage;
+use Windwalker\Legacy\Core\Repository\Exception\ValidateFailException;
+use Windwalker\Legacy\Core\Router\CoreRouter;
+use Windwalker\Legacy\Core\View\HtmlView;
+use Windwalker\Legacy\Data\DataInterface;
+use Windwalker\Legacy\DI\Annotation\Inject;
+use Windwalker\Legacy\Router\Exception\RouteNotFoundException;
+use Windwalker\Legacy\Validator\Rule\EmailValidator;
 
 /**
  * The SaveController class.

@@ -13,12 +13,12 @@ use Lyrasoft\Warder\Admin\DataMapper\UserMapper;
 use Lyrasoft\Warder\Data\WarderUserDataInterface;
 use Lyrasoft\Warder\Helper\AvatarUploadHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
-use function Windwalker\arr;
-use Windwalker\Core\Ioc;
-use Windwalker\Core\Security\Hasher;
-use Windwalker\Core\User\User;
-use Windwalker\Crypt\CryptHelper;
-use Windwalker\Crypt\Password;
+use function Windwalker\Legacy\arr;
+use Windwalker\Legacy\Core\Ioc;
+use Windwalker\Legacy\Core\Security\Hasher;
+use Windwalker\Legacy\Core\User\User;
+use Windwalker\Legacy\Crypt\CryptHelper;
+use Windwalker\Legacy\Crypt\Password;
 
 /**
  * The Warder class.
@@ -171,7 +171,7 @@ class Warder extends User
      *
      * @param array $conditions
      *
-     * @return  \Windwalker\Data\Data[]|\Windwalker\Data\DataSet
+     * @return  \Windwalker\Legacy\Data\Data[]|\Windwalker\Legacy\Data\DataSet
      *
      * @since   1.4.2
      */

@@ -13,9 +13,9 @@ use Lyrasoft\Warder\Admin\DataMapper\UserSocialMapper;
 use Lyrasoft\Warder\Admin\Record\Traits\UserDataTrait;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Table\WarderTable;
-use Windwalker\Core\Language\Translator;
-use Windwalker\Event\Event;
-use Windwalker\Record\Record;
+use Windwalker\Legacy\Core\Language\Translator;
+use Windwalker\Legacy\Event\Event;
+use Windwalker\Legacy\Record\Record;
 
 /**
  * The UserRecord class.

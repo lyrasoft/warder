@@ -11,14 +11,14 @@ namespace Lyrasoft\Warder\Admin\Controller\Users\Batch;
 use Lyrasoft\Warder\User\ActivationService;
 use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\Batch\AbstractBatchController;
-use Windwalker\Core\Language\Translator;
-use Windwalker\Core\Mailer\MailMessage;
-use Windwalker\Core\Router\CoreRouter;
-use Windwalker\Core\User\User;
-use Windwalker\Core\User\UserDataInterface;
-use Windwalker\Data\Data;
-use Windwalker\Data\DataInterface;
-use Windwalker\DI\Annotation\Inject;
+use Windwalker\Legacy\Core\Language\Translator;
+use Windwalker\Legacy\Core\Mailer\MailMessage;
+use Windwalker\Legacy\Core\Router\CoreRouter;
+use Windwalker\Legacy\Core\User\User;
+use Windwalker\Legacy\Core\User\UserDataInterface;
+use Windwalker\Legacy\Data\Data;
+use Windwalker\Legacy\Data\DataInterface;
+use Windwalker\Legacy\DI\Annotation\Inject;
 
 /**
  * The ResendController class.

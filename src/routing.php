@@ -6,7 +6,7 @@
  * @license    LGPL-2.0-or-later
  */
 
-use Windwalker\Core\Router\RouteCreator;
+use Windwalker\Legacy\Core\Router\RouteCreator;
 
 /** @var $router RouteCreator */
 
@@ -65,7 +65,7 @@ $router->any('registration', '/registration')
 // Check User Exists
 $router->get('user_account_check', '/_user/account/check')
     ->controller(\Lyrasoft\Warder\Controller\User\Ajax\CheckAccountController::class)
-    ->middleware(\Windwalker\Core\Application\Middleware\JsonApiWebMiddleware::class);
+    ->middleware(\Windwalker\Legacy\Core\Application\Middleware\JsonApiWebMiddleware::class);
 
 // Registration Activate
 $router->any('registration_activate', '/registration/activate')

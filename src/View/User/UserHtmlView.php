@@ -10,8 +10,8 @@ namespace Lyrasoft\Warder\View\User;
 
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Phoenix\View\AbstractPhoenixHtmView;
-use Windwalker\Data\DataInterface;
-use Windwalker\String\StringNormalise;
+use Windwalker\Legacy\Data\DataInterface;
+use Windwalker\Legacy\String\StringNormalise;
 
 /**
  * The UserHtmlView class.
@@ -23,7 +23,7 @@ class UserHtmlView extends AbstractPhoenixHtmView
     /**
      * prepareData
      *
-     * @param \Windwalker\Data\Data $data
+     * @param \Windwalker\Legacy\Data\Data $data
      *
      * @return  void
      */

@@ -10,10 +10,10 @@ namespace Lyrasoft\Warder\Repository;
 
 use Lyrasoft\Warder\Admin\Record\Traits\UserDataTrait;
 use Lyrasoft\Warder\Warder;
-use Windwalker\Core\DateTime\Chronos;
-use Windwalker\Core\User\User;
-use Windwalker\Core\User\UserDataInterface;
-use Windwalker\Data\DataInterface;
+use Windwalker\Legacy\Core\DateTime\Chronos;
+use Windwalker\Legacy\Core\User\User;
+use Windwalker\Legacy\Core\User\UserDataInterface;
+use Windwalker\Legacy\Data\DataInterface;
 
 /**
  * The LoginRepository class.

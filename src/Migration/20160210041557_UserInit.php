@@ -9,9 +9,9 @@
 use Lyrasoft\Warder\Admin\DataMapper\UserMapper;
 use Lyrasoft\Warder\Data\UserData;
 use Lyrasoft\Warder\Table\WarderTable;
-use Windwalker\Core\Migration\AbstractMigration;
-use Windwalker\Core\Security\Hasher;
-use Windwalker\Database\Schema\Schema;
+use Windwalker\Legacy\Core\Migration\AbstractMigration;
+use Windwalker\Legacy\Core\Security\Hasher;
+use Windwalker\Legacy\Database\Schema\Schema;
 
 /**
  * Migration class, version: 20160210041557

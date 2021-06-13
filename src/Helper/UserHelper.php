@@ -8,10 +8,10 @@
 
 namespace Lyrasoft\Warder\Helper;
 
-use Windwalker\Core\Security\Hasher;
-use Windwalker\Core\User\User;
-use Windwalker\Crypt\CryptHelper;
-use Windwalker\Ioc;
+use Windwalker\Legacy\Core\Security\Hasher;
+use Windwalker\Legacy\Core\User\User;
+use Windwalker\Legacy\Crypt\CryptHelper;
+use Windwalker\Legacy\Ioc;
 
 /**
  * The UserHelper class.

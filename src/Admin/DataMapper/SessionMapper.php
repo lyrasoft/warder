@@ -10,7 +10,7 @@
 namespace Lyrasoft\Warder\Admin\DataMapper;
 
 use Lyrasoft\Warder\Table\WarderTable;
-use Windwalker\DataMapper\AbstractDatabaseMapperProxy;
+use Windwalker\Legacy\DataMapper\AbstractDatabaseMapperProxy;
 
 /**
  * The SessionMapper class.

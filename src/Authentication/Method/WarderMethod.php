@@ -11,11 +11,11 @@ namespace Lyrasoft\Warder\Authentication\Method;
 use Lyrasoft\Warder\Data\UserData;
 use Lyrasoft\Warder\Warder;
 use Lyrasoft\Warder\WarderPackage;
-use Windwalker\Authentication\Authentication;
-use Windwalker\Authentication\Credential;
-use Windwalker\Authentication\Method\AbstractMethod;
-use Windwalker\Core\User\User;
-use Windwalker\Core\User\UserDataInterface;
+use Windwalker\Legacy\Authentication\Authentication;
+use Windwalker\Legacy\Authentication\Credential;
+use Windwalker\Legacy\Authentication\Method\AbstractMethod;
+use Windwalker\Legacy\Core\User\User;
+use Windwalker\Legacy\Core\User\UserDataInterface;
 
 /**
  * The WarderMethod class.

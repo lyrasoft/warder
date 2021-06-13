@@ -11,15 +11,15 @@ namespace Lyrasoft\Warder\Controller\User\Forget;
 use Lyrasoft\Warder\Repository\UserRepository;
 use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\AbstractSaveController;
-use Windwalker\Core\DateTime\Chronos;
-use Windwalker\Core\Mailer\Mailer;
-use Windwalker\Core\Mailer\MailMessage;
-use Windwalker\Core\Mailer\Punycode;
-use Windwalker\Core\Repository\Exception\ValidateFailException;
-use Windwalker\Core\Security\Hasher;
-use Windwalker\Core\User\User;
-use Windwalker\Core\View\HtmlView;
-use Windwalker\Data\DataInterface;
+use Windwalker\Legacy\Core\DateTime\Chronos;
+use Windwalker\Legacy\Core\Mailer\Mailer;
+use Windwalker\Legacy\Core\Mailer\MailMessage;
+use Windwalker\Legacy\Core\Mailer\Punycode;
+use Windwalker\Legacy\Core\Repository\Exception\ValidateFailException;
+use Windwalker\Legacy\Core\Security\Hasher;
+use Windwalker\Legacy\Core\User\User;
+use Windwalker\Legacy\Core\View\HtmlView;
+use Windwalker\Legacy\Data\DataInterface;
 
 /**
  * The SaveController class.
@@ -199,7 +199,7 @@ class RequestSaveController extends AbstractSaveController
      *
      * @param string $name
      *
-     * @return  \Windwalker\Record\Record
+     * @return  \Windwalker\Legacy\Record\Record
      */
     public function getRecord($name = 'User')
     {

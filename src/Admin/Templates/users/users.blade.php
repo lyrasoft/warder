@@ -1,11 +1,11 @@
 {{-- Part of phoenix project. --}}
 <?php
 /**
- * @var  $items           \Windwalker\Data\DataSet
+ * @var  $items           \Windwalker\Legacy\Data\DataSet
  * @var  $item            \Lyrasoft\Warder\Admin\Record\UserRecord
  * @var  $blockedButton   \Phoenix\Html\State\IconButton
  * @var  $grid            \Phoenix\View\Helper\GridHelper
- * @var  $pagination      \Windwalker\Core\Pagination\Pagination
+ * @var  $pagination      \Windwalker\Legacy\Core\Pagination\Pagination
  */
 
 \Phoenix\Script\JQueryScript::highlight('.searchable', $state['input.search.content']);
@@ -185,7 +185,7 @@ $groups = \Lyrasoft\Warder\Warder::getGroups();
 
                             {{-- REGISTERED --}}
                             <td>
-                                {{ Windwalker\Core\DateTime\Chronos::toLocalTime($item->registered) }}
+                                {{ Windwalker\Legacy\Core\DateTime\Chronos::toLocalTime($item->registered) }}
                             </td>
 
                             <td class="text-center">

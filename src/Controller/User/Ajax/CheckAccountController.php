@@ -10,7 +10,7 @@ namespace Lyrasoft\Warder\Controller\User\Ajax;
 
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Warder;
-use Windwalker\Core\Controller\AbstractController;
+use Windwalker\Legacy\Core\Controller\AbstractController;
 
 /**
  * The CheckAccountController class.

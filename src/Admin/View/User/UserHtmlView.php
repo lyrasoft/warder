@@ -13,7 +13,7 @@ use Lyrasoft\Warder\Helper\WarderHelper;
 use Phoenix\Script\BootstrapScript;
 use Phoenix\Script\PhoenixScript;
 use Phoenix\View\EditView;
-use Windwalker\Core\Renderer\RendererHelper;
+use Windwalker\Legacy\Core\Renderer\RendererHelper;
 
 /**
  * The UserHtmlView class.
@@ -46,7 +46,7 @@ class UserHtmlView extends EditView
     /**
      * prepareRender
      *
-     * @param \Windwalker\Data\Data $data
+     * @param \Windwalker\Legacy\Data\Data $data
      *
      * @return  void
      */
@@ -63,7 +63,7 @@ class UserHtmlView extends EditView
     /**
      * prepareData
      *
-     * @param \Windwalker\Data\Data $data
+     * @param \Windwalker\Legacy\Data\Data $data
      *
      * @return  void
      */

@@ -10,7 +10,7 @@ namespace Lyrasoft\Warder\Controller\User;
 
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Phoenix\Controller\AbstractPhoenixController;
-use Windwalker\Core\User\User;
+use Windwalker\Legacy\Core\User\User;
 
 /**
  * The GetController class.

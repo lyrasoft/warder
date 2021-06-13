@@ -12,8 +12,8 @@ use Lyrasoft\Warder\Repository\UserRepository;
 use Lyrasoft\Warder\View\User\UserHtmlView;
 use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\Display\ItemDisplayController;
-use Windwalker\Core\Frontend\Bootstrap;
-use Windwalker\Core\User\User;
+use Windwalker\Legacy\Core\Frontend\Bootstrap;
+use Windwalker\Legacy\Core\User\User;
 
 /**
  * The GetController class.

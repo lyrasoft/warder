@@ -9,8 +9,8 @@
 use Lyrasoft\Warder\Admin\DataMapper\UserMapper;
 use Lyrasoft\Warder\Table\WarderTable;
 use Lyrasoft\Warder\Warder;
-use Windwalker\Core\Seeder\AbstractSeeder;
-use Windwalker\Data\Data;
+use Windwalker\Legacy\Core\Seeder\AbstractSeeder;
+use Windwalker\Legacy\Data\Data;
 
 /**
  * The UserSeeder class.

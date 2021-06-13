@@ -9,8 +9,8 @@
 namespace Lyrasoft\Warder\Form\User;
 
 use Lyrasoft\Warder\Helper\WarderHelper;
-use Windwalker\Core\Form\AbstractFieldDefinition;
-use Windwalker\Form\Form;
+use Windwalker\Legacy\Core\Form\AbstractFieldDefinition;
+use Windwalker\Legacy\Form\Form;
 
 /**
  * The ForgetDefinition class.

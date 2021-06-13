@@ -13,15 +13,15 @@ use Lyrasoft\Warder\Data\UserData;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Warder;
 use Phoenix\Repository\AdminRepository;
-use Windwalker\Authentication\Authentication;
-use Windwalker\Authentication\Credential;
-use Windwalker\Core\DateTime\Chronos;
-use Windwalker\Core\Repository\Exception\ValidateFailException;
-use Windwalker\Core\User\Exception\AuthenticateFailException;
-use Windwalker\Core\User\Exception\LoginFailException;
-use Windwalker\Core\User\User;
-use Windwalker\Data\Data;
-use Windwalker\Data\DataInterface;
+use Windwalker\Legacy\Authentication\Authentication;
+use Windwalker\Legacy\Authentication\Credential;
+use Windwalker\Legacy\Core\DateTime\Chronos;
+use Windwalker\Legacy\Core\Repository\Exception\ValidateFailException;
+use Windwalker\Legacy\Core\User\Exception\AuthenticateFailException;
+use Windwalker\Legacy\Core\User\Exception\LoginFailException;
+use Windwalker\Legacy\Core\User\User;
+use Windwalker\Legacy\Data\Data;
+use Windwalker\Legacy\Data\DataInterface;
 
 /**
  * The UserModel class.

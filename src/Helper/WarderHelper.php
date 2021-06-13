@@ -141,9 +141,7 @@ class WarderHelper
      */
     public static function getTable($alias, $default = null)
     {
-        $default = $default ?: $alias;
-
-        return static::getPackage()->get('table.' . $alias, $default);
+        return $alias;
     }
 
     /**

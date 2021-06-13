@@ -9,8 +9,8 @@
 namespace Lyrasoft\Warder\Admin\Field\User;
 
 use Lyrasoft\Warder\Warder;
-use Windwalker\Form\Field\ListField;
-use Windwalker\Html\Option;
+use Windwalker\Legacy\Form\Field\ListField;
+use Windwalker\Legacy\Html\Option;
 
 /**
  * The UserGroupField class.

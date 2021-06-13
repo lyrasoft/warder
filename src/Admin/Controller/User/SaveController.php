@@ -13,10 +13,10 @@ use Lyrasoft\Warder\Helper\AvatarUploadHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\User\ActivationService;
 use Phoenix\Controller\AbstractSaveController;
-use Windwalker\Core\Mailer\Punycode;
-use Windwalker\Core\Repository\Exception\ValidateFailException;
-use Windwalker\Core\User\User;
-use Windwalker\Data\DataInterface;
+use Windwalker\Legacy\Core\Mailer\Punycode;
+use Windwalker\Legacy\Core\Repository\Exception\ValidateFailException;
+use Windwalker\Legacy\Core\User\User;
+use Windwalker\Legacy\Data\DataInterface;
 
 /**
  * The SaveController class.

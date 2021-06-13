@@ -13,9 +13,9 @@ use Lyrasoft\Warder\Repository\UserRepository;
 use Lyrasoft\Warder\View\User\UserHtmlView;
 use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\Display\EditDisplayController;
-use Windwalker\Core\Repository\Repository;
-use Windwalker\Core\View\AbstractView;
-use Windwalker\Router\Exception\RouteNotFoundException;
+use Windwalker\Legacy\Core\Repository\Repository;
+use Windwalker\Legacy\Core\View\AbstractView;
+use Windwalker\Legacy\Router\Exception\RouteNotFoundException;
 
 /**
  * The GetController class.

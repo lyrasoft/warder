@@ -10,9 +10,9 @@ namespace Lyrasoft\Warder\Admin\Form\User;
 
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\WarderPackage;
-use Windwalker\Core\Form\AbstractFieldDefinition;
-use Windwalker\Core\Package\AbstractPackage;
-use Windwalker\Form\Form;
+use Windwalker\Legacy\Core\Form\AbstractFieldDefinition;
+use Windwalker\Legacy\Core\Package\AbstractPackage;
+use Windwalker\Legacy\Form\Form;
 
 /**
  * The LoginDefinition class.

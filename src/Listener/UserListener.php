@@ -13,15 +13,15 @@ use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\User\UserSwitchService;
 use Lyrasoft\Warder\Warder;
 use Lyrasoft\Warder\WarderPackage;
-use Windwalker\Authentication\Authentication;
-use Windwalker\Authentication\Credential;
-use Windwalker\Core\Security\CsrfProtection;
-use Windwalker\Core\User\Exception\AuthenticateFailException;
-use Windwalker\Core\User\User;
-use Windwalker\Core\View\HtmlView;
-use Windwalker\Event\Event;
-use Windwalker\Session\Session;
-use function Windwalker\h;
+use Windwalker\Legacy\Authentication\Authentication;
+use Windwalker\Legacy\Authentication\Credential;
+use Windwalker\Legacy\Core\Security\CsrfProtection;
+use Windwalker\Legacy\Core\User\Exception\AuthenticateFailException;
+use Windwalker\Legacy\Core\User\User;
+use Windwalker\Legacy\Core\View\HtmlView;
+use Windwalker\Legacy\Event\Event;
+use Windwalker\Legacy\Session\Session;
+use function Windwalker\Legacy\h;
 
 /**
  * The UserListener class.
@@ -161,9 +161,9 @@ class UserListener
                 throw new \LogicException('Class: ' . $class . ' not exists.');
             }
 
-            if (!is_subclass_of($class, 'Windwalker\Authentication\Method\MethodInterface')) {
+            if (!is_subclass_of($class, 'Windwalker\Legacy\Authentication\Method\MethodInterface')) {
                 throw new \LogicException(
-                    'Class: ' . $class . ' must be sub class of Windwalker\Authentication\Method\MethodInterface'
+                    'Class: ' . $class . ' must be sub class of Windwalker\Legacy\Authentication\Method\MethodInterface'
                 );
             }
 

@@ -13,8 +13,8 @@ use Phoenix\Html\State\IconButton;
 use Phoenix\Script\BootstrapScript;
 use Phoenix\Script\PhoenixScript;
 use Phoenix\View\GridView;
-use Windwalker\Core\Mailer\Punycode;
-use Windwalker\Core\Renderer\RendererHelper;
+use Windwalker\Legacy\Core\Mailer\Punycode;
+use Windwalker\Legacy\Core\Renderer\RendererHelper;
 
 /**
  * The UsersHtmlView class.
@@ -74,7 +74,7 @@ class UsersHtmlView extends GridView
     /**
      * prepareData
      *
-     * @param \Windwalker\Data\Data $data
+     * @param \Windwalker\Legacy\Data\Data $data
      *
      * @return  void
      */

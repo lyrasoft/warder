@@ -1,6 +1,6 @@
 {{-- Part of phoenix project. --}}
 
-@extends($warder->editExtends)
+@extends('admin.global.body')
 
 @section('toolbar-buttons')
     @include('toolbar')

@@ -12,11 +12,11 @@ use Lyrasoft\Warder\Admin\DataMapper\UserMapper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Warder;
 use Lyrasoft\Warder\WarderPackage;
-use Windwalker\Core\Mailer\Mailer;
-use Windwalker\Core\Mailer\MailMessage;
-use Windwalker\Core\Package\PackageHelper;
-use Windwalker\Core\Renderer\RendererHelper;
-use Windwalker\Core\Router\CoreRouter;
+use Windwalker\Legacy\Core\Mailer\Mailer;
+use Windwalker\Legacy\Core\Mailer\MailMessage;
+use Windwalker\Legacy\Core\Package\PackageHelper;
+use Windwalker\Legacy\Core\Renderer\RendererHelper;
+use Windwalker\Legacy\Core\Router\CoreRouter;
 
 /**
  * The ActivationService class.

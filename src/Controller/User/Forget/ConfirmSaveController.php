@@ -10,10 +10,10 @@ namespace Lyrasoft\Warder\Controller\User\Forget;
 
 use Lyrasoft\Warder\Repository\UserRepository;
 use Phoenix\Controller\AbstractSaveController;
-use Windwalker\Core\Repository\Exception\ValidateFailException;
-use Windwalker\Core\Security\Hasher;
-use Windwalker\Core\User\User;
-use Windwalker\Data\DataInterface;
+use Windwalker\Legacy\Core\Repository\Exception\ValidateFailException;
+use Windwalker\Legacy\Core\Security\Hasher;
+use Windwalker\Legacy\Core\User\User;
+use Windwalker\Legacy\Data\DataInterface;
 
 /**
  * The SaveController class.

@@ -11,10 +11,10 @@ namespace Lyrasoft\Warder\Form\Profile;
 use Lyrasoft\Unidev\Field\SingleImageDragField;
 use Lyrasoft\Warder\Helper\AvatarUploadHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
-use Windwalker\Core\Form\AbstractFieldDefinition;
-use Windwalker\Core\Package\AbstractPackage;
-use Windwalker\Form\Form;
-use Windwalker\Validator\Rule\EmailValidator;
+use Windwalker\Legacy\Core\Form\AbstractFieldDefinition;
+use Windwalker\Legacy\Core\Package\AbstractPackage;
+use Windwalker\Legacy\Form\Form;
+use Windwalker\Legacy\Validator\Rule\EmailValidator;
 
 /**
  * The EditDefinition class.

@@ -16,7 +16,7 @@ use Lyrasoft\Warder\Warder;
  *
  * @since  1.0
  */
-class UserData extends \Windwalker\Core\User\UserData implements WarderUserDataInterface
+class UserData extends \Windwalker\Legacy\Core\User\UserData implements WarderUserDataInterface
 {
     /**
      * authorise

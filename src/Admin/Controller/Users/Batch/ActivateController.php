@@ -9,7 +9,7 @@
 namespace Lyrasoft\Warder\Admin\Controller\Users\Batch;
 
 use Phoenix\Controller\Batch\AbstractBatchController;
-use Windwalker\Data\DataInterface;
+use Windwalker\Legacy\Data\DataInterface;
 
 /**
  * The UnpublishController class.

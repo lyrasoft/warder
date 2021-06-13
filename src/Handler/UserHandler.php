@@ -13,14 +13,14 @@ use Lyrasoft\Warder\Admin\Record\UserRecord;
 use Lyrasoft\Warder\Data\UserData;
 use Lyrasoft\Warder\Repository\UserRepository;
 use Lyrasoft\Warder\WarderPackage;
-use Windwalker\Core\Cache\RuntimeCacheTrait;
-use Windwalker\Core\Mailer\Punycode;
-use Windwalker\Core\Package\Resolver\RecordResolver;
-use Windwalker\Core\User\UserDataInterface;
-use Windwalker\Core\User\UserHandlerInterface;
-use Windwalker\Record\Exception\NoResultException;
-use Windwalker\Record\Record;
-use Windwalker\Session\Session;
+use Windwalker\Legacy\Core\Cache\RuntimeCacheTrait;
+use Windwalker\Legacy\Core\Mailer\Punycode;
+use Windwalker\Legacy\Core\Package\Resolver\RecordResolver;
+use Windwalker\Legacy\Core\User\UserDataInterface;
+use Windwalker\Legacy\Core\User\UserHandlerInterface;
+use Windwalker\Legacy\Record\Exception\NoResultException;
+use Windwalker\Legacy\Record\Record;
+use Windwalker\Legacy\Session\Session;
 
 /**
  * The UserHandler class.

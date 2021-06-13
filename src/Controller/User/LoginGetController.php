@@ -11,7 +11,7 @@ namespace Lyrasoft\Warder\Controller\User;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\Display\DisplayController;
-use Windwalker\Router\Exception\RouteNotFoundException;
+use Windwalker\Legacy\Router\Exception\RouteNotFoundException;
 
 /**
  * The GetController class.

@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later.
  */
 
-use Windwalker\Core\Seeder\AbstractSeeder;
+use Windwalker\Legacy\Core\Seeder\AbstractSeeder;
 
 /**
  * The DatabaseSeeder class.
@@ -20,7 +20,7 @@ class MainSeeder extends AbstractSeeder
      *
      * @return  void
      * @throws ReflectionException
-     * @throws \Windwalker\DI\Exception\DependencyResolutionException
+     * @throws \Windwalker\Legacy\DI\Exception\DependencyResolutionException
      */
     public function doExecute()
     {

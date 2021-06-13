@@ -10,7 +10,7 @@ namespace Lyrasoft\Warder\Script;
 
 use Lyrasoft\Warder\WarderPackage;
 use Phoenix\Script\PhoenixScript;
-use Windwalker\Core\Asset\AbstractScript;
+use Windwalker\Legacy\Core\Asset\AbstractScript;
 
 /**
  * The WarderScript class.

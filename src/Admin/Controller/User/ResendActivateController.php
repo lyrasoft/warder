@@ -9,8 +9,8 @@
 namespace Lyrasoft\Warder\Admin\Controller\User;
 
 use Lyrasoft\Warder\User\ActivationService;
-use Windwalker\Core\Controller\AbstractController;
-use Windwalker\DI\Annotation\Inject;
+use Windwalker\Legacy\Core\Controller\AbstractController;
+use Windwalker\Legacy\DI\Annotation\Inject;
 
 /**
  * The ResendActivateController class.

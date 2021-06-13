@@ -9,7 +9,7 @@
 namespace Lyrasoft\Warder\Data;
 
 use Lyrasoft\Warder\Warder;
-use Windwalker\Core\User\UserDataInterface;
+use Windwalker\Legacy\Core\User\UserDataInterface;
 
 /**
  * Interface WarderUserDataInterface

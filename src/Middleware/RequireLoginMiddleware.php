@@ -11,9 +11,9 @@ namespace Lyrasoft\Warder\Middleware;
 use Lyrasoft\Warder\Warder;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Windwalker\Core\Application\Middleware\AbstractWebMiddleware;
-use Windwalker\Middleware\MiddlewareInterface;
-use Windwalker\Utilities\Classes\OptionAccessTrait;
+use Windwalker\Legacy\Core\Application\Middleware\AbstractWebMiddleware;
+use Windwalker\Legacy\Middleware\MiddlewareInterface;
+use Windwalker\Legacy\Utilities\Classes\OptionAccessTrait;
 
 /**
  * The RequireLoginMiddleware class.

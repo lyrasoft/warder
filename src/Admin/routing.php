@@ -6,7 +6,7 @@
  * @license    LGPL-2.0-or-later
  */
 
-use Windwalker\Core\Router\RouteCreator;
+use Windwalker\Legacy\Core\Router\RouteCreator;
 
 /** @var $router RouteCreator */
 

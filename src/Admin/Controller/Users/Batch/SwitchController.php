@@ -11,11 +11,11 @@ namespace Lyrasoft\Warder\Admin\Controller\Users\Batch;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\User\UserSwitchService;
 use Lyrasoft\Warder\Warder;
-use Windwalker\Core\Controller\AbstractController;
-use Windwalker\Core\Frontend\Bootstrap;
-use Windwalker\Core\Repository\Exception\ValidateFailException;
-use Windwalker\DI\Annotation\Inject;
-use Windwalker\Utilities\Arr;
+use Windwalker\Legacy\Core\Controller\AbstractController;
+use Windwalker\Legacy\Core\Frontend\Bootstrap;
+use Windwalker\Legacy\Core\Repository\Exception\ValidateFailException;
+use Windwalker\Legacy\DI\Annotation\Inject;
+use Windwalker\Legacy\Utilities\Arr;
 
 /**
  * The SwitchController class.
@@ -46,7 +46,7 @@ class SwitchController extends AbstractController
      * @return  void
      * @throws \Psr\Cache\InvalidArgumentException
      * @throws \ReflectionException
-     * @throws \Windwalker\DI\Exception\DependencyResolutionException
+     * @throws \Windwalker\Legacy\DI\Exception\DependencyResolutionException
      */
     protected function doExecute()
     {

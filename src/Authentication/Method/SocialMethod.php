@@ -13,14 +13,14 @@ use Lyrasoft\Warder\Admin\DataMapper\UserSocialMapper;
 use Lyrasoft\Warder\Data\UserData;
 use Lyrasoft\Warder\Repository\UserRepository;
 use Lyrasoft\Warder\WarderPackage;
-use Windwalker\Authentication\Authentication;
-use Windwalker\Authentication\Credential;
-use Windwalker\Authentication\Method\AbstractMethod;
-use Windwalker\Core\Router\CoreRouter;
-use Windwalker\Core\Security\CsrfProtection;
-use Windwalker\Core\User\User;
-use Windwalker\Core\User\UserDataInterface;
-use Windwalker\Data\Data;
+use Windwalker\Legacy\Authentication\Authentication;
+use Windwalker\Legacy\Authentication\Credential;
+use Windwalker\Legacy\Authentication\Method\AbstractMethod;
+use Windwalker\Legacy\Core\Router\CoreRouter;
+use Windwalker\Legacy\Core\Security\CsrfProtection;
+use Windwalker\Legacy\Core\User\User;
+use Windwalker\Legacy\Core\User\UserDataInterface;
+use Windwalker\Legacy\Data\Data;
 
 /**
  * The SocialMethod class.

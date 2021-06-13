@@ -8,7 +8,7 @@
 
 namespace Lyrasoft\Warder\Repository;
 
-use Windwalker\Core\User\User;
+use Windwalker\Legacy\Core\User\User;
 
 /**
  * The ProfileModel class.
@@ -29,7 +29,7 @@ class ProfileRepository extends UserRepository
      *
      * @param string $name
      *
-     * @return  \Windwalker\Record\Record
+     * @return  \Windwalker\Legacy\Record\Record
      * @throws \Exception
      */
     public function getRecord($name = 'User')

@@ -11,9 +11,9 @@ namespace Lyrasoft\Warder\User;
 use Lyrasoft\Warder\Data\WarderUserDataInterface;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Warder;
-use Windwalker\Core\Repository\Exception\ValidateFailException;
-use Windwalker\Core\User\User;
-use Windwalker\Session\Session;
+use Windwalker\Legacy\Core\Repository\Exception\ValidateFailException;
+use Windwalker\Legacy\Core\User\User;
+use Windwalker\Legacy\Session\Session;
 
 /**
  * The UserSwitchService class.

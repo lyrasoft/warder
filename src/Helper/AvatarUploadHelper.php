@@ -10,9 +10,9 @@ namespace Lyrasoft\Warder\Helper;
 
 use Lyrasoft\Unidev\Storage\AbstractStorageHelper;
 use Lyrasoft\Unidev\UnidevPackage;
-use Windwalker\Core\Asset\Asset;
-use Windwalker\Core\Package\PackageHelper;
-use Windwalker\Uri\Uri;
+use Windwalker\Legacy\Core\Asset\Asset;
+use Windwalker\Legacy\Core\Package\PackageHelper;
+use Windwalker\Legacy\Uri\Uri;
 
 /**
  * The AvatarHelper class.

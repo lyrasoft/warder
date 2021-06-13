@@ -13,11 +13,11 @@ use Lyrasoft\Warder\Repository\UserRepository;
 use Lyrasoft\Warder\User\ActivationService;
 use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\AbstractSaveController;
-use Windwalker\Core\DateTime\Chronos;
-use Windwalker\Core\User\Exception\LoginFailException;
-use Windwalker\Core\User\User;
-use Windwalker\Data\DataInterface;
-use Windwalker\Router\Exception\RouteNotFoundException;
+use Windwalker\Legacy\Core\DateTime\Chronos;
+use Windwalker\Legacy\Core\User\Exception\LoginFailException;
+use Windwalker\Legacy\Core\User\User;
+use Windwalker\Legacy\Data\DataInterface;
+use Windwalker\Legacy\Router\Exception\RouteNotFoundException;
 
 /**
  * The SaveController class.

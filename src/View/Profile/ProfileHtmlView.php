@@ -35,7 +35,7 @@ class ProfileHtmlView extends EditView
     /**
      * prepareData
      *
-     * @param \Windwalker\Data\Data $data
+     * @param \Windwalker\Legacy\Data\Data $data
      *
      * @return  void
      */

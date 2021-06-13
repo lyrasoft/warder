@@ -10,17 +10,17 @@ namespace Lyrasoft\Warder\Listener;
 
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\WarderPackage;
-use Windwalker\Core\Application\WebApplication;
-use Windwalker\Core\Language\Translator;
-use Windwalker\Core\Package\Resolver\DataMapperResolver;
-use Windwalker\Core\Package\Resolver\FieldDefinitionResolver;
-use Windwalker\Core\Package\Resolver\RecordResolver;
-use Windwalker\Core\View\HtmlView;
-use Windwalker\Data\Data;
-use Windwalker\Event\Event;
-use Windwalker\Renderer\BladeRenderer;
-use Windwalker\Utilities\Queue\PriorityQueue;
-use Windwalker\Utilities\Reflection\ReflectionHelper;
+use Windwalker\Legacy\Core\Application\WebApplication;
+use Windwalker\Legacy\Core\Language\Translator;
+use Windwalker\Legacy\Core\Package\Resolver\DataMapperResolver;
+use Windwalker\Legacy\Core\Package\Resolver\FieldDefinitionResolver;
+use Windwalker\Legacy\Core\Package\Resolver\RecordResolver;
+use Windwalker\Legacy\Core\View\HtmlView;
+use Windwalker\Legacy\Data\Data;
+use Windwalker\Legacy\Event\Event;
+use Windwalker\Legacy\Renderer\BladeRenderer;
+use Windwalker\Legacy\Utilities\Queue\PriorityQueue;
+use Windwalker\Legacy\Utilities\Reflection\ReflectionHelper;
 
 /**
  * The SentryListener class.

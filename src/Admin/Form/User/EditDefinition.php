@@ -13,9 +13,9 @@ use Lyrasoft\Warder\Admin\Field\User\UserGroupField;
 use Lyrasoft\Warder\Helper\AvatarUploadHelper;
 use Lyrasoft\Warder\Helper\WarderHelper;
 use Phoenix\Form\PhoenixFieldTrait;
-use Windwalker\Core\Form\AbstractFieldDefinition;
-use Windwalker\Form\Form;
-use Windwalker\Validator\Rule\EmailValidator;
+use Windwalker\Legacy\Core\Form\AbstractFieldDefinition;
+use Windwalker\Legacy\Form\Form;
+use Windwalker\Legacy\Validator\Rule\EmailValidator;
 
 /**
  * The UserEditDefinition class.

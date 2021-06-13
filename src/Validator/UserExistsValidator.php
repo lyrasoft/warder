@@ -8,11 +8,11 @@
 
 namespace Lyrasoft\Warder\Validator;
 
-use Windwalker\Core\Language\Translator;
-use Windwalker\Core\Mailer\Punycode;
-use Windwalker\Core\Repository\Exception\ValidateFailException;
-use Windwalker\Core\User\User;
-use Windwalker\Validator\AbstractValidator;
+use Windwalker\Legacy\Core\Language\Translator;
+use Windwalker\Legacy\Core\Mailer\Punycode;
+use Windwalker\Legacy\Core\Repository\Exception\ValidateFailException;
+use Windwalker\Legacy\Core\User\User;
+use Windwalker\Legacy\Validator\AbstractValidator;
 
 /**
  * The UseeExistsValidator class.

@@ -14,11 +14,11 @@ use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Repository\UserRepository;
 use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\AbstractSaveController;
-use Windwalker\Core\Repository\Exception\ValidateFailException;
-use Windwalker\Core\User\User;
-use Windwalker\Core\User\UserData;
-use Windwalker\Data\DataInterface;
-use Windwalker\Validator\Rule\EmailValidator;
+use Windwalker\Legacy\Core\Repository\Exception\ValidateFailException;
+use Windwalker\Legacy\Core\User\User;
+use Windwalker\Legacy\Core\User\UserData;
+use Windwalker\Legacy\Data\DataInterface;
+use Windwalker\Legacy\Validator\Rule\EmailValidator;
 
 /**
  * The SaveController class.

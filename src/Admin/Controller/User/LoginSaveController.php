@@ -12,9 +12,9 @@ use Lyrasoft\Warder\Helper\WarderHelper;
 use Lyrasoft\Warder\Repository\UserRepository;
 use Lyrasoft\Warder\Warder;
 use Phoenix\Controller\AbstractSaveController;
-use Windwalker\Core\DateTime\Chronos;
-use Windwalker\Core\User\User;
-use Windwalker\Data\DataInterface;
+use Windwalker\Legacy\Core\DateTime\Chronos;
+use Windwalker\Legacy\Core\User\User;
+use Windwalker\Legacy\Data\DataInterface;
 
 /**
  * The SaveController class.
